@@ -26,7 +26,7 @@ React.render((
       </Route>
 
       <Route path="/dash/" component={DashRoot}>
-    
+        {/*<Route path="points/health/" component={PointsMap}/>*/}
       </Route>
 
       <Route component={StaticLayout}>

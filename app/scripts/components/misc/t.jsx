@@ -12,7 +12,7 @@ const allTranslations = {
     'site-name': 'Water Dashboard',
     'site.flag': 'Flag of Tanzania',
 
-    'home.waterpoints': 'Waterpoints',
+    'home.health': 'Health Centers',
     'home.boreholes': 'Boreholes',
     'home.dams': 'Dams',
 
