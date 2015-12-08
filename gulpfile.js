@@ -43,7 +43,7 @@ gulp.task('slack-notify', function() {
   var slack = require('slack-notify')(SLACK_URL);
   slack.alert({
     channel: '#tanzania-dashboards',
-      icon_emoji: ':sweat_drops:',
-      text: 'http://maji.takwimu.org/'
+      icon_emoji: ':heart_decoration: ',
+      text: 'http://afya.takwimu.org/'
     });
 });
