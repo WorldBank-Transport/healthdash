@@ -11,7 +11,7 @@
     bottom: $map-nav-height + $overview-bar-height;
     left: 0;
     position: absolute;
-    right: 0;
+    right: $main-chart-width;
     top: $map-nav-height;
 
     // WARNING: These rules reach into child components, which is not nice

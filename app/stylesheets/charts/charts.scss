@@ -1,0 +1,13 @@
+@import '../config/colours';
+@import '../config/dimensions';
+
+.charts {
+  position: absolute;
+  top: $header-height;
+  right: 0;
+  bottom: 0;
+  width: $main-chart-width;
+  overflow-y: auto;
+  background-color: whitespace;
+  z-index: 100;
+}

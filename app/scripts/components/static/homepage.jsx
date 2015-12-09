@@ -16,12 +16,6 @@ const Homepage = React.createClass({
           <Button linkTo="/dash/points/health/">
             <T k="home.health" />
           </Button>
-          <Button linkTo="dash/regions/boreholes/">
-            <T k="home.boreholes" />
-          </Button>
-          <Button linkTo="dash/points/dams/">
-            <T k="home.dams" />
-          </Button>
           <p>
             <T k="home.text" />
           </p>

@@ -9,7 +9,7 @@ import langStore from '../../stores/lang';
 
 const allTranslations = {
   'en': {
-    'site-name': 'Water Dashboard',
+    'site-name': 'Health Dashboard',
     'site.flag': 'Flag of Tanzania',
 
     'home.health': 'Health Centers',
