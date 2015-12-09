@@ -17,7 +17,7 @@ describe('Translator component wrapper', () => {
     const img = React.addons.TestUtils.findRenderedDOMComponentWithTag(ts, 'img');
     const attrText = React.findDOMNode(img).getAttribute('alt');
     expect(attrText).toBeDefined();
-    expect(attrText).toEqual('Water Dashboard');
+    expect(attrText).toEqual('Health Dashboard');
   });
 
   it('should put translated props on the object prop which has a k', () => {
@@ -29,7 +29,7 @@ describe('Translator component wrapper', () => {
     const wc = React.addons.TestUtils.findRenderedDOMComponentWithTag(ts, 'text');
     const objTranslated = wc.props.tooltip;
     expect(objTranslated).toBeDefined();
-    expect(objTranslated).toEqual({propA: 'Water Dashboard'});
+    expect(objTranslated).toEqual({propA: 'Health Dashboard'});
   });
 
   it('should break to put translated props on the object prop which has two a k', () => {

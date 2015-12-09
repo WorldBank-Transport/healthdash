@@ -30,7 +30,7 @@ function pullLatLng(record) {
   return pulled;
 }
 /**
- * add a POINT_ID and parse the geolocation for a health Facilities 
+ * add a POINT_ID and parse the geolocation for a health Facilities
  * @param {object} record The facility database record
  * @returns {object} The record with a `position` prop with lat/lng array
  */

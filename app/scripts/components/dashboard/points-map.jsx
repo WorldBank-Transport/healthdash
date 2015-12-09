@@ -1,5 +1,5 @@
 import pick from 'lodash/object/pick';
-import { Maybe } from 'results';
+//import { Maybe } from 'results';
 import React, { PropTypes } from 'react';
 import { Map } from 'leaflet';
 

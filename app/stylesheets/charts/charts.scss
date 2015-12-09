@@ -2,12 +2,12 @@
 @import '../config/dimensions';
 
 .charts {
-  position: absolute;
-  top: $header-height;
-  right: 0;
-  bottom: 0;
-  width: $main-chart-width;
-  overflow-y: auto;
   background-color: whitespace;
+  bottom: 0;
+  overflow-y: auto;
+  position: absolute;
+  right: 0;
+  top: $header-height;
+  width: $main-chart-width;
   z-index: 100;
 }

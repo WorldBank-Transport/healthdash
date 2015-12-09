@@ -1,6 +1,6 @@
 import { createStore } from 'reflux';
 import SaneStore from '../utils/sane-store-mixin';
-import { load, loadProgress, loadCompleted, loadFailed } from '../actions/data'; 
+import { load, loadProgress, loadCompleted, loadFailed } from '../actions/data';
 import { getHealthFacilities } from '../api';
 
 const DUMMY = [];
@@ -19,7 +19,7 @@ const getNextProxier = (type) => {
 
 const DataStore = createStore({
   initialData: {
-    facilities: DUMMY,    
+    facilities: DUMMY,
   },
   mixins: [SaneStore],
   init() {

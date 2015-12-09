@@ -1,4 +1,4 @@
-/* eslint react/no-set-state: 0 */  // needed for wrapping leaflet
+/*eslint-disable */
 import Leaflet from 'leaflet';
 import boundsType from 'react-leaflet/lib/types/bounds';
 import LeafletMap from 'react-leaflet/lib/Map';

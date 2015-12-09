@@ -1,7 +1,7 @@
-/* eslint react/jsx-sort-props: 0 */  // Routes: path, component order is nicer
+/*eslint-disable */
 import React from 'react';
 //import 'babel-core/polyfill';
-import Router, { Redirect, Route } from 'react-router';
+import Router, { Route } from 'react-router';
 import history from './history';
 // Route components
 import Root from './components/root';
@@ -16,14 +16,6 @@ import DashRoot from './components/dashboard/dash-root';
 import PointsMap from './components/dashboard/points-map';
 
 
-/**
- * @param {object} nextState From react-router
- * @returns {void}
- */
-function setPointsView(nextState) {
-  
-}
-
 React.render((
   <Router history={history}>
     <Route component={Root}>
@@ -35,7 +27,7 @@ React.render((
       </Route>
 
       <Route path="/dash/" component={DashRoot}>
-        <Route path="points/health/" component={PointsMap} onEnter={setPointsView}/>
+        <Route path="points/health/" component={PointsMap}/>
       </Route>
 
       <Route component={StaticLayout}>
