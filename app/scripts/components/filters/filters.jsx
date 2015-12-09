@@ -22,9 +22,9 @@ const Filters = React.createClass({
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass).isRequired,
   },
   componentDidUpdate(prevProps) {
-    if (!this.props.dataType.equals(prevProps.dataType)) {
-      this.props.clear();
-    }
+    //if (!this.props.dataType.equals(prevProps.dataType)) {
+    //  this.props.clear();
+    //}
   },
   render() {
     return OpenClosed.match(this.props.openClosed, {

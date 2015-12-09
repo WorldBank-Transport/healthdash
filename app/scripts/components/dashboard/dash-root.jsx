@@ -37,8 +37,13 @@ const DashRoot = React.createClass({
 
 
  render() {
-  const mapChild = this.props.children;
-  const propsForChildren = {};
+  const propsForChildren = {
+    data: this.state.data.facilities, // TODO remove facilities
+  };
+  const mapChild = React.cloneElement(this.props.children, {
+    ...propsForChildren,
+  });
+  
   return (
     <div className="main dash-layout">
       <div className="map-container">

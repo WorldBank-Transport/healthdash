@@ -13,7 +13,16 @@ import SpeakOut from './components/static/speak-out';
 import NotFound from './components/static/not-found';
 // dashboard views
 import DashRoot from './components/dashboard/dash-root';
+import PointsMap from './components/dashboard/points-map';
 
+
+/**
+ * @param {object} nextState From react-router
+ * @returns {void}
+ */
+function setPointsView(nextState) {
+  
+}
 
 React.render((
   <Router history={history}>
@@ -26,7 +35,7 @@ React.render((
       </Route>
 
       <Route path="/dash/" component={DashRoot}>
-        {/*<Route path="points/health/" component={PointsMap}/>*/}
+        <Route path="points/health/" component={PointsMap} onEnter={setPointsView}/>
       </Route>
 
       <Route component={StaticLayout}>
