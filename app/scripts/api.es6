@@ -30,11 +30,11 @@ function pullLatLng(record) {
   return pulled;
 }
 /**
- * add a POINT_ID and parse the geolocation for a waterpoint
- * @param {object} record The waterpoint database record
+ * add a POINT_ID and parse the geolocation for a health Facilities
+ * @param {object} record The facility database record
  * @returns {object} The record with a `position` prop with lat/lng array
  */
-function waterpointProcess(record) {
+function healthFacProcess(record) {
   const pulled = pullLatLng(record);
   pulled.POINT_ID = pulled.WATER_POINT_CODE;
   return pulled;
@@ -68,30 +68,26 @@ function toUppercase(record) {
 const eachRecord = fn => data => data.map(fn);
 
 
-const waterpointsQ = {
+const healthFacilitiesQ = {
   fields: [
+    'FACILITY_ID_NUMBER',
+    'FACILITY_NAME',
     'LATITUDE',
     'LONGITUDE',
-    'POPULATION SERVED',
-    'WATER_POINT_CODE',
-    'WATER_POINT_NAME',
-    'STATUS',
+    'ZONE',
     'REGION',
-    'DISTRICT',
-    'WARD',
-    'VILLAGE',
-    'SUB_VILLAGE',
-    'HARDWARE_PROBLEM',
-    'WATER_QUALITY',
-    'WATER_QUANTITY',
-    'SOURCE_TYPE',
+    'COUNCIL',
+    'COMMON FACILITY HEALTH NAME',
+    'FACILITY TYPE',
+    'OWNERSHIP',
+    'OPERATING_STATUS',
   ],
   distinct: true,
 };
 
-export const getWaterpoints = (onProgress) =>
-  ckan.get(API_ROOT, 'a94b3653-55f4-4455-9bed-42b92d5c4370', waterpointsQ,
-    onProgress, eachRecord(waterpointProcess));
+export const getHealthFacilities = (onProgress) =>
+  ckan.get(API_ROOT, 'b3ef3486-34fd-4389-bc61-af4520df1858', healthFacilitiesQ,
+    onProgress, eachRecord(healthFacProcess));
 
 
 const boreholesQ = {
