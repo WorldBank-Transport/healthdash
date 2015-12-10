@@ -37,8 +37,8 @@ const SimplePoints = React.createClass({
   },
 
   render() {
-    const invalidLatLon = (item) => item.position && !isNaN(item.position[0]) && !isNaN(item.position[1]) 
-    const points = this.props.points.filter(invalidLatLon).map(this.createMarker);
+    const invalidLatLon = (item) => item.position && !isNaN(item.position[0]) && !isNaN(item.position[1]);
+    this.props.points.filter(invalidLatLon).map(this.createMarker);
     return <div style={{display: 'none'}}></div>;
   },
 });

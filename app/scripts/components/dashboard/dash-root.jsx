@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'reflux';
-import AsyncState from '../../constants/async';
 // store
 import FilteredDataStore from '../../stores/filtered-data';
 import LayoutStore from '../../stores/layout';
@@ -19,7 +18,6 @@ import Charts from '../charts/charts';
 import SpinnerModal from '../misc/spinner-modal';
 
 // components
-import T from '../misc/t';
 import TSetChildProps from '../misc/t-set-child-props';
 
 require('stylesheets/dashboard/dash-layout');
@@ -47,11 +45,11 @@ const DashRoot = React.createClass({
     return (
       <TSetChildProps>
         <SpinnerModal
-          message={'loading.data.health'}
-          retry={() => alert('retry')}
-          state={this.state.loadingData} />
+            message={'loading.data.health'}
+            retry={() => null}
+            state={this.state.loadingData} />
       </TSetChildProps>
-    );;
+    );
   },
 
   render() {
