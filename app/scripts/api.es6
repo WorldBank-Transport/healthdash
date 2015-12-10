@@ -36,7 +36,7 @@ function pullLatLng(record) {
  */
 function healthFacProcess(record) {
   const pulled = pullLatLng(record);
-  pulled.POINT_ID = pulled.WATER_POINT_CODE;
+  pulled.POINT_ID = pulled.FACILITY_ID_NUMBER;
   return pulled;
 }
 /**

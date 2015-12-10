@@ -3,7 +3,7 @@ import pick from 'lodash/object/pick';
 import React, { PropTypes } from 'react';
 import { Map } from 'leaflet';
 
-import ClusteredWaterpoints from '../leaflet/clustered-points';
+import SimplePoints from '../leaflet/simple-points';
 
 
 const PointsMap = React.createClass({
@@ -22,7 +22,7 @@ const PointsMap = React.createClass({
 
     return (
       <div>
-        <ClusteredWaterpoints
+        <SimplePoints
             map={this.props.map}
             points={this.props.data}
             select={this.props.select} />
