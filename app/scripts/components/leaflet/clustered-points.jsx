@@ -10,19 +10,6 @@ import React, { PropTypes } from 'react';
 import ClusterIcon from './cluster-icon';
 import colours from '../../utils/colours';
 
-const statuses = [
-  'FUNCTIONAL',  // 0
-  'FUNCTIONAL NEEDS REPAIR',  // 1
-  'NON FUNCTIONAL',  // 2
-];
-
-const statusCategory = {
-  'FUNCTIONAL': 'good',
-  'FUNCTIONAL NEEDS REPAIR': 'medium',
-  'NON FUNCTIONAL': 'poor',
-};
-
-const statusCatColours = statuses.map(status => colours[statusCategory[status]]);
 
 const ClusteredPoints = React.createClass({
   propTypes: {
@@ -34,7 +21,6 @@ const ClusteredPoints = React.createClass({
     this.pruneCluster = new PruneClusterForLeaflet();
     this.pruneCluster.BuildLeafletClusterIcon = cluster => {
       return new ClusterIcon({
-        categories: statusCatColours,
         stats: cluster.stats,
         population: cluster.population,
         textColor: colours.textColor,
@@ -48,7 +34,7 @@ const ClusteredPoints = React.createClass({
         opacity: 0.75,
         weight: 1,
         fillOpacity: 1,
-        fillColor: colours[statusCategory[statuses[marker.category]]] || colours.unknown,
+        fillColor: colours.unknown,
       });
       m.setOpacity = () => null;  // PruneCluster tries to call this
       m.on('click', this.handleMarkerClickFor(marker.data.id));  // TODO: does this callback ever get cleaned up when the marker is removed?
@@ -99,7 +85,7 @@ const ClusteredPoints = React.createClass({
       } else {
         const marker = new PruneCluster.Marker(...point.position);
         marker.data.id = id;
-        marker.category = statuses.indexOf(point.STATUS);
+        //marker.category = statuses.indexOf(point.STATUS);
         nextMap[id] = marker;
         this.pruneCluster.RegisterMarker(marker);
       }

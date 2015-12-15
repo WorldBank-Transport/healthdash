@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'reflux';
 // store
-import DataStore from '../../stores/data';
+import FilteredDataStore from '../../stores/filtered-data';
 import LayoutStore from '../../stores/layout';
+import LoadingDataStore from '../../stores/loading-data';
 import ViewStore from '../../stores/view';
 
 // Actions
@@ -14,7 +15,10 @@ import BoundsMap from '../leaflet/bounds-map';
 import { TileLayer } from 'react-leaflet';
 import Filters from '../filters/filters';
 import Charts from '../charts/charts';
-//import SpinnerModal from '../misc/spinner-modal';
+import SpinnerModal from '../misc/spinner-modal';
+
+// components
+import TSetChildProps from '../misc/t-set-child-props';
 
 require('stylesheets/dashboard/dash-layout');
 
@@ -25,8 +29,9 @@ const DashRoot = React.createClass({
   },
 
   mixins: [
-    connect(DataStore, 'data'),
+    connect(FilteredDataStore, 'data'),
     connect(LayoutStore, 'layout'),
+    connect(LoadingDataStore, 'loadingData'),
     connect(ViewStore, 'view'),
   ],
 
@@ -36,13 +41,20 @@ const DashRoot = React.createClass({
   },
 
   renderLoadingOverlay() {
-    return (<div>loading</div>);
+    // TODO add loading for poly
+    return (
+      <TSetChildProps>
+        <SpinnerModal
+            message={'loading.data.health'}
+            retry={() => null}
+            state={this.state.loadingData} />
+      </TSetChildProps>
+    );
   },
-
 
   render() {
     const propsForChildren = {
-      data: this.state.data.facilities, // TODO remove facilities
+      data: this.state.data,
     };
     const mapChild = React.cloneElement(this.props.children, {
       ...propsForChildren,

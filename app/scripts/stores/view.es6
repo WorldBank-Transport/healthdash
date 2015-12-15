@@ -7,6 +7,7 @@ import tzBounds from '../constants/tz-bounds';
 const ViewStore = createStore({
   initialData: {
     mapBounds: tzBounds,
+    dataType: 'facilities', // TODO hardcode the only dataset
   },
   mixins: [SaneStore],
   init() {
