@@ -24,11 +24,6 @@ const PolygonsMap = React.createClass({
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
 
-  componentWillMount() {
-    debugger;
-    //this.props.map.clearLayers();
-  },
-
   handleClickFor(feature) {
     return () => this.props.mapDrillDown(feature.id);
   },

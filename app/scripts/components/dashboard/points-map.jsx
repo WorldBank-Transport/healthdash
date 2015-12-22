@@ -1,7 +1,9 @@
 import pick from 'lodash/object/pick';
 //import { Maybe } from 'results';
 import React, { PropTypes } from 'react';
-import { Map, CircleMarker, LayerGroup, Circle, Marker, Popup} from 'leaflet';
+import { Map } from 'leaflet';
+import { CircleMarker, LayerGroup, Circle, Marker, Popup } from 'react-leaflet';
+import colours from '../../utils/colours';
 
 import SimplePoints from '../leaflet/simple-points';
 
@@ -15,17 +17,22 @@ const PointsMap = React.createClass({
     select: PropTypes.func,  // injected
   },
 
+  handleMarkerClickFor(id) {
+    return () => this.props.select(id);
+  },
+
   createMarker(item) {
-    return (<Marker
-            //color={colours.bgColor}
-            //fillColor={colours.theme}
-            //fillOpacity={1}
-            //onLeafletClick={this.handleMarkerClickFor(item.POINT_ID)}
-            //opacity={0.75}
+    return (<CircleMarker
+            color={colours.bgColor}
+            fillColor={colours.theme}
+            fillOpacity={1}
+            key={item.POINT_ID}
+            onLeafletClick={this.handleMarkerClickFor(item.POINT_ID)}
+            opacity={0.75}
             map={this.props.map}
-            position={item.position}
-            //radius={4}
-            //weight={1} 
+            center={item.position}
+            radius={4}
+            weight={1}
             />);
   },
 
@@ -43,14 +50,12 @@ const PointsMap = React.createClass({
       [ 'data', 'dataType', 'deselect', 'selected', 'viewMode' ]);
     const popup = this.props.children ?
       React.cloneElement(this.props.children, propsForPopup) : null;
-    const pos = [-2.64496, 34.01009];
     return (
       <div>
-        {this.renderPoints()}
-        
+        {this.renderPoints()}      
 
         {/* A point popup, if a point is selected */}
-        
+        {popup}
 
       </div>
     );

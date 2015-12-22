@@ -24,7 +24,7 @@ const SimplePoints = React.createClass({
       opacity: 0.75,
       weight: 1,
       fillOpacity: 1,
-      fillColor: colours.unknown,
+      fillColor: colours.theme,
     });
     m.setOpacity = () => null;  // PruneCluster tries to call this
     m.on('click', this.handleMarkerClickFor(item.POINT_ID));
