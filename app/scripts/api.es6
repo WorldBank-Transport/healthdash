@@ -68,79 +68,32 @@ function toUppercase(record) {
 const eachRecord = fn => data => data.map(fn);
 
 
-const healthFacilitiesQ = {
-  fields: [
-    'FACILITY_ID_NUMBER',
-    'FACILITY_NAME',
-    'LATITUDE',
-    'LONGITUDE',
-    'ZONE',
-    'REGION',
-    'COUNCIL',
-    'COMMON FACILITY HEALTH NAME',
-    'FACILITY TYPE',
-    'OWNERSHIP',
-    'OPERATING_STATUS',
-  ],
-  distinct: true,
-};
-
 export const getHealthFacilities = (onProgress) =>
-  ckan.get(API_ROOT, 'b3ef3486-34fd-4389-bc61-af4520df1858', healthFacilitiesQ,
-    onProgress, eachRecord(healthFacProcess));
+  staticData.getWithPostProcess('/data/ckan-health-facilities.json', eachRecord(healthFacProcess));
 
+export const getDeathStats = (onProgress) =>
+  ckan.get(API_ROOT, 'bf3f39ed-9789-4b47-862a-de31695d19ef', {}, onProgress);
 
-const boreholesQ = {
-  fields: [
-    'REGION',
-    'DISTRICT',
-    'LOCATION',
-    'BOREHOLE_NO',
-    'DIAMETER',
-    'DEPTH_METER',
-    'STATIC_WATER_LEVEL',
-    'DYNAMIC_WATER_LEVEL_METER',
-    'DRAW _DOWN_METER',
-    'YIELD_METER_CUBED_PER_HOUR',
-    'ELECTRICAL_CONDUCTIVITY',
-    'CONSULTANT',
-    'YEAR_FROM',
-    'YEAR_TO',
-  ],
-};
+export const getFamilyPlanning = (onProgress) =>
+  ckan.get(API_ROOT, '68bc9db6-f5a9-497b-848b-32fe6e059b5f', {}, onProgress);
 
-export const getBoreholes = (onProgress) =>
-  ckan.get(API_ROOT, 'c9843a61-eca6-47bb-971d-70bf9c0fe942', boreholesQ, onProgress);
+export const getDeliveries = (onProgress) =>
+  ckan.get(API_ROOT, '00b5cb71-7a6a-463a-8334-bcd4de11350e', {}, onProgress);
 
-const damsQ = {
-  fields: [
-    'REGION',
-    'DISTRICT',
-    'DAM_NAME',
-    'BASIN',
-    'DAM_HEIGHT',
-    'ELEVATION_',
-    'RESERVOIR_',
-    'LONGITUDE',
-    'LATITUDE',
-  ],
-};
+export const getHealthWorkers = (onProgress) =>
+  ckan.get(API_ROOT, 'aaa2561f-f316-4a26-9fda-6d3151517901', {}, onProgress);
 
-export const getDams = (onProgress) =>
-  ckan.get(API_ROOT, '5da4eb70-47a0-4694-b735-397bb3732b99', damsQ, onProgress, eachRecord(damProcess));
+export const getIPD = (onProgress) =>
+  ckan.get(API_ROOT, 'a2682ef5-a169-4393-aedb-e5ef31d019fc', {}, onProgress);
 
-const populationQ = {
-  fields: [
-    'REGION',
-    'DISTRICT',
-    'WARD',
-    'VILLAGE',
-    'TOTAL',
-  ],
-};
+export const getOPD = (onProgress) =>
+  ckan.get(API_ROOT, '6fd0aa26-4f53-40d1-a6ab-58b659eaa5c5', {}, onProgress);
 
-export const getPopulation = (onProgress) =>
-  ckan.get(API_ROOT, 'ab84afa2-0afa-411e-9630-aeddc7bccb03', populationQ, onProgress, eachRecord(toUppercase));
+export const getTetanous = (onProgress) =>
+  ckan.get(API_ROOT, 'bbb6017a-a15c-445c-9e75-ca1e4e5fb49c', {}, onProgress); // TODO check this TT2 in ckan
+
+export const getHivFacilities = (onProgress) =>
+  ckan.get(API_ROOT, '34433c1b-1a4c-43f3-af5e-31d87bede85a', {}, onProgress);
 
 export const getRegions = () =>
   staticData.getPolygons('/layers/tz_regions.json', 'tz_Regions');
