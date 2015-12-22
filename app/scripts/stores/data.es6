@@ -41,7 +41,7 @@ const DataStore = createStore({
     if (this.get()[_type] === DUMMY) {
       this.getDataFromApi(type);
     } else {
-      loadCompleted(this.get()[_type], _type);
+      loadCompleted(this.get()[_type], type);
     }
   },
   loadData(data, type) {

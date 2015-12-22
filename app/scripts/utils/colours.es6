@@ -37,11 +37,11 @@ export const polygon = {  // sync with edudash: https://github.com/WorldBank-Tra
     return style;
   },
   hovered: {
-    color: colours.theme,
+    color: colours.bgColor,
     fillOpacity: 0.9,
     // fillColor is kept from normal
     opacity: 1,
-    weight: 6,
+    weight: 4,
   },
   selected: {
     // TODO
