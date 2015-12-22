@@ -13,7 +13,7 @@ const Homepage = React.createClass({
         </div>
         <div className="homecontent">
           <h2><T k="home.title" /></h2>
-          <Button linkTo="/dash/points/health/">
+          <Button linkTo="/dash/points/facilities/">
             <T k="home.health" />
           </Button>
           <p>

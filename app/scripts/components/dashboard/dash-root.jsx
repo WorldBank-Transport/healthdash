@@ -17,6 +17,8 @@ import Filters from '../filters/filters';
 import Charts from '../charts/charts';
 import SpinnerModal from '../misc/spinner-modal';
 
+import DataTypes from '../../constants/data-types';
+
 // components
 import TSetChildProps from '../misc/t-set-child-props';
 
@@ -37,7 +39,7 @@ const DashRoot = React.createClass({
 
   // Reset bounds and load any required data
   componentDidMount() {
-    load('facilities');
+    load(DataTypes.Facilities());
   },
 
   renderLoadingOverlay() {

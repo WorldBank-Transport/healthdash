@@ -3,6 +3,8 @@ import React from 'react';
 //import 'babel-core/polyfill';
 import Router, { Route } from 'react-router';
 import history from './history';
+import DataTypes from './constants/data-types';
+import { setView } from './actions/view';
 // Route components
 import Root from './components/root';
 // static page components:
@@ -15,6 +17,15 @@ import NotFound from './components/static/not-found';
 import DashRoot from './components/dashboard/dash-root';
 import PointsMap from './components/dashboard/points-map';
 
+/**
+ * @param {object} nextState From react-router
+ * @returns {void}
+ */
+function setDataView(nextState) {
+  setView({
+     dataType: DataTypes.fromParam(nextState.params.dataType),
+  });
+}
 
 React.render((
   <Router history={history}>
@@ -27,7 +38,7 @@ React.render((
       </Route>
 
       <Route path="/dash/" component={DashRoot}>
-        <Route path="points/health/" component={PointsMap}/>
+        <Route path="points/:dataType/" component={PointsMap} onEnter={setDataView} />
       </Route>
 
       <Route component={StaticLayout}>
