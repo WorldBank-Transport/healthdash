@@ -46,7 +46,7 @@ const allTranslations = {
 
     'charts.toggle.closed': 'View Charts',
     'charts.toggle.opened': 'Hide Charts',
-    
+
     'filters.toggle.closed': 'Dashboard Filters',
     'filters.toggle.opened': 'Hide Filters',
 
@@ -90,7 +90,7 @@ const allTranslations = {
     'loading.districts': 'Loading districts...',
     'loading.wards': 'Loading wards...',
     'loading.points': 'If you see this message, there is likely an error in the application.',
-    
+
     'drilldown.regions': 'Region',
     'drilldown.districts': 'District',
     'drilldown.wards': 'Ward',

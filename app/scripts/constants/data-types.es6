@@ -1,5 +1,5 @@
-import { Union, Some, None, _ } from 'results';
-import ViewModes from './view-modes';
+import { Union, Some } from 'results';
+//import ViewModes from './view-modes';
 
 const DataTypes = Union({
   Death: {},
@@ -25,7 +25,8 @@ const DataTypes = Union({
    * @param {Union<ViewModes>} viewMode the viewMode to lookup
    * @returns {Maybe} Either Some(columnName) or None if the dataset does not have it
    */
-  getLocationProp(viewMode) {
+  //getLocationProp(viewMode) { TODO fix me
+  getLocationProp() {
     return Some('REGION');
     // return DataTypes.match(this, {
     //   Waterpoints: () => ViewModes.match(viewMode, {

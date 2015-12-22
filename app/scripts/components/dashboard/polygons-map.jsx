@@ -71,7 +71,7 @@ const PolygonsMap = React.createClass({
   renderPopup() {
     const propsForPopup = pick(this.props,
       [ 'data', 'dataType', 'deselect', 'selected', 'viewMode']);
-    return (<Popup {...propsForPopup}/>);
+    return (<div {...propsForPopup}/>); // TODO this should be the popup
   },
 
   render() {

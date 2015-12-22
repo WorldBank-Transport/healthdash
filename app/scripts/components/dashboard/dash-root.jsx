@@ -5,7 +5,7 @@ import { _ } from 'results';  // catch-all for match
 import FilteredDataStore from '../../stores/filtered-data';
 import LayoutStore from '../../stores/layout';
 import LoadingDataStore from '../../stores/loading-data';
-import LoadingPolygonsStore from '../../stores/loading-polygons';
+//import LoadingPolygonsStore from '../../stores/loading-polygons';
 import PolygonsDataStore from '../../stores/polygons-with-data';
 import ViewStore from '../../stores/view';
 
@@ -22,7 +22,7 @@ import Filters from '../filters/filters';
 import Charts from '../charts/charts';
 import SpinnerModal from '../misc/spinner-modal';
 
-import DataTypes from '../../constants/data-types';
+//import DataTypes from '../../constants/data-types';
 import ViewModes from '../../constants/view-modes';
 
 // components
@@ -89,7 +89,7 @@ const DashRoot = React.createClass({
     const mapChild = React.cloneElement(this.props.children, {
       ...propsForChildren,
       polygonsData: this.state.polygonsData,
-      select, 
+      select,
       deselect,
     });
 

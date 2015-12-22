@@ -1,6 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Link } from 'react-router';
-import ViewModes from '../../constants/view-modes';
 import T from '../misc/t';
 
 require('stylesheets/boilerplate/data-type');
