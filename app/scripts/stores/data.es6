@@ -1,7 +1,8 @@
 import { createStore } from 'reflux';
 import SaneStore from '../utils/sane-store-mixin';
 import { load, loadProgress, loadCompleted, loadFailed } from '../actions/data';
-import { getHealthFacilities } from '../api';
+import { getDeathStats, getFamilyPlanning, getDeliveries, getHealthWorkers, getIPD, getOPD, getTetanous, getHivFacilities, getHealthFacilities } from '../api';
+import DataTypes from '../constants/data-types';
 
 const DUMMY = [];
 
@@ -19,6 +20,14 @@ const getNextProxier = (type) => {
 
 const DataStore = createStore({
   initialData: {
+    death: DUMMY,
+    'family-planning': DUMMY,
+    deliveries: DUMMY,
+    'health-workers': DUMMY,
+    ipd: DUMMY,
+    opd: DUMMY,
+    tetanous: DUMMY,
+    'hiv-center': DUMMY,
     facilities: DUMMY,
   },
   mixins: [SaneStore],
@@ -28,26 +37,37 @@ const DataStore = createStore({
     this.listenTo(loadCompleted, 'loadData');
   },
   loadIfNeeded(type) {
-    if (this.get()[type] === DUMMY) {
+    const _type = type.toParam();
+    if (this.get()[_type] === DUMMY) {
       this.getDataFromApi(type);
     } else {
-      loadCompleted(this.get()[type], type);
+      loadCompleted(this.get()[_type], _type);
     }
   },
   loadData(data, type) {
     const tmp = {
       ...this.get(),
-      [type]: data,
+      [type.toParam()]: data,
     };
     this.setData(tmp);
   },
   getData(type) {
-    return this.get()[type];
+    return this.get()[type.toParam()];
   },
 
   getDataFromApi(type) {
     const proxier = getNextProxier(type);
-    const apiFn = getHealthFacilities;
+    const apiFn = DataTypes.match(type, {
+      Death: () => getDeathStats,
+      FamilyPlanning: () => getFamilyPlanning,
+      Deliveries: () => getDeliveries,
+      HealthWorkers: () => getHealthWorkers,
+      IPD: () => getIPD,
+      OPD: () => getOPD,
+      Tetanous: () => getTetanous,
+      HivCenter: () => getHivFacilities,
+      Facilities: () => getHealthFacilities,
+    });
     apiFn(proxier(loadProgress))
       .then(proxier(loadCompleted))
       .catch(proxier(loadFailed));

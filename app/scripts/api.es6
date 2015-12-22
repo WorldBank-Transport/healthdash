@@ -39,36 +39,12 @@ function healthFacProcess(record) {
   pulled.POINT_ID = pulled.FACILITY_ID_NUMBER;
   return pulled;
 }
-/**
- * add a POINT_ID and parse the geolocation for a dams
- * @param {object} record The dam database record
- * @returns {object} The record with a `position` prop with lat/lng array
- */
-function damProcess(record) {
-  const pulled = pullLatLng(record);
-  pulled.POINT_ID = pulled.DAM_NAME;
-  return pulled;
-}
-
-/**
- * @param {object} record The population database record
- * @returns {object} The record with a `position` prop with lat/lng array
- */
-function toUppercase(record) {
-  const pulled = {};
-  for (const k in record) {
-    if (record.hasOwnProperty(k)) {
-      pulled[k] = (typeof record[k] === 'string') ? record[k].toUpperCase() : record[k];
-    }
-  }
-  return pulled;
-}
 
 
 const eachRecord = fn => data => data.map(fn);
 
 
-export const getHealthFacilities = (onProgress) =>
+export const getHealthFacilities = () =>
   staticData.getWithPostProcess('/data/ckan-health-facilities.json', eachRecord(healthFacProcess));
 
 export const getDeathStats = (onProgress) =>

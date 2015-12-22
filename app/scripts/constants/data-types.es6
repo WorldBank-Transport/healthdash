@@ -10,7 +10,7 @@ const DataTypes = Union({
   OPD: {},
   Tetanous: {},
   HivCenter: {},
-  Falicities: {},
+  Facilities: {},
 }, {
   // DataTypes instance methods
   equals(other) {
@@ -55,20 +55,38 @@ const DataTypes = Union({
   },
   toParam() {
     return DataTypes.match(this, {
-      Waterpoints: () => 'waterpoints',
-      Boreholes: () => 'boreholes',
-      Dams: () => 'dams',
+      Death: () => 'death',
+      FamilyPlanning: () => 'family-planning',
+      Deliveries: () => 'deliveries',
+      HealthWorkers: () => 'health-workers',
+      IPD: () => 'ipd',
+      OPD: () => 'opd',
+      Tetanous: () => 'tetanous',
+      HivCenter: () => 'hiv-center',
+      Facilities: () => 'facilities',
     });
   },
 }, {
   // DataTypes static methods
   fromParam(param) {
-    if (param === 'waterpoints') {
-      return DataTypes.Waterpoints();
-    } else if (param === 'boreholes') {
-      return DataTypes.Boreholes();
-    } else if (param === 'dams') {
-      return DataTypes.Dams();
+    if (param === 'death') {
+      return DataTypes.Death();
+    } else if (param === 'family-planning') {
+      return DataTypes.FamilyPlanning();
+    } else if (param === 'deliveries') {
+      return DataTypes.Deliveries();
+    } else if (param === 'health-workers') {
+      return DataTypes.HealthWorkers();
+    } else if (param === 'ipd') {
+      return DataTypes.IPD();
+    } else if (param === 'opd') {
+      return DataTypes.OPD();
+    } else if (param === 'tetanous') {
+      return DataTypes.Tetanous();
+    } else if (param === 'hiv-center') {
+      return DataTypes.HivCenter();
+    } else if (param === 'facilities') {
+      return DataTypes.Facilities();
     } else {
       throw new Error(`Could not get DataTypes type for param '${param}'`);
     }
