@@ -2,9 +2,15 @@ import { Union, Some, None, _ } from 'results';
 import ViewModes from './view-modes';
 
 const DataTypes = Union({
-  Waterpoints: {},
-  Boreholes: {},
-  Dams: {},
+  Death: {},
+  FamilyPlanning: {},
+  Deliveries: {},
+  HealthWorkers: {},
+  IPD: {},
+  OPD: {},
+  Tetanous: {},
+  HivCenter: {},
+  Falicities: {},
 }, {
   // DataTypes instance methods
   equals(other) {
