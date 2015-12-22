@@ -68,7 +68,7 @@ const DataTypes = Union({
   },
 }, {
   // DataTypes static methods
-  fromParam(param) { 
+  fromParam(param) {
     if (param === 'death') {
       return DataTypes.Death();
     } else if (param === 'family-planning') {
