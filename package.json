@@ -94,9 +94,11 @@
     "react-leaflet": "0.7.0",
     "react-router": "1.0.0-rc1",
     "react-slider": "0.5.1",
+    "react-autocomplete": "0.1.4",
     "reflux": "0.2.12",
     "results": "0.9.0",
     "topojson": "1.6.19",
-    "whatwg-fetch": "0.9.0"
+    "whatwg-fetch": "0.9.0",
+    "isomorphic-fetch": "2.2.0"
   }
 }

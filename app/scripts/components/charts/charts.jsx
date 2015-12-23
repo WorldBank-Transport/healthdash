@@ -1,16 +1,36 @@
 import React, { PropTypes } from 'react';
+import DataTypes from '../../constants/data-types';
+import ViewModes from '../../constants/view-modes';
+import FacilitiesCharts from './facilities-charts';
 
 require('stylesheets/charts/charts');
 
 const Charts = React.createClass({
   propTypes: {
     children: PropTypes.node,
+    data: PropTypes.array,  // injected
+    dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
+    viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
+  },
+
+  renderDefault(type) { // TODO remove me when we finish with all types
+    return (<h2>Charts for {type.toParam()}</h2>);
   },
 
   render() {
     return (
         <div className="charts">
-          charts
+          {DataTypes.match(this.props.dataType, {
+            Death: () => this.renderDefault(this.props.dataType),
+            FamilyPlanning: () => this.renderDefault(this.props.dataType),
+            Deliveries: () => this.renderDefault(this.props.dataType),
+            HealthWorkers: () => this.renderDefault(this.props.dataType),
+            IPD: () => this.renderDefault(this.props.dataType),
+            OPD: () => this.renderDefault(this.props.dataType),
+            Tetanous: () => this.renderDefault(this.props.dataType),
+            HivCenter: () => this.renderDefault(this.props.dataType),
+            Facilities: () => (<FacilitiesCharts {...this.props}/>),
+          })}
         </div>
       );
   },

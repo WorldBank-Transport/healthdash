@@ -43,6 +43,7 @@ const allTranslations = {
     'dash.region': 'Regions',
     'dash.district': 'Districts',
     'dash.ward': 'Wards',
+    'dash.national': 'National',
 
     'charts.toggle.closed': 'View Charts',
     'charts.toggle.opened': 'Hide Charts',
@@ -70,6 +71,12 @@ const allTranslations = {
     'data-type.tetanous': 'Tetanous',
     'data-type.hiv-center': 'HIV Centers',
     'data-type.facilities': 'Health Falilities',
+
+    'chart.health-facilities.title': 'Health Facilities',
+    'chart.health-facilities.helptext': ' by Region',
+    'chart.health-facilities.x-axis': 'Regions',
+    'chart.health-facilities.y-axis': 'Facilities',
+    'chart.facilities.title': 'All Facilities',
 
     'overview-bar': 'Overview stuff',
 
