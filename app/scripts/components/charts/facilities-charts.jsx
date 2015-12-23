@@ -1,8 +1,7 @@
 import React, { PropTypes } from 'react';
 import DataTypes from '../../constants/data-types';
 import ViewModes from '../../constants/view-modes';
-import OpenClosed from  '../../constants/open-closed';
-import HealthFacilitiesChart from './health-facilities-barchar'
+import HealthFacilitiesChart from './health-facilities-barchar';
 import MetricSummary from './metric-summary-chart';
 import { styles } from '../../utils/searchUtil';
 import T from '../misc/t';
@@ -15,10 +14,11 @@ const FacilitiesCharts = React.createClass({
     children: PropTypes.node, // injected
     data: PropTypes.array,  // injected
     dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
+    setSelected: PropTypes.func,
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
   select(value, item) {
-    //this.props.setSelected(item.FACILITY_ID_NUMBER); // TODO fixme
+    this.props.setSelected(item.FACILITY_ID_NUMBER); // TODO fixme
   },
 
   matchStateToTerm(state, value) {
@@ -38,22 +38,22 @@ const FacilitiesCharts = React.createClass({
       <div className="container">
         <div className="row">
           <Autocomplete
-            getItemValue={(item) => item.FACILITY_NAME}
-            items={this.props.data}
-            onSelect={this.select}
-            renderItem={(item, isHighlighted) => (
-              <div key={item.FACILITY_NAME}
-                  style={isHighlighted ? styles.highlightedItem : styles.item}>{item.FACILITY_NAME}</div>
-            )}
-            shouldItemRender={this.matchStateToTerm}
-            sortItems={this.sortStates} />
+              getItemValue={(item) => item.FACILITY_NAME}
+              items={this.props.data}
+              onSelect={this.select}
+              renderItem={(item, isHighlighted) => (
+                <div key={item.FACILITY_NAME}
+                    style={isHighlighted ? styles.highlightedItem : styles.item}>{item.FACILITY_NAME}</div>
+              )}
+              shouldItemRender={this.matchStateToTerm}
+              sortItems={this.sortStates} />
         </div>
         <div className="row">
           <MetricSummary icon="facilities.png" metric={this.props.data.length} title="chart.facilities.title"/>
         </div>
         <div className="row">
           <div className="mainChart">
-            <HealthFacilitiesChart viewMode={this.props.viewMode} facilities={this.props.data} />
+            <HealthFacilitiesChart facilities={this.props.data} viewMode={this.props.viewMode} />
           </div>
         </div>
         <div className="row">

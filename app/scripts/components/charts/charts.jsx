@@ -1,8 +1,7 @@
 import React, { PropTypes } from 'react';
 import DataTypes from '../../constants/data-types';
 import ViewModes from '../../constants/view-modes';
-import OpenClosed from  '../../constants/open-closed';
-import FacilitiesCharts from './facilities-charts'
+import FacilitiesCharts from './facilities-charts';
 
 require('stylesheets/charts/charts');
 

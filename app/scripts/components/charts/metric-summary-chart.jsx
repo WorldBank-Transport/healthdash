@@ -1,7 +1,5 @@
 import React, { PropTypes } from 'react';
 import T from '../misc/t';
-import { Icon } from 'react-font-awesome';
-import { getNumberOr0 } from '../../utils/number';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 
 require('stylesheets/charts/metric-summary-chart');
@@ -18,7 +16,7 @@ const MetricSummary = React.createClass({
   mixins: [ShouldRenderMixin],
 
   render() {
-    const formattedValue = this.props.format ? this.props.format(this.props.metric): this.props.metric;
+    const formattedValue = this.props.format ? this.props.format(this.props.metric) : this.props.metric;
     const icon = this.props.icon ? (<img src={`image/${this.props.icon}`} />) : '';
     return (
       <div className="metric-summary">

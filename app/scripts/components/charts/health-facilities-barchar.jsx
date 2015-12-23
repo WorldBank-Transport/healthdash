@@ -11,8 +11,8 @@ require('stylesheets/charts/health-facilities-barchar');
 
 const HealthFacilitiesChart = React.createClass({
   propTypes: {
-    viewMode: PropTypes.instanceOf(ViewModes.OptionClass),
     facilities: PropTypes.array.isRequired,
+    viewMode: PropTypes.instanceOf(ViewModes.OptionClass),
   },
 
   mixins: [Resize, ShouldRenderMixin],

@@ -3,7 +3,7 @@
 @import '../config/type';
 
 .health-facilities-barchar {
-  margin: 0;
+  margin: 0px;
   .x {
     .tick text {
       -webkit-transform: rotate(-75deg);
@@ -28,7 +28,7 @@
     }
     &.axis {
       &.label {
-        transform: rotate(-90deg) translate(-10px, 0px) ;
+        transform: rotate(-90deg) translate(-10px, 1px);
       }
     }
   }
