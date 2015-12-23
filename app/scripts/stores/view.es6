@@ -3,12 +3,13 @@ import SaneStore from '../utils/sane-store-mixin';
 import viewActions from '../actions/view';
 import tzBounds from '../constants/tz-bounds';
 import DataTypes from '../constants/data-types';
-
+import ViewModes from '../constants/view-modes';
 
 const ViewStore = createStore({
   initialData: {
-    mapBounds: tzBounds,
     dataType: DataTypes.Facilities(),
+    mapBounds: tzBounds,
+    viewMode: ViewModes.Points(),
   },
   mixins: [SaneStore],
   init() {

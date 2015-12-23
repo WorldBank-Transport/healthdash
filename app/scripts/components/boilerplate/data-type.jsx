@@ -1,41 +1,59 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Link } from 'react-router';
-import ViewModes from '../../constants/view-modes';
 import T from '../misc/t';
 
 require('stylesheets/boilerplate/data-type');
 
 const DataType = React.createClass({
-  propTypes: {
-    viewMode: PropTypes.instanceOf(ViewModes.OptionClass).isRequired,
-  },
   render() {
-    //const currentView = this.props.viewMode.toParam();
     return (
       <div className="data-type">
         <ul>
           <li>
-            <Link activeClassName="active" to="/dash/points/waterpoints/">
-              <T k="data-type.waterpoints" />
+            <Link activeClassName="active" to="/dash/points/facilities/">
+              <T k="data-type.facilities" />
             </Link>
           </li>
           <li>
-            <Link activeClassName="active" to="/dash/regions/boreholes/">
-              <T k="data-type.boreholes" />
+            <Link activeClassName="active" to="/dash/regions/death/">
+              <T k="data-type.death" />
             </Link>
           </li>
           <li>
-            <Link activeClassName="active" to="/dash/points/dams/">
-              <T k="data-type.dams" />
+            <Link activeClassName="active" to="/dash/regions/family-planning/">
+              <T k="data-type.family-planning" />
             </Link>
           </li>
-          {/*
           <li>
-            <Link activeClassName="active" to={`/dash//dams`} query={{....}}>
-              <T k="view-type.dams-by-ddca" />
+            <Link activeClassName="active" to="/dash/regions/deliveries/">
+              <T k="data-type.deliveries" />
             </Link>
           </li>
-          */}
+          <li>
+            <Link activeClassName="active" to="/dash/regions/health-workers/">
+              <T k="data-type.health-workers" />
+            </Link>
+          </li>
+          <li>
+            <Link activeClassName="active" to="/dash/regions/ipd/">
+              <T k="data-type.ipd" />
+            </Link>
+          </li>
+          <li>
+            <Link activeClassName="active" to="/dash/regions/opd/">
+              <T k="data-type.opd" />
+            </Link>
+          </li>
+          <li>
+            <Link activeClassName="active" to="/dash/regions/tetanous/">
+              <T k="data-type.tetanous" />
+            </Link>
+          </li>
+          <li>
+            <Link activeClassName="active" to="/dash/regions/hiv-center/">
+              <T k="data-type.hiv-center" />
+            </Link>
+          </li>
         </ul>
       </div>
     );
