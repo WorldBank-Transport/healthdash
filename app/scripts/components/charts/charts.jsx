@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import DataTypes from '../../constants/data-types';
 import ViewModes from '../../constants/view-modes';
 import FacilitiesCharts from './facilities-charts';
+import HivCharts from './hiv-charts';
 
 require('stylesheets/charts/charts');
 
@@ -28,7 +29,7 @@ const Charts = React.createClass({
             IPD: () => this.renderDefault(this.props.dataType),
             OPD: () => this.renderDefault(this.props.dataType),
             Tetanous: () => this.renderDefault(this.props.dataType),
-            HivCenter: () => this.renderDefault(this.props.dataType),
+            HivCenter: () => (<HivCharts {...this.props}/>),
             Facilities: () => (<FacilitiesCharts {...this.props}/>),
           })}
         </div>
