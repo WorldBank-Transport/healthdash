@@ -4,7 +4,7 @@ import colours from './colours';
 
 export const MAX_VALUE = 99999;
 
-export const getMapRanges = (dataType) => 
+export const getMapRanges = (dataType) =>
   DataTypes.match(dataType, {
     Death: () => None(),
     FamilyPlanning: () => None(),

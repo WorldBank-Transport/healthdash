@@ -20,18 +20,18 @@ export const injectData = dataByLoc => polygon => {
   });
 };
 
-export const groupByLoc = data => ({ viewMode, dataType }) => {
+export const groupByLoc = data => ({ dataType }) => {
   return DataTypes.match(dataType, {
-      Death: () => None(),
-      FamilyPlanning: () => None(),
-      Deliveries: () => None(),
-      HealthWorkers: () => None(),
-      IPD: () => None(),
-      OPD: () => None(),
-      Tetanous: () => None(),
-      HivCenter: () => Result.groupBy(data, 'REGION'),
-      Facilities: () => Result.groupBy(data, 'REGION'),
-    });
+    Death: () => None(),
+    FamilyPlanning: () => None(),
+    Deliveries: () => None(),
+    HealthWorkers: () => None(),
+    IPD: () => None(),
+    OPD: () => None(),
+    Tetanous: () => None(),
+    HivCenter: () => Result.groupBy(data, 'REGION'),
+    Facilities: () => Result.groupBy(data, 'REGION'),
+  });
 };
 
 export const injectDataIntoFeatures = features => dataByLoc =>
@@ -50,9 +50,9 @@ const PolygonsDataStore = createStore({
   recompute() {
     const data = FilteredDataStore.get();
     const features = PolygonsStore.get();
-    const { viewMode, dataType } = ViewStore.get();
+    const { dataType } = ViewStore.get();
 
-    const dataFeatures = Some({ viewMode, dataType })
+    const dataFeatures = Some({ dataType })
       .andThen(groupByLoc(data))
       .andThen(injectDataIntoFeatures(features))
       .unwrapOr(this.initialData);

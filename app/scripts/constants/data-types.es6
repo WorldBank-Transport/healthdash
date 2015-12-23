@@ -1,4 +1,4 @@
-import { Union, Some } from 'results';
+import { Union } from 'results';
 //import ViewModes from './view-modes';
 
 const DataTypes = Union({
@@ -20,7 +20,7 @@ const DataTypes = Union({
       return other.name === this.name;
     }
   },
-  
+
   getIdColumn() {
     return DataTypes.match(this, {
       Waterpoints: () => 'WATER_POINT_CODE',

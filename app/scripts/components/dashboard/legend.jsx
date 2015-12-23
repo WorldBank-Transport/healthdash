@@ -21,7 +21,7 @@ const Legend = React.createClass({
             this.props.ranges.map(r => (
               <div className="row">
                 <div className="legend-block" style={{'background': r.color}}></div>
-                <span className="t">{r.max === MAX_VALUE ? ` > ${r.min}`: `${r.min} - ${r.max}`}</span>
+                <span className="t">{r.max === MAX_VALUE ? ` > ${r.min}` : `${r.min} - ${r.max}`}</span>
               </div>)
             )
           }
@@ -54,12 +54,12 @@ const Legend = React.createClass({
   },
 
   render() {
-    if(this.props.ranges && this.props.ranges.length > 0) {
+    if (this.props.ranges && this.props.ranges.length > 0) {
       return this.renderRanges();
     } else {
       return this.renderDefault();
     }
-  }
+  },
 });
 
 export default Legend;
