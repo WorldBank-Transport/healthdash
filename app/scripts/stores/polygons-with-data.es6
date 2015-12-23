@@ -6,6 +6,7 @@ import SaneStore from '../utils/sane-store-mixin';
 import FilteredDataStore from './filtered-data';
 import PolygonsStore from './polygons';
 import ViewStore from './view';
+import DataTypes from '../constants/data-types';
 
 
 export const injectData = dataByLoc => polygon => {
@@ -19,10 +20,19 @@ export const injectData = dataByLoc => polygon => {
   });
 };
 
-
-export const groupByLoc = data => locPropName =>
-  Result.groupBy(data, locPropName);
-
+export const groupByLoc = data => ({ viewMode, dataType }) => {
+  return DataTypes.match(dataType, {
+      Death: () => None(),
+      FamilyPlanning: () => None(),
+      Deliveries: () => None(),
+      HealthWorkers: () => None(),
+      IPD: () => None(),
+      OPD: () => None(),
+      Tetanous: () => None(),
+      HivCenter: () => Result.groupBy(data, 'REGION'),
+      Facilities: () => Result.groupBy(data, 'REGION'),
+    });
+};
 
 export const injectDataIntoFeatures = features => dataByLoc =>
   Result.map(injectData(dataByLoc), features)
@@ -42,7 +52,7 @@ const PolygonsDataStore = createStore({
     const features = PolygonsStore.get();
     const { viewMode, dataType } = ViewStore.get();
 
-    const dataFeatures = dataType.getLocationProp(viewMode)
+    const dataFeatures = Some({ viewMode, dataType })
       .andThen(groupByLoc(data))
       .andThen(injectDataIntoFeatures(features))
       .unwrapOr(this.initialData);
