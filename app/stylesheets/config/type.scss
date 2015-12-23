@@ -58,3 +58,6 @@ $dash-title-line-height-mobile: 15px;
 @mixin link-transition($link-duration, $link-easing) {
   transition: $link-duration, $link-easing;
 }
+
+$chart-axis-text: 10px;
+$chart-axis-text-weight: 400;
