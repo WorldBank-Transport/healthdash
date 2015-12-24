@@ -1,0 +1,39 @@
+@import '../config/colours';
+@import '../config/dimensions';
+@import '../config/type';
+
+.hiv-facilities-barchar {
+  margin: 0px;
+  .x {
+    .tick text {
+      -webkit-transform: rotate(-75deg);
+      direction: rtl;
+      fill: $text-color;
+      font-size: $chart-axis-text;
+      font-weight: $chart-axis-text-weight;
+      text-anchor: inherit;
+      transform: translate(-8px, 0px) rotate(-80deg);
+    }
+    &.axis {
+      &.label {
+        transform: translate(15px, -30px);
+      }
+    }
+  }
+  .y {
+    .tick text {
+      fill: $text-color;
+      font-size: $chart-axis-text;
+      font-weight: $chart-axis-text-weight;
+    }
+    &.axis {
+      &.label {
+        transform: rotate(-90deg) translate(-10px, 1px);
+      }
+    }
+  }
+  .label {
+    fill: $text-color;
+    font-size: $chart-axis-text;
+  }
+}

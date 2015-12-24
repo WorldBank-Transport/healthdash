@@ -77,6 +77,11 @@ const allTranslations = {
     'chart.health-facilities.x-axis': 'Regions',
     'chart.health-facilities.y-axis': 'Facilities',
     'chart.facilities.title': 'All Facilities',
+    'chart.hiv-facilities.title': 'HIV Facilities',
+    'chart.hiv-facilities.helptext': ' by Region',
+    'chart.hiv-facilities.x-axis': 'Regions',
+    'chart.hiv-facilities.y-axis': 'Facilities',
+    'chart.hiv.title': 'HIV/AIDS Care & Treatment Center',
 
     'overview-bar': 'Overview stuff',
 
