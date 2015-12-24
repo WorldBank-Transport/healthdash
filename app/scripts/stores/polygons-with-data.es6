@@ -20,9 +20,18 @@ export const injectData = dataByLoc => polygon => {
   });
 };
 
+const deathGroupBy = (data) => {
+  if(data.length > 0) {
+    const keys = Object.keys(data[0]).filter(key => key != 'CHILD_TYPE' && key != 'DISEASE' && key != 'YEAR' && key != '_id');
+    return Result.sumByGroupBy(data, 'CHILD_TYPE', keys);
+  } else {
+    return None();
+  }
+}
+
 export const groupByLoc = data => ({ dataType }) => {
   return DataTypes.match(dataType, {
-    Death: () => None(),
+    Death: () => deathGroupBy(data),
     FamilyPlanning: () => None(),
     Deliveries: () => None(),
     HealthWorkers: () => None(),

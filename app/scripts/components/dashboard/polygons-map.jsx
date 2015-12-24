@@ -6,7 +6,7 @@ import { Map } from 'leaflet';
 import colours, { polygon as polyColour } from '../../utils/colours';
 import DataTypes from '../../constants/data-types';
 import ViewModes from '../../constants/view-modes';
-import { getMapRanges } from '../../utils/mapUtil';
+import { getMapRanges, getMapValue } from '../../utils/mapUtil';
 
 import { GeoJson } from 'react-leaflet';
 import Legend from './legend';
@@ -49,7 +49,7 @@ const PolygonsMap = React.createClass({
     // compute average per polygon
     const ranges = getMapRanges(this.props.dataType);
     return feature.properties.data
-      .andThen(d => ranges.filter(r => d.length > r.min && d.length < r.max)[0].color)
+      .andThen(d => ranges.andThen(rs => rs.filter(r => getMapValue(d, this.props.dataType) > r.min && getMapValue(d, this.props.dataType) < r.max)[0].color))
       .unwrapOr(colours.unknown);
   },
 

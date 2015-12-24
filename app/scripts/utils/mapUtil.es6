@@ -6,13 +6,26 @@ export const MAX_VALUE = 99999;
 
 export const getMapRanges = (dataType) =>
   DataTypes.match(dataType, {
-    Death: () => None(),
+    Death: () => Some([{min: 0, max: 50, color: colours.few}, {min: 51, max: 100, color: colours.middleFew}, {min: 101, max: 150, color: colours.middleMany}, {min: 151, max: MAX_VALUE, color: colours.many}]),
     FamilyPlanning: () => None(),
     Deliveries: () => None(),
     HealthWorkers: () => None(),
     IPD: () => None(),
     OPD: () => None(),
-    Tetanous: () => Some(),
-    HivCenter: () => [{min: 0, max: 50, color: colours.few}, {min: 51, max: 100, color: colours.middleFew}, {min: 101, max: 150, color: colours.middleMany}, {min: 151, max: MAX_VALUE, color: colours.many}],
-    Facilities: () => [{min: 0, max: 100, color: colours.few}, {min: 101, max: 200, color: colours.middleFew}, {min: 201, max: 300, color: colours.middleMany}, {min: 301, max: MAX_VALUE, color: colours.many}],
+    Tetanous: () => None(),
+    HivCenter: () => Some([{min: 0, max: 50, color: colours.few}, {min: 51, max: 100, color: colours.middleFew}, {min: 101, max: 150, color: colours.middleMany}, {min: 151, max: MAX_VALUE, color: colours.many}]),
+    Facilities: () => Some([{min: 0, max: 100, color: colours.few}, {min: 101, max: 200, color: colours.middleFew}, {min: 201, max: 300, color: colours.middleMany}, {min: 301, max: MAX_VALUE, color: colours.many}]),
+  });
+
+export const getMapValue = (item, dataType) =>
+  DataTypes.match(dataType, {
+    Death: () => -1,
+    FamilyPlanning: () => -1,
+    Deliveries: () => -1,
+    HealthWorkers: () => -1,
+    IPD: () => -1,
+    OPD: () => -1,
+    Tetanous: () => -1,
+    HivCenter: () => item.length,
+    Facilities: () => item.length,
   });
