@@ -8,7 +8,7 @@ export const getMapRanges = (dataType) =>
   DataTypes.match(dataType, {
     Death: () => Some([{min: 0, max: 500, color: colours.few}, {min: 501, max: 1000, color: colours.middleFew}, {min: 1001, max: 1500, color: colours.middleMany}, {min: 1501, max: MAX_VALUE, color: colours.many}]),
     FamilyPlanning: () => None(),
-    Deliveries: () => None(),
+    Deliveries: () => Some([{min: 0, max: 50000, color: colours.few}, {min: 50001, max: 75000, color: colours.middleFew}, {min: 75001, max: 100000, color: colours.middleMany}, {min: 100001, max: MAX_VALUE, color: colours.many}]),
     HealthWorkers: () => None(),
     IPD: () => None(),
     OPD: () => None(),
@@ -21,7 +21,7 @@ export const getMapValue = (item, dataType) =>
   DataTypes.match(dataType, {
     Death: () => item.value,
     FamilyPlanning: () => -1,
-    Deliveries: () => -1,
+    Deliveries: () => item[0].TOTAL,
     HealthWorkers: () => -1,
     IPD: () => -1,
     OPD: () => -1,

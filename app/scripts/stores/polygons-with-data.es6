@@ -33,7 +33,7 @@ export const groupByLoc = data => ({ dataType }) => {
   return DataTypes.match(dataType, {
     Death: () => deathGroupBy(data),
     FamilyPlanning: () => None(),
-    Deliveries: () => None(),
+    Deliveries: () => Result.sumByGroupBy(data, 'REGION', ['TOTAL', 'HEALTH FACILITY DELIVERIES', 'TRADITIONAL BIRTH ATTENDANTS (TBA)', 'ANTENATAL CARE PROJECTION', 'BORN BEFORE ARRIVAL (BBA)', 'HOME DELIVERY']),
     HealthWorkers: () => None(),
     IPD: () => None(),
     OPD: () => None(),

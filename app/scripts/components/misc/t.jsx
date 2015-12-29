@@ -90,6 +90,11 @@ const allTranslations = {
     'chart.death.x-axis': 'Year',
     'chart.death.y-axis': 'Death',
     'chart.deaths.title': 'Total Number of Death',
+    'chart.deliveries.title': 'Total Number of Deliveries',
+    'chart.deliveries-barchart.title': 'All Deliveries',
+    'chart.deliveries-barchart.helptext': ' by type',
+    'chart.deliveries-barchart.x-axis': 'Year',
+    'chart.deliveries-barchart.y-axis': 'Deliveries',
 
     'overview-bar': 'Overview stuff',
 
