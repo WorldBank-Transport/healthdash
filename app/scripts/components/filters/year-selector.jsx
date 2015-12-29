@@ -1,10 +1,8 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'reflux';
-import T from '../misc/t';
 import Checkbox from '../misc/checkbox';
 import YearStore from '../../stores/year';
 import { selectYear } from '../../actions/filters';
-import { Icon } from 'react-font-awesome';
 
 require('stylesheets/filters/year-selector');
 

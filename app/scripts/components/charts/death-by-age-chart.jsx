@@ -1,6 +1,4 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'reflux';
-import YearStore from '../../stores/year';
 import {BarChart} from 'react-d3-components';
 import * as func from '../../utils/functional';
 import TSetChildProps from '../misc/t-set-child-props';
@@ -8,14 +6,13 @@ import T from '../misc/t';
 import Resize from '../../utils/resize-mixin';
 import ViewModes from '../../constants/view-modes';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
-import { getNumberOr0 } from '../../utils/number';
 
 require('stylesheets/charts/death-by-age-chart');
 
 const DeathByAgeChart = React.createClass({
   propTypes: {
-    viewMode: PropTypes.instanceOf(ViewModes.OptionClass),
     deaths: PropTypes.array.isRequired,
+    viewMode: PropTypes.instanceOf(ViewModes.OptionClass),
   },
 
   mixins: [
@@ -33,7 +30,7 @@ const DeathByAgeChart = React.createClass({
 
   sumAll(regions) {
     return regions.reduce( (ret, item) => {
-      Object.keys(item).filter(k => k !== 'total').forEach(k => ret.total+=item[k]);
+      Object.keys(item).filter(k => k !== 'total').forEach(k => ret.total += item[k]);
       return ret;
     }, {total: 0}).total;
   },
@@ -55,11 +52,11 @@ const DeathByAgeChart = React.createClass({
     if (!this.state.size) {
       return (<div>empty</div>);
     }
-    
+
     if (this.props.deaths.length === 0) {
       return false;
     }
-    const keys = Object.keys(this.props.deaths[0]).filter(key => key != 'CHILD_TYPE' && key != 'DISEASE' && key != 'YEAR' && key != '_id');
+    const keys = Object.keys(this.props.deaths[0]).filter(key => key !== 'CHILD_TYPE' && key !== 'DISEASE' && key !== 'YEAR' && key !== '_id');
     const years = Object.keys(func.Result.groupBy(this.props.deaths, 'YEAR'));
     const sum = func.Result.sumByGroupBy(this.props.deaths, 'CHILD_TYPE', keys);
     return (

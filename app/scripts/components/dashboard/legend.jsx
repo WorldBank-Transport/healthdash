@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import T from '../misc/t';
 import { MAX_VALUE } from '../../utils/mapUtil';
-import DataTypes from '../../constants/data-types';
 import { Maybe, _ } from 'results';
 
 require('../../../stylesheets/dashboard/legend.scss');

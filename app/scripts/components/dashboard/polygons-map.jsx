@@ -47,13 +47,13 @@ const PolygonsMap = React.createClass({
 
   getColorInRange(d) {
     return (rs) => {
-        const found = rs.filter(r => getMapValue(d, this.props.dataType) > r.min && getMapValue(d, this.props.dataType) < r.max)
-        if(found.length > 0) {
-          return found[0].color;
-        } else {
-          return colours.unknown;
-        }
-      };
+      const found = rs.filter(r => getMapValue(d, this.props.dataType) > r.min && getMapValue(d, this.props.dataType) < r.max);
+      if (found.length > 0) {
+        return found[0].color;
+      } else {
+        return colours.unknown;
+      }
+    };
   },
 
   getFeatureColor(feature) {

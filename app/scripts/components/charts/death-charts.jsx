@@ -17,7 +17,7 @@ const DeathCharts = React.createClass({
 
   getTotalDeath() {
     if (this.props.data.length > 0) {
-      const keys = Object.keys(this.props.data[0]).filter(key => key != 'CHILD_TYPE' && key != 'DISEASE' && key != 'YEAR' && key != '_id');
+      const keys = Object.keys(this.props.data[0]).filter(key => key !== 'CHILD_TYPE' && key !== 'DISEASE' && key !== 'YEAR' && key !== '_id');
       const summary = Result.sumByAll(this.props.data, keys);
       return Object.keys(summary).reduce( (ret, item) => {
         ret.total += summary[item].value;
