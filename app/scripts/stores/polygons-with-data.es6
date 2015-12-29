@@ -7,6 +7,7 @@ import FilteredDataStore from './filtered-data';
 import PolygonsStore from './polygons';
 import ViewStore from './view';
 import DataTypes from '../constants/data-types';
+import { groupByLoc } from '../utils/mapUtil'
 
 
 export const injectData = dataByLoc => polygon => {
@@ -17,29 +18,6 @@ export const injectData = dataByLoc => polygon => {
       ...polygon.properties,
       data: isUndefined(dataForPoly) ? None() : Some(dataForPoly),
     },
-  });
-};
-
-const deathGroupBy = (data) => {
-  if (data.length > 0) {
-    const keys = Object.keys(data[0]).filter(key => key !== 'CHILD_TYPE' && key !== 'DISEASE' && key !== 'YEAR' && key !== '_id');
-    return Some(Result.sumByAll(data, keys));
-  } else {
-    return None();
-  }
-};
-
-export const groupByLoc = data => ({ dataType }) => {
-  return DataTypes.match(dataType, {
-    Death: () => deathGroupBy(data),
-    FamilyPlanning: () => None(),
-    Deliveries: () => Result.sumByGroupBy(data, 'REGION', ['TOTAL', 'HEALTH FACILITY DELIVERIES', 'TRADITIONAL BIRTH ATTENDANTS (TBA)', 'ANTENATAL CARE PROJECTION', 'BORN BEFORE ARRIVAL (BBA)', 'HOME DELIVERY']),
-    HealthWorkers: () => None(),
-    IPD: () => None(),
-    OPD: () => None(),
-    Tetanous: () => None(),
-    HivCenter: () => Result.groupBy(data, 'REGION'),
-    Facilities: () => Result.groupBy(data, 'REGION'),
   });
 };
 
