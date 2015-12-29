@@ -29,17 +29,19 @@ const YearStore = createStore({
 
   getValuesForProperty(data, property) {
     return Object.keys(func.Result.groupBy(data, property)).reduce( (ret, value) => {
-      if(Object.keys(ret).length === 0) {
-        ret[value] = true;
-      } else {
-        ret[value] = false;
-      }
-      return ret;
+      return {
+        ...ret,
+        [value]: false  
+      };
     }, {});
   },
 
   loadData(data) {
-    this.setData(this.getValuesForProperty(data, 'YEAR'));
+    const allYears = this.getValuesForProperty(data, 'YEAR');
+    const firstYear = Object.keys(allYears)[0]
+    allYears[firstYear] = true;
+    this.setData(allYears);
+    setInclude('YEAR', [firstYear]);
   },
 });
 

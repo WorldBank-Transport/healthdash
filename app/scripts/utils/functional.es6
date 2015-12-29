@@ -192,13 +192,19 @@ Result.sumByGroupBy = (data, aggProp, sumProps) => {
 };
 
 Result.sumByAll = (data, sumProps) => {
-  const result = {};
-  sumProps.forEach(propName => {
+  return sumProps.reduce((result, propName) => {
     const sumary = filterAndReduce(
       (v) => has(v, propName),  // filter
       (agg, item) => sumByProp(propName, agg, item),  // reduce
       {}, data)
-    result[propName] = sumary;
-  });
-  return result;
+    const row = {
+      id: propName,
+      value: sumary[propName],
+      total: sumary.total,
+    };
+    return {
+      ...result, 
+      [propName]: row,
+    };
+  }, {});
 };

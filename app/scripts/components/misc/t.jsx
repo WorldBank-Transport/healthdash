@@ -85,6 +85,11 @@ const allTranslations = {
     'chart.hiv-facilities.x-axis': 'Regions',
     'chart.hiv-facilities.y-axis': 'Facilities',
     'chart.hiv.title': 'HIV/AIDS Care & Treatment Center',
+    'chart.death.title': 'Deaths',
+    'chart.death.helptext': ' by child age',
+    'chart.death.x-axis': 'Year',
+    'chart.death.y-axis': 'Death',
+    'chart.deaths.title': 'Total Number of Death',
 
     'overview-bar': 'Overview stuff',
 
