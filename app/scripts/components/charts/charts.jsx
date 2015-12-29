@@ -4,7 +4,7 @@ import ViewModes from '../../constants/view-modes';
 import FacilitiesCharts from './facilities-charts';
 import HivCharts from './hiv-charts';
 import DeathCharts from './death-charts';
-import DeliveriesCharts from './deliveries-charts'
+import DeliveriesCharts from './deliveries-charts';
 
 require('stylesheets/charts/charts');
 

@@ -26,7 +26,7 @@ const DeliveriesBarChart = React.createClass({
 
   getValue(values, metric) {
     return values.reduce((ret, item) => {
-      if(item.hasOwnProperty(metric)) {
+      if (item.hasOwnProperty(metric)) {
         ret.value = item[metric];
       }
       return ret;
@@ -35,16 +35,16 @@ const DeliveriesBarChart = React.createClass({
 
   parseData(summary, keys) {
     return keys.map(metric => {
-            return {
-              label: metric,
-              values: Object.keys(summary).map(year => {
-                return {
-                  x: year,
-                  y: this.getValue(summary[year], metric),
-                };
-              }),
-            };
-          });
+      return {
+        label: metric,
+        values: Object.keys(summary).map(year => {
+          return {
+            x: year,
+            y: this.getValue(summary[year], metric),
+          };
+        }),
+      };
+    });
   },
 
   render() {
