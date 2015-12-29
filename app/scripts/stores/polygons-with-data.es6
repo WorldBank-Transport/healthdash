@@ -6,8 +6,7 @@ import SaneStore from '../utils/sane-store-mixin';
 import FilteredDataStore from './filtered-data';
 import PolygonsStore from './polygons';
 import ViewStore from './view';
-import DataTypes from '../constants/data-types';
-import { groupByLoc } from '../utils/mapUtil'
+import { groupByLoc } from '../utils/mapUtil';
 
 
 export const injectData = dataByLoc => polygon => {
