@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import T from '../misc/t';
 import { MAX_VALUE } from '../../utils/mapUtil';
+import { Maybe, _ } from 'results';
 
 require('../../../stylesheets/dashboard/legend.scss');
 
@@ -9,7 +10,7 @@ const Legend = React.createClass({
     ranges: PropTypes.array,
   },
 
-  renderRanges() {
+  renderRanges(ranges) {
     return (
       <div className="legend">
         <div className="title"><T k="legend.title" /></div>
@@ -18,7 +19,7 @@ const Legend = React.createClass({
               <T k="legend.nodata" />
           </div>
           {
-            this.props.ranges.map(r => (
+            ranges.map(r => (
               <div className="row">
                 <div className="legend-block" style={{'background': r.color}}></div>
                 <span className="t">{r.max === MAX_VALUE ? ` > ${r.min}` : `${r.min} - ${r.max}`}</span>
@@ -34,7 +35,7 @@ const Legend = React.createClass({
         <div className="legend">
           <div className="title"><T k="legend.title" /></div>
             <div className="row">
-              <div className="legend-block" style={{'background': '#f1eef6'}}></div>
+              <div className="legend-block" style={{'background': '#aaa'}}></div>
                 <T k="legend.nodata" />
             </div>
             <div className="row">
@@ -54,11 +55,10 @@ const Legend = React.createClass({
   },
 
   render() {
-    if (this.props.ranges && this.props.ranges.length > 0) {
-      return this.renderRanges();
-    } else {
-      return this.renderDefault();
-    }
+    return Maybe.match(this.props.ranges, {
+      Some: () => this.renderRanges(this.props.ranges.data),
+      [_]: () => this.renderDefault(),
+    });
   },
 });
 

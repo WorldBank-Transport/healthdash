@@ -3,6 +3,7 @@ import DataTypes from '../../constants/data-types';
 import ViewModes from '../../constants/view-modes';
 import FacilitiesCharts from './facilities-charts';
 import HivCharts from './hiv-charts';
+import DeathCharts from './death-charts';
 
 require('stylesheets/charts/charts');
 
@@ -22,7 +23,7 @@ const Charts = React.createClass({
     return (
         <div className="charts">
           {DataTypes.match(this.props.dataType, {
-            Death: () => this.renderDefault(this.props.dataType),
+            Death: () => (<DeathCharts {...this.props}/>),
             FamilyPlanning: () => this.renderDefault(this.props.dataType),
             Deliveries: () => this.renderDefault(this.props.dataType),
             HealthWorkers: () => this.renderDefault(this.props.dataType),
