@@ -9,6 +9,7 @@ import FamilyPlanningCharts from './family-planning-charts';
 import HealthWorkersCharts from './health-workers-charts';
 import IpdCharts from './ipd-charts';
 import OpdCharts from './opd-charts';
+import TetanusCharts from './tetanus-chart';
 
 require('stylesheets/charts/charts');
 
@@ -18,10 +19,6 @@ const Charts = React.createClass({
     data: PropTypes.array,  // injected
     dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
-  },
-
-  renderDefault(type) { // TODO remove me when we finish with all types
-    return (<h2>Charts for {type.toParam()}</h2>);
   },
 
   render() {
@@ -34,7 +31,7 @@ const Charts = React.createClass({
             HealthWorkers: () => (<HealthWorkersCharts {...this.props}/>),
             IPD: () => (<IpdCharts {...this.props}/>),
             OPD: () => (<OpdCharts {...this.props}/>),
-            Tetanous: () => this.renderDefault(this.props.dataType),
+            Tetanus: () => (<TetanusCharts {...this.props}/>),
             HivCenter: () => (<HivCharts {...this.props}/>),
             Facilities: () => (<FacilitiesCharts {...this.props}/>),
           })}

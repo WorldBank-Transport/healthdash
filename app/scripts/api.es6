@@ -65,7 +65,7 @@ export const getIPD = (onProgress) =>
 export const getOPD = (onProgress) =>
   ckan.get(API_ROOT, '6fd0aa26-4f53-40d1-a6ab-58b659eaa5c5', {}, onProgress);
 
-export const getTetanous = (onProgress) =>
+export const getTetanus = (onProgress) =>
   ckan.get(API_ROOT, 'bbb6017a-a15c-445c-9e75-ca1e4e5fb49c', {}, onProgress); // TODO check this TT2 in ckan
 
 export const getHivFacilities = (onProgress) =>

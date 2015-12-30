@@ -1,7 +1,7 @@
 import { createStore } from 'reflux';
 import SaneStore from '../utils/sane-store-mixin';
 import { load, loadProgress, loadCompleted, loadFailed } from '../actions/data';
-import { getDeathStats, getFamilyPlanning, getDeliveries, getHealthWorkers, getIPD, getOPD, getTetanous, getHivFacilities, getHealthFacilities } from '../api';
+import { getDeathStats, getFamilyPlanning, getDeliveries, getHealthWorkers, getIPD, getOPD, getTetanus, getHivFacilities, getHealthFacilities } from '../api';
 import DataTypes from '../constants/data-types';
 
 const DUMMY = [];
@@ -64,7 +64,7 @@ const DataStore = createStore({
       HealthWorkers: () => getHealthWorkers,
       IPD: () => getIPD,
       OPD: () => getOPD,
-      Tetanous: () => getTetanous,
+      Tetanus: () => getTetanus,
       HivCenter: () => getHivFacilities,
       Facilities: () => getHealthFacilities,
     });
