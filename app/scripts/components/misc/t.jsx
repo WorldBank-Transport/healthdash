@@ -100,6 +100,11 @@ const allTranslations = {
     'chart.family-barchart.helptext': ' by type',
     'chart.family-barchart.x-axis': 'Year',
     'chart.family-barchart.y-axis': '# of client',
+    'chart.workers.title': 'Total Number of Health Workers',
+    'chart.health-worker.title': 'Health Workers',
+    'chart.health-worker.helptext': ' by year',
+    'chart.health-worker.x-axis': 'Year',
+    'chart.health-worker.y-axis': '# workers',
 
     'overview-bar': 'Overview stuff',
 

@@ -6,6 +6,7 @@ import HivCharts from './hiv-charts';
 import DeathCharts from './death-charts';
 import DeliveriesCharts from './deliveries-charts';
 import FamilyPlanningCharts from './family-planning-charts';
+import HealthWorkersCharts from './health-workers-charts';
 
 require('stylesheets/charts/charts');
 
@@ -28,7 +29,7 @@ const Charts = React.createClass({
             Death: () => (<DeathCharts {...this.props}/>),
             FamilyPlanning: () => (<FamilyPlanningCharts {...this.props}/>),
             Deliveries: () => (<DeliveriesCharts {...this.props}/>),
-            HealthWorkers: () => this.renderDefault(this.props.dataType),
+            HealthWorkers: () => (<HealthWorkersCharts {...this.props}/>),
             IPD: () => this.renderDefault(this.props.dataType),
             OPD: () => this.renderDefault(this.props.dataType),
             Tetanous: () => this.renderDefault(this.props.dataType),
