@@ -10,7 +10,7 @@ export const getMapRanges = (dataType) =>
     Death: () => Some([{min: 0, max: 500, color: colours.few}, {min: 501, max: 1000, color: colours.middleFew}, {min: 1001, max: 1500, color: colours.middleMany}, {min: 1501, max: MAX_VALUE, color: colours.many}]),
     FamilyPlanning: () => Some([{min: 0, max: 100000, color: colours.few}, {min: 100001, max: 200000, color: colours.middleFew}, {min: 200001, max: 300000, color: colours.middleMany}, {min: 300001, max: MAX_VALUE, color: colours.many}]),
     Deliveries: () => Some([{min: 0, max: 50000, color: colours.few}, {min: 50001, max: 75000, color: colours.middleFew}, {min: 75001, max: 100000, color: colours.middleMany}, {min: 100001, max: MAX_VALUE, color: colours.many}]),
-    HealthWorkers: () => None(),
+    HealthWorkers: () => Some([{min: 0, max: 2500, color: colours.few}, {min: 2501, max: 5000, color: colours.middleFew}, {min: 5001, max: 7500, color: colours.middleMany}, {min: 7501, max: MAX_VALUE, color: colours.many}]),
     IPD: () => None(),
     OPD: () => None(),
     Tetanous: () => None(),
@@ -23,7 +23,7 @@ export const getMapValue = (item, dataType) =>
     Death: () => item.value,
     FamilyPlanning: () => item[0]['TOTAL FAMILY PLANNING CLIENTS'],
     Deliveries: () => item[0].TOTAL,
-    HealthWorkers: () => -1,
+    HealthWorkers: () => item.value,
     IPD: () => -1,
     OPD: () => -1,
     Tetanous: () => -1,
@@ -40,12 +40,21 @@ const deathGroupBy = (data) => {
   }
 };
 
+const workersGroupBy = (data) => {
+  if (data.length > 0) {
+    const keys = Object.keys(data[0]).filter(key => key !== 'HEALTH WORKERS' && key !== 'YEAR' && key !== '_id');
+    return Some(Result.sumByAll(data, keys));
+  } else {
+    return None();
+  }
+};
+
 export const groupByLoc = data => ({ dataType }) => {
   return DataTypes.match(dataType, {
     Death: () => deathGroupBy(data),
     FamilyPlanning: () => Result.sumByGroupBy(data, 'REGION', ['TOTAL FAMILY PLANNING CLIENTS', 'NEW CLIENTS', 'FAMILY PLANNING CONTINUIOUS', 'PROJECTED FAMILY PLANNING CLIENTS (WOMEN AGE 15-49)']),
     Deliveries: () => Result.sumByGroupBy(data, 'REGION', ['TOTAL', 'HEALTH FACILITY DELIVERIES', 'TRADITIONAL BIRTH ATTENDANTS (TBA)', 'ANTENATAL CARE PROJECTION', 'BORN BEFORE ARRIVAL (BBA)', 'HOME DELIVERY']),
-    HealthWorkers: () => None(),
+    HealthWorkers: () => workersGroupBy(data),
     IPD: () => None(),
     OPD: () => None(),
     Tetanous: () => None(),
