@@ -105,6 +105,12 @@ const allTranslations = {
     'chart.health-worker.helptext': ' by year',
     'chart.health-worker.x-axis': 'Year',
     'chart.health-worker.y-axis': '# workers',
+    'chart.ipd.title': 'Total Number of In Patient Department',
+    'chart.ipd-by-age-chart.title': 'IPD',
+    'chart.ipd-by-age-chart.helptext': ' by child age',
+    'chart.ipd-by-age-chart.x-axis': 'Year',
+    'chart.ipd-by-age-chart.y-axis': 'IPD',
+    
 
     'overview-bar': 'Overview stuff',
 
