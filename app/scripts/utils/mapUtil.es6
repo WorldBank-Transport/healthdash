@@ -3,7 +3,7 @@ import { Some, None } from 'results';
 import colours from './colours';
 import { Result } from './functional';
 
-export const MAX_VALUE = 99999999;
+export const MAX_VALUE = 999999999;
 
 export const getMapRanges = (dataType) =>
   DataTypes.match(dataType, {
@@ -12,7 +12,7 @@ export const getMapRanges = (dataType) =>
     Deliveries: () => Some([{min: 0, max: 50000, color: colours.few}, {min: 50001, max: 75000, color: colours.middleFew}, {min: 75001, max: 100000, color: colours.middleMany}, {min: 100001, max: MAX_VALUE, color: colours.many}]),
     HealthWorkers: () => Some([{min: 0, max: 2500, color: colours.few}, {min: 2501, max: 5000, color: colours.middleFew}, {min: 5001, max: 7500, color: colours.middleMany}, {min: 7501, max: MAX_VALUE, color: colours.many}]),
     IPD: () => Some([{min: 0, max: 50000, color: colours.few}, {min: 50001, max: 75000, color: colours.middleFew}, {min: 75001, max: 100000, color: colours.middleMany}, {min: 100001, max: MAX_VALUE, color: colours.many}]),
-    OPD: () => None(),
+    OPD: () => Some([{min: 0, max: 500000, color: colours.few}, {min: 500001, max: 750000, color: colours.middleFew}, {min: 750001, max: 1000000, color: colours.middleMany}, {min: 1000001, max: MAX_VALUE, color: colours.many}]),
     Tetanous: () => None(),
     HivCenter: () => Some([{min: 0, max: 50, color: colours.few}, {min: 51, max: 100, color: colours.middleFew}, {min: 101, max: 150, color: colours.middleMany}, {min: 151, max: MAX_VALUE, color: colours.many}]),
     Facilities: () => Some([{min: 0, max: 100, color: colours.few}, {min: 101, max: 200, color: colours.middleFew}, {min: 201, max: 300, color: colours.middleMany}, {min: 301, max: MAX_VALUE, color: colours.many}]),
@@ -25,7 +25,7 @@ export const getMapValue = (item, dataType) =>
     Deliveries: () => item[0].TOTAL,
     HealthWorkers: () => item.value,
     IPD: () => item.value,
-    OPD: () => -1,
+    OPD: () => item.value,
     Tetanous: () => -1,
     HivCenter: () => item.length,
     Facilities: () => item.length,
@@ -65,7 +65,7 @@ export const groupByLoc = data => ({ dataType }) => {
     Deliveries: () => Result.sumByGroupBy(data, 'REGION', ['TOTAL', 'HEALTH FACILITY DELIVERIES', 'TRADITIONAL BIRTH ATTENDANTS (TBA)', 'ANTENATAL CARE PROJECTION', 'BORN BEFORE ARRIVAL (BBA)', 'HOME DELIVERY']),
     HealthWorkers: () => workersGroupBy(data),
     IPD: () => ipdGroupBy(data),
-    OPD: () => None(),
+    OPD: () => ipdGroupBy(data),
     Tetanous: () => None(),
     HivCenter: () => Result.groupBy(data, 'REGION'),
     Facilities: () => Result.groupBy(data, 'REGION'),
