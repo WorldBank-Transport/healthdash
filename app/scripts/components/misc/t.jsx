@@ -95,6 +95,11 @@ const allTranslations = {
     'chart.deliveries-barchart.helptext': ' by type',
     'chart.deliveries-barchart.x-axis': 'Year',
     'chart.deliveries-barchart.y-axis': 'Deliveries',
+    'chart.family-planning.title': 'Total Family Planning Clients',
+    'chart.family-barchart.title': 'Family Planning',
+    'chart.family-barchart.helptext': ' by type',
+    'chart.family-barchart.x-axis': 'Year',
+    'chart.family-barchart.y-axis': '# of client',
 
     'overview-bar': 'Overview stuff',
 
