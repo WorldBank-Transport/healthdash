@@ -110,6 +110,11 @@ const allTranslations = {
     'chart.ipd-by-age-chart.helptext': ' by child age',
     'chart.ipd-by-age-chart.x-axis': 'Year',
     'chart.ipd-by-age-chart.y-axis': 'IPD',
+    'chart.opd.title': 'Total Number of Out Patient Department',
+    'chart.opd-by-age-chart.title': 'OPD',
+    'chart.opd-by-age-chart.helptext': ' by child age',
+    'chart.opd-by-age-chart.x-axis': 'Year',
+    'chart.opd-by-age-chart.y-axis': 'OPD',
 
     'overview-bar': 'Overview stuff',
 

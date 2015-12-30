@@ -8,6 +8,7 @@ import DeliveriesCharts from './deliveries-charts';
 import FamilyPlanningCharts from './family-planning-charts';
 import HealthWorkersCharts from './health-workers-charts';
 import IpdCharts from './ipd-charts';
+import OpdCharts from './opd-charts';
 
 require('stylesheets/charts/charts');
 
@@ -32,7 +33,7 @@ const Charts = React.createClass({
             Deliveries: () => (<DeliveriesCharts {...this.props}/>),
             HealthWorkers: () => (<HealthWorkersCharts {...this.props}/>),
             IPD: () => (<IpdCharts {...this.props}/>),
-            OPD: () => this.renderDefault(this.props.dataType),
+            OPD: () => (<OpdCharts {...this.props}/>),
             Tetanous: () => this.renderDefault(this.props.dataType),
             HivCenter: () => (<HivCharts {...this.props}/>),
             Facilities: () => (<FacilitiesCharts {...this.props}/>),
