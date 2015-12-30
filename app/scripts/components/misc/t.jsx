@@ -110,7 +110,6 @@ const allTranslations = {
     'chart.ipd-by-age-chart.helptext': ' by child age',
     'chart.ipd-by-age-chart.x-axis': 'Year',
     'chart.ipd-by-age-chart.y-axis': 'IPD',
-    
 
     'overview-bar': 'Overview stuff',
 
