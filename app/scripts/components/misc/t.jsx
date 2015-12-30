@@ -71,7 +71,7 @@ const allTranslations = {
     'data-type.health-workers': 'Health Workers',
     'data-type.ipd': 'IPD',
     'data-type.opd': 'OPD',
-    'data-type.tetanous': 'Tetanous',
+    'data-type.tetanous': 'Tetanus',
     'data-type.hiv-center': 'HIV Centers',
     'data-type.facilities': 'Health Falilities',
 
@@ -115,6 +115,11 @@ const allTranslations = {
     'chart.opd-by-age-chart.helptext': ' by child age',
     'chart.opd-by-age-chart.x-axis': 'Year',
     'chart.opd-by-age-chart.y-axis': 'OPD',
+    'chart.tetanus.title': 'Tetanus Vaccination Coverage',
+    'chart.tetanus-barchart.title': 'Tetanus',
+    'chart.tetanus-barchart.helptext': ' by type',
+    'chart.tetanus-barchart.x-axis': 'Year',
+    'chart.tetanus-barchart.y-axis': 'people',
 
     'overview-bar': 'Overview stuff',
 
@@ -127,7 +132,7 @@ const allTranslations = {
     'loading.data.health-workers': 'Loading Health Workers Stats',
     'loading.data.ipd': 'Loading IPD',
     'loading.data.opd': 'Loading OPD',
-    'loading.data.tetanous': 'Loading Tetanous Stats',
+    'loading.data.tetanous': 'Loading Tetanus Stats',
     'loading.data.hiv-center': 'Loading HIV Centers',
     'loading.data.facilities': 'Loading Health Falilities',
 

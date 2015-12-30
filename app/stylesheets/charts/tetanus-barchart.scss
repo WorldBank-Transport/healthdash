@@ -1,0 +1,27 @@
+@import '../config/colours';
+@import '../config/dimensions';
+@import '../config/type';
+
+.tetanus-barchart {
+  margin: 0px;
+  .x {
+    .tick text {
+      direction: rtl;
+      fill: $text-color;
+      font-size: $chart-axis-text;
+      font-weight: $chart-axis-text-weight;
+      text-anchor: inherit;
+    }
+  }
+  .y {
+    .tick text {
+      fill: $text-color;
+      font-size: $chart-axis-text;
+      font-weight: $chart-axis-text-weight;
+    }
+  }
+  .label {
+    fill: $text-color;
+    font-size: $chart-axis-text;
+  }  
+}
