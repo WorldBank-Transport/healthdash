@@ -10,6 +10,7 @@ import HealthWorkersCharts from './health-workers-charts';
 import IpdCharts from './ipd-charts';
 import OpdCharts from './opd-charts';
 import TetanusCharts from './tetanus-chart';
+import MetricSelector from '../filters/metric-selector';
 
 require('stylesheets/charts/charts');
 
@@ -18,12 +19,14 @@ const Charts = React.createClass({
     children: PropTypes.node,
     data: PropTypes.array,  // injected
     dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
+    metrics: PropTypes.object,  // injected
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
 
   render() {
     return (
         <div className="charts">
+          <MetricSelector metrics={this.props.metrics}/>
           {DataTypes.match(this.props.dataType, {
             Death: () => (<DeathCharts {...this.props}/>),
             FamilyPlanning: () => (<FamilyPlanningCharts {...this.props}/>),
