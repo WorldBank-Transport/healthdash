@@ -5,6 +5,7 @@ import { _ } from 'results';  // catch-all for match
 import FilteredDataStore from '../../stores/filtered-data';
 import LayoutStore from '../../stores/layout';
 import LoadingDataStore from '../../stores/loading-data';
+import MetricsStore from '../../stores/metrics';
 //import LoadingPolygonsStore from '../../stores/loading-polygons';
 import PolygonsDataStore from '../../stores/polygons-with-data';
 import ViewStore from '../../stores/view';
@@ -41,6 +42,7 @@ const DashRoot = React.createClass({
     connect(FilteredDataStore, 'data'),
     connect(LayoutStore, 'layout'),
     connect(LoadingDataStore, 'loadingData'),
+    connect(MetricsStore, 'metrics'),
     connect(PolygonsDataStore, 'polygonsData'),
     connect(ViewStore, 'view'),
   ],
@@ -85,6 +87,7 @@ const DashRoot = React.createClass({
       data: this.state.data,
       dataType: this.state.view.dataType,
       viewMode: this.state.view.viewMode,
+      metrics: this.state.metrics,
     };
     const mapChild = React.cloneElement(this.props.children, {
       ...propsForChildren,
