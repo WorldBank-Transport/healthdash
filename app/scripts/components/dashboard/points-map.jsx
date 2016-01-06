@@ -1,5 +1,5 @@
 import pick from 'lodash/object/pick';
-//import { Maybe } from 'results';
+import { Maybe } from 'results';
 import React, { PropTypes } from 'react';
 import { Map } from 'leaflet';
 import { CircleMarker } from 'react-leaflet';
@@ -12,13 +12,7 @@ const PointsMap = React.createClass({
     deselect: PropTypes.func,  // injected
     map: PropTypes.instanceOf(Map),  // injected by BoundsMap
     select: PropTypes.func,  // injected
-  },
-
-  getInitialState() {
-    return {
-      flyoutVisible: false,
-      item: null,
-    };
+    selected: PropTypes.instanceOf(Maybe.OptionClass),  // injected
   },
 
   handleMarkerClickFor(id) {
@@ -26,16 +20,11 @@ const PointsMap = React.createClass({
   },
 
   handleMouseoutFor() {
-    //this.replaceState(this.getInitialState());
+    this.props.deselect();
   },
 
-  handleMouseover(item) {
-    return () => {
-      this.replaceState({
-        flyoutVisible: true,
-        item: item,
-      });
-    };
+  handleMouseover(id) {
+    return () => this.props.select(id);
   },
 
   createMarker(item) {
@@ -48,7 +37,7 @@ const PointsMap = React.createClass({
         map={this.props.map}
         onLeafletClick={this.handleMarkerClickFor(item.POINT_ID)}
         onLeafletMouseout={this.handleMouseoutFor}
-        onLeafletMouseover={this.handleMouseover(item)}
+        onLeafletMouseover={this.handleMouseover(item.POINT_ID)}
         opacity={0.75}
         radius={4}
         weight={1} />);
@@ -64,8 +53,8 @@ const PointsMap = React.createClass({
   },
 
   renderFlyout() {
-    if (this.state.flyoutVisible) {
-      return (<div className="flyout-inner">{JSON.stringify(this.state.item)}</div>);
+    if (this.props.selected) {
+      return (<div className="flyout-inner">{JSON.stringify(this.props.selected)}</div>);
     } else {
       return false;
     }

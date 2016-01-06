@@ -83,7 +83,7 @@ const PolygonsMap = React.createClass({
   renderPopup() {
     const propsForPopup = pick(this.props,
       [ 'data', 'dataType', 'deselect', 'selected', 'viewMode']);
-    return (<div {...propsForPopup}/>); // TODO this should be the popup
+    return (<div className="flyout-inner" {...propsForPopup}>{JSON.stringify(this.props.selected)}</div>); // TODO this should be the popup
   },
 
   render() {
@@ -92,7 +92,7 @@ const PolygonsMap = React.createClass({
         {this.props.polygonsData.map(this.renderFeature)}
 
         {/* popup overlay for polygon */}
-        {/*this.renderPopup()*/}
+        {this.renderPopup()}
         <Legend ranges={getMapRanges(this.props.dataType)}/>
       </div>
     );
