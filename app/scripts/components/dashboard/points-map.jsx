@@ -14,8 +14,28 @@ const PointsMap = React.createClass({
     select: PropTypes.func,  // injected
   },
 
+  getInitialState() {
+    return {
+      flyoutVisible: false,
+      item: null,
+    };
+  },
+
   handleMarkerClickFor(id) {
     return () => this.props.select(id);
+  },
+
+  handleMouseoutFor() {
+    //this.replaceState(this.getInitialState());
+  },
+
+  handleMouseover(item) {
+    return () => {
+      this.replaceState({
+        flyoutVisible: true,
+        item: item,
+      });
+    };
   },
 
   createMarker(item) {
@@ -27,6 +47,8 @@ const PointsMap = React.createClass({
         key={item.POINT_ID}
         map={this.props.map}
         onLeafletClick={this.handleMarkerClickFor(item.POINT_ID)}
+        onLeafletMouseout={this.handleMouseoutFor}
+        onLeafletMouseover={this.handleMouseover(item)}
         opacity={0.75}
         radius={4}
         weight={1} />);
@@ -41,6 +63,14 @@ const PointsMap = React.createClass({
       </div>);
   },
 
+  renderFlyout() {
+    if (this.state.flyoutVisible) {
+      return (<div className="flyout-inner">{JSON.stringify(this.state.item)}</div>);
+    } else {
+      return false;
+    }
+  },
+
   render() {
     const propsForPopup = pick(this.props,
       [ 'data', 'dataType', 'deselect', 'selected', 'viewMode' ]);
@@ -52,7 +82,7 @@ const PointsMap = React.createClass({
 
         {/* A point popup, if a point is selected */}
         {popup}
-
+        {this.renderFlyout()}
       </div>
     );
   },
