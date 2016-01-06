@@ -9,38 +9,36 @@
   @include up-to($tablet-landscape) {
     min-width: 100%;
     position: absolute;
-}
+  }
 
   // float: left;
-    height: 100%;
+  display: flex;
+  float: left;
+  height: 100%;
+  max-width: 45%;
+  min-height: 100%;
+  overflow: hidden;
   // position: relative;
   // overflow: hidden;
   // border:1px solid #f00;
   // vertical-align:middle;
-    display:flex;
-    overflow:hidden;
-    max-width: 45%;
-    float: left;
-    min-height: 100%;
 }
 
 .homebanner img {
-  flex-shrink:0;
-    min-width:100%;
-    min-height:100%;
-
+  flex-shrink: 0;
+  min-height: 100%;
+  min-width: 100%;
 
   @include up-to($tablet-landscape) {
     height: auto;
     min-height: 100%;
     width: auto;
-}
+  }
 
   @include up-to($tablet-portrait) {
     height: 100%;
     min-height: 100%;
   }
-
 }
 
 .homecontent  {

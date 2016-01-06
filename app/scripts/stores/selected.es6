@@ -14,7 +14,7 @@ import SaneStore from '../utils/sane-store-mixin';
 import AsyncState from '../constants/async';
 import ViewModes from '../constants/view-modes';
 
-import { setMapBounds, zoomToPoint } from '../actions/view';
+//import { setMapBounds, zoomToPoint } from '../actions/view';
 import { select, ensureSelect, deselect } from '../actions/select';
 import { clearFilter } from '../actions/filters';
 

@@ -25,7 +25,7 @@ const colours = {
 export default colours;
 
 export const point = {
-  normal : {
+  normal: {
     radius: 4,
     color: colours.bgColor,
     opacity: 0.75,
@@ -41,7 +41,7 @@ export const point = {
     opacity: 1,
     weight: 3,
   },
-}
+};
 
 
 export const polygon = {  // sync with edudash: https://github.com/WorldBank-Transport/edudash/blob/edudash-2.0/app/scripts/services/colors.coffee

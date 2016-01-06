@@ -12,9 +12,9 @@ import isNaN from 'lodash/lang/isNaN';
 
 const SimplePoints = React.createClass({
   propTypes: {
+    data: PropTypes.array.isRequired,
     deselect: PropTypes.func,  // injected
     map: PropTypes.instanceOf(Map),  // injected by BoundsMap
-    data: PropTypes.array.isRequired,
     select: PropTypes.func.isRequired,
   },
 
@@ -33,7 +33,7 @@ const SimplePoints = React.createClass({
   componentDidUpdate() {
     this.updateMap();
   },
-  
+
   componentWillUnmount() {
     this.layerGroup.clearLayers();
     this.props.map.removeLayer(this.layerGroup);
@@ -68,7 +68,7 @@ const SimplePoints = React.createClass({
     return (e) => {
       e.target.setStyle(point.hovered);
       this.props.select(id);
-    }
+    };
   },
 
   render() {
