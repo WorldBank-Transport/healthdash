@@ -9,7 +9,7 @@ const Homepage = React.createClass({
     return (
       <div className="home-page">
         <div className="homebanner">
-          <img src="images/home-img.png"/>
+          // <img src="images/homeimg.png"/>
         </div>
         <div className="homecontent">
           <h2><T k="home.title" /></h2>

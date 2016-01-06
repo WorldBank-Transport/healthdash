@@ -13,15 +13,15 @@ const allTranslations = {
     'site.flag': 'Flag of Tanzania',
 
     'home.health': 'Health Centers',
-    'home.boreholes': 'Boreholes',
-    'home.dams': 'Dams',
+    'home.title': 'Track performance, explore data and provide feedback using this Health Dashboard.',
+    'home.text': 'This Health Dashboard visualizes key information from Tanzania\'s open data portal. Use it to view the latest national exam results and monitor the information that is important to you. You can also use the menu options above to see original data and speak out about missing or wrong data.',
 
     'nav.home': 'Home',
     'nav.data': 'Data',
     'nav.speak-out': 'Speak Out',
 
     'static.data-title': 'Explore the data behind the dashboard.',
-    'static.data-content': 'This Water Dashboard was built on open data release by the government of Tanzania. The raw data is published on the Government\'s open data portal in machine-readable format with a license that encourages re-use. The data behind this education dashboard comes from Ministry of Water and the National Bureau of Statistics of Tanzania.',
+    'static.data-content': 'This Health Dashboard was built on open data release by the government of Tanzania. The raw data is published on the Government\'s open data portal in machine-readable format with a license that encourages re-use. The data behind this education dashboard comes from Ministry of Water and the National Bureau of Statistics of Tanzania.',
     'static.speakout-title': 'Your voice matters!',
     'static.speakout-content': 'Complete this form to share feedback about the data.',
 
@@ -87,7 +87,7 @@ const allTranslations = {
     'data-type.opd': 'OPD',
     'data-type.tetanous': 'Tetanus',
     'data-type.hiv-center': 'HIV Centers',
-    'data-type.facilities': 'Health Falilities',
+    'data-type.facilities': 'Health Facilities',
 
     'chart.health-facilities.title': 'Health Facilities',
     'chart.health-facilities.helptext': ' by Region',
@@ -148,7 +148,7 @@ const allTranslations = {
     'loading.data.opd': 'Loading OPD',
     'loading.data.tetanous': 'Loading Tetanus Stats',
     'loading.data.hiv-center': 'Loading HIV Centers',
-    'loading.data.facilities': 'Loading Health Falilities',
+    'loading.data.facilities': 'Loading Health Facilities',
 
     'loading.regions': 'Loading regions...',
     'loading.districts': 'Loading districts...',
@@ -176,8 +176,8 @@ const allTranslations = {
     'site-name': 'Water Dashboard',
     'site.flag': 'Flag of Tanzania',
     'home.waterpoints': 'Vituo vya maji safi na salama',
-    'home.boreholes': 'Visima',
-    'home.dams': 'Mabwawa',
+    'home.title': 'Track performance, explore data and provide feedback using this Health Dashboard.',
+    'home.text': 'Dashibodi hii ya elimu ni tovuti ya takwimu huria zinazoorodhesha matokeo ya mitihani ya kitaifa ya hivi karibuni na habari muhimu kwako. Tumia orodha iliyo juu kutazama takwimu asili data na wasiliana nasi kuhusu takwimu zisizokuwepo au zenye makosa.',
 
     'nav.home': 'Mwanzo',
     'nav.data': 'Data',

@@ -11,16 +11,24 @@
     position: absolute;
 }
 
-  float: left;
-  height: 100%;
-  max-width: 50%;
-  overflow: hidden;
+  // float: left;
+    height: 100%;
+  // position: relative;
+  // overflow: hidden;
+  // border:1px solid #f00;
+  // vertical-align:middle;
+    display:flex;
+    overflow:hidden;
+    max-width: 45%;
+    float: left;
+    min-height: 100%;
 }
 
 .homebanner img {
-  display: block;
-  height: 100%;
-  width: auto;
+  flex-shrink:0;
+    min-width:100%;
+    min-height:100%;
+
 
   @include up-to($tablet-landscape) {
     height: auto;
