@@ -4,6 +4,8 @@ import React, { PropTypes } from 'react';
 import { Map } from 'leaflet';
 import { CircleMarker } from 'react-leaflet';
 import colours from '../../utils/colours';
+import SimplePoints from '../leaflet/simple-points';
+import Flyout from './flyout';
 
 const PointsMap = React.createClass({
   propTypes: {
@@ -43,35 +45,21 @@ const PointsMap = React.createClass({
         weight={1} />);
   },
 
-  renderPoints() {
-    const invalidLatLon = (item) => item.position && !isNaN(item.position[0]) && !isNaN(item.position[1]);
-    const points = this.props.data.filter(invalidLatLon).map(this.createMarker);
-    return (
-      <div>
-        {points}
-      </div>);
-  },
-
   renderFlyout() {
-    if (this.props.selected) {
-      return (<div className="flyout-inner">{JSON.stringify(this.props.selected)}</div>);
-    } else {
-      return false;
-    }
+    return Maybe.match(this.props.selected, {
+      None: () => false,
+      Some: data => (<div className="flyout-inner">{JSON.stringify(data)}</div>),
+    });
   },
 
   render() {
-    const propsForPopup = pick(this.props,
-      [ 'data', 'dataType', 'deselect', 'selected', 'viewMode' ]);
-    const popup = this.props.children ?
-      React.cloneElement(this.props.children, propsForPopup) : null;
+    const propsForPopup = pick(this.props, [ 'data', 'dataType', 'deselect', 'selected', 'viewMode' ]);
     return (
       <div>
-        {this.renderPoints()}
+        <SimplePoints {...this.props}/>
 
         {/* A point popup, if a point is selected */}
-        {popup}
-        {this.renderFlyout()}
+        <Flyout {...propsForPopup}/>
       </div>
     );
   },

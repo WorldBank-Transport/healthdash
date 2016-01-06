@@ -1,0 +1,15 @@
+@import '../config/colours';
+@import '../config/dimensions';
+
+.flyout {
+ .flyout-inner {
+    position:relative;
+    padding: 20px 30px;
+    background: $map-overlay;
+    box-shadow: $map-overlay-outline;
+    z-index: 10;
+    float: right;
+    width: 25%;
+    height: 90%;
+  }  
+}

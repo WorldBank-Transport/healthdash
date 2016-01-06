@@ -161,6 +161,16 @@ const allTranslations = {
     'drilldown.points': 'Point',
     'drilldown.back': 'Back To National',
 
+    'flyout.id': 'Facility ID',
+    'flyout.common-name': 'Common Name',
+    'flyout.type': 'Type',
+    'flyout.ownership': 'Ownership',
+    'flyout.status': 'Status',
+    'flyout.location': 'Lat/Lon',
+    'flyout.council': 'Council',
+    'flyout.zone': 'Zone',
+    'flyout.region': 'Region',
+
     'error': 'We\'re sorry',
     'error.retry': 'Retry',
     'error.api.pre-request': 'An error occurred when the application was preparing to fetch data',
