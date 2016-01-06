@@ -13,8 +13,8 @@ const allTranslations = {
     'site.flag': 'Flag of Tanzania',
 
     'home.health': 'Health Centers',
-    'home.boreholes': 'Boreholes',
-    'home.dams': 'Dams',
+    'home.title': 'Track performance, explore data and provide feedback using this Health Dashboard.',
+    'home.text': 'This Health Dashboard visualizes key information from Tanzania\'s open data portal. Use it to view the latest national exam results and monitor the information that is important to you. You can also use the menu options above to see original data and speak out about missing or wrong data.',
 
     'nav.home': 'Home',
     'nav.data': 'Data',
@@ -73,7 +73,7 @@ const allTranslations = {
     'data-type.opd': 'OPD',
     'data-type.tetanous': 'Tetanous',
     'data-type.hiv-center': 'HIV Centers',
-    'data-type.facilities': 'Health Falilities',
+    'data-type.facilities': 'Health Facilities',
 
     'chart.health-facilities.title': 'Health Facilities',
     'chart.health-facilities.helptext': ' by Region',
@@ -109,7 +109,7 @@ const allTranslations = {
     'loading.data.opd': 'Loading OPD',
     'loading.data.tetanous': 'Loading Tetanous Stats',
     'loading.data.hiv-center': 'Loading HIV Centers',
-    'loading.data.facilities': 'Loading Health Falilities',
+    'loading.data.facilities': 'Loading Health Facilities',
 
     'loading.regions': 'Loading regions...',
     'loading.districts': 'Loading districts...',
@@ -137,8 +137,8 @@ const allTranslations = {
     'site-name': 'Water Dashboard',
     'site.flag': 'Flag of Tanzania',
     'home.waterpoints': 'Vituo vya maji safi na salama',
-    'home.boreholes': 'Visima',
-    'home.dams': 'Mabwawa',
+    'home.title': 'Track performance, explore data and provide feedback using this Health Dashboard.',
+    'home.text': 'Dashibodi hii ya elimu ni tovuti ya takwimu huria zinazoorodhesha matokeo ya mitihani ya kitaifa ya hivi karibuni na habari muhimu kwako. Tumia orodha iliyo juu kutazama takwimu asili data na wasiliana nasi kuhusu takwimu zisizokuwepo au zenye makosa.',
 
     'nav.home': 'Mwanzo',
     'nav.data': 'Data',
