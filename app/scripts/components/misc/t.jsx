@@ -21,7 +21,7 @@ const allTranslations = {
     'nav.speak-out': 'Speak Out',
 
     'static.data-title': 'Explore the data behind the dashboard.',
-    'static.data-content': 'This Water Dashboard was built on open data release by the government of Tanzania. The raw data is published on the Government\'s open data portal in machine-readable format with a license that encourages re-use. The data behind this education dashboard comes from Ministry of Water and the National Bureau of Statistics of Tanzania.',
+    'static.data-content': 'This Health Dashboard was built on open data release by the government of Tanzania. The raw data is published on the Government\'s open data portal in machine-readable format with a license that encourages re-use. The data behind this education dashboard comes from Ministry of Water and the National Bureau of Statistics of Tanzania.',
     'static.speakout-title': 'Your voice matters!',
     'static.speakout-content': 'Complete this form to share feedback about the data.',
 
