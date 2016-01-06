@@ -5,6 +5,12 @@ import FacilitiesCharts from './facilities-charts';
 import HivCharts from './hiv-charts';
 import DeathCharts from './death-charts';
 import DeliveriesCharts from './deliveries-charts';
+import FamilyPlanningCharts from './family-planning-charts';
+import HealthWorkersCharts from './health-workers-charts';
+import IpdCharts from './ipd-charts';
+import OpdCharts from './opd-charts';
+import TetanusCharts from './tetanus-chart';
+import MetricSelector from '../filters/metric-selector';
 
 require('stylesheets/charts/charts');
 
@@ -13,24 +19,22 @@ const Charts = React.createClass({
     children: PropTypes.node,
     data: PropTypes.array,  // injected
     dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
+    metrics: PropTypes.object,  // injected
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
-  },
-
-  renderDefault(type) { // TODO remove me when we finish with all types
-    return (<h2>Charts for {type.toParam()}</h2>);
   },
 
   render() {
     return (
         <div className="charts">
+          <MetricSelector metrics={this.props.metrics}/>
           {DataTypes.match(this.props.dataType, {
             Death: () => (<DeathCharts {...this.props}/>),
-            FamilyPlanning: () => this.renderDefault(this.props.dataType),
+            FamilyPlanning: () => (<FamilyPlanningCharts {...this.props}/>),
             Deliveries: () => (<DeliveriesCharts {...this.props}/>),
-            HealthWorkers: () => this.renderDefault(this.props.dataType),
-            IPD: () => this.renderDefault(this.props.dataType),
-            OPD: () => this.renderDefault(this.props.dataType),
-            Tetanous: () => this.renderDefault(this.props.dataType),
+            HealthWorkers: () => (<HealthWorkersCharts {...this.props}/>),
+            IPD: () => (<IpdCharts {...this.props}/>),
+            OPD: () => (<OpdCharts {...this.props}/>),
+            Tetanus: () => (<TetanusCharts {...this.props}/>),
             HivCenter: () => (<HivCharts {...this.props}/>),
             Facilities: () => (<FacilitiesCharts {...this.props}/>),
           })}

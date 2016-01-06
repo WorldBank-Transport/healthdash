@@ -8,7 +8,7 @@ const DataTypes = Union({
   HealthWorkers: {},
   IPD: {},
   OPD: {},
-  Tetanous: {},
+  Tetanus: {},
   HivCenter: {},
   Facilities: {},
 }, {
@@ -36,7 +36,7 @@ const DataTypes = Union({
       HealthWorkers: () => 'health-workers',
       IPD: () => 'ipd',
       OPD: () => 'opd',
-      Tetanous: () => 'tetanous',
+      Tetanus: () => 'tetanous',
       HivCenter: () => 'hiv-center',
       Facilities: () => 'facilities',
     });
@@ -57,7 +57,7 @@ const DataTypes = Union({
     } else if (param === 'opd') {
       return DataTypes.OPD();
     } else if (param === 'tetanous') {
-      return DataTypes.Tetanous();
+      return DataTypes.Tetanus();
     } else if (param === 'hiv-center') {
       return DataTypes.HivCenter();
     } else if (param === 'facilities') {

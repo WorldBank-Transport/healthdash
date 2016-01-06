@@ -2,7 +2,7 @@
 @import '../config/dimensions';
 @import '../config/type';
 
-.death-by-age-chart {
+.health-workers-barchart {
   .x {
     .tick text {
       direction: rtl;
@@ -22,5 +22,5 @@
   .label {
     fill: $text-color;
     font-size: $chart-axis-text;
-  }
+  }  
 }

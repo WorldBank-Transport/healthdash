@@ -2,7 +2,8 @@
 @import '../config/dimensions';
 @import '../config/type';
 
-.death-by-age-chart {
+.tetanus-barchart {
+  margin: 0px;
   .x {
     .tick text {
       direction: rtl;
@@ -22,5 +23,5 @@
   .label {
     fill: $text-color;
     font-size: $chart-axis-text;
-  }
+  }  
 }

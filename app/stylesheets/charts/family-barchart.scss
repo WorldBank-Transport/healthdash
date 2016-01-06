@@ -2,7 +2,8 @@
 @import '../config/dimensions';
 @import '../config/type';
 
-.death-by-age-chart {
+.family-barchart {
+  margin: 0px;
   .x {
     .tick text {
       direction: rtl;
