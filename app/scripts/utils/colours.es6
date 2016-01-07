@@ -24,6 +24,25 @@ const colours = {
 };
 export default colours;
 
+export const point = {
+  normal: {
+    radius: 4,
+    color: colours.bgColor,
+    opacity: 0.75,
+    weight: 1,
+    fillOpacity: 1,
+    fillColor: colours.theme,
+  },
+
+  hovered: {
+    // color: colours.bgColor, color is kept from normal
+    fillOpacity: 0.9,
+    // fillColor is kept from normal
+    opacity: 1,
+    weight: 3,
+  },
+};
+
 
 export const polygon = {  // sync with edudash: https://github.com/WorldBank-Transport/edudash/blob/edudash-2.0/app/scripts/services/colors.coffee
   normal: colour => {

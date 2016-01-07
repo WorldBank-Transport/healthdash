@@ -9,6 +9,7 @@ import MetricsStore from '../../stores/metrics';
 //import LoadingPolygonsStore from '../../stores/loading-polygons';
 import PolygonsDataStore from '../../stores/polygons-with-data';
 import ViewStore from '../../stores/view';
+import SelectedStore from '../../stores/selected';
 
 // Actions
 import { load } from '../../actions/data';
@@ -44,6 +45,7 @@ const DashRoot = React.createClass({
     connect(LoadingDataStore, 'loadingData'),
     connect(MetricsStore, 'metrics'),
     connect(PolygonsDataStore, 'polygonsData'),
+    connect(SelectedStore, 'selected'),
     connect(ViewStore, 'view'),
   ],
 
@@ -92,6 +94,7 @@ const DashRoot = React.createClass({
     const mapChild = React.cloneElement(this.props.children, {
       ...propsForChildren,
       polygonsData: this.state.polygonsData,
+      selected: this.state.selected,
       select,
       deselect,
     });
