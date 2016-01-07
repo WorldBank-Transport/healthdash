@@ -1,9 +1,11 @@
 import pick from 'lodash/object/pick';
-//import { Maybe } from 'results';
+import { Maybe } from 'results';
 import React, { PropTypes } from 'react';
 import { Map } from 'leaflet';
 import { CircleMarker } from 'react-leaflet';
 import colours from '../../utils/colours';
+import SimplePoints from '../leaflet/simple-points';
+import Flyout from './flyout';
 
 const PointsMap = React.createClass({
   propTypes: {
@@ -12,9 +14,18 @@ const PointsMap = React.createClass({
     deselect: PropTypes.func,  // injected
     map: PropTypes.instanceOf(Map),  // injected by BoundsMap
     select: PropTypes.func,  // injected
+    selected: PropTypes.instanceOf(Maybe.OptionClass),  // injected
   },
 
   handleMarkerClickFor(id) {
+    return () => this.props.select(id);
+  },
+
+  handleMouseoutFor() {
+    this.props.deselect();
+  },
+
+  handleMouseover(id) {
     return () => this.props.select(id);
   },
 
@@ -27,32 +38,28 @@ const PointsMap = React.createClass({
         key={item.POINT_ID}
         map={this.props.map}
         onLeafletClick={this.handleMarkerClickFor(item.POINT_ID)}
+        onLeafletMouseout={this.handleMouseoutFor}
+        onLeafletMouseover={this.handleMouseover(item.POINT_ID)}
         opacity={0.75}
         radius={4}
         weight={1} />);
   },
 
-  renderPoints() {
-    const invalidLatLon = (item) => item.position && !isNaN(item.position[0]) && !isNaN(item.position[1]);
-    const points = this.props.data.filter(invalidLatLon).map(this.createMarker);
-    return (
-      <div>
-        {points}
-      </div>);
+  renderFlyout() {
+    return Maybe.match(this.props.selected, {
+      None: () => false,
+      Some: data => (<div className="flyout-inner">{JSON.stringify(data)}</div>),
+    });
   },
 
   render() {
-    const propsForPopup = pick(this.props,
-      [ 'data', 'dataType', 'deselect', 'selected', 'viewMode' ]);
-    const popup = this.props.children ?
-      React.cloneElement(this.props.children, propsForPopup) : null;
+    const propsForPopup = pick(this.props, [ 'data', 'dataType', 'deselect', 'selected', 'viewMode' ]);
     return (
       <div>
-        {this.renderPoints()}
+        <SimplePoints {...this.props}/>
 
         {/* A point popup, if a point is selected */}
-        {popup}
-
+        <Flyout {...propsForPopup}/>
       </div>
     );
   },

@@ -10,6 +10,7 @@ import { getMapRanges, getMapValue } from '../../utils/mapUtil';
 
 import { GeoJson } from 'react-leaflet';
 import Legend from './legend';
+import Flyout from './flyout';
 
 const PolygonsMap = React.createClass({
   propTypes: {
@@ -80,19 +81,14 @@ const PolygonsMap = React.createClass({
     );
   },
 
-  renderPopup() {
+  render() {
     const propsForPopup = pick(this.props,
       [ 'data', 'dataType', 'deselect', 'selected', 'viewMode']);
-    return (<div {...propsForPopup}/>); // TODO this should be the popup
-  },
-
-  render() {
     return (
       <div>
         {this.props.polygonsData.map(this.renderFeature)}
 
-        {/* popup overlay for polygon */}
-        {/*this.renderPopup()*/}
+        (<Flyout {...propsForPopup}/>)
         <Legend ranges={getMapRanges(this.props.dataType)}/>
       </div>
     );

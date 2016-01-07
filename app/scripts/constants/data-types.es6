@@ -23,9 +23,15 @@ const DataTypes = Union({
 
   getIdColumn() {
     return DataTypes.match(this, {
-      Waterpoints: () => 'WATER_POINT_CODE',
-      Boreholes: () => '_id',  // TODO: _id is generated from ckan. need a stable, unique id for all boreholes.
-      Dams: () => 'POINT_ID',
+      Death: () => '_id',
+      FamilyPlanning: () => '_id',
+      Deliveries: () => '_id',
+      HealthWorkers: () => '_id',
+      IPD: () => '_id',
+      OPD: () => '_id',
+      Tetanus: () => '_id',
+      HivCenter: () => '_id',
+      Facilities: () => 'FACILITY_ID_NUMBER',
     });
   },
   toParam() {

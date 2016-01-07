@@ -45,3 +45,7 @@ $static_water_level_color: #87ceeb;
 $dynamic_water_level_meter_color: #000080;
 $draw-_down_meter_color: #dda0dd;
 $yield_meter_cubed_per_hour_color: #4b0082;
+
+$map-overlay: hsla(0, 0%, 100%, 0.9);
+$map-overlay-edge: hsla(0, 0%, 0%, 0.1);
+$map-overlay-outline: -1px -1px 0 $map-overlay-edge;
