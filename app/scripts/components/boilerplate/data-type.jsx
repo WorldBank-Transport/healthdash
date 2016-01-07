@@ -66,7 +66,7 @@ const DataType = React.createClass({
           </div>
       ),
       Closed: () => <div style={{display: 'none'}}></div>,
-    })
+    });
   },
 
   render() {
@@ -84,7 +84,7 @@ const DataType = React.createClass({
           </li>
           <li>
             <a onClick={this.toggle}>
-              <T k="data-type.others" on/> <Icon type={`chevron-circle-${direction}`}/>
+              <T k="data-type.others"/> <Icon type={`chevron-circle-${direction}`}/>
             </a>
             {this.renderOthers()}
           </li>
