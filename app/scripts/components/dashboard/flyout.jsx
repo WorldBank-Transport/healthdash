@@ -5,6 +5,7 @@ import AsyncState from '../../constants/async';
 import DataTypes from '../../constants/data-types';
 import ViewModes from '../../constants/view-modes';
 import T from '../misc/t';
+import FacilitiesFlyout from './facilities-flyout';
 
 require('stylesheets/dashboard/flyout');
 
@@ -49,6 +50,15 @@ const Flyout = React.createClass({
     return Maybe.match(details.properties.data, {
       None: () => this.renderNotFound(details.id),
       Some: data => DataTypes.match(this.props.dataType, {
+        // Death: () => '_id',
+        // FamilyPlanning: () => '_id',
+        // Deliveries: () => '_id',
+        // HealthWorkers: () => '_id',
+        // IPD: () => '_id',
+        // OPD: () => '_id',
+        // Tetanus: () => '_id',
+        // HivCenter: () => '_id',
+        Facilities: () => (<FacilitiesFlyout data={data} region={details.id}/>),
         [_]: () => (<div><h3>Poly flyout</h3>{JSON.stringify(data)}</div>),
       }),
     });
