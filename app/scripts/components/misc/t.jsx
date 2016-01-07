@@ -21,7 +21,7 @@ const allTranslations = {
     'nav.speak-out': 'Speak Out',
 
     'static.data-title': 'Explore the data behind the dashboard.',
-    'static.data-content': 'This Health Dashboard was built on open data release by the government of Tanzania. The raw data is published on the Government\'s open data portal in machine-readable format with a license that encourages re-use. The data behind this education dashboard comes from Ministry of Water and the National Bureau of Statistics of Tanzania.',
+    'static.data-content': 'This Health Dashboard was built on open data release by the government of Tanzania. The raw data is published on the Government\'s open data portal in machine-readable format with a license that encourages re-use. The data behind this education dashboard comes from Ministry of Health and Social Welfare.',
     'static.speakout-title': 'Your voice matters!',
     'static.speakout-content': 'Complete this form to share feedback about the data.',
 
@@ -173,8 +173,10 @@ const allTranslations = {
     'error.api.static.postprocess': 'An error occurred while the application was procesing boundary data',
   },
   'sw-tz': {
-    'site-name': 'Water Dashboard',
+    'site-name': 'Dashibodi ya Afya',
     'site.flag': 'Flag of Tanzania',
+    'home.health': 'Vituo vya matibabu',
+
     'home.waterpoints': 'Vituo vya maji safi na salama',
     'home.title': 'Track performance, explore data and provide feedback using this Health Dashboard.',
     'home.text': 'Dashibodi hii ya elimu ni tovuti ya takwimu huria zinazoorodhesha matokeo ya mitihani ya kitaifa ya hivi karibuni na habari muhimu kwako. Tumia orodha iliyo juu kutazama takwimu asili data na wasiliana nasi kuhusu takwimu zisizokuwepo au zenye makosa.',
@@ -184,7 +186,7 @@ const allTranslations = {
     'nav.speak-out': 'Maoni',
 
     'static.data-title': 'Chunguza data ya dashibodi.',
-    'static.data-content': 'Dashibodi ya elimu imejengwa juu ya Takwimu Huria zilizoainishwa na Serikali ya Tanzania. Takwimu ghafi zimetangazwa kwa tovuti kuu ya Serikali kwa njia inayosomeka na kompyuta ikitumia leseni inayohamasisha matumizi kwa jumla. Takwimu zimetangazwa na Wizara ya Maji, na Ofisi ya Taifa ya Takwimu.',
+    'static.data-content': 'Tovuti hii imechapishwa kwa leseni ya GPL 3.0. Wageni wa tovuti wanahamasishwa kuangalia programu kwa makini na kuitumia kama watachapisha programu zao kwa leseni inayolingana.',
     'static.speakout-title': 'Sauti yako ni ya maana!',
     'static.speakout-content': 'Jaza fomu hii utupe maoni yako kuhusu takwimu zilizopo.',
 
@@ -389,9 +391,19 @@ const allTranslations = {
     'view-mode.ward': 'Kata',
     'view-mode.disabled': 'Data haipo',
 
-    'data-type.waterpoints': 'Vituo vya maji',
-    'data-type.boreholes': 'Visima',
-    'data-type.dams': 'Mabwawa',
+    'data-type.death': 'Sababu za vifo',
+    'data-type.family-planning': 'Huduma ya mpango wa uzazi',
+    'data-type.deliveries': 'Wanaojifungua',
+    'data-type.health-workers': 'Health Workers',
+    'data-type.ipd': 'IPD: Idara ya wagonjwa wa ndani',
+    'data-type.opd': 'OPD: Idara ya wagonjwa wa nje',
+    'data-type.tetanous': 'Chanjo ya pepopunda',
+    'data-type.hiv-center': 'HIV Centers',
+    'data-type.facilities': 'Vituo vya matibabu ya virusi vya UKIMWI',
+
+
+
+
 
     'overview-bar': 'Maelezo ya joomla',
 

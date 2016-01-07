@@ -7,19 +7,14 @@ const DataSources = React.createClass({
     return (
       <div className="data-sources">
         <ul>
+        <li>
+          <a href="http://www.moh.go.tz"><img src="images/ministry-of-health.png"/>
+          Ministry of Health and Social Welfare
+          </a>
+        </li>
           <li>
-            <a href="http://www.nbs.go.tz/"><img src="images/tz-odp.png"/>
+            <a href="http://opendata.go.tz/organization/ministry-of-health-and-social"><img src="images/tz-odp.png"/>
               Government Open Data Portal
-            </a>
-          </li>
-          <li>
-            <a href="http://www.maji.go.tz/"><img src="images/water-ministry.png"/>
-            Ministry of Water
-            </a>
-          </li>
-          <li>
-            <a href="http://www.nbs.go.tz/"><img src="images/nbs.png"/>
-              National Bureau of Statistics
             </a>
           </li>
         </ul>
