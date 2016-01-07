@@ -57,16 +57,13 @@ const allTranslations = {
     'legend.greaterhan75': '> 75',
     'legend.nodata': 'No Data',
 
-    'dash.regional': 'Reginal View',
+    'dash.region': 'Regions',
     'dash.district': 'Districts',
     'dash.ward': 'Wards',
-    'dash.national': 'National View',
-    'dash.healthfacilities': 'Health Facilities',
-    'dash.otherselections': 'Other Selections',
-    'dash.share': 'Share',
+    'dash.national': 'National',
 
     'charts.toggle.closed': 'View Charts',
-    'charts.toggle.opened': 'Hide sCharts',
+    'charts.toggle.opened': 'Hide Charts',
 
     'filters.toggle.closed': 'Dashboard Filters',
     'filters.toggle.opened': 'Hide Filters',
@@ -243,13 +240,12 @@ const allTranslations = {
     'filters.population-served.unit': 'Idadi ya watu',
     'filters.filter-two': 'Kichujio 2',
     'filters.filter-three': 'Kichujio 3',
+
+    'dash.waterpoints': 'Vituo vya maji safi na salama',
+    'dash.waterpoint': 'Kituo cha maji safi na salama',
     'dash.region': 'Mikoa',
     'dash.district': 'Wilaya',
     'dash.ward': 'Kata',
-    'dash.national': 'National',
-    'dash.healthfacilities': 'Health Facilities',
-    'dash.otherselections': 'Other Selections',
-    'dash.share': 'Share',
 
     'charts.toggle.closed': 'Tazama Chati',
     'charts.toggle.opened': 'Ficha Chati',
