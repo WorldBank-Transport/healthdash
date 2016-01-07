@@ -16,6 +16,7 @@ import { load } from '../../actions/data';
 import { clear, setRange, setInclude } from '../../actions/filters';
 import { select, deselect } from '../../actions/select';
 import { loadPolygons, clearPolygons } from '../../actions/polygons';
+import { toggleCharts } from '../../actions/layout';
 
 // map and overlays:
 import BoundsMap from '../leaflet/bounds-map';
@@ -28,8 +29,11 @@ import SpinnerModal from '../misc/spinner-modal';
 import ViewModes from '../../constants/view-modes';
 
 // components
+import T from '../misc/t';
 import TSetChildProps from '../misc/t-set-child-props';
 import DataType from '../boilerplate/data-type';
+import MapNavPrimary from '../boilerplate/map-nav-primary';
+import MapNav from '../boilerplate/map-nav';
 
 require('stylesheets/dashboard/dash-layout');
 
@@ -101,11 +105,17 @@ const DashRoot = React.createClass({
 
     return (
       <div className="main dash-layout">
-        <div className="dash-top">
-          <div className="map-nav">
-            <DataType {...propsForChildren} />
-          </div>
-        </div>
+        <MapNav primary={(
+          <MapNavPrimary
+              extraClasses="charts-toggle"
+              onToggle={toggleCharts}
+              openClosed={this.state.layout.charts}>
+            <T k={`charts.toggle.${this.state.layout.charts.getId()}`} />
+          </MapNavPrimary>
+        )}>
+          <DataType {...propsForChildren} />
+        </MapNav>
+
         <div className="map-container">
           <BoundsMap
               bounds={this.state.view.mapBounds}

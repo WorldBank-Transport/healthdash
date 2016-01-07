@@ -88,6 +88,7 @@ const allTranslations = {
     'data-type.tetanous': 'Tetanus',
     'data-type.hiv-center': 'HIV Centers',
     'data-type.facilities': 'Health Facilities',
+    'data-type.others': 'Other Selections',
 
     'chart.health-facilities.title': 'Health Facilities',
     'chart.health-facilities.helptext': ' by Region',
