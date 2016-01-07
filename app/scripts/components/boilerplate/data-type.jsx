@@ -10,48 +10,28 @@ const DataType = React.createClass({
       <div className="data-type">
         <ul>
           <li>
-            <Link activeClassName="active" to="/dash/points/facilities/">
-              <T k="data-type.facilities" />
+            <Link activeClassName="active" to="">
+              <T k="dash.national"/>
             </Link>
           </li>
           <li>
-            <Link activeClassName="active" to="/dash/regions/death/">
-              <T k="data-type.death" />
+            <Link to="">
+            <T k="dash.regional"/>
             </Link>
           </li>
           <li>
-            <Link activeClassName="active" to="/dash/regions/family-planning/">
-              <T k="data-type.family-planning" />
+            <Link to="/dash/points/facilities/">
+              <T k="dash.healthfacilities"/>
             </Link>
           </li>
           <li>
-            <Link activeClassName="active" to="/dash/regions/deliveries/">
-              <T k="data-type.deliveries" />
+            <Link to="">
+              <T k="dash.otherselections" />
             </Link>
           </li>
           <li>
-            <Link activeClassName="active" to="/dash/regions/health-workers/">
-              <T k="data-type.health-workers" />
-            </Link>
-          </li>
-          <li>
-            <Link activeClassName="active" to="/dash/regions/ipd/">
-              <T k="data-type.ipd" />
-            </Link>
-          </li>
-          <li>
-            <Link activeClassName="active" to="/dash/regions/opd/">
-              <T k="data-type.opd" />
-            </Link>
-          </li>
-          <li>
-            <Link activeClassName="active" to="/dash/regions/tetanous/">
-              <T k="data-type.tetanous" />
-            </Link>
-          </li>
-          <li>
-            <Link activeClassName="active" to="/dash/regions/hiv-center/">
-              <T k="data-type.hiv-center" />
+            <Link to="">
+              <T k="dash.share" />
             </Link>
           </li>
         </ul>
