@@ -178,7 +178,7 @@ const allTranslations = {
     'home.health': 'Vituo vya matibabu',
 
     'home.waterpoints': 'Vituo vya maji safi na salama',
-    'home.title': 'Track performance, explore data and provide feedback using this Health Dashboard.',
+    'home.title': 'Tazama data katika sekta ya afya ; chunguza na utupe maoni zaidi ukitumia Dashibodi hii ya Afya.',
     'home.text': 'Dashibodi hii ya elimu ni tovuti ya takwimu huria zinazoorodhesha matokeo ya mitihani ya kitaifa ya hivi karibuni na habari muhimu kwako. Tumia orodha iliyo juu kutazama takwimu asili data na wasiliana nasi kuhusu takwimu zisizokuwepo au zenye makosa.',
 
     'nav.home': 'Mwanzo',
