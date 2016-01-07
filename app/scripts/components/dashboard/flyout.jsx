@@ -6,6 +6,9 @@ import DataTypes from '../../constants/data-types';
 import ViewModes from '../../constants/view-modes';
 import T from '../misc/t';
 import FacilitiesFlyout from './facilities-flyout';
+import FamilyPlanningFlyout from './family-planning-flyout';
+import DeliveriesFlyout from './deliveries-flyout';
+import TetanusFlyout from './tetanus-flyout';
 
 require('stylesheets/dashboard/flyout');
 
@@ -46,18 +49,25 @@ const Flyout = React.createClass({
       </div>);
   },
 
+  defaultPolyRender(region, number, title) {
+    return (<div>
+        <h3>{region}</h3>
+        <h5><T k={title}/>: {number}</h5>
+      </div>);
+  },
+
   renderPolygonsPopup(details) {
     return Maybe.match(details.properties.data, {
       None: () => this.renderNotFound(details.id),
       Some: data => DataTypes.match(this.props.dataType, {
-        // Death: () => '_id',
-        // FamilyPlanning: () => '_id',
-        // Deliveries: () => '_id',
-        // HealthWorkers: () => '_id',
-        // IPD: () => '_id',
-        // OPD: () => '_id',
-        // Tetanus: () => '_id',
-        // HivCenter: () => '_id',
+        Death: () => this.defaultPolyRender(details.id, data.value, 'flyout.death.length'),
+        FamilyPlanning: () => (<FamilyPlanningFlyout data={data} region={details.id}/>),
+        Deliveries: () => (<DeliveriesFlyout data={data} region={details.id}/>),
+        HealthWorkers: () => this.defaultPolyRender(details.id, data.value, 'flyout.workers.length'),
+        IPD: () => this.defaultPolyRender(details.id, data.value, 'flyout.ipd.length'),
+        OPD: () => this.defaultPolyRender(details.id, data.value, 'flyout.opd.length'),
+        Tetanus: () => (<TetanusFlyout data={data} region={details.id}/>),
+        HivCenter: () => this.defaultPolyRender(details.id, data.length, 'flyout.hiv.length'),
         Facilities: () => (<FacilitiesFlyout data={data} region={details.id}/>),
         [_]: () => (<div><h3>Poly flyout</h3>{JSON.stringify(data)}</div>),
       }),
