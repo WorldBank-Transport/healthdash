@@ -33,6 +33,7 @@ const allTranslations = {
     'filters.population-served.unit': 'Number of people',
     'filters.filter-two': 'Filter Two',
     'filters.filter-three': 'Filter Three',
+    'filter.year': 'Years',
     'filter.year.2012': '2012',
     'filter.year.2013': '2013',
     'filter.year.2014': '2014',

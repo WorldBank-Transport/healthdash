@@ -34,6 +34,7 @@ import TSetChildProps from '../misc/t-set-child-props';
 import DataType from '../boilerplate/data-type';
 import MapNavPrimary from '../boilerplate/map-nav-primary';
 import MapNav from '../boilerplate/map-nav';
+import YearSelector from '../filters/year-selector';
 
 require('stylesheets/dashboard/dash-layout');
 
@@ -113,7 +114,8 @@ const DashRoot = React.createClass({
             <T k={`charts.toggle.${this.state.layout.charts.getId()}`} />
           </MapNavPrimary>
         )}>
-          <DataType {...propsForChildren} />
+          <DataType />
+          <YearSelector />
         </MapNav>
 
         <div className="map-container">
