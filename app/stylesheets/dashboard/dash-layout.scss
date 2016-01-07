@@ -8,7 +8,7 @@
   }
 
   .map-container {
-    bottom: $map-nav-height + $overview-bar-height;
+    bottom: $map-bottom-position;
     left: 0;
     position: absolute;
     right: $main-chart-width;

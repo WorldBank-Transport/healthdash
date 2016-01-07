@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../boilerplate/button';
 import T from '../misc/t';
+import Footer from '../boilerplate/footer';
 
 require('stylesheets/boilerplate/static-content');
 
@@ -9,7 +10,7 @@ const Homepage = React.createClass({
     return (
       <div className="home-page">
         <div className="homebanner">
-          // <img src="images/homeimg.png"/>
+          <img src="images/homeimg.png"/>
         </div>
         <div className="homecontent">
           <h2><T k="home.title" /></h2>
@@ -20,6 +21,7 @@ const Homepage = React.createClass({
             <T k="home.text" />
           </p>
         </div>
+        <Footer/>
       </div>
     );
   },

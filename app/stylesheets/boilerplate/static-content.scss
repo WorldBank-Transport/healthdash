@@ -21,7 +21,12 @@
   // position: relative;
   // overflow: hidden;
   // border:1px solid #f00;
-  // vertical-align:middle;
+  // vertical-align:middle
+  position: static;
+  position:absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
 }
 
 .homebanner img {

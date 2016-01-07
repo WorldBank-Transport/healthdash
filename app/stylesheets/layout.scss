@@ -16,7 +16,7 @@ body {
 }
 
 .main {
-  bottom: $footer-height;
+  bottom: 0;
   left: 0;
   position: absolute;
   right: 0;
@@ -26,6 +26,11 @@ body {
     height: 100%;
     padding: $content-space-mobile 0;
     top: $content-space-mobile;
+  }
+  &.secondary {
+    padding: 20px 0;
+    position: relative;
+    top: 0;
   }
 }
 

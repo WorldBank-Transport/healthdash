@@ -23,6 +23,8 @@ import { TileLayer } from 'react-leaflet';
 import Filters from '../filters/filters';
 import Charts from '../charts/charts';
 import SpinnerModal from '../misc/spinner-modal';
+import Footer from '../boilerplate/footer';
+
 
 //import DataTypes from '../../constants/data-types';
 import ViewModes from '../../constants/view-modes';
@@ -100,6 +102,7 @@ const DashRoot = React.createClass({
     });
 
     return (
+      <div>
       <div className="main dash-layout">
         <div className="dash-top">
           <div className="map-nav">
@@ -122,7 +125,10 @@ const DashRoot = React.createClass({
           {this.renderLoadingOverlay()}
           </div>
           <Charts {...propsForChildren} />
-      </div>);
+          </div>
+          <Footer />
+      </div>
+    );
   },
 });
 
