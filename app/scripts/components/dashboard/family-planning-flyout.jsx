@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { Result } from '../../utils/functional';
 import T from '../misc/t';
 
 const FamilyPlanningFlyout = React.createClass({

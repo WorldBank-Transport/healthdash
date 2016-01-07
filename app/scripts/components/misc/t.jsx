@@ -188,7 +188,7 @@ const allTranslations = {
     'flyout.family.total': 'Total Family Planning Clients',
     'flyout.family.new-clients': 'New Clients',
     'flyout.family.continuious': 'Family Planning Continuious',
-    'flyout.family.projected':'Projected Family Planning Clients',
+    'flyout.family.projected': 'Projected Family Planning Clients',
     'flyout.deliveries.total': 'Total Deliveries',
     'flyout.deliveries.health-facilities-deliveries': 'Health Facility Deliveries',
     'flyout.deliveries.traditional': 'Traditional Birth Attendants (Tba)',
