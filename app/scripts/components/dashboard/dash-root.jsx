@@ -124,7 +124,6 @@ const DashRoot = React.createClass({
               {...propsForChildren} />
           {this.renderLoadingOverlay()}
           </div>
-          <Charts {...propsForChildren} />
           </div>
           <Footer />
       </div>
