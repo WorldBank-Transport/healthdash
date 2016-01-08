@@ -11,7 +11,7 @@ require('stylesheets/charts/deliveries-barchart');
 
 const DeliveriesBarChart = React.createClass({
   propTypes: {
-    deliveries: PropTypes.array.isRequired,
+    data: PropTypes.array.isRequired,
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),
   },
 
@@ -52,11 +52,11 @@ const DeliveriesBarChart = React.createClass({
       return (<div>empty</div>);
     }
 
-    if (this.props.deliveries.length === 0) {
+    if (this.props.data.length === 0) {
       return false;
     }
     const keys = ['HEALTH FACILITY DELIVERIES', 'TRADITIONAL BIRTH ATTENDANTS (TBA)', 'BORN BEFORE ARRIVAL (BBA)', 'HOME DELIVERY'];
-    const sum = func.Result.sumByGroupBy(this.props.deliveries, 'YEAR', keys);
+    const sum = func.Result.sumByGroupBy(this.props.data, 'YEAR', keys);
     return (
       <div className="deliveries-barchart">
         <h3 className="chart-title"><T k="chart.deliveries-barchart.title" /> - <span className="chart-helptext"><T k="chart.deliveries-barchart.helptext" /></span></h3>
@@ -65,9 +65,9 @@ const DeliveriesBarChart = React.createClass({
             <BarChart
                 data={this.parseData(sum, keys)}
                 groupedBars={true}
-                height={180}
+                height={280}
                 margin={{top: 10, bottom: 20, left: 60, right: 10}}
-                width={this.state.size.width * 0.18}
+                width={this.state.size.width * 0.90}
                 xAxis={{label: {k: `chart.deliveries-barchart.x-axis`}}}
                 yAxis={{label: {k: 'chart.deliveries-barchart.y-axis'}}} />
               </TSetChildProps>

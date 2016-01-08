@@ -1,15 +1,16 @@
 import React, { PropTypes } from 'react';
 import DataTypes from '../../constants/data-types';
 import ViewModes from '../../constants/view-modes';
-import FacilitiesCharts from './facilities-charts';
-import HivCharts from './hiv-charts';
-import DeathCharts from './death-charts';
-import DeliveriesCharts from './deliveries-charts';
-import FamilyPlanningCharts from './family-planning-charts';
-import HealthWorkersCharts from './health-workers-charts';
-import IpdCharts from './ipd-charts';
-import OpdCharts from './opd-charts';
-import TetanusCharts from './tetanus-chart';
+import OpenClosed from '../../constants/open-closed';
+import HealthFacilitiesChart from './health-facilities-barchar';
+import HivChart from './hiv-barchar';
+import DeathByAgeChart from './death-by-age-chart';
+import DeliveriesBarChart from './deliveries-barchar';
+import FamilityBarChart from './family-barchar';
+import HealthWorkersBarChart from './health-workers-barchart';
+import IpdByAgeChart from './ipd-by-age-chart';
+import OpdByAgeChart from './opd-by-age-chart';
+import TetanusBarChart from './tetanus-barchar';
 import MetricSelector from '../filters/metric-selector';
 
 require('stylesheets/charts/charts');
@@ -20,26 +21,29 @@ const Charts = React.createClass({
     data: PropTypes.array,  // injected
     dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
     metrics: PropTypes.object,  // injected
+    openClosed: PropTypes.instanceOf(OpenClosed.OptionClass),  // injected
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
 
   render() {
-    return (
+    return OpenClosed.match(this.props.openClosed, {
+      Open: () => (
         <div className="charts">
-          <MetricSelector metrics={this.props.metrics}/>
           {DataTypes.match(this.props.dataType, {
-            Death: () => (<DeathCharts {...this.props}/>),
-            FamilyPlanning: () => (<FamilyPlanningCharts {...this.props}/>),
-            Deliveries: () => (<DeliveriesCharts {...this.props}/>),
-            HealthWorkers: () => (<HealthWorkersCharts {...this.props}/>),
-            IPD: () => (<IpdCharts {...this.props}/>),
-            OPD: () => (<OpdCharts {...this.props}/>),
-            Tetanus: () => (<TetanusCharts {...this.props}/>),
-            HivCenter: () => (<HivCharts {...this.props}/>),
-            Facilities: () => (<FacilitiesCharts {...this.props}/>),
+            Death: () => (<DeathByAgeChart {...this.props}/>),
+            FamilyPlanning: () => (<FamilityBarChart {...this.props}/>),
+            Deliveries: () => (<DeliveriesBarChart {...this.props}/>),
+            HealthWorkers: () => (<HealthWorkersBarChart {...this.props}/>),
+            IPD: () => (<IpdByAgeChart {...this.props}/>),
+            OPD: () => (<OpdByAgeChart {...this.props}/>),
+            Tetanus: () => (<TetanusBarChart {...this.props}/>),
+            HivCenter: () => (<HivChart {...this.props}/>),
+            Facilities: () => (<HealthFacilitiesChart {...this.props}/>),
           })}
         </div>
-      );
+      ),
+      Closed: () => <div style={{display: 'none'}}></div>,
+    });
   },
 });
 

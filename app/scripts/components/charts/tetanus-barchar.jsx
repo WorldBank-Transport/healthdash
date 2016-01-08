@@ -65,9 +65,9 @@ const TetanusBarChart = React.createClass({
             <BarChart
                 data={this.parseData(sum, keys)}
                 groupedBars={true}
-                height={180}
+                height={280}
                 margin={{top: 10, bottom: 20, left: 60, right: 10}}
-                width={this.state.size.width * 0.18}
+                width={this.state.size.width * 0.90}
                 xAxis={{label: {k: `chart.tetanus-barchart.x-axis`}}}
                 yAxis={{label: {k: 'chart.tetanus-barchart.y-axis'}}} />
               </TSetChildProps>

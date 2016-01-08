@@ -2,11 +2,10 @@ import React, { PropTypes } from 'react';
 import DataTypes from '../../constants/data-types';
 import ViewModes from '../../constants/view-modes';
 import YearSelector from '../filters/year-selector';
-import MetricSummary from './metric-summary-chart';
-import DeathByAgeChart from './death-by-age-chart';
+import MetricSummary from '../charts/metric-summary-chart';
 import { Result } from '../../utils/functional';
 
-const DeathCharts = React.createClass({
+const OpdRightPanel = React.createClass({
   propTypes: {
     children: PropTypes.node, // injected
     data: PropTypes.array,  // injected
@@ -15,9 +14,9 @@ const DeathCharts = React.createClass({
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
 
-  getTotalDeath() {
+  getTotalOpd() {
     if (this.props.data.length > 0) {
-      const keys = Object.keys(this.props.data[0]).filter(key => key !== 'CHILD_TYPE' && key !== 'DISEASE' && key !== 'YEAR' && key !== '_id');
+      const keys = Object.keys(this.props.data[0]).filter(key => key !== 'CHILD_TYPE' && key !== 'DISEASES' && key !== 'YEAR' && key !== '_id');
       const summary = Result.sumByAll(this.props.data, keys);
       return Object.keys(summary).reduce( (ret, item) => {
         ret.total += summary[item].value;
@@ -32,16 +31,10 @@ const DeathCharts = React.createClass({
     return (
       <div className="container">
         <div className="row">
-          <YearSelector />
-        </div>
-        <div className="row">
-          <MetricSummary icon="deaths.png" metric={this.getTotalDeath()} title="chart.deaths.title"/>
-        </div>
-        <div className="row">
-          <DeathByAgeChart deaths={this.props.data}/>
+          <MetricSummary icon="opd.png" metric={this.getTotalOpd()} title="chart.opd.title"/>
         </div>
       </div>);
   },
 });
 
-export default DeathCharts;
+export default OpdRightPanel;

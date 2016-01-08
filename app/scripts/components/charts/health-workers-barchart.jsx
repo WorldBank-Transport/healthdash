@@ -12,7 +12,7 @@ require('stylesheets/charts/health-workers-barchart');
 const HealthWorkersBarChart = React.createClass({
   propTypes: {
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),
-    workers: PropTypes.array.isRequired,
+    data: PropTypes.array.isRequired,
   },
 
   mixins: [
@@ -53,12 +53,12 @@ const HealthWorkersBarChart = React.createClass({
       return (<div>empty</div>);
     }
 
-    if (this.props.workers.length === 0) {
+    if (this.props.data.length === 0) {
       return false;
     }
-    const keys = Object.keys(this.props.workers[0]).filter(key => key !== 'HEALTH WORKERS' && key !== 'YEAR' && key !== '_id');
-    const years = Object.keys(func.Result.groupBy(this.props.workers, 'YEAR'));
-    const sum = func.Result.sumByGroupBy(this.props.workers, 'YEAR', keys);
+    const keys = Object.keys(this.props.data[0]).filter(key => key !== 'HEALTH WORKERS' && key !== 'YEAR' && key !== '_id');
+    const years = Object.keys(func.Result.groupBy(this.props.data, 'YEAR'));
+    const sum = func.Result.sumByGroupBy(this.props.data, 'YEAR', keys);
     return (
       <div className="health-workers-barchart">
         <h3 className="chart-title"><T k="chart.health-worker.title" /> - <span className="chart-helptext"><T k="chart.health-worker.helptext" /></span></h3>
@@ -67,9 +67,9 @@ const HealthWorkersBarChart = React.createClass({
             <BarChart
                 data={this.parseData(sum, years)}
                 groupedBars={true}
-                height={180}
+                height={280}
                 margin={{top: 10, bottom: 20, left: 50, right: 10}}
-                width={this.state.size.width * 0.20}
+                width={this.state.size.width * 0.90}
                 xAxis={{label: {k: `chart.health-worker.x-axis`}}}
                 yAxis={{label: {k: 'chart.health-worker.y-axis'}}} />
               </TSetChildProps>

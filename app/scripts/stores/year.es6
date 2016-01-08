@@ -29,7 +29,7 @@ const YearStore = createStore({
   },
 
   getValuesForProperty(data, property) {
-    return Object.keys(func.Result.groupBy(data, property)).filter(isUndefined).reduce( (ret, value) => {
+    return Object.keys(func.Result.groupBy(data, property)).filter(key => !isUndefined(key)).reduce( (ret, value) => {
       return {
         ...ret,
         [value]: false,

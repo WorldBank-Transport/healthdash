@@ -1,0 +1,13 @@
+@import '../config/colours';
+@import '../config/dimensions';
+
+.right-panel {
+  background-color: whitespace;
+  bottom: 0;
+  overflow-y: auto;
+  position: absolute;
+  right: 0;
+  top: $header-height;
+  width: $main-chart-width;
+  z-index: 11;
+}
