@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'reflux';
-import Checkbox from '../misc/checkbox';
 import YearStore from '../../stores/year';
 import { selectYear } from '../../actions/filters';
 import OpenClosed from '../../constants/open-closed';
@@ -35,12 +34,16 @@ const YearSelector = React.createClass({
   },
 
   render() {
-    debugger;
     if (Object.keys(this.state.years) <= 0) {
       return false;
     }
     const listOfOptions = Object.keys(this.state.years).map(year => {
-      return (<li key={`filter-${year}`}><Checkbox action={this.select(year)} checked={this.state.years[year]} label={`filter.year.${year}`} /></li>);
+      return (
+        <li key={`filter-${year}`}>
+          <a className={this.state.years[year] ? 'active' : ''} onClick={this.select(year)}>
+            <span className="selectable"/><span>${year}</span>
+          </a>
+        </li>);
     });
     const direction = OpenClosed.match(this.state.openClosed, {
       Open: () => 'up',
@@ -48,7 +51,7 @@ const YearSelector = React.createClass({
     });
     return (
       <div className="year-selector">
-        <div>
+        <div className="menu-item">
           <a onClick={this.toggle}>
             <T k="filter.year"/> <Icon type={`chevron-circle-${direction}`}/>
           </a>
@@ -56,9 +59,11 @@ const YearSelector = React.createClass({
         {
           OpenClosed.match(this.state.openClosed, {
             Open: () => (
-              <ul className="years">
-                {listOfOptions}
-              </ul>),
+              <div className="floating-div">
+                <ul className="years">
+                  {listOfOptions}
+                </ul>
+              </div>),
             Closed: () => <div style={{display: 'none'}}></div>,
           })
         }
