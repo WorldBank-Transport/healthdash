@@ -420,7 +420,6 @@ const allTranslations = {
     'chart.pie.WATER_QUANTITY': 'Kiasi cha maji',
     'chart.pie.SOURCE_TYPE': 'Chanzo cha maji',
 
-
     'filters.toggle.closed': 'Kichujio cha Dashibodi',
     'filters.toggle.opened': 'Ficha Kichujio cha Dashibodi',
 
@@ -444,10 +443,6 @@ const allTranslations = {
     'data-type.tetanous': 'Chanjo ya pepopunda',
     'data-type.hiv-center': 'HIV Centers',
     'data-type.facilities': 'Vituo vya matibabu ya virusi vya UKIMWI',
-
-
-
-
 
     'overview-bar': 'Maelezo ya joomla',
 

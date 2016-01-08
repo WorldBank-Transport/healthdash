@@ -11,7 +11,6 @@ import HealthWorkersBarChart from './health-workers-barchart';
 import IpdByAgeChart from './ipd-by-age-chart';
 import OpdByAgeChart from './opd-by-age-chart';
 import TetanusBarChart from './tetanus-barchar';
-import MetricSelector from '../filters/metric-selector';
 
 require('stylesheets/charts/charts');
 

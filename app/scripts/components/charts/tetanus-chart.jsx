@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import DataTypes from '../../constants/data-types';
 import ViewModes from '../../constants/view-modes';
-import YearSelector from '../filters/year-selector';
 import TetanusBarChart from './tetanus-barchar';
 import MetricSummary from './metric-summary-chart';
 import { Result } from '../../utils/functional';

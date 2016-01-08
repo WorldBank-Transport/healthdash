@@ -11,8 +11,8 @@ require('stylesheets/charts/health-workers-barchart');
 
 const HealthWorkersBarChart = React.createClass({
   propTypes: {
-    viewMode: PropTypes.instanceOf(ViewModes.OptionClass),
     data: PropTypes.array.isRequired,
+    viewMode: PropTypes.instanceOf(ViewModes.OptionClass),
   },
 
   mixins: [
