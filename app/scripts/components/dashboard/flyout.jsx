@@ -51,8 +51,8 @@ const Flyout = React.createClass({
 
   defaultPolyRender(region, number, title) {
     return (<div>
-        <h3>{region}</h3>
-        <h5><T k={title}/>: {number}</h5>
+        <span className="flyout-section"><T k="flyout.region"/>: <h3>{region}</h3></span>
+        <span className="flyout-section"><T k={title}/>: <h3>{number}</h3></span>
       </div>);
   },
 

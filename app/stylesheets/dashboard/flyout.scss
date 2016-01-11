@@ -22,10 +22,10 @@
       color: $popup-stat-number;
       display: block;
       font-size: $popup-label-text;
-      font-weight: $title-weight;
+      line-height: $popup-label-text * 1.2;
       margin-top: $flyout-section-top-position;
       h3 {
-        margin: $flyout-stat-top-position 0 0 0;
+        margin: 0;
       }
     }
   }
