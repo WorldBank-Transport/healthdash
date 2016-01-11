@@ -4,7 +4,6 @@ import ViewModes from '../../constants/view-modes';
 import MetricSummary from '../charts/metric-summary-chart';
 import { styles } from '../../utils/searchUtil';
 import T from '../misc/t';
-import { _ } from 'results';
 import { Link } from 'react-router';
 import Autocomplete from 'react-autocomplete';
 import { Result } from '../../utils/functional';
@@ -42,10 +41,10 @@ const FacilitiesRightPanel = React.createClass({
   },
 
   renderHealthType() {
-    const healthFacilitiesType = Result.groupBy(this.props.data, 'FACILITY TYPE');  
+    const healthFacilitiesType = Result.groupBy(this.props.data, 'FACILITY TYPE');
     return (
       <div className="row">
-        { Object.keys(healthFacilitiesType).map(key => 
+        {Object.keys(healthFacilitiesType).map(key =>
           (<MetricSummary icon={`facilities-${key}.png`} metric={healthFacilitiesType[key].length} title={`chart.facilities.type.${key}`}/>)
         )}
       </div>

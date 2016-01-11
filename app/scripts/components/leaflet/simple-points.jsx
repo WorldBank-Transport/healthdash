@@ -6,7 +6,7 @@
 
 import { Map, CircleMarker, LayerGroup } from 'leaflet';
 import React, { PropTypes } from 'react';
-import colours, { point, Color } from '../../utils/colours';
+import { point, Color } from '../../utils/colours';
 import isNaN from 'lodash/lang/isNaN';
 
 
@@ -64,7 +64,7 @@ const SimplePoints = React.createClass({
     return e => {
       e.target.setStyle(point.normal(color));
       this.props.deselect();
-    }
+    };
   },
 
   handleMouseover(id) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import Checkbox from '../misc/checkbox';
-import { setExclude } from '../../actions/filters'
+import { setExclude } from '../../actions/filters';
 
 require('stylesheets/filters/type-selector');
 
@@ -11,15 +11,14 @@ const TypeSelector = React.createClass({
       DISPENSARY: true,
       'HEALTH CENTRE': true,
       CLINIC: true,
-      HOSPITAL: true,    
+      HOSPITAL: true,
     };
   },
 
   select(value) {
     return () => {
-      debugger;
       const newState = {
-        ...this.state, 
+        ...this.state,
         [value]: !this.state[value],
       };
       const excluded = Object.keys(newState).filter(key => !newState[key]);

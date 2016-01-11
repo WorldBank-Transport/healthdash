@@ -22,9 +22,9 @@ const colours = {
 
   unknown: '#7d7d7d',
 
-  health_centre: 'yellow',
+  healthCentre: 'yellow',
   clinic: 'orange',
-  hospital: 'red'
+  hospital: 'red',
 };
 export default colours;
 
@@ -81,16 +81,16 @@ export const Color = {};
 
 Color.getFacilityColor = (type) => {
   let c = colours.theme;
-  switch(type) {
-    case 'HEALTH CENTRE':
-      c = colours.health_centre;
-      break;
-    case 'CLINIC':
-      c = colours.clinic;
-      break;
-    case 'HOSPITAL':
-      c = colours.hospital;
-      break;
+  switch (type) {
+  case 'HEALTH CENTRE':
+    c = colours.healthCentre;
+    break;
+  case 'CLINIC':
+    c = colours.clinic;
+    break;
+  case 'HOSPITAL':
+    c = colours.hospital;
+    break;
   }
   return c;
 };
