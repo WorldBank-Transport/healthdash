@@ -41,6 +41,7 @@ const SimplePoints = React.createClass({
 
   updateMap() {
     const invalidLatLon = (item) => item.position && !isNaN(item.position[0]) && !isNaN(item.position[1]);
+    this.layerGroup.clearLayers();
     this.props.data.filter(invalidLatLon).map(this.createMarker);
     this.props.map.addLayer(this.layerGroup);
   },
