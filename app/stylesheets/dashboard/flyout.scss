@@ -8,7 +8,8 @@
     background: $map-overlay;
     float: right;
     height: $flyout-height;
-    padding: $flyout-base-padding $flyout-base-padding*3 $flyout-base-padding*2 $flyout-base-padding*3;
+    margin-top: $flyout-top-position;
+    padding: $flyout-base-padding*2 $flyout-base-padding*3;
     position: relative;
     width: $flyout-width;
     z-index: 10;
@@ -16,17 +17,16 @@
     h3 {
       color: $theme-blue;
     }
+
     .flyout-section {
       color: $popup-stat-number;
       display: block;
       font-size: $popup-label-text;
       font-weight: $title-weight;
       margin-top: $flyout-section-top-position;
-
       h3 {
         margin: $flyout-stat-top-position 0 0 0;
       }
-
     }
   }
 }

@@ -49,8 +49,8 @@ const allTranslations = {
     'filter.metric.HOME DELIVERY': 'Home Delivery',
     'filter.metric.PROJECTED CLIENTS': 'Projected Clients',
     'filter.metric.TOTAL ATTENDANCE': 'Total Attendance',
-    'filter.metric.TT2 VACCINATION COVERAGE': 'Tt2 Vaccination Coverage',
-    'filter.metric.% TT2 VACCINATION COVERAGE': '% Tt2 Vaccination Coverage',
+    'filter.metric.TT2 VACCINATION COVERAGE': 'TT2 Vaccination Coverage',
+    'filter.metric.% TT2 VACCINATION COVERAGE': '% TT2 Vaccination Coverage',
 
     'legend.title': 'legend',
     'legend.lessthan50': '< 50',
@@ -203,8 +203,8 @@ const allTranslations = {
     'flyout.opd.length': 'Number of OPD',
     'flyout.tetanus.projected': 'Projected Clients',
     'flyout.tetanus.total': 'Total Attendance',
-    'flyout.tetanus.tt2-coverage': 'Tt2 Vaccination Coverage',
-    'flyout.tetanus.perc-tt2-coverage': '% Tt2 Vaccination Coverage',
+    'flyout.tetanus.tt2-coverage': 'TT2 Vaccination Coverage',
+    'flyout.tetanus.perc-tt2-coverage': '% TT2 Vaccination Coverage',
 
     'error': 'We\'re sorry',
     'error.retry': 'Retry',
