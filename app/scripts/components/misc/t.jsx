@@ -58,10 +58,10 @@ const allTranslations = {
     'legend.greaterhan75': '> 75',
     'legend.nodata': 'No Data',
 
-    'dash.region': 'Regions',
-    'dash.district': 'Districts',
-    'dash.ward': 'Wards',
-    'dash.national': 'National',
+    'dash.regions': 'Regions',
+    'dash.districts': 'Districts',
+    'dash.wards': 'Wards',
+    'dash.points': 'National',
 
     'charts.toggle.closed': 'View Charts',
     'charts.toggle.opened': 'Hide Charts',

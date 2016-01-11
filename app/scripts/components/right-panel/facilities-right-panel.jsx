@@ -32,6 +32,12 @@ const FacilitiesRightPanel = React.createClass({
     );
   },
 
+  renderViewModes(viewModes) {
+    return (<ul>
+        {viewModes.map(viewMode => (<li><Link activeClassName="active" to={`/dash/${viewMode}/facilities/`}><T k={`dash.${viewMode}`} /></Link></li>))}
+    </ul>);
+  },
+
   render() {
     return (
       <div className="container">
@@ -52,11 +58,7 @@ const FacilitiesRightPanel = React.createClass({
         </div>
         <div className="row">
           {
-            ViewModes.match(this.props.viewMode, {
-              Points: () => (<Link activeClassName="active" to="/dash/regions/facilities/"><T k="dash.region" /></Link>),
-              Regions: () => (<Link activeClassName="active" to="/dash/points/facilities/"><T k="dash.national" /></Link>),
-              [_]: () => (<span>Error: invalid view mode</span>),
-            })
+            this.renderViewModes(['points', 'regions', 'districts'])
           }
         </div>
       </div>);

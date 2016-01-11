@@ -6,7 +6,7 @@
 
 import { Map, CircleMarker, LayerGroup } from 'leaflet';
 import React, { PropTypes } from 'react';
-import { point } from '../../utils/colours';
+import colours, { point } from '../../utils/colours';
 import isNaN from 'lodash/lang/isNaN';
 
 
@@ -45,11 +45,30 @@ const SimplePoints = React.createClass({
     this.props.map.addLayer(this.layerGroup);
   },
 
+  getColor(item) {
+    let c = colours.bgColor;
+    switch(item['FACILITY TYPE']) {
+      case 'HEALTH CENTER':
+        c = 'red';
+        break;
+      case 'CLINIC':
+        c = 'orange';
+        break;
+      case 'HOSPITAL':
+        c = 'yellow';
+        break;
+      default:
+        c = colours.theme;
+    }
+    return c;
+  },
+
   createMarker(item) {
-    const m = new CircleMarker(item.position, point.normal);
+    const color = this.getColor(item);
+    const m = new CircleMarker(item.position, point.normal(color));
     m.setOpacity = () => null;  // PruneCluster tries to call this
     m.on('click', this.handleMarkerClickFor(item.POINT_ID));
-    m.on('mouseout', this.handleMouseoutFor);
+    m.on('mouseout', this.handleMouseoutFor(color));
     m.on('mouseover', this.handleMouseover(item.POINT_ID));
     this.layerGroup.addLayer(m);
     return m;
@@ -59,9 +78,11 @@ const SimplePoints = React.createClass({
     return () => this.props.select(id);
   },
 
-  handleMouseoutFor(e) {
-    e.target.setStyle(point.normal);
-    this.props.deselect();
+  handleMouseoutFor(color) {
+    return e => {
+      e.target.setStyle(point.normal(color));
+      this.props.deselect();
+    }
   },
 
   handleMouseover(id) {

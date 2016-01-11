@@ -25,13 +25,16 @@ const colours = {
 export default colours;
 
 export const point = {
-  normal: {
-    radius: 4,
-    color: colours.bgColor,
-    opacity: 0.75,
-    weight: 1,
-    fillOpacity: 1,
-    fillColor: colours.theme,
+  normal: colour => {
+    const style = {
+      radius: 4,
+      color: colours.bgColor,
+      opacity: 0.75,
+      weight: 1,
+      fillOpacity: 1,
+      fillColor: colour,
+    };
+    return style;
   },
 
   hovered: {
