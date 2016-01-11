@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react';
 import { Result } from '../../utils/functional';
 import T from '../misc/t';
 
+require('stylesheets/dashboard/flyout');
+
 const FacilitiesFlyout = React.createClass({
 
   propTypes: {
@@ -11,7 +13,7 @@ const FacilitiesFlyout = React.createClass({
 
   renderSum(summary, title, total) {
     return (
-      <div>
+      <div className="facilities">
         <h4><T k={title}/></h4>
         {
           Object.keys(summary).map(key =>
