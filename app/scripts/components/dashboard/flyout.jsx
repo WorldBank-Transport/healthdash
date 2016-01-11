@@ -29,7 +29,7 @@ const Flyout = React.createClass({
 
   renderNotFound(id) {
     return (
-      <h3>Could not find data for id '{id}'</h3>
+      <span className="flyout-section">Could not find data for <h3>'{id}'</h3></span>
     );
   },
 
