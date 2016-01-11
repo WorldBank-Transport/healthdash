@@ -1,4 +1,5 @@
 import React from 'react';
+import FooterStatic from '../boilerplate/footer-static';
 import T from '../misc/t';
 
 require('stylesheets/boilerplate/static-content');
@@ -6,7 +7,8 @@ require('stylesheets/boilerplate/static-content');
 const SpeakOut = React.createClass({
   render() {
     return (
-      <div className="main">
+      <div>
+      <div className="main secondary">
         <div className="static-content text-center">
           <h2><T k="static.speakout-title" /></h2>
           <p><T k="static.speakout-content" /></p>
@@ -14,6 +16,8 @@ const SpeakOut = React.createClass({
             <iframe className="feedback-form" src="https://docs.google.com/forms/d/1Do2Se6uzp_MIQF_K6DIUslzu2MXashHdN0YOGCeRXPk/viewform?embedded=true"></iframe>
           </div>
         </div>
+      </div>
+      <FooterStatic/>
       </div>
     );
   },

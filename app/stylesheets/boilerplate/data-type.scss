@@ -1,3 +1,4 @@
+@import '../config/box';
 @import '../config/colours';
 @import '../config/list';
 @import '../config/dimensions';
@@ -7,6 +8,69 @@
   display: table-cell;
   vertical-align: top;
   width: 100%;
+
+  .float-options {
+    background-color: $theme-blue;
+    position: absolute;
+    vertical-align: top;
+    z-index: 1000;
+
+    .selectable {
+      @include border-radius($checkbox-dimensions);
+      background: $bg-color;
+      border: 1px solid $theme-blue;
+      float: left;
+      height: $checkbox-dimensions;
+      margin-right: $checkbox-dimensions;
+      width: $checkbox-dimensions;
+
+      &:hover {
+        background: $theme-blue-alt;
+      }
+      &.active {
+        background: $theme-blue;
+
+        &:hover {
+          background: $theme-blue-light;
+        }
+      }
+    }
+
+    & > ul {
+      @include list-unstyle();
+      display: table;
+      float: right;
+      table-layout: fixed;
+      width: 100%;
+      & > li {
+        border-left: 1px solid $tab-expand-bg;
+        vertical-align: top;
+        a {
+          color: $bg-color;
+          display: table-cell;
+          font-size: $tab-text;
+          font-weight: bold;
+          height: $charts-nav-height;
+          padding: 0 $base-unit;
+          text-align: center;
+          vertical-align: middle;
+          // hack to make the a fill the li's width:
+          width: 1000px;
+
+          &:hover,
+          &.active {
+            background: $theme-blue-light;
+            color: $bg-color;
+
+            & > .selectable {
+              background: $theme-blue;
+              border: 1px solid $bg-color;
+            }
+          }
+        }
+      }
+    }
+  }
 
   & > ul {
     @include list-unstyle();
@@ -37,6 +101,10 @@
         &.active {
           background: $theme-blue;
           color: $bg-color;
+
+          & > .selectable {
+            background: 'red';
+          }
         }
       }
     }

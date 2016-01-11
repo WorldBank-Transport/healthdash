@@ -2,6 +2,7 @@
 @import '../config/dimensions';
 @import '../config/type';
 @import '../config/box';
+@import '../config/list';
 
 .year-selector {
   color: $text-color;
@@ -12,6 +13,97 @@
   min-width: $subcategory-filter-tab;
   padding: 0 $filter-list-left-margin;
   text-align: left;
+
+  .menu-item {
+    border-left: 1px solid $tab-expand-bg;
+    display: table-cell;
+    vertical-align: top;
+
+    a {
+      color: $theme-blue;
+      display: table-cell;
+      font-size: $tab-text;
+      font-weight: bold;
+      height: $charts-nav-height;
+      padding: 0 $base-unit;
+      text-align: center;
+      vertical-align: middle;
+      // hack to make the a fill the li's width:
+      width: 1000px;
+
+      &:hover,
+      &.active {
+        background: $theme-blue;
+        color: $bg-color;
+
+        & > .selectable {
+          background: 'red';
+        }
+      }
+    }
+  }
+
+  .floating-div {
+    background-color: $theme-blue;
+    position: absolute;
+    vertical-align: top;
+    z-index: 1000;
+
+    .selectable {
+      @include border-radius($checkbox-dimensions);
+      background: $bg-color;
+      float: left;
+      height: $checkbox-dimensions;
+      margin-right: $checkbox-dimensions;
+      width: $checkbox-dimensions;
+
+      &:hover {
+        background: $theme-blue-alt;
+      }
+      &.active {
+        background: $theme-blue;
+
+        &:hover {
+          background: $theme-blue-light;
+        }
+      }
+    }
+
+    & > ul {
+      @include list-unstyle();
+      display: flex;
+      float: right;
+      table-layout: fixed;
+      width: 100%;
+      & > li {
+        border-left: 1px solid $tab-expand-bg;
+        vertical-align: top;
+        a {
+          color: $bg-color;
+          display: table-cell;
+          font-size: $tab-text;
+          font-weight: bold;
+          height: $charts-nav-height;
+          padding: 0 $base-unit;
+          text-align: center;
+          vertical-align: middle;
+          // hack to make the a fill the li's width:
+          width: 1000px;
+
+          &:hover,
+          &.active {
+            background: $theme-blue-light;
+            color: $bg-color;
+
+            & > .selectable {
+              background: $theme-blue;
+              border: 1px solid $bg-color;
+            }
+          }
+        }
+      }
+    }
+  }
 
   .year-selector-toggle {
     @include link-transition(450ms, ease);
@@ -59,21 +151,6 @@
     top: $subcategory-open-down-position;
     width: $subcategory-open-width;
     z-index: 5;
-  }
-  .years {
-    background: $bg-color;
-    padding-left: 0;
-    visibility: block;
-
-    li {
-      font-weight: $medium-font-weight;
-      line-height: $subcategory-filter-line-height;
-      list-style: none;
-      margin-bottom: 5px;
-      margin-left: $filter-list-left-margin;
-      text-align: left;
-      text-transform: capitalize;
-     }
   }
   .hidden {
     display: none;
