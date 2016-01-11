@@ -1,0 +1,23 @@
+@import '../config/colours';
+@import '../config/dimensions';
+@import '../config/type';
+@import '../config/box';
+@import '../config/list';
+
+.type-selector {
+
+  color: $text-color;
+  display: table-cell;
+  font-size: $category-filter-text;
+  font-weight: bold;
+  margin: 0;
+  min-width: $subcategory-filter-tab;
+  padding: 0 $filter-list-left-margin;
+  text-align: left;
+
+  .types {
+    & > ul {
+      @include list-unstyle();
+    }
+  }
+}

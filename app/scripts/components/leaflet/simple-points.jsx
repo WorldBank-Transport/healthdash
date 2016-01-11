@@ -6,7 +6,7 @@
 
 import { Map, CircleMarker, LayerGroup } from 'leaflet';
 import React, { PropTypes } from 'react';
-import colours, { point } from '../../utils/colours';
+import colours, { point, Color } from '../../utils/colours';
 import isNaN from 'lodash/lang/isNaN';
 
 
@@ -45,26 +45,8 @@ const SimplePoints = React.createClass({
     this.props.map.addLayer(this.layerGroup);
   },
 
-  getColor(item) {
-    let c = colours.bgColor;
-    switch(item['FACILITY TYPE']) {
-      case 'HEALTH CENTER':
-        c = 'red';
-        break;
-      case 'CLINIC':
-        c = 'orange';
-        break;
-      case 'HOSPITAL':
-        c = 'yellow';
-        break;
-      default:
-        c = colours.theme;
-    }
-    return c;
-  },
-
   createMarker(item) {
-    const color = this.getColor(item);
+    const color = Color.getFacilityColor(item['FACILITY TYPE']);
     const m = new CircleMarker(item.position, point.normal(color));
     m.setOpacity = () => null;  // PruneCluster tries to call this
     m.on('click', this.handleMarkerClickFor(item.POINT_ID));

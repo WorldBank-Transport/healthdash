@@ -5,8 +5,7 @@
 
 
 .metric-summary {
-  @include chart-row();
-
+  border-left: 1px solid $grey-light;
 
   .padding {
     padding-right: 5px;

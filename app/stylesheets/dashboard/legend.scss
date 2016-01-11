@@ -31,7 +31,17 @@
     margin-right: $legend-margin;
     margin-top: $legend-margin;
     width: $legend-block-width;
-}
+  }
+  .legend-point {
+    border: 2px solid $grey-light-alt;
+    border-radius: $legend-point-height;
+    display: block;
+    float: left;
+    height: $legend-point-height;
+    margin-right: $legend-margin;
+    margin-top: $legend-margin;
+    width: $legend-point-width; 
+  }
   .title {
     color: $theme-blue;
     font-size: $legend-title;

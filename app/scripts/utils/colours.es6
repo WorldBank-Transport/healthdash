@@ -21,6 +21,10 @@ const colours = {
   poor: '#f05e55',
 
   unknown: '#7d7d7d',
+
+  health_centre: 'yellow',
+  clinic: 'orange',
+  hospital: 'red'
 };
 export default colours;
 
@@ -75,69 +79,18 @@ export const polygon = {  // sync with edudash: https://github.com/WorldBank-Tra
 
 export const Color = {};
 
-Color.getWaterpointColor = (status) => {
-  let color = null;
-  switch (status) {
-  case 'FUNCTIONAL':
-    color = '#82c675';
-    break;
-  case 'NON FUNCTIONAL':
-  case 'NON FUNCTIONAL < 3M':
-  case 'NON FUNCTIONAL > 3M':
-  case 'NON FUNCTIONAL < 6M':
-  case 'NON FUNCTIONAL > 6M':  // TODO: consider checking if string starts with NON FUNCTIONAL instead of the switch/case fall-through
-    color = '#f05e55';
-    break;
-  case 'FUNCTIONAL NEEDS REPAIR':
-    color = '#fbc030';
-    break;
-  default:
-    throw Error(`there is not state found, actual: ${status}`);
+Color.getFacilityColor = (type) => {
+  let c = colours.theme;
+  switch(type) {
+    case 'HEALTH CENTRE':
+      c = colours.health_centre;
+      break;
+    case 'CLINIC':
+      c = colours.clinic;
+      break;
+    case 'HOSPITAL':
+      c = colours.hospital;
+      break;
   }
-  return color;
-};
-
-Color.getDamsColor = (metric) => {
-  let color = null;
-  switch (metric) {
-  case 'DAM_HEIGHT':
-    color = '#94daf7';
-    break;
-  case 'ELEVATION_':
-    color = '#4cafd8';
-    break;
-  case 'RESERVOIR_':
-    color = '#3f7086';
-    break;
-  default:
-    throw Error(`there is no metric found, actual: ${metric}`);
-  }
-  return color;
-};
-
-Color.getBoreholesColor = (metric) => {
-  let color = null;
-  switch (metric) {
-  case 'DIAMETER':
-    color = '#FA8072';
-    break;
-  case 'DEPTH_METER':
-    color = '#FF4500';
-    break;
-  case 'STATIC_WATER_LEVEL':
-    color = '#87CEEB';
-    break;
-  case 'DYNAMIC_WATER_LEVEL_METER':
-    color = '#DDA0DD';
-    break;
-  case 'DRAW _DOWN_METER':
-    color = '#000080';
-    break;
-  case 'YIELD_METER_CUBED_PER_HOUR':
-    color = '#4B0082';
-    break;
-  default:
-    throw Error(`there is no metric found, actual: ${metric}`);
-  }
-  return color;
+  return c;
 };

@@ -7,6 +7,8 @@ import T from '../misc/t';
 import { _ } from 'results';
 import { Link } from 'react-router';
 import Autocomplete from 'react-autocomplete';
+import { Result } from '../../utils/functional';
+import TypeSelector from '../filters/type-selector';
 
 const FacilitiesRightPanel = React.createClass({
   propTypes: {
@@ -16,6 +18,7 @@ const FacilitiesRightPanel = React.createClass({
     setSelected: PropTypes.func,
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
+
   select(value, item) {
     this.props.setSelected(item.FACILITY_ID_NUMBER); // TODO fixme
   },
@@ -38,6 +41,17 @@ const FacilitiesRightPanel = React.createClass({
     </ul>);
   },
 
+  renderHealthType() {
+    const healthFacilitiesType = Result.groupBy(this.props.data, 'FACILITY TYPE');  
+    return (
+      <div className="row">
+        { Object.keys(healthFacilitiesType).map(key => 
+          (<MetricSummary icon={`facilities-${key}.png`} metric={healthFacilitiesType[key].length} title={`chart.facilities.type.${key}`}/>)
+        )}
+      </div>
+    );
+  },
+
   render() {
     return (
       <div className="container">
@@ -54,8 +68,12 @@ const FacilitiesRightPanel = React.createClass({
               sortItems={this.sortStates} />
         </div>
         <div className="row">
+          <TypeSelector />
+        </div>
+        <div className="row">
           <MetricSummary icon="facilities.png" metric={this.props.data.length} title="chart.facilities.title"/>
         </div>
+        {this.renderHealthType()}
         <div className="row">
           {
             this.renderViewModes(['points', 'regions', 'districts'])
