@@ -25,6 +25,7 @@ import Filters from '../filters/filters';
 import Charts from '../charts/charts';
 import SpinnerModal from '../misc/spinner-modal';
 import Footer from '../boilerplate/footer';
+import RightPanel from '../right-panel/right-panel';
 
 
 //import DataTypes from '../../constants/data-types';
@@ -136,7 +137,8 @@ const DashRoot = React.createClass({
               {...propsForChildren} />
           {this.renderLoadingOverlay()}
           </div>
-          <Charts {...propsForChildren} />
+          <Charts openClosed={this.state.layout.charts} {...propsForChildren} />
+          <RightPanel {...propsForChildren} />
           </div>
           <Footer />
       </div>

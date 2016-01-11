@@ -19,6 +19,22 @@
     display: table-cell;
     vertical-align: top;
 
+    &.disabled {
+      background: $grey-medium;
+      color: $grey-light;
+
+      &:hover {
+        cursor: not-allowed;
+      }
+      a {
+        color: $grey-light;
+        &:hover,
+        &.active {
+          background: $grey-medium;  // TODO: this is prob not the right var for this
+        }
+      }
+    }
+
     a {
       color: $theme-blue;
       display: table-cell;

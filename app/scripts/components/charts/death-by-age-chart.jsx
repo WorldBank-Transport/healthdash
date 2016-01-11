@@ -11,7 +11,7 @@ require('stylesheets/charts/death-by-age-chart');
 
 const DeathByAgeChart = React.createClass({
   propTypes: {
-    deaths: PropTypes.array.isRequired,
+    data: PropTypes.array.isRequired,
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),
   },
 
@@ -53,12 +53,12 @@ const DeathByAgeChart = React.createClass({
       return (<div>empty</div>);
     }
 
-    if (this.props.deaths.length === 0) {
+    if (this.props.data.length === 0) {
       return false;
     }
-    const keys = Object.keys(this.props.deaths[0]).filter(key => key !== 'CHILD_TYPE' && key !== 'DISEASE' && key !== 'YEAR' && key !== '_id');
-    const years = Object.keys(func.Result.groupBy(this.props.deaths, 'YEAR'));
-    const sum = func.Result.sumByGroupBy(this.props.deaths, 'CHILD_TYPE', keys);
+    const keys = Object.keys(this.props.data[0]).filter(key => key !== 'CHILD_TYPE' && key !== 'DISEASE' && key !== 'YEAR' && key !== '_id');
+    const years = Object.keys(func.Result.groupBy(this.props.data, 'YEAR'));
+    const sum = func.Result.sumByGroupBy(this.props.data, 'CHILD_TYPE', keys);
     return (
       <div className="death-by-age-chart">
         <h3 className="chart-title"><T k="chart.death.title" /> - <span className="chart-helptext"><T k="chart.death.helptext" /></span></h3>
@@ -67,9 +67,9 @@ const DeathByAgeChart = React.createClass({
             <BarChart
                 data={this.parseData(sum, years)}
                 groupedBars={true}
-                height={180}
+                height={280}
                 margin={{top: 10, bottom: 20, left: 50, right: 10}}
-                width={this.state.size.width * 0.20}
+                width={this.state.size.width * 0.90}
                 xAxis={{label: {k: `chart.death.x-axis`}}}
                 yAxis={{label: {k: 'chart.death.y-axis'}}} />
               </TSetChildProps>

@@ -34,14 +34,12 @@ const YearSelector = React.createClass({
   },
 
   render() {
-    if (Object.keys(this.state.years) <= 0) {
-      return false;
-    }
+    const [disabled, action] = (Object.keys(this.state.years) <= 0) ? ['disabled', () => null] : ['', this.toggle];
     const listOfOptions = Object.keys(this.state.years).map(year => {
       return (
         <li key={`filter-${year}`}>
           <a className={this.state.years[year] ? 'active' : ''} onClick={this.select(year)}>
-            <span className="selectable"/><span>${year}</span>
+            <span className="selectable"/><span>{year}</span>
           </a>
         </li>);
     });
@@ -51,8 +49,8 @@ const YearSelector = React.createClass({
     });
     return (
       <div className="year-selector">
-        <div className="menu-item">
-          <a onClick={this.toggle}>
+        <div className={`menu-item ${disabled}`}>
+          <a onClick={action}>
             <T k="filter.year"/> <Icon type={`chevron-circle-${direction}`}/>
           </a>
         </div>

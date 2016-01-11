@@ -19,8 +19,18 @@
   max-width: 45%;
   min-height: 100%;
   overflow: hidden;
+<<<<<<< HEAD
   position: absolute;
   top: 0;
+=======
+  position: static;
+  position: absolute;
+  top: 0;
+  // position: relative;
+  // overflow: hidden;
+  // border:1px solid #f00;
+  // vertical-align:middle
+>>>>>>> master
 }
 
 .homebanner {
