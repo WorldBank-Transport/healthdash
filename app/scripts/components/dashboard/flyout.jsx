@@ -36,16 +36,16 @@ const Flyout = React.createClass({
   renderPointsPopup(details) {
     return (
       <div>
-        <h3>{details.FACILITY_NAME}</h3>
-        <h5><T k="flyout.id"/>: {details.FACILITY_ID_NUMBER}</h5>
-        <h5><T k="flyout.common-name"/>: {details['COMMON FACILITY HEALTH NAME']}</h5>
-        <h5><T k="flyout.type"/>: {details['FACILITY TYPE']}</h5>
-        <h5><T k="flyout.ownership"/>: {details.OWNERSHIP}</h5>
-        <h5><T k="flyout.status"/>: {details.OPERATING_STATUS}</h5>
-        <h5><T k="flyout.location"/>: {JSON.stringify(details.position)}</h5>
-        <h5><T k="flyout.council"/>: {details.COUNCIL}</h5>
-        <h5><T k="flyout.zone"/>: {details.ZONE}</h5>
-        <h5><T k="flyout.region"/>: {details.REGION}</h5>
+        <span className="flyout-section"><T k="flyout.facility-name"/><h3>{details.FACILITY_NAME}</h3></span>
+        <span className="flyout-section"><T k="flyout.id"/>: <h3>{details.FACILITY_ID_NUMBER}</h3></span>
+        <span className="flyout-section"><T k="flyout.common-name"/>: <h3>{details['COMMON FACILITY HEALTH NAME']}</h3></span>
+        <span className="flyout-section"><T k="flyout.type"/>: <h3>{details['FACILITY TYPE']}</h3></span>
+        <span className="flyout-section"><T k="flyout.ownership"/>: <h3>{details.OWNERSHIP}</h3></span>
+        <span className="flyout-section"><T k="flyout.status"/>: <h3>{details.OPERATING_STATUS}</h3></span>
+        <span className="flyout-section"><T k="flyout.location"/>: <h3>{JSON.stringify(details.position)}</h3></span>
+        <span className="flyout-section"><T k="flyout.council"/>: <h3>{details.COUNCIL}</h3></span>
+        <span className="flyout-section"><T k="flyout.zone"/>: <h3>{details.ZONE}</h3></span>
+        <span className="flyout-section"><T k="flyout.region"/>: <h3>{details.REGION}</h3></span>
       </div>);
   },
 

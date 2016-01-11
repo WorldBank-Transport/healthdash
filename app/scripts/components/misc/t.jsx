@@ -164,6 +164,7 @@ const allTranslations = {
     'drilldown.back': 'Back To National',
 
     'flyout.id': 'Facility ID',
+    'flyout.facility-name': 'Facility Name',
     'flyout.common-name': 'Common Name',
     'flyout.type': 'Type',
     'flyout.ownership': 'Ownership',
@@ -445,10 +446,6 @@ const allTranslations = {
     'data-type.hiv-center': 'HIV Centers',
     'data-type.facilities': 'Vituo vya matibabu ya virusi vya UKIMWI',
 
-
-
-
-
     'overview-bar': 'Maelezo ya joomla',
 
     'footer.copy': 'Tovuti hii imechapishwa kwa leseni ya CC BY NC SA 3.0. Programu imeandikwa na kuchapishwa kwa leseni ya GPL 3.0. Wageni wa tovuti wanahamasishwa kuangalia programu kwa makini na kuitumia kama watachapisha programu zao kwa leseni inayolingana.',
@@ -473,6 +470,49 @@ const allTranslations = {
     'popup.waterpoint.region': 'Mkoa',
     'popup.waterpoint.district': 'Wilaya',
     'popup.waterpoint.ward': 'Kata',
+
+
+    'flyout.id': 'Facility ID',
+    'flyout.facility-name': 'Facility Name',
+    'flyout.common-name': 'Common Name',
+    'flyout.type': 'Type',
+    'flyout.ownership': 'Ownership',
+    'flyout.status': 'Status',
+    'flyout.location': 'Lat/Lon',
+    'flyout.council': 'Council',
+    'flyout.zone': 'Zone',
+    'flyout.region': 'Region',
+    'flyout.facilities.length': 'Number of Facilities',
+    'flyout.facilities.status': 'Status',
+    'flyout.facilities.OPERATING': 'Operating',
+    'flyout.facilities.ownership': 'Ownership',
+    'flyout.facilities.FAITH BASED ORGANIZATION': 'Faith Based Organization',
+    'flyout.facilities.PUBLIC': 'Public',
+    'flyout.facilities.PRIVATE': 'Private',
+    'flyout.facilities.PARASTATAL': 'Parastatal',
+    'flyout.facilities.DISPENSARY': 'Dispensary',
+    'flyout.facilities.HEALTH CENTRE': 'Health Centers',
+    'flyout.facilities.HOSPITAL': 'Hospital',
+    'flyout.facilities.CLINIC': 'Clinic',
+    'flyout.hiv.length': 'Number of HIV/AIDS Care & Treatment Center',
+    'flyout.death.length': 'Number of death',
+    'flyout.family.total': 'Total Family Planning Clients',
+    'flyout.family.new-clients': 'New Clients',
+    'flyout.family.continuious': 'Family Planning Continuious',
+    'flyout.family.projected': 'Projected Family Planning Clients',
+    'flyout.deliveries.total': 'Total Deliveries',
+    'flyout.deliveries.health-facilities-deliveries': 'Health Facility Deliveries',
+    'flyout.deliveries.traditional': 'Traditional Birth Attendants (Tba)',
+    'flyout.deliveries.antenatal-care': 'Antenatal Care Projection',
+    'flyout.deliveries.bba': 'Born Before Arrival (Bba)',
+    'flyout.deliveries.home': 'Home Delivery',
+    'flyout.workers.length': 'Number of workers',
+    'flyout.ipd.length': 'Number of IPD',
+    'flyout.opd.length': 'Number of OPD',
+    'flyout.tetanus.projected': 'Projected Clients',
+    'flyout.tetanus.total': 'Total Attendance',
+    'flyout.tetanus.tt2-coverage': 'Tt2 Vaccination Coverage',
+    'flyout.tetanus.perc-tt2-coverage': '% Tt2 Vaccination Coverage',
 
     'error': 'We\'re sorry',
     'error.retry': 'Retry',
