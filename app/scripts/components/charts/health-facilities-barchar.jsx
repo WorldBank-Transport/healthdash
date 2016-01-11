@@ -11,7 +11,7 @@ require('stylesheets/charts/health-facilities-barchar');
 
 const HealthFacilitiesChart = React.createClass({
   propTypes: {
-    facilities: PropTypes.array.isRequired,
+    data: PropTypes.array.isRequired,
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),
   },
 
@@ -38,7 +38,7 @@ const HealthFacilitiesChart = React.createClass({
     if (!this.state.size) {
       return (<div>empty</div>);
     }
-    const facilitiesStats = func.Result.countBy(this.props.facilities, 'REGION');
+    const facilitiesStats = func.Result.countBy(this.props.data, 'REGION');
     if (Object.keys(facilitiesStats).length === 0) {
       return false;
     }
@@ -49,9 +49,9 @@ const HealthFacilitiesChart = React.createClass({
           <TSetChildProps>
             <BarChart
                 data={this.parseData(facilitiesStats)}
-                height={200}
+                height={280}
                 margin={{top: 10, bottom: 80, left: 30, right: 10}}
-                width={this.state.size.width * 0.20}
+                width={this.state.size.width * 0.90}
                 xAxis={{label: {k: 'chart.health-facilities.x-axis'}}}
                 yAxis={{label: {k: 'chart.health-facilities.y-axis'}}} />
               </TSetChildProps>

@@ -9,7 +9,7 @@ import ShouldRenderMixin from '../../utils/should-render-mixin';
 
 require('stylesheets/charts/family-barchart');
 
-const DeliveriesBarChart = React.createClass({
+const FamilityBarChart = React.createClass({
   propTypes: {
     data: PropTypes.array.isRequired,
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),
@@ -65,9 +65,9 @@ const DeliveriesBarChart = React.createClass({
             <BarChart
                 data={this.parseData(sum, keys)}
                 groupedBars={true}
-                height={180}
+                height={280}
                 margin={{top: 10, bottom: 20, left: 60, right: 10}}
-                width={this.state.size.width * 0.18}
+                width={this.state.size.width * 0.90}
                 xAxis={{label: {k: `chart.family-barchart.x-axis`}}}
                 yAxis={{label: {k: 'chart.family-barchart.y-axis'}}} />
               </TSetChildProps>
@@ -78,4 +78,4 @@ const DeliveriesBarChart = React.createClass({
   },
 });
 
-export default DeliveriesBarChart;
+export default FamilityBarChart;

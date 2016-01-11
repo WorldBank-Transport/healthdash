@@ -67,9 +67,9 @@ const IpdByAgeChart = React.createClass({
             <BarChart
                 data={this.parseData(sum, years)}
                 groupedBars={true}
-                height={180}
+                height={280}
                 margin={{top: 10, bottom: 20, left: 50, right: 10}}
-                width={this.state.size.width * 0.20}
+                width={this.state.size.width * 0.90}
                 xAxis={{label: {k: `chart.ipd-by-age-chart.x-axis`}}}
                 yAxis={{label: {k: 'chart.ipd-by-age-chart.y-axis'}}} />
               </TSetChildProps>
