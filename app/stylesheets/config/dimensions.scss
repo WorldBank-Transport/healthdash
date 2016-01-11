@@ -1,6 +1,7 @@
 $base-unit: 1em;
 
 // widths and heights
+$full-width: 100%;
 
 // header
 $dash-title-width-mobile: 60px;
@@ -47,7 +48,6 @@ $footer-height: 50px;
 
 // charts
 $main-chart-width: 20%;
-$dams-main-chart-width: 95%;
 $sec-chart-width: 26%;
 $pie-chart-width: 33%;
 $legend-icon-margin: 5px;
@@ -55,18 +55,11 @@ $subcategory-filter-tab: 350px;
 $subcategory-flyout-dimensions: 340px;
 $subcategory-flyout-height: 295px;
 $metric-status-width: 260px;
-$dams-metric-status-width: 360px;
 $filter-category-expand-position: -334px;
 $filter-list-left-margin: 20px;
 $subcategory-right-top-bottom: 25px;
 $subcategory-open-down-position: 97px;
 $subcategory-open-width: 370px;
-$subcategory-list-bottom-space: 7px;
-$metric-stat-left-space: 25px;
-$metric-stat-flyout-toggle-position: 30px;
-$metric-stat-flyout-left: -17px;
-$metric-stat-flyout-top: -325px;
-$metric-stat-height: 310px;
 
 // static content
 $static-content-position: 70px;
@@ -105,8 +98,6 @@ $chart-legend-margin: 30px;
 $data-source-margin: 50px;
 
 // waterpoints status chart tooltip status
-$waterpoint-stat-wide: 35%;
-$waterpoint-stat-narrow: 25%;
 $tooltip-width: 520px;
 $tooltip-height: 230px;
 $waterpoint-options-height: 50px;
@@ -119,6 +110,12 @@ $popup-sec-text-position: 2px;
 $popup-population-width: 37px;
 $popup-small-icon: 12px;
 
+// flyout
+$flyout-width: 18%;
+$flyout-height: 90%;
+$flyout-top-position: -21px;
+$flyout-section-top-position: 10px;
+$flyout-base-padding: 10px;
 
 // google form / iframe responsive size variables
 $iframe-height-phone: 750px;

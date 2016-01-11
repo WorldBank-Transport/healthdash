@@ -11,11 +11,11 @@ const TetanusFlyout = React.createClass({
   render() {
     return (
       <div>
-        <h3>{this.props.region}</h3>
-        <h5><T k="flyout.tetanus.projected"/>: {this.props.data[0]['PROJECTED CLIENTS']}</h5>
-        <h5><T k="flyout.tetanus.total"/>: {this.props.data[1]['TOTAL ATTENDANCE']}</h5>
-        <h5><T k="flyout.tetanus.tt2-coverage"/>: {this.props.data[2]['TT2 VACCINATION COVERAGE']}</h5>
-        <h5><T k="flyout.tetanus.perc-tt2-coverage"/>: {this.props.data[3]['% TT2 VACCINATION COVERAGE']}</h5>
+        <span className="flyout-section"><h3><T k="flyout.region"/>: {this.props.region}</h3></span>
+        <span className="flyout-section"><T k="flyout.tetanus.projected"/>: <h3>{this.props.data[0]['PROJECTED CLIENTS']}</h3></span>
+        <span className="flyout-section"><T k="flyout.tetanus.total"/>: <h3>{this.props.data[1]['TOTAL ATTENDANCE']}</h3></span>
+        <span className="flyout-section"><T k="flyout.tetanus.tt2-coverage"/>: <h3>{this.props.data[2]['TT2 VACCINATION COVERAGE']}</h3></span>
+        <span className="flyout-section"><T k="flyout.tetanus.perc-tt2-coverage"/>: <h3>{this.props.data[3]['% TT2 VACCINATION COVERAGE']}</h3></span>
       </div>
     );
   },
