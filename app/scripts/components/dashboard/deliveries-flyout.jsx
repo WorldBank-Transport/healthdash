@@ -10,7 +10,7 @@ const DeliveriesFlyout = React.createClass({
 
   render() {
     return (
-      <div className="secondary-flyout">
+      <div>
         <span className="flyout-section"><T k="flyout.region"/>: <h3>{this.props.region}</h3></span>
         <span className="flyout-section"><T k="flyout.deliveries.total"/>: <h3>{this.props.data[0].TOTAL}</h3></span>
         <span className="flyout-section"><T k="flyout.deliveries.health-facilities-deliveries"/>: <h3>{this.props.data[1]['HEALTH FACILITY DELIVERIES']}</h3></span>
