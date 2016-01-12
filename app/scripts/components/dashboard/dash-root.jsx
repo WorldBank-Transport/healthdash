@@ -123,7 +123,7 @@ const DashRoot = React.createClass({
             <T k={`charts.toggle.${this.state.layout.charts.getId()}`} />
           </MapNavPrimary>
         )}>
-          <DataType />
+          <DataType dataType={this.state.view.dataType}/>
           <YearSelector />
         </MapNav>
 
