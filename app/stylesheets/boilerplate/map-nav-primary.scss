@@ -1,6 +1,7 @@
 @import '../config/buttons';
 @import '../config/colours';
 @import '../config/type';
+@import '../config/dimensions';
 
 .map-nav-primary {
   @include button-reset();
@@ -8,7 +9,7 @@
   color: $text-color;
   display: block;
   font-size: $tab-text;
-  width: 25%;
+  width: $full-width / 4;
 
   &:focus {
     outline: none;
@@ -21,6 +22,10 @@
   &.charts-toggle {
     background: $bg-color;
     font-weight: bold;
+    &:hover,
+    &.active {
+      background: $charts-tab-bg;
+    }
   }
   &.filters-toggle {
     background: $theme-blue;
