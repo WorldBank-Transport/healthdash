@@ -6,6 +6,7 @@ import FilteredDataStore from '../../stores/filtered-data';
 import LayoutStore from '../../stores/layout';
 import LoadingDataStore from '../../stores/loading-data';
 import MetricsStore from '../../stores/metrics';
+import PopulationStore from '../../stores/population';
 //import LoadingPolygonsStore from '../../stores/loading-polygons';
 import PolygonsDataStore from '../../stores/polygons-with-data';
 import ViewStore from '../../stores/view';
