@@ -9,6 +9,7 @@ import FacilitiesFlyout from './facilities-flyout';
 import FamilyPlanningFlyout from './family-planning-flyout';
 import DeliveriesFlyout from './deliveries-flyout';
 import TetanusFlyout from './tetanus-flyout';
+import { Result } from '../../utils/functional';
 
 require('stylesheets/dashboard/flyout');
 
@@ -17,6 +18,7 @@ const Flyout = React.createClass({
   propTypes: {
     dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
     deselect: PropTypes.func,  // injected
+    population: PropTypes.array,
     selected: PropTypes.instanceOf(Maybe.OptionClass),  // injected
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
@@ -49,26 +51,31 @@ const Flyout = React.createClass({
       </div>);
   },
 
-  defaultPolyRender(region, number, title) {
+  defaultPolyRender(region, number, title, population) {
     return (<div>
         <span className="flyout-section"><T k="flyout.region"/>: <h3>{region}</h3></span>
         <span className="flyout-section"><T k={title}/>: <h3>{number}</h3></span>
+        <span className="flyout-section"><T k="flyout.population"/>: <h3>{population}</h3></span>
       </div>);
   },
 
   renderPolygonsPopup(details) {
+    const polyType = ViewModes.getDrillDown(this.props.viewMode);
+    const popAgg = Result.sumByGroupBy(this.props.population, polyType, ['TOTAL']);
+    const popPoly = popAgg[details.id] || [{TOTAL: 0}];
+
     return Maybe.match(details.properties.data, {
       None: () => this.renderNotFound(details.id),
       Some: data => DataTypes.match(this.props.dataType, {
-        Death: () => this.defaultPolyRender(details.id, data.value, 'flyout.death.length'),
+        Death: () => this.defaultPolyRender(details.id, data.value, 'flyout.death.length', popPoly[0].TOTAL),
         FamilyPlanning: () => (<FamilyPlanningFlyout data={data} region={details.id}/>),
         Deliveries: () => (<DeliveriesFlyout data={data} region={details.id}/>),
-        HealthWorkers: () => this.defaultPolyRender(details.id, data.value, 'flyout.workers.length'),
-        IPD: () => this.defaultPolyRender(details.id, data.value, 'flyout.ipd.length'),
-        OPD: () => this.defaultPolyRender(details.id, data.value, 'flyout.opd.length'),
+        HealthWorkers: () => this.defaultPolyRender(details.id, data.value, 'flyout.workers.length', popPoly[0].TOTAL),
+        IPD: () => this.defaultPolyRender(details.id, data.value, 'flyout.ipd.length', popPoly[0].TOTAL),
+        OPD: () => this.defaultPolyRender(details.id, data.value, 'flyout.opd.length', popPoly[0].TOTAL),
         Tetanus: () => (<TetanusFlyout data={data} region={details.id}/>),
-        HivCenter: () => this.defaultPolyRender(details.id, data.length, 'flyout.hiv.length'),
-        Facilities: () => (<FacilitiesFlyout data={data} region={details.id}/>),
+        HivCenter: () => this.defaultPolyRender(details.id, data.length, 'flyout.hiv.length', popPoly[0].TOTAL),
+        Facilities: () => (<FacilitiesFlyout data={data} population={popPoly[0].TOTAL} region={details.id}/>),
         [_]: () => (<div><h3>Poly flyout</h3>{JSON.stringify(data)}</div>),
       }),
     });

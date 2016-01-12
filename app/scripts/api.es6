@@ -40,6 +40,19 @@ function healthFacProcess(record) {
   return pulled;
 }
 
+/**
+ * @param {object} record The population database record
+ * @returns {object} The record with a `position` prop with lat/lng array
+ */
+function toUppercase(record) {
+  const pulled = {};
+  for (const k in record) {
+    if (record.hasOwnProperty(k)) {
+      pulled[k] = (typeof record[k] === 'string') ? record[k].toUpperCase() : record[k];
+    }
+  }
+  return pulled;
+}
 
 const eachRecord = fn => data => data.map(fn);
 
@@ -79,3 +92,7 @@ export const getDistricts = () =>
 
 export const getWards = () =>
   staticData.getPolygons('/layers/tz_wards.json', 'TzWards');
+
+export const getPopulationStatic = () =>
+  staticData.getWithPostProcess('/data/ckan-population.json', eachRecord(toUppercase));
+
