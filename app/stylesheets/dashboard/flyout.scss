@@ -25,7 +25,7 @@
       line-height: $popup-label-text * 1.2;
       margin-top: $flyout-section-top-position;
       h3 {
-        margin: 0;
+        margin: $flyout-section-top-position/3 0 0 0;
       }
     }
   }

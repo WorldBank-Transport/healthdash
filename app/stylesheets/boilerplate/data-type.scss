@@ -7,18 +7,19 @@
 .data-type {
   display: table-cell;
   vertical-align: top;
-  width: 100%;
+  width: 50%;
 
   .float-options {
     background-color: $theme-blue;
     position: absolute;
-    vertical-align: top;
+    top: $map-nav-height;
+    width: $full-width/4;
     z-index: 1000;
 
     .selectable {
       @include border-radius($checkbox-dimensions);
-      background: $bg-color;
-      border: 1px solid $theme-blue;
+      background: none;
+      border: 2px solid $theme-blue-light;
       float: left;
       height: $checkbox-dimensions;
       margin-right: $checkbox-dimensions;
@@ -28,7 +29,7 @@
         background: $theme-blue-alt;
       }
       &.active {
-        background: $theme-blue;
+        background: $theme-blue-light;
 
         &:hover {
           background: $theme-blue-light;
@@ -36,35 +37,45 @@
       }
     }
 
+    // dropdown menu
     & > ul {
-      @include list-unstyle();
+      @include list-unstyled();
       display: table;
       float: right;
+      padding: $base-unit 0;
       table-layout: fixed;
-      width: 100%;
+      width: $full-width;
+
       & > li {
-        border-left: 1px solid $tab-expand-bg;
-        vertical-align: top;
         a {
           color: $bg-color;
-          display: table-cell;
+          display: block;
           font-size: $tab-text;
           font-weight: bold;
-          height: $charts-nav-height;
-          padding: 0 $base-unit;
-          text-align: center;
+          height: auto;
+          line-height: 105%;
+          padding: $map-nav-link-margin $base-unit * 3 $map-nav-link-margin+1 $base-unit * 3;
+          text-align: left;
+          text-transform: uppercase;
           vertical-align: middle;
-          // hack to make the a fill the li's width:
-          width: 1000px;
 
-          &:hover,
-          &.active {
+          &:hover {
             background: $theme-blue-light;
             color: $bg-color;
 
             & > .selectable {
-              background: $theme-blue;
-              border: 1px solid $bg-color;
+              background: $theme-blue-light;
+              border: 2px solid $bg-color;
+            }
+          }
+
+          &.active {
+            background: $theme-blue;
+            color: $bg-color;
+
+            & > .selectable {
+              background: $theme-blue-light;
+              border: 2px solid $bg-color;
             }
           }
         }
@@ -78,24 +89,25 @@
     display: table;
     float: right;
     table-layout: fixed;
-    width: 100%;
+    width: $full-width;
 
     & > li {
       border-left: 1px solid $tab-expand-bg;
       display: table-cell;
-      vertical-align: top;
 
       a {
         color: $theme-blue;
-        display: table-cell;
+        display: block;
         font-size: $tab-text;
         font-weight: bold;
-        height: $charts-nav-height;
-        padding: 0 $base-unit;
+        height: $charts-nav-height - 9;
+        padding-top: $base-unit - 0.2;
         text-align: center;
-        vertical-align: middle;
-        // hack to make the a fill the li's width:
-        width: 1000px;
+
+        .fa {
+          display: inline-block;
+          margin-left: $base-unit / 2;
+        }
 
         &:hover,
         &.active {

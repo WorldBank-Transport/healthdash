@@ -51,7 +51,7 @@ const YearSelector = React.createClass({
       <div className="year-selector">
         <div className={`menu-item ${disabled}`}>
           <a onClick={action}>
-            <T k="filter.year"/> <Icon type={`chevron-circle-${direction}`}/>
+            <T k="filter.year"/> <Icon type={`sort-${direction}`}/>
           </a>
         </div>
         {
