@@ -11,9 +11,10 @@
   font-size: $medium-text;
   height: $legend-dimensions * 1.1;
   left: 2%;
+  max-width: $legend-dimensions * 1.2;
   padding: $base-unit $base-unit * 1.2 $base-unit * 1.5 $base-unit * 1.2;
   position: absolute;
-  width: $legend-dimensions;
+  width: auto;
   z-index: 1;  // needs to be specified >=1 to go above the map
 
   .row {
