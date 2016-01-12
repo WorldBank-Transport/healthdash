@@ -6,43 +6,45 @@ import ViewModes from '../../constants/view-modes';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
 import { Color } from '../../utils/colours';
+import PopulationStore from '../../stores/population';
 
 require('highcharts/modules/exporting')(HighCharts);
 require('stylesheets/charts/health-facilities-barchar');
 
-const HealthFacilitiesChart = React.createClass({
+const PopulationFacilitiesChart = React.createClass({
   propTypes: {
     data: PropTypes.array.isRequired,
   },
 
-  mixins: [ShouldRenderMixin],
+  mixins: [
+    connect(PopulationStore, 'population'),
+    ShouldRenderMixin,
+  ],
 
-  parseData(facilitiesStats, categories) {
+  parseData(categories, population) {
     let count = 0;
-    return Object.keys(facilitiesStats).map(type => ({
-        name: type,
-        data: categories.map(region => {
-          return {
-            color: Color.getFacilityColor(type),
-            x: categories.indexOf(region),
-            y: facilitiesStats[type][region] || 0,
-          };
-        }),
-      })
-    );
+    return [{
+      name: 'People to Health Facility Ratio',
+      data: categories.map(region => {
+        return {
+          x: categories.indexOf(region),
+          y: Math.round((population[region] || 0) / (facilitiesStats[region] || 1)),
+        };
+      }),
+    }];
   },
 
   getChart() {
-    const facilitiesStats = Result.countByGroupBy(this.props.data, 'FACILITY TYPE', 'REGION');
     const regions = Result.countBy(this.props.data, 'REGION');
     const categories = Object.keys(regions).filter(key => key !== 'total').sort((a, b) => regions[b] - regions[a]);
-    const stats = this.parseData(facilitiesStats, categories);
+    const population = func.Result.sumByGroupBy(this.state.population, 'REGION', ['TOTAL']);
+    const stats = this.parseData(categories, population);
    // needs translations
     return new HighCharts.Chart({
       chart: {
         height: 400,
         type: 'column',
-        renderTo: 'health-facilities-barchar',
+        renderTo: 'population-facilities-barchar',
       },
 
       title: {
@@ -91,10 +93,10 @@ const HealthFacilitiesChart = React.createClass({
     return (
       <div className="health-facilities-barchar">
         <h3 className="chart-title"><T k="chart.health-facilities.title" /> - <span className="chart-helptext"><T k="chart.health-facilities.helptext" /></span></h3>
-        <div className="chart-container" id="health-facilities-barchar"></div>
+        <div className="chart-container" id="population-facilities-barchar"></div>
       </div>
     );
   },
 });
 
-export default HealthFacilitiesChart;
+export default PopulationFacilitiesChart;

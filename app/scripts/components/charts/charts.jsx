@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import DataTypes from '../../constants/data-types';
 import ViewModes from '../../constants/view-modes';
 import OpenClosed from '../../constants/open-closed';
-import HealthFacilitiesChart from './health-facilities-barchar';
+import HealthFacilitiesCharts from './health-facilities-charts';
 import HivChart from './hiv-barchar';
 import DeathByAgeChart from './death-by-age-chart';
 import DeliveriesBarChart from './deliveries-barchar';
@@ -37,7 +37,7 @@ const Charts = React.createClass({
             OPD: () => (<OpdByAgeChart {...this.props}/>),
             Tetanus: () => (<TetanusBarChart {...this.props}/>),
             HivCenter: () => (<HivChart {...this.props}/>),
-            Facilities: () => (<HealthFacilitiesChart {...this.props}/>),
+            Facilities: () => (<HealthFacilitiesCharts {...this.props}/>),
           })}
         </div>
       ),
