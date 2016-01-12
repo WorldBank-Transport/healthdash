@@ -8,6 +8,7 @@ const FacilitiesFlyout = React.createClass({
 
   propTypes: {
     data: PropTypes.array.isRequired,
+    population: PropTypes.number.isRequired,
     region: PropTypes.string.isRequired,
   },
 
@@ -32,6 +33,7 @@ const FacilitiesFlyout = React.createClass({
       <div>
         <h3>{this.props.region}</h3>
         <h5><T k="flyout.facilities.length"/>: {this.props.data.length}</h5>
+        <h5><T k="flyout.facilities.pupulation"/>: {Math.round(this.props.population / this.props.data.length)}</h5>
         {this.renderSum(types, 'flyout.facilities.type', this.props.data.length)}
         {this.renderSum(status, 'flyout.facilities.status', this.props.data.length)}
         {this.renderSum(ownership, 'flyout.facilities.ownership', this.props.data.length)}

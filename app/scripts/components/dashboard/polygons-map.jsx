@@ -1,7 +1,10 @@
 import pick from 'lodash/object/pick';
+import { connect } from 'reflux';
 import { Maybe } from 'results';
 import React, { PropTypes } from 'react';
 import { Map } from 'leaflet';
+
+import PopulationStore from '../../stores/population';
 
 import colours, { polygon as polyColour } from '../../utils/colours';
 import DataTypes from '../../constants/data-types';
@@ -25,6 +28,10 @@ const PolygonsMap = React.createClass({
     selected: PropTypes.instanceOf(Maybe.OptionClass),  // injected
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
+
+  mixins: [
+    connect(PopulationStore, 'population'),
+  ],
 
   handleClickFor(feature) {
     return () => this.props.mapDrillDown(feature.id);
@@ -88,7 +95,7 @@ const PolygonsMap = React.createClass({
       <div>
         {this.props.polygonsData.map(this.renderFeature)}
 
-        (<Flyout {...propsForPopup}/>)
+        (<Flyout {...propsForPopup} population={this.state.population}/>)
         <Legend ranges={getMapRanges(this.props.dataType)}/>
       </div>
     );

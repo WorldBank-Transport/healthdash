@@ -6,6 +6,7 @@ import FilteredDataStore from '../../stores/filtered-data';
 import LayoutStore from '../../stores/layout';
 import LoadingDataStore from '../../stores/loading-data';
 import MetricsStore from '../../stores/metrics';
+import PopulationStore from '../../stores/population';
 //import LoadingPolygonsStore from '../../stores/loading-polygons';
 import PolygonsDataStore from '../../stores/polygons-with-data';
 import ViewStore from '../../stores/view';
@@ -13,6 +14,7 @@ import SelectedStore from '../../stores/selected';
 
 // Actions
 import { load } from '../../actions/data';
+import { load as loadPopulation} from '../../actions/population';
 import { clear, setRange, setInclude } from '../../actions/filters';
 import { select, deselect } from '../../actions/select';
 import { loadPolygons, clearPolygons } from '../../actions/polygons';
@@ -52,6 +54,7 @@ const DashRoot = React.createClass({
     connect(LayoutStore, 'layout'),
     connect(LoadingDataStore, 'loadingData'),
     connect(MetricsStore, 'metrics'),
+    connect(PopulationStore, 'population'),
     connect(PolygonsDataStore, 'polygonsData'),
     connect(SelectedStore, 'selected'),
     connect(ViewStore, 'view'),
@@ -61,6 +64,7 @@ const DashRoot = React.createClass({
   componentDidMount() {
     load(this.state.view.dataType);
     this.loadPolygons();
+    loadPopulation();
   },
 
   // Reload data if necessary
@@ -102,6 +106,7 @@ const DashRoot = React.createClass({
     const mapChild = React.cloneElement(this.props.children, {
       ...propsForChildren,
       polygonsData: this.state.polygonsData,
+      population: this.state.population,
       selected: this.state.selected,
       select,
       deselect,
