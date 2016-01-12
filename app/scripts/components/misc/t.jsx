@@ -182,6 +182,7 @@ const allTranslations = {
     'flyout.zone': 'Zone',
     'flyout.region': 'Region',
     'flyout.facilities.length': 'Number of Facilities',
+    'flyout.facilities.pupulation': 'People to Facility ratio',
     'flyout.facilities.status': 'Status',
     'flyout.facilities.OPERATING': 'Operating',
     'flyout.facilities.ownership': 'Ownership',
