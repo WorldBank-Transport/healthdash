@@ -8,7 +8,6 @@ import LoadingDataStore from '../../stores/loading-data';
 import MetricsStore from '../../stores/metrics';
 //import LoadingPolygonsStore from '../../stores/loading-polygons';
 import PolygonsDataStore from '../../stores/polygons-with-data';
-import PopulationStore from '../../stores/population';
 import ViewStore from '../../stores/view';
 import SelectedStore from '../../stores/selected';
 
