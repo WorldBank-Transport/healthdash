@@ -58,7 +58,7 @@ const ipdGroupBy = (data) => {
   }
 };
 
-export const groupByLoc = data => ({ dataType }) => {
+export const groupByLoc = data => ({ dataType, viewMode }) => {
   return DataTypes.match(dataType, {
     Death: () => deathGroupBy(data),
     FamilyPlanning: () => Result.sumByGroupBy(data, 'REGION', ['TOTAL FAMILY PLANNING CLIENTS', 'NEW CLIENTS', 'FAMILY PLANNING CONTINUIOUS', 'PROJECTED FAMILY PLANNING CLIENTS (WOMEN AGE 15-49)']),
@@ -67,7 +67,7 @@ export const groupByLoc = data => ({ dataType }) => {
     IPD: () => ipdGroupBy(data),
     OPD: () => ipdGroupBy(data),
     Tetanus: () => Result.sumByGroupBy(data, 'REGIONS', ['PROJECTED CLIENTS', 'TOTAL ATTENDANCE', 'TT2 VACCINATION COVERAGE', '% TT2 VACCINATION COVERAGE']),
-    HivCenter: () => Result.groupBy(data, 'REGION'),
-    Facilities: () => Result.groupBy(data, 'REGION'),
+    HivCenter: () => Result.groupBy(data, viewMode.toParam()),
+    Facilities: () => Result.groupBy(data, viewMode.toParam()),
   });
 };

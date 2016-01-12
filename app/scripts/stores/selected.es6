@@ -58,7 +58,7 @@ const SelectedStore = createStore({
     //this.deselectPolygon();
     // TODO check if this is ok and how to unselect it
     this.setData(None());
-    this.selectRoute();
+    //this.selectRoute();
   },
 
   deselectPolygon() {

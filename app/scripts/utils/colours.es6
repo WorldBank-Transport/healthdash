@@ -21,17 +21,24 @@ const colours = {
   poor: '#f05e55',
 
   unknown: '#7d7d7d',
+
+  healthCentre: 'yellow',
+  clinic: 'orange',
+  hospital: 'red',
 };
 export default colours;
 
 export const point = {
-  normal: {
-    radius: 4,
-    color: colours.bgColor,
-    opacity: 0.75,
-    weight: 1,
-    fillOpacity: 1,
-    fillColor: colours.theme,
+  normal: colour => {
+    const style = {
+      radius: 4,
+      color: colours.bgColor,
+      opacity: 0.75,
+      weight: 1,
+      fillOpacity: 1,
+      fillColor: colour,
+    };
+    return style;
   },
 
   hovered: {
@@ -72,69 +79,18 @@ export const polygon = {  // sync with edudash: https://github.com/WorldBank-Tra
 
 export const Color = {};
 
-Color.getWaterpointColor = (status) => {
-  let color = null;
-  switch (status) {
-  case 'FUNCTIONAL':
-    color = '#82c675';
+Color.getFacilityColor = (type) => {
+  let c = colours.theme;
+  switch (type) {
+  case 'HEALTH CENTRE':
+    c = colours.healthCentre;
     break;
-  case 'NON FUNCTIONAL':
-  case 'NON FUNCTIONAL < 3M':
-  case 'NON FUNCTIONAL > 3M':
-  case 'NON FUNCTIONAL < 6M':
-  case 'NON FUNCTIONAL > 6M':  // TODO: consider checking if string starts with NON FUNCTIONAL instead of the switch/case fall-through
-    color = '#f05e55';
+  case 'CLINIC':
+    c = colours.clinic;
     break;
-  case 'FUNCTIONAL NEEDS REPAIR':
-    color = '#fbc030';
+  case 'HOSPITAL':
+    c = colours.hospital;
     break;
-  default:
-    throw Error(`there is not state found, actual: ${status}`);
   }
-  return color;
-};
-
-Color.getDamsColor = (metric) => {
-  let color = null;
-  switch (metric) {
-  case 'DAM_HEIGHT':
-    color = '#94daf7';
-    break;
-  case 'ELEVATION_':
-    color = '#4cafd8';
-    break;
-  case 'RESERVOIR_':
-    color = '#3f7086';
-    break;
-  default:
-    throw Error(`there is no metric found, actual: ${metric}`);
-  }
-  return color;
-};
-
-Color.getBoreholesColor = (metric) => {
-  let color = null;
-  switch (metric) {
-  case 'DIAMETER':
-    color = '#FA8072';
-    break;
-  case 'DEPTH_METER':
-    color = '#FF4500';
-    break;
-  case 'STATIC_WATER_LEVEL':
-    color = '#87CEEB';
-    break;
-  case 'DYNAMIC_WATER_LEVEL_METER':
-    color = '#DDA0DD';
-    break;
-  case 'DRAW _DOWN_METER':
-    color = '#000080';
-    break;
-  case 'YIELD_METER_CUBED_PER_HOUR':
-    color = '#4B0082';
-    break;
-  default:
-    throw Error(`there is no metric found, actual: ${metric}`);
-  }
-  return color;
+  return c;
 };

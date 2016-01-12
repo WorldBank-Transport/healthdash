@@ -6,6 +6,7 @@ import { CircleMarker } from 'react-leaflet';
 import colours from '../../utils/colours';
 import SimplePoints from '../leaflet/simple-points';
 import Flyout from './flyout';
+import PointLegend from './point-legend';
 
 const PointsMap = React.createClass({
   propTypes: {
@@ -60,6 +61,7 @@ const PointsMap = React.createClass({
 
         {/* A point popup, if a point is selected */}
         <Flyout {...propsForPopup}/>
+        <PointLegend />
       </div>
     );
   },

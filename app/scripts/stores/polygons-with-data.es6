@@ -36,10 +36,10 @@ const PolygonsDataStore = createStore({
   recompute() {
     const data = FilteredDataStore.get();
     const features = PolygonsStore.get();
-    const { dataType } = ViewStore.get();
+    const { dataType, viewMode } = ViewStore.get();
 
-    const dataFeatures = Some({ dataType })
-      .andThen(groupByLoc(data))
+    const dataFeatures = Some({ dataType, viewMode })
+      .andThen(groupByLoc(data, viewMode))
       .andThen(injectDataIntoFeatures(features))
       .unwrapOr(this.initialData);
 

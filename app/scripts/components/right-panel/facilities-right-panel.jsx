@@ -4,9 +4,10 @@ import ViewModes from '../../constants/view-modes';
 import MetricSummary from '../charts/metric-summary-chart';
 import { styles } from '../../utils/searchUtil';
 import T from '../misc/t';
-import { _ } from 'results';
 import { Link } from 'react-router';
 import Autocomplete from 'react-autocomplete';
+import { Result } from '../../utils/functional';
+import TypeSelector from '../filters/type-selector';
 
 const FacilitiesRightPanel = React.createClass({
   propTypes: {
@@ -16,6 +17,7 @@ const FacilitiesRightPanel = React.createClass({
     setSelected: PropTypes.func,
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
+
   select(value, item) {
     this.props.setSelected(item.FACILITY_ID_NUMBER); // TODO fixme
   },
@@ -29,6 +31,23 @@ const FacilitiesRightPanel = React.createClass({
     return (
       a.FACILITY_NAME.toLowerCase().indexOf(value.toLowerCase()) >
       b.FACILITY_NAME.toLowerCase().indexOf(value.toLowerCase()) ? 1 : -1
+    );
+  },
+
+  renderViewModes(viewModes) {
+    return (<ul>
+        {viewModes.map(viewMode => (<li><Link activeClassName="active" to={`/dash/${viewMode}/facilities/`}><T k={`dash.${viewMode}`} /></Link></li>))}
+    </ul>);
+  },
+
+  renderHealthType() {
+    const healthFacilitiesType = Result.groupBy(this.props.data, 'FACILITY TYPE');
+    return (
+      <div className="row">
+        {Object.keys(healthFacilitiesType).map(key =>
+          (<MetricSummary icon={`facilities-${key}.png`} metric={healthFacilitiesType[key].length} title={`chart.facilities.type.${key}`}/>)
+        )}
+      </div>
     );
   },
 
@@ -48,15 +67,15 @@ const FacilitiesRightPanel = React.createClass({
               sortItems={this.sortStates} />
         </div>
         <div className="row">
-          <MetricSummary icon="facilities.png" metric={this.props.data.length} title="chart.facilities.title"/>
+          <TypeSelector />
         </div>
         <div className="row">
+          <MetricSummary icon="facilities.png" metric={this.props.data.length} title="chart.facilities.title"/>
+        </div>
+        {this.renderHealthType()}
+        <div className="row">
           {
-            ViewModes.match(this.props.viewMode, {
-              Points: () => (<Link activeClassName="active" to="/dash/regions/facilities/"><T k="dash.region" /></Link>),
-              Regions: () => (<Link activeClassName="active" to="/dash/points/facilities/"><T k="dash.national" /></Link>),
-              [_]: () => (<span>Error: invalid view mode</span>),
-            })
+            this.renderViewModes(['points', 'regions', 'districts'])
           }
         </div>
       </div>);
