@@ -5,19 +5,16 @@
 @import '../config/list';
 
 .year-selector {
-  color: $text-color;
+  background: $grey-tab;
   display: table-cell;
   font-size: $category-filter-text;
   font-weight: bold;
   margin: 0;
-  min-width: $subcategory-filter-tab;
-  padding: 0 $filter-list-left-margin;
   text-align: left;
+  width: $full-width / 4;
 
   .menu-item {
     border-left: 1px solid $tab-expand-bg;
-    display: table-cell;
-    vertical-align: top;
 
     &.disabled {
       background: $grey-medium;
@@ -27,25 +24,30 @@
         cursor: not-allowed;
       }
       a {
-        color: $grey-light;
+        color: $text-inverse;
+
         &:hover,
         &.active {
-          background: $grey-medium;  // TODO: this is prob not the right var for this
+          background: $theme-blue;
         }
       }
     }
 
     a {
-      color: $theme-blue;
-      display: table-cell;
+      color: $text-inverse;
+      display: block;
       font-size: $tab-text;
       font-weight: bold;
-      height: $charts-nav-height;
-      padding: 0 $base-unit;
+      padding-bottom: $base-unit * 1.1;
+      padding-top: $base-unit - 0.1;
       text-align: center;
-      vertical-align: middle;
-      // hack to make the a fill the li's width:
-      width: 1000px;
+      width: $full-width;
+
+      .fa {
+        display: inline-block;
+        margin-left: $base-unit / 2;
+      }
+
 
       &:hover,
       &.active {

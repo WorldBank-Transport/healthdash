@@ -1,6 +1,9 @@
 @import '../config/dimensions';
+@import '../config/colours';
+
 
 .map-nav {
+  border-bottom: 2px solid $grey-light;
   display: flex;  // TODO: this probably breaks IE
   height: $map-nav-height;
 }
