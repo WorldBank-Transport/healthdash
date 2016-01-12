@@ -9,16 +9,19 @@
   box-shadow: $shadow;
   display: inline-block;
   font-size: $medium-text;
-  height: $legend-dimensions;
+  height: $legend-dimensions * 1.1;
   left: 2%;
+  max-width: $legend-dimensions * 1.2;
   padding: $base-unit $base-unit * 1.2 $base-unit * 1.5 $base-unit * 1.2;
   position: absolute;
-  width: $legend-dimensions;
+  width: auto;
   z-index: 1;  // needs to be specified >=1 to go above the map
 
   .row {
     box-sizing: border-box;
     display: table;
+    font-size: 13px;
+    line-height: 24px;
     table-layout: fixed;
     width: 100%;
   }
@@ -28,8 +31,9 @@
     display: block;
     float: left;
     height: $legend-block-height;
-    margin-right: $legend-margin;
-    margin-top: $legend-margin;
+    margin-right: $legend-margin * 1.3;
+    margin-top: $legend-margin /2;
+    margin-bottom: $legend-margin /2;
     width: $legend-block-width;
   }
   .legend-point {
@@ -40,7 +44,7 @@
     height: $legend-point-height;
     margin-right: $legend-margin;
     margin-top: $legend-margin;
-    width: $legend-point-width; 
+    width: $legend-point-width;
   }
   .title {
     color: $theme-blue;
