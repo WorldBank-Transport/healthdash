@@ -1,27 +1,27 @@
 import React, { PropTypes } from 'react';
-import {BarChart} from 'react-d3-components';
 import * as func from '../../utils/functional';
-import TSetChildProps from '../misc/t-set-child-props';
 import T from '../misc/t';
-import Resize from '../../utils/resize-mixin';
-import ViewModes from '../../constants/view-modes';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
+import HighCharts from 'highcharts';
 
+require('highcharts/modules/exporting')(HighCharts);
 require('stylesheets/charts/deliveries-barchart');
 
 const DeliveriesBarChart = React.createClass({
   propTypes: {
     data: PropTypes.array.isRequired,
-    viewMode: PropTypes.instanceOf(ViewModes.OptionClass),
   },
 
   mixins: [
-    Resize,
     ShouldRenderMixin,
   ],
 
-  getInitialState() {
-    return {};
+  componentDidMount() {
+    this.getChart();
+  },
+
+  componentDidUpdate() {
+    this.getChart();
   },
 
   getValue(values, metric) {
@@ -33,48 +33,78 @@ const DeliveriesBarChart = React.createClass({
     }, {value: 0}).value;
   },
 
-  parseData(summary, keys) {
+  parseData(summary, keys, regions) {
     return keys.map(metric => {
       return {
-        label: metric,
-        values: Object.keys(summary).map(year => {
-          return {
-            x: year,
-            y: this.getValue(summary[year], metric),
-          };
-        }),
+        name: metric,
+        data: regions.map(region => this.getValue(summary[region], metric)),
       };
     });
   },
 
-  render() {
-    if (!this.state.size) {
-      return (<div>empty</div>);
-    }
-
+  getChart() {
     if (this.props.data.length === 0) {
       return false;
     }
     const keys = ['HEALTH FACILITY DELIVERIES', 'TRADITIONAL BIRTH ATTENDANTS (TBA)', 'BORN BEFORE ARRIVAL (BBA)', 'HOME DELIVERY'];
-    const sum = func.Result.sumByGroupBy(this.props.data, 'YEAR', keys);
-    return (
-      <div className="deliveries-barchart">
-        <h3 className="chart-title"><T k="chart.deliveries-barchart.title" /> - <span className="chart-helptext"><T k="chart.deliveries-barchart.helptext" /></span></h3>
-        <div className="chart-container ">
-          <TSetChildProps>
-            <BarChart
-                data={this.parseData(sum, keys)}
-                groupedBars={true}
-                height={280}
-                margin={{top: 10, bottom: 20, left: 60, right: 10}}
-                width={this.state.size.width * 0.90}
-                xAxis={{label: {k: `chart.deliveries-barchart.x-axis`}}}
-                yAxis={{label: {k: 'chart.deliveries-barchart.y-axis'}}} />
-              </TSetChildProps>
-        </div>
-      </div>
+    const sum = func.Result.sumByGroupBy(this.props.data, 'REGION', keys);
+    const regions = Object.keys(sum).filter(key => key !== 'total');
+    const stats = this.parseData(sum, keys, regions);
+    return new HighCharts.Chart({
+      chart: {
+        height: 400,
+        type: 'column',
+        renderTo: 'deliveries-barchart',
+      },
 
-    );
+      title: {
+        text: '',
+      },
+
+      xAxis: {
+        categories: regions,
+      },
+
+      tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        '<td style="padding:0"><b>{point.y}</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true,
+      },
+
+      plotOptions: {
+        spline: {
+          marker: {
+            radius: 4,
+            lineColor: '#666666',
+            lineWidth: 1,
+          },
+        },
+      },
+
+      series: stats,
+    });
+  },
+
+  render() {
+    if (this.props.data.length === 0) {
+      return (<div>empty</div>);
+    }
+    return (
+      <div className="container">
+        <div className="secondaryCharts">
+          <div className="row">
+            <div className="mainChart">
+              <div className="deliveries-barchart">
+                <h3 className="chart-title"><T k="chart.deliveries-barchart.title" /> - <span className="chart-helptext"><T k="chart.deliveries-barchart.helptext" /></span></h3>
+                <div className="chart-container" id="deliveries-barchart"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>);
   },
 });
 

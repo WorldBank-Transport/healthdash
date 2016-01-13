@@ -7,7 +7,7 @@ import HivChart from './hiv-barchar';
 import DeathCharts from './death-charts';
 import DeliveriesBarChart from './deliveries-barchar';
 import FamilyCharts from './family-charts';
-import HealthWorkersBarChart from './health-workers-barchart';
+import HealthWorkersCharts from './health-workers-charts';
 import IpdByAgeChart from './ipd-by-age-chart';
 import OpdByAgeChart from './opd-by-age-chart';
 import TetanusBarChart from './tetanus-barchar';
@@ -32,7 +32,7 @@ const Charts = React.createClass({
             Death: () => (<DeathCharts {...this.props}/>),
             FamilyPlanning: () => (<FamilyCharts {...this.props}/>),
             Deliveries: () => (<DeliveriesBarChart {...this.props}/>),
-            HealthWorkers: () => (<HealthWorkersBarChart {...this.props}/>),
+            HealthWorkers: () => (<HealthWorkersCharts {...this.props}/>),
             IPD: () => (<IpdByAgeChart {...this.props}/>),
             OPD: () => (<OpdByAgeChart {...this.props}/>),
             Tetanus: () => (<TetanusBarChart {...this.props}/>),

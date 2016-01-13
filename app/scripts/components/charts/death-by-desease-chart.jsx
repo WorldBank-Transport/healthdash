@@ -5,16 +5,14 @@ import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
 
 require('highcharts/modules/exporting')(HighCharts);
-require('stylesheets/charts/health-workers-barchart');
+require('stylesheets/charts/death-by-age-chart');
 
-const HealthWorkersBarChart = React.createClass({
+const DeathByDeaseaseChart = React.createClass({
   propTypes: {
     data: PropTypes.array.isRequired,
   },
 
-  mixins: [
-    ShouldRenderMixin,
-  ],
+  mixins: [ShouldRenderMixin],
 
   componentDidMount() {
     this.getChart();
@@ -24,45 +22,33 @@ const HealthWorkersBarChart = React.createClass({
     this.getChart();
   },
 
-
-  sumAll(regions) {
+  sumAll(data) {
+    const regions = Object.keys(data).filter(key => key !== 'CHILD_TYPE' && key !== 'DISEASE' && key !== 'YEAR' && key !== '_id');
     return regions.reduce( (ret, item) => {
-      Object.keys(item).filter(k => k !== 'total').forEach(k => ret.total += item[k]);
+      ret.total += data[item];
       return ret;
     }, {total: 0}).total;
   },
 
-  findValue(items, region) {
-    return items.reduce( (ret, item) => {
-      if (item.hasOwnProperty(region)) {
-        ret.value = item[region];
-      }
-      return ret;
-    }, {value: 0}).value;
-  },
-
-  parseData(summary, regions) {
+  parseData(summary) {
     return Object.keys(summary)
           .map(age => {
             return {
               name: age,
-              data: regions.map(region => this.findValue(summary[age], region)),
+              data: summary[age].map(data => this.sumAll(data)),
             };
           });
   },
 
   getChart() {
-    if (this.props.data.length === 0) {
-      return false;
-    }
-    const regions = Object.keys(this.props.data[0]).filter(key => key !== 'HEALTH WORKERS' && key !== 'YEAR' && key !== '_id');
-    const sum = Result.sumByGroupBy(this.props.data, 'YEAR', regions);
-    const stats = this.parseData(sum, regions);
+    const deseases = Object.keys(Result.groupBy(this.props.data, 'DISEASE'));
+    const sum = Result.groupBy(this.props.data, 'CHILD_TYPE');
+    const stats = this.parseData(sum);
     return new HighCharts.Chart({
       chart: {
-        height: 400,
-        type: 'column',
-        renderTo: 'health-workers-barchart',
+        height: 1200,
+        type: 'bar',
+        renderTo: 'death-by-desease-chart',
       },
 
       title: {
@@ -70,7 +56,7 @@ const HealthWorkersBarChart = React.createClass({
       },
 
       xAxis: {
-        categories: regions,
+        categories: deseases,
       },
 
       tooltip: {
@@ -101,13 +87,12 @@ const HealthWorkersBarChart = React.createClass({
       return (<div>empty</div>);
     }
     return (
-      <div className="health-workers-barchart">
-        <h3 className="chart-title"><T k="chart.health-worker.title" /> - <span className="chart-helptext"><T k="chart.health-worker.helptext" /></span></h3>
-        <div className="chart-container" id="health-workers-barchart"></div>
+      <div className="death-by-age-chart">
+        <h3 className="chart-title"><T k="chart.death-by-desease.title" /> - <span className="chart-helptext"><T k="chart.death-by-desease.helptext" /></span></h3>
+        <div className="chart-container" id="death-by-desease-chart"></div>
       </div>
-
     );
   },
 });
 
-export default HealthWorkersBarChart;
+export default DeathByDeaseaseChart;

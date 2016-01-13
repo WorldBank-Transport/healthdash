@@ -133,6 +133,8 @@ const allTranslations = {
     'chart.health-worker.helptext': ' by year',
     'chart.health-worker.x-axis': 'Year',
     'chart.health-worker.y-axis': '# workers',
+    'chart.worker-by-type.title': 'Workers',
+    'chart.worker-by-type.helptext': 'by Type',
     'chart.ipd.title': 'Total Number of In Patient Department',
     'chart.ipd-by-age-chart.title': 'IPD',
     'chart.ipd-by-age-chart.helptext': ' by child age',
