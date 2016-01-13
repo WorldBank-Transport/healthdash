@@ -61,7 +61,7 @@ const ipdGroupBy = (data) => {
 export const groupByLoc = data => ({ dataType, viewMode }) => {
   return DataTypes.match(dataType, {
     Death: () => deathGroupBy(data),
-    FamilyPlanning: () => Result.sumByGroupBy(data, 'REGION', ['TOTAL FAMILY PLANNING CLIENTS', 'NEW CLIENTS', 'FAMILY PLANNING CONTINUIOUS', 'PROJECTED FAMILY PLANNING CLIENTS (WOMEN AGE 15-49)']),
+    FamilyPlanning: () => Result.sumByGroupBy(data, 'REGION', ['TOTAL FAMILY PLANNING CLIENTS', 'NEW CLIENTS', 'FAMILY PLANNING CONTINUIOUS', 'PROJECTED_FAMILY_PLANNING']),
     Deliveries: () => Result.sumByGroupBy(data, 'REGION', ['TOTAL', 'HEALTH FACILITY DELIVERIES', 'TRADITIONAL BIRTH ATTENDANTS (TBA)', 'ANTENATAL CARE PROJECTION', 'BORN BEFORE ARRIVAL (BBA)', 'HOME DELIVERY']),
     HealthWorkers: () => workersGroupBy(data),
     IPD: () => ipdGroupBy(data),
