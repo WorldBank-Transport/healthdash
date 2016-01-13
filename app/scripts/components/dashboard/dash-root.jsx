@@ -28,6 +28,7 @@ import Charts from '../charts/charts';
 import SpinnerModal from '../misc/spinner-modal';
 import Footer from '../boilerplate/footer';
 import RightPanel from '../right-panel/right-panel';
+import Share from '../boilerplate/share';
 
 
 //import DataTypes from '../../constants/data-types';
@@ -125,6 +126,7 @@ const DashRoot = React.createClass({
         )}>
           <DataType dataType={this.state.view.dataType}/>
           <YearSelector />
+          <Share />
         </MapNav>
 
         <div className="map-container">
