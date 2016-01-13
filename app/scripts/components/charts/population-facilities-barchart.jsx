@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
-import {Result} from '../../utils/functional';
+import { connect } from 'reflux';
+import { Result } from '../../utils/functional';
 import TSetChildProps from '../misc/t-set-child-props';
 import T from '../misc/t';
 import ViewModes from '../../constants/view-modes';
@@ -21,24 +22,24 @@ const PopulationFacilitiesChart = React.createClass({
     ShouldRenderMixin,
   ],
 
-  parseData(categories, population) {
+  parseData(categories, regions, population) {
     let count = 0;
     return [{
       name: 'People to Health Facility Ratio',
       data: categories.map(region => {
         return {
           x: categories.indexOf(region),
-          y: Math.round((population[region] || 0) / (facilitiesStats[region] || 1)),
+          y: Math.round((population[region][0].TOTAL || 0) / (regions[region] || 1)),
         };
-      }),
+      }).sort((a, b) => b.y - a.y),
     }];
   },
 
   getChart() {
     const regions = Result.countBy(this.props.data, 'REGION');
     const categories = Object.keys(regions).filter(key => key !== 'total').sort((a, b) => regions[b] - regions[a]);
-    const population = func.Result.sumByGroupBy(this.state.population, 'REGION', ['TOTAL']);
-    const stats = this.parseData(categories, population);
+    const population = Result.sumByGroupBy(this.state.population, 'REGION', ['TOTAL']);
+    const stats = this.parseData(categories, regions, population);
    // needs translations
     return new HighCharts.Chart({
       chart: {
