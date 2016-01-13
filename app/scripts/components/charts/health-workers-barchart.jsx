@@ -1,32 +1,29 @@
 import React, { PropTypes } from 'react';
-import {BarChart} from 'react-d3-components';
-import * as func from '../../utils/functional';
-import TSetChildProps from '../misc/t-set-child-props';
+import { Result } from '../../utils/functional';
 import T from '../misc/t';
-import Resize from '../../utils/resize-mixin';
-import ViewModes from '../../constants/view-modes';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
+import HighCharts from 'highcharts';
 
+require('highcharts/modules/exporting')(HighCharts);
 require('stylesheets/charts/health-workers-barchart');
 
 const HealthWorkersBarChart = React.createClass({
   propTypes: {
     data: PropTypes.array.isRequired,
-    viewMode: PropTypes.instanceOf(ViewModes.OptionClass),
   },
 
   mixins: [
-    Resize,
     ShouldRenderMixin,
   ],
 
-  getInitialState() {
-    return {};
+  componentDidMount() {
+    this.getChart();
   },
 
-  selectedYear(years) {
-    return years[0];
+  componentDidUpdate() {
+    this.getChart();
   },
+
 
   sumAll(regions) {
     return regions.reduce( (ret, item) => {
@@ -35,45 +32,78 @@ const HealthWorkersBarChart = React.createClass({
     }, {total: 0}).total;
   },
 
-  parseData(summary, years) {
+  findValue(items, region) {
+    return items.reduce( (ret, item) => {
+      if (item.hasOwnProperty(region)) {
+        ret.value = item[region];
+      }
+      return ret;
+    }, {value: 0}).value;
+  },
+
+  parseData(summary, regions) {
     return Object.keys(summary)
           .map(age => {
             return {
-              label: age,
-              values: [{
-                x: this.selectedYear(years),
-                y: this.sumAll(summary[age]),
-              }],
+              name: age,
+              data: regions.map(region => this.findValue(summary[age], region)),
             };
           });
   },
 
-  render() {
-    if (!this.state.size) {
-      return (<div>empty</div>);
-    }
-
+  getChart() {
     if (this.props.data.length === 0) {
       return false;
     }
-    const keys = Object.keys(this.props.data[0]).filter(key => key !== 'HEALTH WORKERS' && key !== 'YEAR' && key !== '_id');
-    const years = Object.keys(func.Result.groupBy(this.props.data, 'YEAR'));
-    const sum = func.Result.sumByGroupBy(this.props.data, 'YEAR', keys);
+    const regions = Object.keys(this.props.data[0]).filter(key => key !== 'HEALTH WORKERS' && key !== 'YEAR' && key !== '_id');
+    const sum = Result.sumByGroupBy(this.props.data, 'YEAR', regions);
+    const stats = this.parseData(sum, regions);
+    return new HighCharts.Chart({
+      chart: {
+        height: 400,
+        type: 'column',
+        renderTo: 'health-workers-barchart',
+      },
+
+      title: {
+        text: '',
+      },
+
+      xAxis: {
+        categories: regions,
+      },
+
+      tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        '<td style="padding:0"><b>{point.y}</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true,
+      },
+
+      plotOptions: {
+        spline: {
+          marker: {
+            radius: 4,
+            lineColor: '#666666',
+            lineWidth: 1,
+          },
+        },
+      },
+
+      series: stats,
+    });
+  },
+
+  render() {
+    if (this.props.data.length === 0) {
+      return (<div>empty</div>);
+    }
     return (
       <div className="health-workers-barchart">
         <h3 className="chart-title"><T k="chart.health-worker.title" /> - <span className="chart-helptext"><T k="chart.health-worker.helptext" /></span></h3>
-        <div className="chart-container ">
-          <TSetChildProps>
-            <BarChart
-                data={this.parseData(sum, years)}
-                groupedBars={true}
-                height={280}
-                margin={{top: 10, bottom: 20, left: 50, right: 10}}
-                width={this.state.size.width * 0.90}
-                xAxis={{label: {k: `chart.health-worker.x-axis`}}}
-                yAxis={{label: {k: 'chart.health-worker.y-axis'}}} />
-              </TSetChildProps>
-        </div>
+        <div className="chart-container" id="health-workers-barchart"></div>
       </div>
 
     );

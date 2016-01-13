@@ -41,6 +41,17 @@ function healthFacProcess(record) {
 }
 
 /**
+ * hack to fix an issue since the property PROJECTED FAMILY PLANNING CLIENTS (WOMEN AGE 15-49) could not be retrieve
+ * @param {object} record The family database record
+ * @returns {object} The record with a `PROJECTED_FAMILY_PLANNING` prop
+ */
+function familyProcess(record) {
+  const pulled = {...record};
+  pulled.PROJECTED_FAMILY_PLANNING = record[Object.keys(record)[2]];
+  return pulled;
+}
+
+/**
  * @param {object} record The population database record
  * @returns {object} The record with a `position` prop with lat/lng array
  */
@@ -64,7 +75,7 @@ export const getDeathStats = (onProgress) =>
   ckan.get(API_ROOT, 'bf3f39ed-9789-4b47-862a-de31695d19ef', {}, onProgress);
 
 export const getFamilyPlanning = (onProgress) =>
-  ckan.get(API_ROOT, '68bc9db6-f5a9-497b-848b-32fe6e059b5f', {}, onProgress);
+  ckan.get(API_ROOT, '68bc9db6-f5a9-497b-848b-32fe6e059b5f', {}, onProgress, eachRecord(familyProcess));
 
 export const getDeliveries = (onProgress) =>
   ckan.get(API_ROOT, '00b5cb71-7a6a-463a-8334-bcd4de11350e', {}, onProgress);

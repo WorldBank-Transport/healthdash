@@ -95,6 +95,10 @@ const sumByProp = (propName, agg, item) => {
   return agg;
 };
 
+const propertyFilter = (v, propName) => {
+  return v.hasOwnProperty(propName);
+};
+
 
 // Result type helpers
 export const Result = {};
@@ -185,7 +189,7 @@ Result.sumByGroupBy = (data, aggProp, sumProps) => {
   const filter = (item => has(item, aggProp));
   const grouped = filterAndReduce(filter, (agg, item) => groupByProp(aggProp, agg, item), result, data);
   Object.keys(grouped).forEach(key => {
-    const sumary = sumProps.map(prop => filterAndReduce((v) => has(v, prop), (agg, item) => sumByProp(prop, agg, item), {}, grouped[key]));
+    const sumary = sumProps.map(prop => filterAndReduce((v) => propertyFilter(v, prop), (agg, item) => sumByProp(prop, agg, item), {}, grouped[key]));
     result[key] = sumary;
   });
   return result;

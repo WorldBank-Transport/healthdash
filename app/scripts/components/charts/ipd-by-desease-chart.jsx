@@ -7,7 +7,7 @@ import HighCharts from 'highcharts';
 require('highcharts/modules/exporting')(HighCharts);
 require('stylesheets/charts/death-by-age-chart');
 
-const IpdByAgeChart = React.createClass({
+const IpdByDeaseaseChart = React.createClass({
   propTypes: {
     data: PropTypes.array.isRequired,
   },
@@ -22,12 +22,20 @@ const IpdByAgeChart = React.createClass({
     this.getChart();
   },
 
+  sumAll(data) {
+    const regions = Object.keys(data).filter(key => key !== 'CHILD_TYPE' && key !== 'DISEASES' && key !== 'YEAR' && key !== '_id');
+    return regions.reduce( (ret, item) => {
+      ret.total += data[item];
+      return ret;
+    }, {total: 0}).total;
+  },
+
   parseData(summary) {
     return Object.keys(summary)
           .map(age => {
             return {
               name: age,
-              data: summary[age].map(regionWithData => regionWithData[Object.keys(regionWithData).filter(key => key !== 'total')[0]]),
+              data: summary[age].map(data => this.sumAll(data)),
             };
           });
   },
@@ -36,14 +44,14 @@ const IpdByAgeChart = React.createClass({
     if (this.props.data.length === 0) {
       return false;
     }
-    const regions = Object.keys(this.props.data[0]).filter(key => key !== 'CHILD_TYPE' && key !== 'DISEASES' && key !== 'YEAR' && key !== '_id');
-    const sum = Result.sumByGroupBy(this.props.data, 'CHILD_TYPE', regions);
+    const deseases = Object.keys(Result.groupBy(this.props.data, 'DISEASES'));
+    const sum = Result.groupBy(this.props.data, 'CHILD_TYPE');
     const stats = this.parseData(sum);
     return new HighCharts.Chart({
       chart: {
-        height: 400,
-        type: 'column',
-        renderTo: 'ipd-by-age-chart',
+        height: 1200,
+        type: 'bar',
+        renderTo: 'ipd-by-desease-chart',
       },
 
       title: {
@@ -51,7 +59,7 @@ const IpdByAgeChart = React.createClass({
       },
 
       xAxis: {
-        categories: regions,
+        categories: deseases,
       },
 
       tooltip: {
@@ -83,11 +91,11 @@ const IpdByAgeChart = React.createClass({
     }
     return (
       <div className="death-by-age-chart">
-        <h3 className="chart-title"><T k="chart.ipd-by-age-chart.title" /> - <span className="chart-helptext"><T k="chart.ipd-by-age-chart.helptext" /></span></h3>
-        <div className="chart-container" id="ipd-by-age-chart"></div>
+        <h3 className="chart-title"><T k="chart.ipd-by-desease.title" /> - <span className="chart-helptext"><T k="chart.ipd-by-desease.helptext" /></span></h3>
+        <div className="chart-container" id="ipd-by-desease-chart"></div>
       </div>
     );
   },
 });
 
-export default IpdByAgeChart;
+export default IpdByDeaseaseChart;

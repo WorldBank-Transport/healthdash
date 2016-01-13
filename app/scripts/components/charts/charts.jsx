@@ -2,15 +2,15 @@ import React, { PropTypes } from 'react';
 import DataTypes from '../../constants/data-types';
 import ViewModes from '../../constants/view-modes';
 import OpenClosed from '../../constants/open-closed';
-import HealthFacilitiesChart from './health-facilities-barchar';
+import HealthFacilitiesCharts from './health-facilities-charts';
 import HivChart from './hiv-barchar';
-import DeathByAgeChart from './death-by-age-chart';
+import DeathCharts from './death-charts';
 import DeliveriesBarChart from './deliveries-barchar';
-import FamilityBarChart from './family-barchar';
-import HealthWorkersBarChart from './health-workers-barchart';
-import IpdByAgeChart from './ipd-by-age-chart';
-import OpdByAgeChart from './opd-by-age-chart';
-import TetanusBarChart from './tetanus-barchar';
+import FamilyCharts from './family-charts';
+import HealthWorkersCharts from './health-workers-charts';
+import IpdCharts from './ipd-charts';
+import OpdCharts from './opd-charts';
+import Tt2Charts from './tetanus-charts';
 
 require('stylesheets/charts/charts');
 
@@ -29,15 +29,15 @@ const Charts = React.createClass({
       Open: () => (
         <div className="charts">
           {DataTypes.match(this.props.dataType, {
-            Death: () => (<DeathByAgeChart {...this.props}/>),
-            FamilyPlanning: () => (<FamilityBarChart {...this.props}/>),
+            Death: () => (<DeathCharts {...this.props}/>),
+            FamilyPlanning: () => (<FamilyCharts {...this.props}/>),
             Deliveries: () => (<DeliveriesBarChart {...this.props}/>),
-            HealthWorkers: () => (<HealthWorkersBarChart {...this.props}/>),
-            IPD: () => (<IpdByAgeChart {...this.props}/>),
-            OPD: () => (<OpdByAgeChart {...this.props}/>),
-            Tetanus: () => (<TetanusBarChart {...this.props}/>),
+            HealthWorkers: () => (<HealthWorkersCharts {...this.props}/>),
+            IPD: () => (<IpdCharts {...this.props}/>),
+            OPD: () => (<OpdCharts {...this.props}/>),
+            Tetanus: () => (<Tt2Charts {...this.props}/>),
             HivCenter: () => (<HivChart {...this.props}/>),
-            Facilities: () => (<HealthFacilitiesChart {...this.props}/>),
+            Facilities: () => (<HealthFacilitiesCharts {...this.props}/>),
           })}
         </div>
       ),

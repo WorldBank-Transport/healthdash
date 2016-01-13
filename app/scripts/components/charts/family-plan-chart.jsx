@@ -1,18 +1,23 @@
 import React, { PropTypes } from 'react';
-import {Result} from '../../utils/functional';
+import { connect } from 'reflux';
+import DataTypes from '../../constants/data-types';
+import { Result } from '../../utils/functional';
 import T from '../misc/t';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
+import DataStore from '../../stores/data';
 import HighCharts from 'highcharts';
 
 require('highcharts/modules/exporting')(HighCharts);
-require('stylesheets/charts/tetanus-barchart');
+require('stylesheets/charts/family-barchart');
 
-const TetanusBarChart = React.createClass({
+const FamilityPlanChart = React.createClass({
+
   propTypes: {
-    data: PropTypes.array.isRequired,
+    dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
   },
 
   mixins: [
+    connect(DataStore, 'data'),
     ShouldRenderMixin,
   ],
 
@@ -33,27 +38,29 @@ const TetanusBarChart = React.createClass({
     }, {value: 0}).value;
   },
 
-  parseData(summary) {
-    return Object.keys(summary).map(year => {
+  parseData(summary, keys, years) {
+    return keys.map(metric => {
       return {
-        name: year,
-        data: summary[year].map(itemWithData => itemWithData['TT2 VACCINATION COVERAGE']),
+        name: metric,
+        data: years.map(year => this.getValue(summary[year], metric)),
       };
     });
   },
 
   getChart() {
-    if (this.props.data.length === 0) {
-      return false;
+    const data = this.state.data[this.props.dataType.toParam()];
+    if (data.length === 0) {
+      return null;
     }
-    const regions = Object.keys(Result.groupBy(this.props.data, 'REGIONS'));
-    const sum = Result.groupBy(this.props.data, 'YEAR');
-    const stats = this.parseData(sum);
+    const keys = ['PROJECTED_FAMILY_PLANNING', 'TOTAL FAMILY PLANNING CLIENTS'];
+    const sum = Result.sumByGroupBy(data, 'YEAR', keys);
+    const years = Object.keys(sum).filter(key => key !== 'total');
+    const stats = this.parseData(sum, keys, years);
     return new HighCharts.Chart({
       chart: {
         height: 400,
-        type: 'column',
-        renderTo: 'tt2-chart',
+        type: 'area',
+        renderTo: 'family-plan-chart',
       },
 
       title: {
@@ -61,7 +68,7 @@ const TetanusBarChart = React.createClass({
       },
 
       xAxis: {
-        categories: regions,
+        categories: years,
       },
 
       tooltip: {
@@ -88,17 +95,13 @@ const TetanusBarChart = React.createClass({
   },
 
   render() {
-    if (this.props.data.length === 0) {
-      return (<div>empty</div>);
-    }
     return (
-      <div className="tetanus-barchart">
-        <h3 className="chart-title"><T k="chart.tetanus-barchart.title" /> - <span className="chart-helptext"><T k="chart.tetanus-barchart.helptext" /></span></h3>
-        <div className="chart-container" id="tt2-chart"></div>
+      <div className="family-barchart">
+        <h3 className="chart-title"><T k="chart.family-barchart.title" /> - <span className="chart-helptext"><T k="chart.family-barchart.helptext" /></span></h3>
+        <div className="chart-container" id="family-plan-chart"></div>
       </div>
-
     );
   },
 });
 
-export default TetanusBarChart;
+export default FamilityPlanChart;

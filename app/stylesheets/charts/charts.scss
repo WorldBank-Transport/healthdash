@@ -11,4 +11,12 @@
   top: $map-nav-height;
   width: 100%;
   z-index: 110;
+
+  .secondaryCharts {
+    background: $bg-color;
+    border-top: 2px solid $grey-light;
+    overflow: hidden;
+    padding: $chart-container-padding/2 $chart-container-padding;      
+  }
 }
+
