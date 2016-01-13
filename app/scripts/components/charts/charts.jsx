@@ -4,7 +4,7 @@ import ViewModes from '../../constants/view-modes';
 import OpenClosed from '../../constants/open-closed';
 import HealthFacilitiesCharts from './health-facilities-charts';
 import HivChart from './hiv-barchar';
-import DeathByAgeChart from './death-by-age-chart';
+import DeathCharts from './death-charts';
 import DeliveriesBarChart from './deliveries-barchar';
 import FamilityBarChart from './family-barchar';
 import HealthWorkersBarChart from './health-workers-barchart';
@@ -29,7 +29,7 @@ const Charts = React.createClass({
       Open: () => (
         <div className="charts">
           {DataTypes.match(this.props.dataType, {
-            Death: () => (<DeathByAgeChart {...this.props}/>),
+            Death: () => (<DeathCharts {...this.props}/>),
             FamilyPlanning: () => (<FamilityBarChart {...this.props}/>),
             Deliveries: () => (<DeliveriesBarChart {...this.props}/>),
             HealthWorkers: () => (<HealthWorkersBarChart {...this.props}/>),
