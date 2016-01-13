@@ -1,8 +1,6 @@
 import React, { PropTypes } from 'react';
 import {Result} from '../../utils/functional';
-import TSetChildProps from '../misc/t-set-child-props';
 import T from '../misc/t';
-import ViewModes from '../../constants/view-modes';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
 import { Color } from '../../utils/colours';
@@ -17,19 +15,25 @@ const HealthFacilitiesChart = React.createClass({
 
   mixins: [ShouldRenderMixin],
 
+  componentDidMount() {
+    this.getChart();
+  },
+
+  componentDidUpdate() {
+    this.getChart();
+  },
+
   parseData(facilitiesStats, categories) {
-    let count = 0;
     return Object.keys(facilitiesStats).map(type => ({
-        name: type,
-        data: categories.map(region => {
-          return {
-            color: Color.getFacilityColor(type),
-            x: categories.indexOf(region),
-            y: facilitiesStats[type][region] || 0,
-          };
-        }),
-      })
-    );
+      name: type,
+      data: categories.map(region => {
+        return {
+          color: Color.getFacilityColor(type),
+          x: categories.indexOf(region),
+          y: facilitiesStats[type][region] || 0,
+        };
+      }),
+    }));
   },
 
   getChart() {
@@ -76,13 +80,6 @@ const HealthFacilitiesChart = React.createClass({
     });
   },
 
-  componentDidUpdate() {
-    this.getChart();
-  },
-
-  componentDidMount() {
-    this.getChart();
-  },
 
   render() {
     if (!this.props.data.length === 0) {

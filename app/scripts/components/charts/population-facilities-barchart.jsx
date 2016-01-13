@@ -1,12 +1,9 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'reflux';
 import { Result } from '../../utils/functional';
-import TSetChildProps from '../misc/t-set-child-props';
 import T from '../misc/t';
-import ViewModes from '../../constants/view-modes';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
-import { Color } from '../../utils/colours';
 import PopulationStore from '../../stores/population';
 
 require('highcharts/modules/exporting')(HighCharts);
@@ -22,8 +19,15 @@ const PopulationFacilitiesChart = React.createClass({
     ShouldRenderMixin,
   ],
 
+  componentDidMount() {
+    this.getChart();
+  },
+
+  componentDidUpdate() {
+    this.getChart();
+  },
+
   parseData(categories, regions, population) {
-    let count = 0;
     return [{
       name: 'People to Health Facility Ratio',
       data: categories.map(region => {
@@ -77,14 +81,6 @@ const PopulationFacilitiesChart = React.createClass({
 
       series: stats,
     });
-  },
-
-  componentDidUpdate() {
-    this.getChart();
-  },
-
-  componentDidMount() {
-    this.getChart();
   },
 
   render() {
