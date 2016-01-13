@@ -33,6 +33,9 @@ const DeathByAgeChart = React.createClass({
   },
 
   getChart() {
+    if (this.props.data.length === 0) {
+      return false;
+    }
     const regions = Object.keys(this.props.data[0]).filter(key => key !== 'CHILD_TYPE' && key !== 'DISEASE' && key !== 'YEAR' && key !== '_id');
     const sum = Result.sumByGroupBy(this.props.data, 'CHILD_TYPE', regions);
     const stats = this.parseData(sum);

@@ -1,63 +1,97 @@
 import React, { PropTypes } from 'react';
-import {BarChart} from 'react-d3-components';
-import * as func from '../../utils/functional';
-import TSetChildProps from '../misc/t-set-child-props';
+import { Result } from '../../utils/functional';
 import T from '../misc/t';
-import Resize from '../../utils/resize-mixin';
-import ViewModes from '../../constants/view-modes';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
+import HighCharts from 'highcharts';
 
+require('highcharts/modules/exporting')(HighCharts);
 require('stylesheets/charts/hiv-barchar');
 
 const HivChart = React.createClass({
   propTypes: {
     data: PropTypes.array.isRequired,
-    viewMode: PropTypes.instanceOf(ViewModes.OptionClass),
   },
 
-  mixins: [Resize, ShouldRenderMixin],
+  mixins: [ShouldRenderMixin],
 
-  getInitialState() {
-    return {};
+  componentDidMount() {
+    this.getChart();
+  },
+
+  componentDidUpdate() {
+    this.getChart();
   },
 
   parseData(facilitiesStats) {
-    const comparator = (a, b) => b.y - a.y;
     return [{
-      label: 'Facilities by Region',
-      values: Object.keys(facilitiesStats).filter(key => key !== 'total').map(key => {
-        return {
-          x: key,
-          y: facilitiesStats[key],
-        };
-      }).sort(comparator),
+      name: 'Facilities by Region',
+      data: Object.keys(facilitiesStats).filter(key => key !== 'total').map(key => facilitiesStats[key]),
     }];
   },
 
-  render() {
-    if (!this.state.size) {
-      return (<div>empty</div>);
+  getChart() {
+    if (this.props.data.length === 0) {
+      return false;
     }
-    const facilitiesStats = func.Result.countBy(this.props.data, 'REGION');
-    if (Object.keys(facilitiesStats).length === 0) {
+    const facilitiesStats = Result.countBy(this.props.data, 'REGION');
+    const categories = Object.keys(facilitiesStats).filter(key => key !== 'total');
+    const stats = this.parseData(facilitiesStats);
+   // needs translations
+    return new HighCharts.Chart({
+      chart: {
+        height: 400,
+        type: 'column',
+        renderTo: 'hiv-facilities',
+      },
+
+      title: {
+        text: '',
+      },
+
+      xAxis: {
+        categories: categories,
+      },
+
+      tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        '<td style="padding:0"><b>{point.y}</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true,
+      },
+
+      plotOptions: {
+        spline: {
+          marker: {
+            radius: 4,
+            lineColor: '#666666',
+            lineWidth: 1,
+          },
+        },
+      },
+
+      series: stats,
+    });
+  },
+
+  render() {
+    if (this.props.data.length === 0) {
       return false;
     }
     return (
-      <div className="hiv-facilities-barchar">
-        <h3 className="chart-title"><T k="chart.hiv-facilities.title" /> - <span className="chart-helptext"><T k="chart.hiv-facilities.helptext" /></span></h3>
-        <div className="chart-container ">
-          <TSetChildProps>
-            <BarChart
-                data={this.parseData(facilitiesStats)}
-                height={300}
-                margin={{top: 10, bottom: 80, left: 30, right: 10}}
-                width={this.state.size.width * 0.90}
-                xAxis={{label: {k: 'chart.hiv-facilities.x-axis'}}}
-                yAxis={{label: {k: 'chart.hiv-facilities.y-axis'}}} />
-              </TSetChildProps>
+      <div className="container">
+        <div className="secondaryCharts">
+          <div className="row">
+            <div className="mainChart">
+              <div className="hiv-facilities-barchar">
+                <h3 className="chart-title"><T k="chart.hiv-facilities.title" /> - <span className="chart-helptext"><T k="chart.hiv-facilities.helptext" /></span></h3>
+                <div className="chart-container" id="hiv-facilities"></div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    );
+      </div>);
   },
 });
 

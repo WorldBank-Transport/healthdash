@@ -37,6 +37,9 @@ const HealthFacilitiesChart = React.createClass({
   },
 
   getChart() {
+    if (this.props.data.length === 0) {
+      return false;
+    }
     const facilitiesStats = Result.countByGroupBy(this.props.data, 'FACILITY TYPE', 'REGION');
     const regions = Result.countBy(this.props.data, 'REGION');
     const categories = Object.keys(regions).filter(key => key !== 'total').sort((a, b) => regions[b] - regions[a]);
@@ -82,7 +85,7 @@ const HealthFacilitiesChart = React.createClass({
 
 
   render() {
-    if (!this.props.data.length === 0) {
+    if (this.props.data.length === 0) {
       return (<div>empty</div>);
     }
     return (

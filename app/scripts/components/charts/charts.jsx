@@ -8,9 +8,9 @@ import DeathCharts from './death-charts';
 import DeliveriesBarChart from './deliveries-barchar';
 import FamilyCharts from './family-charts';
 import HealthWorkersCharts from './health-workers-charts';
-import IpdByAgeChart from './ipd-by-age-chart';
-import OpdByAgeChart from './opd-by-age-chart';
-import TetanusBarChart from './tetanus-barchar';
+import IpdCharts from './ipd-charts';
+import OpdCharts from './opd-charts';
+import Tt2Charts from './tetanus-charts';
 
 require('stylesheets/charts/charts');
 
@@ -33,9 +33,9 @@ const Charts = React.createClass({
             FamilyPlanning: () => (<FamilyCharts {...this.props}/>),
             Deliveries: () => (<DeliveriesBarChart {...this.props}/>),
             HealthWorkers: () => (<HealthWorkersCharts {...this.props}/>),
-            IPD: () => (<IpdByAgeChart {...this.props}/>),
-            OPD: () => (<OpdByAgeChart {...this.props}/>),
-            Tetanus: () => (<TetanusBarChart {...this.props}/>),
+            IPD: () => (<IpdCharts {...this.props}/>),
+            OPD: () => (<OpdCharts {...this.props}/>),
+            Tetanus: () => (<Tt2Charts {...this.props}/>),
             HivCenter: () => (<HivChart {...this.props}/>),
             Facilities: () => (<HealthFacilitiesCharts {...this.props}/>),
           })}

@@ -41,6 +41,9 @@ const DeathByDeaseaseChart = React.createClass({
   },
 
   getChart() {
+    if (this.props.data.length === 0) {
+      return false;
+    }
     const deseases = Object.keys(Result.groupBy(this.props.data, 'DISEASE'));
     const sum = Result.groupBy(this.props.data, 'CHILD_TYPE');
     const stats = this.parseData(sum);
