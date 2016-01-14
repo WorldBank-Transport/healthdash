@@ -228,6 +228,10 @@ const allTranslations = {
     'flyout.tetanus.perc-tt2-coverage': '% TT2 Vaccination Coverage',
     'flyout.population': 'Population',
 
+    'share.share': 'Share',
+    'share.feedback': 'Feedback',
+    'share.print': 'Print',
+
     'error': 'We\'re sorry',
     'error.retry': 'Retry',
     'error.api.pre-request': 'An error occurred when the application was preparing to fetch data',
