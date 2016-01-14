@@ -26,9 +26,29 @@ const HealthFacilitiesChart = React.createClass({
           color: Color.getFacilityColor(type),
           x: categories.indexOf(region),
           y: facilitiesStats[type][region] || 0,
+          drilldown: region,
         };
       }),
     }));
+  },
+
+  calculateDrillDown(regions, data) {
+    return regions.map(region => {
+      const regionalData = data.filter(item => item.REGION === region);
+      const councils = Object.keys(Result.countBy(regionalData, 'COUNCIL')).filter(key => key !== 'total');
+      const councilStats = Result.countByGroupBy(regionalData, 'FACILITY TYPE', 'COUNCIL');
+      return Object.keys(councilStats).map(type => ({
+        name: type,
+        id: region,
+        data: councils.map(council => {
+          return {
+            color: Color.getFacilityColor(type),
+            x: councils.indexOf(council),
+            y: councilStats[type][council] || 0,
+          };
+        }),
+      }));
+    });
   },
 
   getChart() {
@@ -38,6 +58,7 @@ const HealthFacilitiesChart = React.createClass({
     const facilitiesStats = Result.countByGroupBy(this.props.data, 'FACILITY TYPE', 'REGION');
     const regions = Result.countBy(this.props.data, 'REGION');
     const categories = Object.keys(regions).filter(key => key !== 'total').sort((a, b) => regions[b] - regions[a]);
+    const drillDown = this.calculateDrillDown(categories, this.props.data);
     const stats = this.parseData(facilitiesStats, categories);
    // needs translations
     return new HighCharts.Chart({
@@ -65,6 +86,9 @@ const HealthFacilitiesChart = React.createClass({
       },
 
       series: stats,
+      drilldown: {
+        series: drillDown,
+      },
     });
   },
 

@@ -14,6 +14,7 @@ import Tt2Charts from './tetanus-charts';
 import HighCharts from 'highcharts';
 
 require('highcharts/modules/exporting')(HighCharts);
+require('highcharts/modules/drilldown')(HighCharts);
 require('stylesheets/charts/charts');
 
 const Charts = React.createClass({
