@@ -38,3 +38,10 @@
   margin-bottom: $general-content-padding;
   padding-bottom: $general-content-padding;
 }
+
+@mixin bordered() {
+  border-left: 3px solid $panel-section-border;
+  margin-bottom: 10px;
+  overflow: hidden;
+  padding-left: 8px;
+}

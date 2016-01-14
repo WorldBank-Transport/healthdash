@@ -4,20 +4,88 @@
 @import '../config/box';
 @import '../config/list';
 
-.type-selector {
+.type-selector-wrapper {
+  float: left;
+  margin-bottom: 10px;
+  margin-top: -5px;
+  width: 100%;
 
+  h5 {
+    color: $theme-blue;
+    font-size: 13px;
+    margin-bottom: 5px;
+  }
+}
+
+.type-selector {
+  clear: right;
   color: $text-color;
   display: table-cell;
   font-size: $category-filter-text;
   font-weight: bold;
   margin: 0;
   min-width: $subcategory-filter-tab;
-  padding: 0 $filter-list-left-margin;
   text-align: left;
 
-  .types {
-    & > ul {
-      @include list-unstyle();
+  ul {
+    &.types {
+      @include list-unstyled();
+      margin-left: -10px;
+      margin-top: 0;
+
+      li {
+        float: left;
+        line-height: 15px;
+        margin-bottom: 5px;
+        padding-left: 10px;
+        width: 45%;
+
+        &:first-child {
+          .selectable {
+            &:hover,
+            &.selected {
+              background: $theme-blue;
+            }
+          }
+        }
+
+        &:nth-child(2) {
+          .selectable {
+            &:hover,
+            &.selected {
+              background: $health-center-color;
+            }
+          }
+        }
+
+        &:nth-child(3) {
+          .selectable {
+            &:hover,
+            &.selected {
+              background: $clinic-color;
+            }
+          }
+        }
+
+        &:nth-child(4) {
+          .selectable {
+            &:hover,
+            &.selected {
+              background: $hospital-color;
+            }
+          }
+        }
+
+        .selectable {
+          &.selected {
+            &:hover {
+              background: $bg-color;
+            }
+          }
+        }
+
+      }
     }
   }
+
 }

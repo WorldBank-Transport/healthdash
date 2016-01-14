@@ -5,20 +5,34 @@
 
 
 .metric-summary {
-  border-left: 1px solid $grey-light;
+  @include bordered();
+  float: left;
+  margin-top: 5px;
+  padding-left: 10px;
+  width: 40%;
+
+  &.floated {
+    float: left;
+    width: 45%;
+  }
 
   .padding {
     padding-right: 5px;
   }
 
   h3.chart-title {
+    color: $theme-blue;
+    font-size: $panel-metric-title - 3;
     font-weight: $title-weight;
+    margin-bottom: $panel-general-space / 5;
+    margin-top: 0;
+    text-transform: uppercase;
   }
   .summary {
     background: $bg-color;
     display: table-cell;
     overflow: hidden;
-    padding: 0 $chart-container-padding 0 0;
+    padding: 0;
     text-align: left;
     vertical-align: top;
 
@@ -30,8 +44,6 @@
 
     .group-content {
       float: left;
-      padding: 0 0 $base-unit / 2 0;
-      width: 23%;
 
       .row {
         display: inline-flex;
@@ -39,8 +51,9 @@
 
       .medium-number {
         color: $theme-blue;
-        font-size: $medium-number+10;
-        line-height: $base-unit;
+        float: left;
+        font-size: $medium-number + 5;
+        line-height: $base-unit + 0.5;
 
         & > .number {
           font-weight: bold;

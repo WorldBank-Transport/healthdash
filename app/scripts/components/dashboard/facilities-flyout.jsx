@@ -30,7 +30,7 @@ const FacilitiesFlyout = React.createClass({
     const ownership = Result.groupBy(this.props.data, 'OWNERSHIP');
 
     return (
-      <div>
+      <div className="facilities-stats">
         <h3>{this.props.region}</h3>
         <h5><T k="flyout.facilities.length"/>: {this.props.data.length}</h5>
         <h5><T k="flyout.facilities.pupulation"/>: {Math.round(this.props.population / this.props.data.length)}</h5>

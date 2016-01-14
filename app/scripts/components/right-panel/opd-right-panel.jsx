@@ -28,7 +28,7 @@ const OpdRightPanel = React.createClass({
 
   render() {
     return (
-      <div className="container">
+      <div className="container other-selections">
         <div className="row">
           <MetricSummary icon="opd.png" metric={this.getTotalOpd()} title="chart.opd.title"/>
         </div>

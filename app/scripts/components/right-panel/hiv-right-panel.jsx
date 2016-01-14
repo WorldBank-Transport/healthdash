@@ -15,7 +15,7 @@ const HivRightPanel = React.createClass({
 
   render() {
     return (
-      <div className="container">
+      <div className="container other-selections">
         <div className="row">
           <MetricSummary icon="hiv.png" metric={this.props.data.length} title="chart.hiv.title"/>
         </div>

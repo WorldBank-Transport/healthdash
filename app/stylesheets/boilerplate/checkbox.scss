@@ -5,7 +5,7 @@
 .selectable {
   @include border-radius(2px);
   background: $bg-color;
-  border: 1px solid $theme-blue;
+  border: 1px solid $grey-light-alt;;
   float: left;
   height: $checkbox-dimensions;
   margin-right: $checkbox-dimensions;

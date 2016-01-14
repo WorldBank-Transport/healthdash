@@ -82,6 +82,8 @@ const allTranslations = {
     'view-mode.region': 'Region',
     'view-mode.district': 'District',
     'view-mode.ward': 'Ward',
+    'view-mode.dashview': 'Dashboard Views',
+    'view-mode.facilityfilters': 'Filter Facility Types',
     'view-mode.disabled': 'Data not available',
 
     'data-type.death': 'Death',
@@ -461,6 +463,9 @@ const allTranslations = {
     'view-mode.region': 'Mkoa',
     'view-mode.district': 'Wilaya',
     'view-mode.ward': 'Kata',
+    'view-mode.dashview': 'Mtazamo wa Dashibodi',
+    'view-mode.facilityfilters': 'Kichujio cha aina ya kituo',
+    'view-mode.disabled': 'Data haipo',
     'view-mode.disabled': 'Data haipo',
 
     'data-type.death': 'Sababu za vifo',

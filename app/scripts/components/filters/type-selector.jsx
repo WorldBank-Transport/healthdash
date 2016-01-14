@@ -35,7 +35,7 @@ const TypeSelector = React.createClass({
         </li>);
     });
     return (
-      <div className="type-selector">
+      <div className="type-selector bordered">
         <ul className="types">
           {listOfOptions}
         </ul>
