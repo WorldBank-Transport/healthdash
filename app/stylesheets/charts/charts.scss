@@ -16,7 +16,17 @@
     background: $bg-color;
     border-top: 2px solid $grey-light;
     overflow: hidden;
-    padding: $chart-container-padding/2 $chart-container-padding;      
+    padding: $chart-container-padding/2 $chart-container-padding;
+
+    .col-all {
+
+      .row-chart-left {
+        float: left;
+        padding-left: $general-content-padding;
+        padding-right: $general-content-padding;
+        width: 40%;
+      }
+    }
   }
 }
 

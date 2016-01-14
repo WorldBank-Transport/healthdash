@@ -99,6 +99,8 @@ const allTranslations = {
     'chart.health-facilities.helptext': ' by Region',
     'chart.health-facilities.x-axis': 'Regions',
     'chart.health-facilities.y-axis': 'Facilities',
+    'chart.facilities-ownership-piechart.title': 'Health Facilities Ownership',
+    'chart.facilities-type-piechart.title': 'Health Facilities Type',
     'chart.population-facilities.title': 'Population to Facilities',
     'chart.population-facilities.helptext': 'Ratio',
     'chart.facilities.title': 'All Facilities',
