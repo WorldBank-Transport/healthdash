@@ -6,7 +6,6 @@ import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
 import PopulationStore from '../../stores/population';
 
-require('highcharts/modules/exporting')(HighCharts);
 require('stylesheets/charts/health-facilities-barchar');
 
 const PopulationFacilitiesChart = React.createClass({
@@ -23,10 +22,6 @@ const PopulationFacilitiesChart = React.createClass({
     this.getChart();
   },
 
-  componentDidUpdate() {
-    this.getChart();
-  },
-
   parseData(categories, regions, population) {
     return [{
       name: 'People to Health Facility Ratio',
@@ -35,7 +30,7 @@ const PopulationFacilitiesChart = React.createClass({
           x: categories.indexOf(region),
           y: Math.round((population[region][0].TOTAL || 0) / (regions[region] || 1)),
         };
-      }).sort((a, b) => b.y - a.y),
+      }),
     }];
   },
 
@@ -67,16 +62,6 @@ const PopulationFacilitiesChart = React.createClass({
         footerFormat: '</table>',
         shared: true,
         useHTML: true,
-      },
-
-      plotOptions: {
-        spline: {
-          marker: {
-            radius: 4,
-            lineColor: '#666666',
-            lineWidth: 1,
-          },
-        },
       },
 
       series: stats,

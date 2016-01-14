@@ -5,7 +5,6 @@ import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
 import { Color } from '../../utils/colours';
 
-require('highcharts/modules/exporting')(HighCharts);
 require('stylesheets/charts/health-facilities-barchar');
 
 const HealthFacilitiesChart = React.createClass({
@@ -16,10 +15,6 @@ const HealthFacilitiesChart = React.createClass({
   mixins: [ShouldRenderMixin],
 
   componentDidMount() {
-    this.getChart();
-  },
-
-  componentDidUpdate() {
     this.getChart();
   },
 
@@ -67,16 +62,6 @@ const HealthFacilitiesChart = React.createClass({
         footerFormat: '</table>',
         shared: true,
         useHTML: true,
-      },
-
-      plotOptions: {
-        spline: {
-          marker: {
-            radius: 4,
-            lineColor: '#666666',
-            lineWidth: 1,
-          },
-        },
       },
 
       series: stats,

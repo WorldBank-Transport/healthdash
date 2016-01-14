@@ -3,9 +3,8 @@ import T from '../misc/t';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
 
-require('highcharts/modules/exporting')(HighCharts);
-require('stylesheets/charts/health-facilities-barchar');
 require('highcharts/highcharts-3d')(HighCharts);
+require('stylesheets/charts/health-facilities-barchar');
 
 const HealthPieChart = React.createClass({
   propTypes: {

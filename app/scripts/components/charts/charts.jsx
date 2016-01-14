@@ -11,7 +11,9 @@ import HealthWorkersCharts from './health-workers-charts';
 import IpdCharts from './ipd-charts';
 import OpdCharts from './opd-charts';
 import Tt2Charts from './tetanus-charts';
+import HighCharts from 'highcharts';
 
+require('highcharts/modules/exporting')(HighCharts);
 require('stylesheets/charts/charts');
 
 const Charts = React.createClass({

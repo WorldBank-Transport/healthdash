@@ -7,7 +7,6 @@ import ShouldRenderMixin from '../../utils/should-render-mixin';
 import DataStore from '../../stores/data';
 import HighCharts from 'highcharts';
 
-require('highcharts/modules/exporting')(HighCharts);
 require('stylesheets/charts/family-barchart');
 
 const TetanusPlanChart = React.createClass({

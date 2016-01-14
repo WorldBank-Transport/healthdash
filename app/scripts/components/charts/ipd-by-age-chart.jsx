@@ -4,7 +4,6 @@ import T from '../misc/t';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
 
-require('highcharts/modules/exporting')(HighCharts);
 require('stylesheets/charts/death-by-age-chart');
 
 const IpdByAgeChart = React.createClass({
