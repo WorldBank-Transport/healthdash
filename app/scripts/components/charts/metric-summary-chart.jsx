@@ -17,7 +17,7 @@ const MetricSummary = React.createClass({
 
   render() {
     const formattedValue = this.props.format ? this.props.format(this.props.metric) : this.props.metric;
-    const icon = this.props.icon ? (<img src={`image/${this.props.icon}`} />) : '';
+    const icon = this.props.icon ? (<img className="panel-icon" src={`images/${this.props.icon}`} />) : '';
     return (
       <div className="metric-summary">
         <h3 className="chart-title"><T k={this.props.title} /></h3>

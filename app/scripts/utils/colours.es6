@@ -22,9 +22,9 @@ const colours = {
 
   unknown: '#7d7d7d',
 
-  healthCentre: 'yellow',
-  clinic: 'orange',
-  hospital: 'red',
+  healthCentre: '#a2dc04',
+  clinic: '#ffcd05',
+  hospital: '#cc2213',
 };
 export default colours;
 

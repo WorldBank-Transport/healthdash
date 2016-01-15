@@ -1,13 +1,122 @@
 @import '../config/colours';
 @import '../config/dimensions';
+@import '../config/type';
+@import '../config/box';
 
 .right-panel {
   background-color: whitespace;
-  bottom: 0;
+  bottom: $footer-height;
   overflow-y: auto;
   position: absolute;
   right: 0;
-  top: $header-height;
+  top: $map-nav-height;
   width: $main-chart-width;
   z-index: 11;
+
+  .container {
+    padding: $panel-general-space * 2;
+  }
+
+  .search-wrapper {
+    border-bottom: 1px solid $grey-light;
+    border-top: 1px solid $grey-light;
+    margin: 0;
+
+    .fa {
+      color: $grey-light-alt;
+      font-size: $medium-number;
+      margin-right: $panel-general-space;
+    }
+    input {
+      border: 1px solid $bg-color;
+      color: $grey-light;
+      font-size: $medium-text;
+      font-weight: $title-weight;
+      height: 20px;
+      outline: none;
+      padding: 7px 0;
+      text-transform: uppercase;
+      width: 80%;
+    }
+  }
+
+  .panel-icon {
+    float: left;
+    height: $panel-icon;
+    margin-right: $panel-general-space / 2;
+    width: $panel-icon;
+  }
+
+  .row {
+
+    &.facilities-overview {
+      clear: both;
+      margin-bottom: 0;
+
+      .metric-summary {
+        margin-bottom: 10px;
+        padding-left: $panel-general-space;
+        width: 100%;
+
+        .chart-title {
+          font-size: 20px;
+        }
+
+        .panel-icon {
+          height: 60px;
+          margin-right: 10px;
+          width: 60px;
+        }
+
+        .medium-number {
+          font-size: 40px;
+          line-height: 135%;
+        }
+
+      }
+
+    }
+
+    &.view-modes {
+      margin-bottom: 0;
+      overflow: hidden;
+
+      h5 {
+        color: $theme-blue;
+        font-size: 13px;
+        margin-bottom: 0;
+      }
+
+      ul {
+        @include list-unstyled();
+        margin-top: 3px;
+
+        li {
+          float: left;
+          margin-right: $panel-general-space;
+          width: 30%;
+
+          &:last-child {
+            margin-right: 0;
+          }
+          a {
+            color: $text-color;
+            font-weight: $title-weight;
+            text-transform: uppercase;
+            &.active,
+            &:hover {
+              color: $theme-blue;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+.other-selections {
+  .metric-summary {
+    width: 100%;
+  }
 }

@@ -28,7 +28,7 @@ const DeathRightPanel = React.createClass({
 
   render() {
     return (
-      <div className="container">
+      <div className="container other-selections">
         <div className="row">
           <MetricSummary icon="deaths.png" metric={this.getTotalDeath()} title="chart.deaths.title"/>
         </div>

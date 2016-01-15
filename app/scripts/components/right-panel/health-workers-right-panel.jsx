@@ -28,7 +28,7 @@ const HealthWorkersRightPanel = React.createClass({
 
   render() {
     return (
-      <div className="container">
+      <div className="container other-selections">
         <div className="row">
           <MetricSummary icon="workers.png" metric={this.getTotalWorkers()} title="chart.workers.title"/>
         </div>

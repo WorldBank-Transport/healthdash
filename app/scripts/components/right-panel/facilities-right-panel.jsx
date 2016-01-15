@@ -8,6 +8,16 @@ import { Link } from 'react-router';
 import Autocomplete from 'react-autocomplete';
 import { Result } from '../../utils/functional';
 import TypeSelector from '../filters/type-selector';
+import { Icon } from 'react-font-awesome';
+
+require('stylesheets/right-panel/right-panel');
+
+const imageTypeMapping = {
+  DISPENSARY: 'facilities-DISPENSARY.png',
+  'HEALTH CENTRE': 'facilities-HEALTH-CENTRE.png',
+  CLINIC: 'facilities-CLINIC.png',
+  HOSPITAL: 'facilities-HOSPITAL.png',
+};
 
 const FacilitiesRightPanel = React.createClass({
   propTypes: {
@@ -44,9 +54,9 @@ const FacilitiesRightPanel = React.createClass({
     const healthFacilitiesType = Result.groupBy(this.props.data, 'FACILITY TYPE');
     return (
       <div className="row">
-        {Object.keys(healthFacilitiesType).map(key =>
-          (<MetricSummary icon={`facilities-${key}.png`} metric={healthFacilitiesType[key].length} title={`chart.facilities.type.${key}`}/>)
-        )}
+      {Object.keys(healthFacilitiesType).map(key =>
+        (<MetricSummary icon={imageTypeMapping[key]} metric={healthFacilitiesType[key].length} title={`chart.facilities.type.${key}`}/>)
+      )}
       </div>
     );
   },
@@ -54,9 +64,11 @@ const FacilitiesRightPanel = React.createClass({
   render() {
     return (
       <div className="container">
-        <div className="row">
+        <div className="row search-wrapper">
+        <Icon type={`search`}/>
           <Autocomplete
               getItemValue={(item) => item.FACILITY_NAME}
+              initialValue="search"
               items={this.props.data}
               onSelect={this.select}
               renderItem={(item, isHighlighted) => (
@@ -66,17 +78,25 @@ const FacilitiesRightPanel = React.createClass({
               shouldItemRender={this.matchStateToTerm}
               sortItems={this.sortStates} />
         </div>
-        <div className="row">
-          <TypeSelector />
-        </div>
-        <div className="row">
-          <MetricSummary icon="facilities.png" metric={this.props.data.length} title="chart.facilities.title"/>
-        </div>
-        {this.renderHealthType()}
-        <div className="row">
+        <div className="row view-modes">
+          <h5><T k="view-mode.dashview"/></h5>
+
           {
             this.renderViewModes(['points', 'regions', 'districts'])
           }
+        </div>
+
+        <div className="type-selector-wrapper">
+          <h5>Filter Facility Types</h5>
+          <TypeSelector />
+        </div>
+
+        <div className="row facilities-overview">
+          <MetricSummary icon="facilities.png" metric={this.props.data.length} title="chart.facilities.title"/>
+        </div>
+
+        <div className="row health-type">
+          {this.renderHealthType()}
         </div>
       </div>);
   },

@@ -18,7 +18,7 @@ const DeliveriesRightPanel = React.createClass({
 
   render() {
     return (
-      <div className="container">
+      <div className="container other-selections">
         <div className="row">
           <MetricSummary icon="deliveries.png" metric={this.getDeliveries()} title="chart.deliveries.title"/>
         </div>

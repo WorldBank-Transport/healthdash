@@ -18,7 +18,7 @@ const FamilyPlanningRightPanel = React.createClass({
 
   render() {
     return (
-      <div className="container">
+      <div className="container other-selections">
         <div className="row">
           <MetricSummary icon="family.png" metric={this.getFamilyPlanningTotal()} title="chart.family-planning.title"/>
         </div>

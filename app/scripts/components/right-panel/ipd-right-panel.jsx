@@ -28,7 +28,7 @@ const IpdRightPanel = React.createClass({
 
   render() {
     return (
-      <div className="container">
+      <div className="container other-selections">
         <div className="row">
           <MetricSummary icon="ipd.png" metric={this.getTotalIpd()} title="chart.ipd.title"/>
         </div>
