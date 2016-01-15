@@ -11,6 +11,7 @@ require('stylesheets/charts/health-facilities-barchar');
 const PopulationFacilitiesChart = React.createClass({
   propTypes: {
     data: PropTypes.array.isRequired,
+    seriesName: PropTypes.string.isRequired,
   },
 
   mixins: [
@@ -22,9 +23,13 @@ const PopulationFacilitiesChart = React.createClass({
     this.getChart();
   },
 
+  componentDidUpdate() {
+    this.getChart();
+  },
+
   parseData(categories, regions, population) {
     return [{
-      name: 'People to Health Facility Ratio',
+      name: this.props.seriesName,
       data: categories.map(region => {
         return {
           x: categories.indexOf(region),
