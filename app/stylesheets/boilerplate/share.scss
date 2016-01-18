@@ -55,7 +55,7 @@
 
     ul {
       @include list-unstyled();
-      margin: 0 auto $panel-general-space*4 auto;
+      margin: $share-icon-space auto $panel-general-space*4 auto;
       padding-bottom: $panel-general-space*2;
       width: $full-width / 1.5;
 
@@ -75,13 +75,24 @@
         }
 
         &:hover {
-          @include transparency(0.8);
+          color: $text-inverse;
+
+          .fa {
+            color: $text-inverse;
+          }
         }
 
-        img {
+        .fa {
+          clear: both;
+          color: $share-icon-color;
           display: block;
-          height: $icon-height;
-          margin: 0 auto $icon-bottom-space auto;
+          font-size: $share-icon-size;
+          margin-bottom: $share-icon-space;
+
+          &.fa-file-pdf-o {
+            height: $share-icon-size / 2;
+            margin-bottom: $share-icon-space * 2;
+          }
         }
       }
     }
