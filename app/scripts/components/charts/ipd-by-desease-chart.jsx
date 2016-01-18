@@ -32,20 +32,20 @@ const IpdByDeaseaseChart = React.createClass({
   parseData(summary) {
     const result = [];
     Object.keys(summary)
-          .forEach(age => {
-            result.push({
-                id: age,
-                name: age,
-                color: (age === 'ABOVE 5 YEARS') ? '#434348' : '#7cb5ec',
-            });
-            summary[age].forEach(item => {
-              result.push({
-                name: item.DISEASES,
-                parent: age,
-                value: this.sumAll(item),
-              });
-            });
+      .forEach(age => {
+        result.push({
+          id: age,
+          name: age,
+          color: (age === 'ABOVE 5 YEARS') ? '#434348' : '#7cb5ec',
+        });
+        summary[age].forEach(item => {
+          result.push({
+            name: item.DISEASES,
+            parent: age,
+            value: this.sumAll(item),
           });
+        });
+      });
     return result;
   },
 
@@ -61,21 +61,21 @@ const IpdByDeaseaseChart = React.createClass({
         renderTo: 'ipd-by-desease-chart',
       },
       series: [{
-        type: "treemap",
+        type: 'treemap',
         layoutAlgorithm: 'sliceAndDice',
         alternateStartingDirection: true,
         levels: [{
-            level: 1,
-            layoutAlgorithm: 'sliceAndDice',
-            dataLabels: {
-                enabled: true,
-                align: 'left',
-                verticalAlign: 'top',
-                style: {
-                    fontSize: '15px',
-                    fontWeight: 'bold'
-                }
-            }
+          level: 1,
+          layoutAlgorithm: 'sliceAndDice',
+          dataLabels: {
+            enabled: true,
+            align: 'left',
+            verticalAlign: 'top',
+            style: {
+              fontSize: '15px',
+              fontWeight: 'bold',
+            },
+          },
         }],
         data: stats,
         title: {

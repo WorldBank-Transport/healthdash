@@ -32,20 +32,20 @@ const DeathByDeaseaseChart = React.createClass({
   parseData(summary) {
     const result = [];
     Object.keys(summary)
-          .forEach(age => {
-            result.push({
-                id: age,
-                name: age,
-                color: (age === 'ABOVE 5 YEARS') ? '#434348' : '#7cb5ec',
-            });
-            summary[age].forEach(item => {
-              result.push({
-                name: item.DISEASE,
-                parent: age,
-                value: this.sumAll(item),
-              });
-            });
+      .forEach(age => {
+        result.push({
+          id: age,
+          name: age,
+          color: (age === 'ABOVE 5 YEARS') ? '#434348' : '#7cb5ec',
+        });
+        summary[age].forEach(item => {
+          result.push({
+            name: item.DISEASE,
+            parent: age,
+            value: this.sumAll(item),
           });
+        });
+      });
     return result;
   },
 
@@ -53,7 +53,6 @@ const DeathByDeaseaseChart = React.createClass({
     if (this.props.data.length === 0) {
       return false;
     }
-    const deseases = Object.keys(Result.groupBy(this.props.data, 'DISEASE'));
     const sum = Result.groupBy(this.props.data, 'CHILD_TYPE');
     const stats = this.parseData(sum);
     return new HighCharts.Chart({
@@ -62,27 +61,27 @@ const DeathByDeaseaseChart = React.createClass({
         renderTo: 'death-by-desease-chart',
       },
       series: [{
-            type: "treemap",
-            layoutAlgorithm: 'sliceAndDice',
-            alternateStartingDirection: true,
-            levels: [{
-                level: 1,
-                layoutAlgorithm: 'sliceAndDice',
-                dataLabels: {
-                    enabled: true,
-                    align: 'left',
-                    verticalAlign: 'top',
-                    style: {
-                        fontSize: '15px',
-                        fontWeight: 'bold'
-                    }
-                }
-            }],
-            data: stats,
+        type: 'treemap',
+        layoutAlgorithm: 'sliceAndDice',
+        alternateStartingDirection: true,
+        levels: [{
+          level: 1,
+          layoutAlgorithm: 'sliceAndDice',
+          dataLabels: {
+            enabled: true,
+            align: 'left',
+            verticalAlign: 'top',
+            style: {
+              fontSize: '15px',
+              fontWeight: 'bold',
+            },
+          },
         }],
-        title: {
-            text: ''
-        },
+        data: stats,
+      }],
+      title: {
+        text: '',
+      },
     });
   },
 
