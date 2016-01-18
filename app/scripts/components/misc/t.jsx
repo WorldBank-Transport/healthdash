@@ -234,7 +234,7 @@ const allTranslations = {
 
     'share.share': 'Share',
     'share.feedback': 'Feedback',
-    'share.print': 'Print',
+    'share.print': 'PDF',
 
     'error': 'We\'re sorry',
     'error.retry': 'Retry',
