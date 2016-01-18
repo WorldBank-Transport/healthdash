@@ -51,10 +51,12 @@ const DeathRightPanel = React.createClass({
     return (
       <div className="container other-selections">
         <div className="row">
-          <MetricSummary icon="deaths.png" metric={death} title="chart.deaths.title"/>
-        </div>
-        <div className="row">
-          <MetricSummary icon="deaths.png" metric={Math.round(death / regions.length)} title="chart.deaths-avg.title"/>
+          <div className="col-half">
+            <MetricSummary icon="deaths.png" metric={death} title="chart.deaths.title"/>
+          </div>
+          <div className="col-half">
+            <MetricSummary icon="deaths.png" metric={Math.round(death / regions.length)} title="chart.deaths-avg.title"/>
+          </div>
         </div>
         <div className="row">
           <MetricSummaryList metric={desease} showPercentage={true} title="chart.death-deseases.title"/>
