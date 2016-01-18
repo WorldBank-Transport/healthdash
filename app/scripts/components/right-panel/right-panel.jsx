@@ -11,7 +11,6 @@ import HealthWorkersRightPanel from './health-workers-right-panel';
 import IpdRightPanel from './ipd-right-panel';
 import OpdRightPanel from './opd-right-panel';
 import TetanusRightPanel from './tetanus-right-panel';
-import MetricSelector from '../filters/metric-selector';
 
 require('stylesheets/right-panel/right-panel');
 
@@ -27,7 +26,6 @@ const RightPanel = React.createClass({
   render() {
     return (
         <div className="right-panel">
-          <MetricSelector metrics={this.props.metrics}/>
           {DataTypes.match(this.props.dataType, {
             Death: () => (<DeathRightPanel {...this.props}/>),
             FamilyPlanning: () => (<FamilyPlanningRightPanel {...this.props}/>),
