@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import T from '../misc/t';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
 

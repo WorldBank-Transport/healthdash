@@ -18,37 +18,39 @@ const HealthFacilitiesChart = React.createClass({
     this.getChart();
   },
 
+  getDrillDownId(type, region) {
+    return `${type}-${region}`.replace(/\s/g, '-');
+  },
+
   parseData(facilitiesStats, categories) {
     return Object.keys(facilitiesStats).map(type => ({
       name: type,
       data: categories.map(region => {
         return {
           color: Color.getFacilityColor(type),
-          x: categories.indexOf(region),
+          name: region,
           y: facilitiesStats[type][region] || 0,
-          drilldown: region,
+          drilldown: this.getDrillDownId(type, region),
         };
       }),
     }));
   },
 
   calculateDrillDown(regions, data) {
-    return regions.map(region => {
+    const result = [];
+    regions.forEach(region => {
       const regionalData = data.filter(item => item.REGION === region);
       const councils = Object.keys(Result.countBy(regionalData, 'COUNCIL')).filter(key => key !== 'total');
       const councilStats = Result.countByGroupBy(regionalData, 'FACILITY TYPE', 'COUNCIL');
-      return Object.keys(councilStats).map(type => ({
-        name: type,
-        id: region,
-        data: councils.map(council => {
-          return {
-            color: Color.getFacilityColor(type),
-            x: councils.indexOf(council),
-            y: councilStats[type][council] || 0,
-          };
-        }),
-      }));
+      return Object.keys(councilStats).forEach(type => {
+        result.push({
+          name: this.getDrillDownId(type, region),
+          id: this.getDrillDownId(type, region),
+          data: councils.map(council => ([council, (councilStats[type][council] || 0)])),
+        });
+      });
     });
+    return result;
   },
 
   getChart() {
@@ -73,7 +75,7 @@ const HealthFacilitiesChart = React.createClass({
       },
 
       xAxis: {
-        categories: categories,
+        type: 'category',
       },
 
       tooltip: {

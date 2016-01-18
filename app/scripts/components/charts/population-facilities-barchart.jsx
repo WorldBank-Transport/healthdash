@@ -39,7 +39,7 @@ const PopulationFacilitiesChart = React.createClass({
     }];
   },
 
-  calculateDrillDown(regions, data, population) {
+  calculateDrillDown(regions, data) {
     return regions.map(region => {
       const regionFilter = item => item.REGION === region;
       const councilStats = Result.countBy(data.filter(regionFilter), 'COUNCIL');
