@@ -11,6 +11,7 @@ require('stylesheets/charts/health-facilities-barchar');
 const PopulationFacilitiesChart = React.createClass({
   propTypes: {
     data: PropTypes.array.isRequired,
+    seriesName: PropTypes.string.isRequired,
   },
 
   mixins: [
@@ -22,9 +23,13 @@ const PopulationFacilitiesChart = React.createClass({
     this.getChart();
   },
 
+  componentDidUpdate() {
+    this.getChart();
+  },
+
   parseData(categories, regions, population) {
     return [{
-      name: 'People to Health Facility Ratio',
+      name: this.props.seriesName,
       data: categories.map(region => {
         return {
           x: categories.indexOf(region),
@@ -34,10 +39,26 @@ const PopulationFacilitiesChart = React.createClass({
     }];
   },
 
+  calculateDrillDown(regions, data) {
+    return regions.map(region => {
+      const regionFilter = item => item.REGION === region;
+      const councilStats = Result.countBy(data.filter(regionFilter), 'COUNCIL');
+      const populationStats = Result.sumByGroupBy(this.state.population.filter(regionFilter), 'DISTRICT', ['TOTAL']);
+      return {
+        name: region,
+        id: region,
+        data: Object.keys(councilStats)
+            .filter(key => key !== 'total')
+            .map(key => [key, Math.round((populationStats[key][0].TOTAL || 0) / (councilStats[key] || 1))]),
+      };
+    });
+  },
+
   getChart() {
     const regions = Result.countBy(this.props.data, 'REGION');
     const categories = Object.keys(regions).filter(key => key !== 'total').sort((a, b) => regions[b] - regions[a]);
     const population = Result.sumByGroupBy(this.state.population, 'REGION', ['TOTAL']);
+    //const drillDown = this.calculateDrillDown(categories, this.props.data, this.state.population);
     const stats = this.parseData(categories, regions, population);
    // needs translations
     return new HighCharts.Chart({

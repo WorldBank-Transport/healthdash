@@ -15,6 +15,7 @@ import HighCharts from 'highcharts';
 
 require('highcharts/modules/exporting')(HighCharts);
 require('highcharts/modules/treemap')(HighCharts);
+require('highcharts/modules/drilldown')(HighCharts);
 require('stylesheets/charts/charts');
 
 const Charts = React.createClass({

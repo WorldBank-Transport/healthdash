@@ -6,6 +6,7 @@ import HealthFacilitiesChart from './health-facilities-barchar';
 import PopulationFacilitiesChart from './population-facilities-barchart';
 import { Result } from '../../utils/functional';
 import HealthPieChart from './health-pie-chart';
+import TSetChildProps from '../misc/t-set-child-props';
 
 const HealthFacilitiesCharts = React.createClass({
   propTypes: {
@@ -30,15 +31,21 @@ const HealthFacilitiesCharts = React.createClass({
           </div>
           <div className="row">
             <div className="mainChart">
-              <PopulationFacilitiesChart  {...this.props}/>
+              <TSetChildProps>
+                <PopulationFacilitiesChart {...this.props} seriesName={{k: 'chart.population-facilities.series'}}/>
+              </TSetChildProps>
             </div>
           </div>
           <div className="col-all">
             <div className="row-chart-left right-border">
-              <HealthPieChart data={types} divId="type-piechart" key="type-piechart" title="chart.facilities-type-piechart.title"/>
+              <TSetChildProps>
+                <HealthPieChart data={types} divId="type-piechart" key="type-piechart" title={{k: 'chart.facilities-type-piechart.title'}}/>
+              </TSetChildProps>
             </div>
             <div className="row-chart-left right-border">
-              <HealthPieChart data={owner} divId="owner-piechart" key="owner-piechart" title="chart.facilities-ownership-piechart.title"/>
+              <TSetChildProps>
+                <HealthPieChart data={owner} divId="owner-piechart" key="owner-piechart" title={{k: 'chart.facilities-ownership-piechart.title'}}/>
+              </TSetChildProps>
             </div>
           </div>
         </div>
