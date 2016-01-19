@@ -23,11 +23,13 @@ const TetanusRightPanel = React.createClass({
     const stats = Result.sumByAll(this.props.data, metrics);
     return (
       <div className="container other-selections">
+        <ul className="tetanus-list">
         {metrics.map(m => (
-          <div className="row">
+          <li>
             <MetricSummary icon="tetanus.png" metric={this.getTetanusValue(stats, m)} title={`chart.tetanus-${m}.title`}/>
-          </div>
+          </li>
         ))}
+        </ul>
       </div>);
   },
 });
