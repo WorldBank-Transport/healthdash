@@ -24,10 +24,10 @@ const MetricSummary = React.createClass({
         <div className="summary chart-container">
           <div className="group-content">
             {icon}
-            <div className="medium-number padding">
-              <span className="number">{formattedValue}</span>
-              {this.props.sufix}
-            </div>
+              <div className="medium-number padding">
+                <span className="number">{formattedValue}</span>
+                {this.props.sufix}
+              </div>
           </div>
         </div>
       </div>);

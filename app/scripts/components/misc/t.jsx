@@ -115,7 +115,7 @@ const allTranslations = {
     'chart.hiv-facilities.x-axis': 'Regions',
     'chart.hiv-facilities.y-axis': 'Facilities',
     'chart.hiv.title': 'HIV/AIDS Care & Treatment Center',
-    'chart.hiv-region.title': 'Average Center per Region',
+    'chart.hiv-region.title': 'Average Number of Treatment Centers per Region',
     'chart.hiv-people.title': 'People to HIV/AIDS Care & Treatment Center Ratio',
     'chart.death.title': 'Deaths',
     'chart.death.helptext': ' by child age',

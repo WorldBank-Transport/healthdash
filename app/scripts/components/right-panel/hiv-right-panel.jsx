@@ -34,10 +34,12 @@ const HivRightPanel = React.createClass({
           <MetricSummary icon="hiv.png" metric={this.props.data.length} title="chart.hiv.title"/>
         </div>
         <div className="row">
-          <MetricSummary icon="hiv.png" metric={this.props.data.length / 25} title="chart.hiv-region.title"/>
-        </div>
-        <div className="row">
-          <MetricSummary icon="workers.png" metric={Math.round(this.getPopulation() / this.props.data.length)} title="chart.hiv-people.title"/>
+          <div className="col-half">
+            <MetricSummary metric={this.props.data.length / 25} title="chart.hiv-region.title"/>
+          </div>
+          <div className="col-half">
+            <MetricSummary metric={Math.round(this.getPopulation() / this.props.data.length)} title="chart.hiv-people.title"/>
+          </div>
         </div>
       </div>);
   },
