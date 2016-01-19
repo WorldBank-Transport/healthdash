@@ -6,6 +6,7 @@ import history from './history';
 import DataTypes from './constants/data-types';
 import ViewModes from './constants/view-modes';
 import { setView } from './actions/view';
+import { clear } from './actions/filters';
 // Route components
 import Root from './components/root';
 // static page components:
@@ -24,6 +25,7 @@ import PolygonsMap from './components/dashboard/polygons-map';
  * @returns {void}
  */
 function setPointsView(nextState) {
+  clear();
   setView({
     viewMode: ViewModes.Points(),
     dataType: DataTypes.fromParam(nextState.params.dataType),
@@ -35,6 +37,7 @@ function setPointsView(nextState) {
  * @returns {void}
  */
 function setPolysView(nextState) {
+  clear();
   setView({
     viewMode: ViewModes.fromParam(nextState.params.polyType),
     dataType: DataTypes.fromParam(nextState.params.dataType),
