@@ -3,6 +3,7 @@ import DataTypes from '../../constants/data-types';
 import ViewModes from '../../constants/view-modes';
 import MetricSummary from '../charts/metric-summary-chart';
 import { Result } from '../../utils/functional';
+import T from '../misc/t';
 
 const IpdRightPanel = React.createClass({
   propTypes: {
@@ -37,6 +38,7 @@ const IpdRightPanel = React.createClass({
     const total = this.getTotalIpd(keys);
     return (
       <div className="container other-selections">
+      <h3><T k="data-type.ipd"/></h3>
         <div className="row">
           <MetricSummary icon="ipd.png" metric={total} title="chart.ipd.title"/>
         </div>

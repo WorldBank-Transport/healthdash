@@ -3,6 +3,7 @@ import DataTypes from '../../constants/data-types';
 import ViewModes from '../../constants/view-modes';
 import MetricSummary from '../charts/metric-summary-chart';
 import { Result } from '../../utils/functional';
+import T from '../misc/t';
 
 const metrics = ['TT2 VACCINATION COVERAGE', 'TOTAL ATTENDANCE', 'TT2 VACCINATION COVERAGE', '% TT2 VACCINATION COVERAGE'];
 
@@ -23,6 +24,7 @@ const TetanusRightPanel = React.createClass({
     const stats = Result.sumByAll(this.props.data, metrics);
     return (
       <div className="container other-selections">
+        <h3><T k="data-type.tetanous"/></h3>
         {metrics.map(m => (
           <div className="row">
             <MetricSummary icon="tetanus.png" metric={this.getTetanusValue(stats, m)} title={`chart.tetanus-${m}.title`}/>
