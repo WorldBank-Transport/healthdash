@@ -9,19 +9,24 @@ const FamilyPlanningRightPanel = React.createClass({
     children: PropTypes.node, // injected
     data: PropTypes.array,  // injected
     dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
+    metrics: PropTypes.object, // injected
     setSelected: PropTypes.func,
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
-  getFamilyPlanningTotal() {
-    return Result.sumBy(this.props.data, 'TOTAL FAMILY PLANNING CLIENTS')['TOTAL FAMILY PLANNING CLIENTS'];
+  getFamilyPlanningTotal(key) {
+    return Result.sumBy(this.props.data, key)[key] || 0;
   },
 
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <MetricSummary icon="family.png" metric={this.getFamilyPlanningTotal()} title="chart.family-planning.title"/>
-        </div>
+      <div className="container other-selections">
+      {Object.keys(this.props.metrics)
+        .map(metric => (
+          <div className="row">
+            <MetricSummary icon="family.png" metric={this.getFamilyPlanningTotal(metric)} title={`chart.family-planning-${metric}.title`}/>
+          </div>
+        ))
+      }
       </div>);
   },
 });

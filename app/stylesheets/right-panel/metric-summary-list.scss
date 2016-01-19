@@ -1,0 +1,53 @@
+@import '../config/colours';
+@import '../config/dimensions';
+@import '../config/type';
+@import '../config/box';
+
+.metric-summary-list {
+
+  h3 {
+    font-size: 16px;
+  }
+
+  .group-content {
+    @include bordered();
+    float: left;
+    height: 65px;
+    margin-bottom: 5px;
+    width: 40%;
+
+    .context {
+      font-size: 14px;
+      font-weight: $title-weight;
+
+    }
+  }
+
+}
+
+// deaths panel-icon
+.other-selections {
+  .row {
+    clear: both;
+    overflow: hidden;
+    width: $full-width;
+
+    .col-half {
+      float: left;
+      margin-right: 20px;
+      width: $full-width / 2.4;
+    }
+  }
+}
+
+.medium-number {
+  color: $theme-blue;
+  font-size: 18px;
+  font-weight: $title-weight;
+}
+
+.small-number {
+  color: $text-color;
+  font-size: 12px;
+  font-weight: $title-weight;
+}

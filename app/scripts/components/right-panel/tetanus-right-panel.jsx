@@ -4,6 +4,8 @@ import ViewModes from '../../constants/view-modes';
 import MetricSummary from '../charts/metric-summary-chart';
 import { Result } from '../../utils/functional';
 
+const metrics = ['TT2 VACCINATION COVERAGE', 'TOTAL ATTENDANCE', 'TT2 VACCINATION COVERAGE', '% TT2 VACCINATION COVERAGE'];
+
 const TetanusRightPanel = React.createClass({
   propTypes: {
     children: PropTypes.node, // injected
@@ -12,16 +14,20 @@ const TetanusRightPanel = React.createClass({
     setSelected: PropTypes.func,
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
-  getTetanus() {
-    return Result.sumBy(this.props.data, 'TT2 VACCINATION COVERAGE')['TT2 VACCINATION COVERAGE'];
+
+  getTetanusValue(stats, m) {
+    return Math.round(stats[m].value || 0);
   },
 
   render() {
+    const stats = Result.sumByAll(this.props.data, metrics);
     return (
-      <div className="container">
-        <div className="row">
-          <MetricSummary icon="tetanus.png" metric={this.getTetanus()} title="chart.tetanus.title"/>
-        </div>
+      <div className="container other-selections">
+        {metrics.map(m => (
+          <div className="row">
+            <MetricSummary icon="tetanus.png" metric={this.getTetanusValue(stats, m)} title={`chart.tetanus-${m}.title`}/>
+          </div>
+        ))}
       </div>);
   },
 });

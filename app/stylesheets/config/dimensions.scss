@@ -50,7 +50,7 @@ $divider-height: 5px;
 $footer-height: 50px;
 
 // charts
-$main-chart-width: 20%;
+$main-chart-width: 25%;
 $sec-chart-width: 26%;
 $pie-chart-width: 33%;
 $legend-icon-margin: 5px;
@@ -113,6 +113,16 @@ $popup-sec-text-position: 2px;
 $popup-population-width: 37px;
 $popup-small-icon: 12px;
 
+// healthpanel
+$panel-icon: 40px;
+$panel-general-space: 10px;
+$icon-list-space: 10px;
+$icon-height: 30px;
+$icon-bottom-space: 5px;
+
+// share icons
+$share-icon-space: 10px;
+
 // flyout
 $flyout-width: 18%;
 $flyout-height: 90%;
@@ -142,11 +152,6 @@ $handle-radius: 2px;
 $grabby-height: 11px;
 $grabby-width: 2px;
 $grabby-center-off: 2px;
-
-// share section
-$icon-height: 20px;
-$icon-list-space: 10px;
-$icon-bottom-space: 5px;
 
 // screen sizes
 $phone: 480px;

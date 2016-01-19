@@ -30,23 +30,25 @@ const HealthWorkerTypeChart = React.createClass({
   },
 
   parseData(summary) {
-    return Object.keys(summary)
-          .map(year => {
-            return {
-              name: year,
-              data: summary[year].map(data => this.sumAll(data)),
-            };
+    const result = [];
+    Object.keys(summary)
+          .forEach(year => {
+            summary[year].forEach(data => {
+              result.push({
+                name: data['HEALTH WORKERS'],
+                value: this.sumAll(data),
+              });
+            });
           });
+    return result;
   },
 
   getChart() {
-    const types = Object.keys(Result.groupBy(this.props.data, 'HEALTH WORKERS'));
     const sum = Result.groupBy(this.props.data, 'YEAR');
     const stats = this.parseData(sum);
     return new HighCharts.Chart({
       chart: {
-        height: 1200,
-        type: 'bar',
+        height: 600,
         renderTo: 'worker-by-type',
       },
 
@@ -54,30 +56,12 @@ const HealthWorkerTypeChart = React.createClass({
         text: '',
       },
 
-      xAxis: {
-        categories: types,
-      },
-
-      tooltip: {
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-        '<td style="padding:0"><b>{point.y}</b></td></tr>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true,
-      },
-
-      plotOptions: {
-        spline: {
-          marker: {
-            radius: 4,
-            lineColor: '#666666',
-            lineWidth: 1,
-          },
-        },
-      },
-
-      series: stats,
+      series: [{
+        type: 'treemap',
+        layoutAlgorithm: 'squarified',
+        alternateStartingDirection: true,
+        data: stats,
+      }],
     });
   },
 

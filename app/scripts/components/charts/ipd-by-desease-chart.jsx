@@ -30,57 +30,58 @@ const IpdByDeaseaseChart = React.createClass({
   },
 
   parseData(summary) {
-    return Object.keys(summary)
-          .map(age => {
-            return {
-              name: age,
-              data: summary[age].map(data => this.sumAll(data)),
-            };
+    const result = [];
+    Object.keys(summary)
+      .forEach(age => {
+        result.push({
+          id: age,
+          name: age,
+          color: (age === 'ABOVE 5 YEARS') ? '#434348' : '#7cb5ec',
+        });
+        summary[age].forEach(item => {
+          result.push({
+            name: item.DISEASES,
+            parent: age,
+            value: this.sumAll(item),
           });
+        });
+      });
+    return result;
   },
 
   getChart() {
     if (this.props.data.length === 0) {
       return false;
     }
-    const deseases = Object.keys(Result.groupBy(this.props.data, 'DISEASES'));
     const sum = Result.groupBy(this.props.data, 'CHILD_TYPE');
     const stats = this.parseData(sum);
     return new HighCharts.Chart({
       chart: {
-        height: 1200,
-        type: 'bar',
+        height: 500,
         renderTo: 'ipd-by-desease-chart',
       },
-
-      title: {
-        text: '',
-      },
-
-      xAxis: {
-        categories: deseases,
-      },
-
-      tooltip: {
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-        '<td style="padding:0"><b>{point.y}</b></td></tr>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true,
-      },
-
-      plotOptions: {
-        spline: {
-          marker: {
-            radius: 4,
-            lineColor: '#666666',
-            lineWidth: 1,
+      series: [{
+        type: 'treemap',
+        layoutAlgorithm: 'sliceAndDice',
+        alternateStartingDirection: true,
+        levels: [{
+          level: 1,
+          layoutAlgorithm: 'sliceAndDice',
+          dataLabels: {
+            enabled: true,
+            align: 'left',
+            verticalAlign: 'top',
+            style: {
+              fontSize: '15px',
+              fontWeight: 'bold',
+            },
           },
+        }],
+        data: stats,
+        title: {
+          text: '',
         },
-      },
-
-      series: stats,
+      }],
     });
   },
 
