@@ -105,6 +105,7 @@ const allTranslations = {
     'chart.facilities-type-piechart.title': 'Health Facilities Type',
     'chart.population-facilities.title': 'Population to Facilities',
     'chart.population-facilities.helptext': 'Ratio',
+    'chart.population-facilities.series': 'Population to Facilities ratio',
     'chart.facilities.title': 'All Facilities',
     'chart.facilities.type.DISPENSARY': 'Dispensary',
     'chart.facilities.type.HEALTH CENTRE': 'Health Centre',

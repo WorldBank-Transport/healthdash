@@ -18,17 +18,39 @@ const HealthFacilitiesChart = React.createClass({
     this.getChart();
   },
 
+  getDrillDownId(type, region) {
+    return `${type}-${region}`.replace(/\s/g, '-');
+  },
+
   parseData(facilitiesStats, categories) {
     return Object.keys(facilitiesStats).map(type => ({
       name: type,
       data: categories.map(region => {
         return {
           color: Color.getFacilityColor(type),
-          x: categories.indexOf(region),
+          name: region,
           y: facilitiesStats[type][region] || 0,
+          drilldown: this.getDrillDownId(type, region),
         };
       }),
     }));
+  },
+
+  calculateDrillDown(regions, data) {
+    const result = [];
+    regions.forEach(region => {
+      const regionalData = data.filter(item => item.REGION === region);
+      const councils = Object.keys(Result.countBy(regionalData, 'COUNCIL')).filter(key => key !== 'total');
+      const councilStats = Result.countByGroupBy(regionalData, 'FACILITY TYPE', 'COUNCIL');
+      return Object.keys(councilStats).forEach(type => {
+        result.push({
+          name: this.getDrillDownId(type, region),
+          id: this.getDrillDownId(type, region),
+          data: councils.map(council => ([council, (councilStats[type][council] || 0)])),
+        });
+      });
+    });
+    return result;
   },
 
   getChart() {
@@ -38,6 +60,7 @@ const HealthFacilitiesChart = React.createClass({
     const facilitiesStats = Result.countByGroupBy(this.props.data, 'FACILITY TYPE', 'REGION');
     const regions = Result.countBy(this.props.data, 'REGION');
     const categories = Object.keys(regions).filter(key => key !== 'total').sort((a, b) => regions[b] - regions[a]);
+    const drillDown = this.calculateDrillDown(categories, this.props.data);
     const stats = this.parseData(facilitiesStats, categories);
    // needs translations
     return new HighCharts.Chart({
@@ -52,7 +75,7 @@ const HealthFacilitiesChart = React.createClass({
       },
 
       xAxis: {
-        categories: categories,
+        type: 'category',
       },
 
       tooltip: {
@@ -65,6 +88,9 @@ const HealthFacilitiesChart = React.createClass({
       },
 
       series: stats,
+      drilldown: {
+        series: drillDown,
+      },
     });
   },
 
