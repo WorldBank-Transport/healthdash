@@ -123,8 +123,8 @@
               border: 2px solid $theme-blue;
               float: left;
               height: $checkbox-dimensions;
-              margin-left: $base-unit;
-              margin-right: $checkbox-dimensions;
+              margin-right: $dashboard-views-space;
+              margin-top: $dashboard-views-space;
               width: $checkbox-dimensions;
 
               &:hover {
