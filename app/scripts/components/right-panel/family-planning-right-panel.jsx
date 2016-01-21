@@ -24,6 +24,7 @@ const FamilyPlanningRightPanel = React.createClass({
       <h3><T k="data-type.family-planning"/></h3>
       <ul className="family-planning">
       {Object.keys(this.props.metrics)
+        .filter(m => this.props.data > 0 && this.props.data.hasOwnProperty(m))
         .map(metric => (
           <li>
             <MetricSummary icon="family.png" metric={this.getFamilyPlanningTotal(metric)} title={`chart.family-planning-${metric}.title`}/>

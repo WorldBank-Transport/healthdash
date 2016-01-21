@@ -28,6 +28,11 @@ const PopulationFacilitiesChart = React.createClass({
     this.getChart();
   },
 
+  componentWillUnmount() {
+    this.chart.destroy();
+    delete this.chart;
+  },
+
   parseData(categories, regions, population) {
     return [{
       color: colours.theme,
@@ -57,13 +62,16 @@ const PopulationFacilitiesChart = React.createClass({
   },
 
   getChart() {
+    if (!this.props.data.length === 0) {
+      return false;
+    }
     const regions = Result.countBy(this.props.data, 'REGION');
     const categories = Object.keys(regions).filter(key => key !== 'total').sort((a, b) => regions[b] - regions[a]);
     const population = Result.sumByGroupBy(this.state.population, 'REGION', ['TOTAL']);
     //const drillDown = this.calculateDrillDown(categories, this.props.data, this.state.population);
     const stats = this.parseData(categories, regions, population);
    // needs translations
-    return new HighCharts.Chart({
+    this.chart = new HighCharts.Chart({
       chart: {
         height: 400,
         type: 'column',
@@ -89,11 +97,12 @@ const PopulationFacilitiesChart = React.createClass({
 
       series: stats,
     });
+    return this.chart;
   },
 
   render() {
     if (!this.props.data.length === 0) {
-      return (<div>empty</div>);
+      return false;
     }
     return (
       <div className="health-facilities-barchar">

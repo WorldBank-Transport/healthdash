@@ -21,6 +21,11 @@ const HivChart = React.createClass({
     this.getChart();
   },
 
+  componentWillUnmount() {
+    this.chart.destroy();
+    delete this.chart;
+  },
+
   parseData(facilitiesStats) {
     return [{
       name: 'Facilities by Region',
@@ -36,7 +41,7 @@ const HivChart = React.createClass({
     const categories = Object.keys(facilitiesStats).filter(key => key !== 'total');
     const stats = this.parseData(facilitiesStats);
    // needs translations
-    return new HighCharts.Chart({
+    this.chart = new HighCharts.Chart({
       chart: {
         height: 400,
         type: 'column',
@@ -72,6 +77,7 @@ const HivChart = React.createClass({
 
       series: stats,
     });
+    return this.chart;
   },
 
   render() {
