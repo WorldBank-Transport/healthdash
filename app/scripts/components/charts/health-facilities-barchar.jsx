@@ -24,10 +24,10 @@ const HealthFacilitiesChart = React.createClass({
 
   parseData(facilitiesStats, categories) {
     return Object.keys(facilitiesStats).map(type => ({
+      color: Color.getFacilityColor(type),
       name: type,
       data: categories.map(region => {
         return {
-          color: Color.getFacilityColor(type),
           name: region,
           y: facilitiesStats[type][region] || 0,
           drilldown: this.getDrillDownId(type, region),
@@ -85,6 +85,18 @@ const HealthFacilitiesChart = React.createClass({
         footerFormat: '</table>',
         shared: true,
         useHTML: true,
+      },
+
+      plotOptions: {
+        column: {
+          stacking: 'normal',
+          dataLabels: {
+            color: (HighCharts.theme && HighCharts.theme.dataLabelsColor) || 'white',
+            style: {
+              textShadow: '0 0 3px black',
+            },
+          },
+        },
       },
 
       series: stats,

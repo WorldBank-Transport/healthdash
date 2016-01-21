@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
+import { Color } from '../../utils/colours';
 
 require('highcharts/highcharts-3d')(HighCharts);
 require('stylesheets/charts/health-facilities-barchar');
@@ -25,8 +26,17 @@ const HealthPieChart = React.createClass({
     }
     const data = keys
       .filter(key => key !== 'total')
-      .map(key => [key, this.props.data[key]])
-      .sort((a, b) => b[1] - a[1]);
+      .map(key => {
+        const item = {
+          name: key,
+          y: this.props.data[key],
+        };
+        const color = Color.getFacilityColor(key);
+        if (color) {
+          item.color = color;
+        }
+        return item;
+      }).sort((a, b) => b.y - a.y);
     const stats = [{
       name: 'Health Facilities',
       data: data,

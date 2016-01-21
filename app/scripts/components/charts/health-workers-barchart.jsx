@@ -3,6 +3,7 @@ import { Result } from '../../utils/functional';
 import T from '../misc/t';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
+import colours from '../../utils/colours';
 
 require('stylesheets/charts/health-workers-barchart');
 
@@ -44,6 +45,7 @@ const HealthWorkersBarChart = React.createClass({
     return Object.keys(summary)
           .map(age => {
             return {
+              color: colours.theme,
               name: age,
               data: regions.map(region => this.findValue(summary[age], region)),
             };
