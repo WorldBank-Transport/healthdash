@@ -4,6 +4,7 @@ import ViewModes from '../../constants/view-modes';
 import MetricSummary from '../charts/metric-summary-chart';
 import { Result } from '../../utils/functional';
 import MetricSummaryList from './metric-summary-list';
+import T from '../misc/t';
 
 const DeathRightPanel = React.createClass({
   propTypes: {
@@ -50,6 +51,7 @@ const DeathRightPanel = React.createClass({
     };
     return (
       <div className="container other-selections">
+      <h3><T k="data-type.death" /></h3>
         <div className="row">
           <div className="col-half">
             <MetricSummary icon="deaths.png" metric={death} title="chart.deaths.title"/>

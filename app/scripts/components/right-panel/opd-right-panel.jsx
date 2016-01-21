@@ -3,6 +3,7 @@ import DataTypes from '../../constants/data-types';
 import ViewModes from '../../constants/view-modes';
 import MetricSummary from '../charts/metric-summary-chart';
 import { Result } from '../../utils/functional';
+import T from '../misc/t';
 
 const OpdRightPanel = React.createClass({
   propTypes: {
@@ -38,6 +39,7 @@ const OpdRightPanel = React.createClass({
     const statsByAge = Result.sumByGroupBy(this.props.data, 'CHILD_TYPE', keys);
     return (
       <div className="container other-selections">
+      <h3><T k="data-type.opd"/></h3>
         <div className="row">
           <MetricSummary icon="opd.png" metric={total} title="chart.opd.title"/>
         </div>

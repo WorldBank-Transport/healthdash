@@ -5,6 +5,7 @@ import ViewModes from '../../constants/view-modes';
 import MetricSummary from '../charts/metric-summary-chart';
 import { Result } from '../../utils/functional';
 import PopulationStore from '../../stores/population';
+import T from '../misc/t';
 
 const HealthWorkersRightPanel = React.createClass({
   propTypes: {
@@ -42,6 +43,7 @@ const HealthWorkersRightPanel = React.createClass({
     const summary = Result.sumByAll(this.props.data, keys);
     return (
       <div className="container other-selections">
+      <h3><T k="data-type.health-workers" /></h3>
         <div className="row">
           <MetricSummary icon="workers.png" metric={this.getTotalWorkers(summary)} title="chart.workers.title"/>
         </div>
