@@ -31,7 +31,7 @@ const FamilyPlanningRightPanel = React.createClass({
         ))
       }
       </ul>
-      </div>),
+      </div>);
   },
 });
 
