@@ -46,7 +46,7 @@ const FacilitiesRightPanel = React.createClass({
 
   renderViewModes(viewModes) {
     return (<ul>
-        {viewModes.map(viewMode => (<li><Link activeClassName="active" to={`/dash/${viewMode}/facilities/`}><T k={`dash.${viewMode}`} /></Link></li>))}
+        {viewModes.map(viewMode => (<li><Link activeClassName="active" to={`/dash/${viewMode}/facilities/`}><span className="selectable"/><T k={`dash.${viewMode}`} /></Link></li>))}
     </ul>);
   },
 

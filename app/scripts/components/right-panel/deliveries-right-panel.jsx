@@ -27,11 +27,13 @@ const DeliveriesRightPanel = React.createClass({
         <div className="row">
           <MetricSummary icon="deliveries.png" metric={Math.round(stats.TOTAL.value / stats.TOTAL.total)} title={`chart.deliveries-average.title`}/>
         </div>
+        <ul className="deliveries-list">
         {metrics.map(m => (
-          <div className="row">
+          <li>
             <MetricSummary icon="deliveries.png" metric={this.getDeliveries(stats, m)} title={`chart.deliveries-${m}.title`}/>
-          </div>
+          </li>
         ))}
+        </ul>
       </div>);
   },
 });
