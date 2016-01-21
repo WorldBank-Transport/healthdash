@@ -5,7 +5,7 @@ import ViewModes from '../../constants/view-modes';
 import MetricSummary from '../charts/metric-summary-chart';
 import PopulationStore from '../../stores/population';
 import { Result } from '../../utils/functional';
-
+import T from '../misc/t';
 
 const HivRightPanel = React.createClass({
   propTypes: {
@@ -30,6 +30,7 @@ const HivRightPanel = React.createClass({
     }
     return (
       <div className="container other-selections">
+        <h3><T k="data-type.hiv-center"/></h3>
         <div className="row">
           <MetricSummary icon="hiv.png" metric={this.props.data.length} title="chart.hiv.title"/>
         </div>
