@@ -19,7 +19,7 @@
     font-size: $footer-text;
     margin-top: $footer-text-top-position;
     text-align: right;
-    width: $copy-width-large;
+    width: 40%;
 
     @include up-to($tablet-landscape) {
       width: $copy-width-med;
