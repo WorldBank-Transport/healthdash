@@ -51,3 +51,66 @@
   font-size: 12px;
   font-weight: $title-weight;
 }
+
+.deliveries-list {
+  @include list-unstyled();
+  li {
+    float: left;
+    margin-right: 10px;
+    width: 42%;
+
+    .group-content {
+      margin-top: -4px;
+    }
+
+    .panel-icon {
+      display: none;
+    }
+  }
+}
+
+.family-planning {
+  @include list-unstyled();
+
+  li:nth-child(2n),
+  li:nth-child(3n),
+  li:nth-child(4n) {
+    .panel-icon {
+      display: none;
+    }
+  }
+}
+
+.ipd-list {
+  @include list-unstyled();
+  clear: both;
+  li {
+    float: left;
+    width: 50%;
+
+    .panel-icon {
+      display: none;
+    }
+  }
+}
+
+.opd-list {
+  @include list-unstyled();
+  margin-top: -3px;
+  li {
+    .panel-icon {
+      display: none;
+    }
+  }
+}
+
+.tetanus-list {
+  @include list-unstyled();
+  li:nth-child(2n),
+  li:nth-child(3n), 
+  li:nth-child(4n) {
+    .panel-icon {
+      display: none;
+    }
+  }
+}
