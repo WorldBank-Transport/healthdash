@@ -3,6 +3,7 @@ import {Result} from '../../utils/functional';
 import T from '../misc/t';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
+import colours from '../../utils/colours';
 
 require('stylesheets/charts/tetanus-barchart');
 
@@ -35,6 +36,7 @@ const TetanusBarChart = React.createClass({
   parseData(summary) {
     return Object.keys(summary).map(year => {
       return {
+        color: colours.theme,
         name: year,
         data: summary[year].map(itemWithData => itemWithData['TT2 VACCINATION COVERAGE']),
       };

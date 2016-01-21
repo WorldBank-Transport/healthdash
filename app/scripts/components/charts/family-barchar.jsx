@@ -3,6 +3,7 @@ import { Result } from '../../utils/functional';
 import T from '../misc/t';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
+import { Color } from '../../utils/colours';
 
 require('stylesheets/charts/family-barchart');
 
@@ -35,6 +36,7 @@ const FamilityBarChart = React.createClass({
   parseData(summary, keys, regions) {
     return keys.map(metric => {
       return {
+        color: Color.getFacilityColor(metric),
         name: metric,
         data: regions.map(region => this.getValue(summary[region], metric)),
       };

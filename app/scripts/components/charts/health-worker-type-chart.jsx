@@ -3,6 +3,7 @@ import { Result } from '../../utils/functional';
 import T from '../misc/t';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
+import colours from '../../utils/colours';
 
 require('stylesheets/charts/death-by-age-chart');
 
@@ -35,6 +36,7 @@ const HealthWorkerTypeChart = React.createClass({
           .forEach(year => {
             summary[year].forEach(data => {
               result.push({
+                color: colours.theme,
                 name: data['HEALTH WORKERS'],
                 value: this.sumAll(data),
               });

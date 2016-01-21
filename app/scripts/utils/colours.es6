@@ -80,7 +80,7 @@ export const polygon = {  // sync with edudash: https://github.com/WorldBank-Tra
 export const Color = {};
 
 Color.getFacilityColor = (type) => {
-  let c = colours.theme;
+  let c = undefined;
   switch (type) {
   case 'HEALTH CENTRE':
     c = colours.healthCentre;
@@ -90,6 +90,57 @@ Color.getFacilityColor = (type) => {
     break;
   case 'HOSPITAL':
     c = colours.hospital;
+    break;
+  case 'DISPENSARY':
+    c = colours.theme;
+    break;
+  case 'PRIVATE':
+    c = colours.healthCentre;
+    break;
+  case 'FAITH BASED ORGANIZATION':
+    c = colours.clinic;
+    break;
+  case 'PARASTATAL':
+    c = colours.hospital;
+    break;
+  case 'PUBLIC':
+    c = colours.theme;
+    break;
+  case 'ABOVE 5 YEARS':
+    c = colours.theme;
+    break;
+  case 'UNDER 5 YEARS':
+    c = colours.healthCentre;
+    break;
+  case 'HEALTH FACILITY DELIVERIES':
+    c = colours.healthCentre;
+    break;
+  case 'TRADITIONAL BIRTH ATTENDANTS (TBA)':
+    c = colours.clinic;
+    break;
+  case 'BORN BEFORE ARRIVAL (BBA)':
+    c = colours.hospital;
+    break;
+  case 'HOME DELIVERY':
+    c = colours.theme;
+    break;
+  case 'NEW CLIENTS':
+    c = colours.clinic;
+    break;
+  case 'FAMILY PLANNING CONTINUIOUS':
+    c = colours.theme;
+    break;
+  case 'PROJECTED_FAMILY_PLANNING':
+    c = colours.theme;
+    break;
+  case 'TOTAL FAMILY PLANNING CLIENTS':
+    c = colours.clinic;
+    break;
+  case 'PROJECTED CLIENTS':
+    c = colours.theme;
+    break;
+  case 'TOTAL ATTENDANCE':
+    c = colours.clinic;
     break;
   }
   return c;

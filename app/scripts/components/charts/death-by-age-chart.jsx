@@ -3,6 +3,7 @@ import { Result } from '../../utils/functional';
 import T from '../misc/t';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
+import { Color } from '../../utils/colours';
 
 require('stylesheets/charts/death-by-age-chart');
 
@@ -25,6 +26,7 @@ const DeathByAgeChart = React.createClass({
     return Object.keys(summary)
           .map(age => {
             return {
+              color: Color.getFacilityColor(age),
               name: age,
               data: summary[age].map(regionWithData => regionWithData[Object.keys(regionWithData).filter(key => key !== 'total')[0]]),
             };

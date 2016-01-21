@@ -5,6 +5,7 @@ import T from '../misc/t';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
 import PopulationStore from '../../stores/population';
+import colours from '../../utils/colours';
 
 require('stylesheets/charts/health-facilities-barchar');
 
@@ -29,6 +30,7 @@ const PopulationFacilitiesChart = React.createClass({
 
   parseData(categories, regions, population) {
     return [{
+      color: colours.theme,
       name: this.props.seriesName,
       data: categories.map(region => {
         return {

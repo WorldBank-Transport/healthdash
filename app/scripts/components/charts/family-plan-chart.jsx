@@ -6,6 +6,7 @@ import T from '../misc/t';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import DataStore from '../../stores/data';
 import HighCharts from 'highcharts';
+import { Color } from '../../utils/colours';
 
 require('stylesheets/charts/family-barchart');
 
@@ -40,6 +41,7 @@ const FamilityPlanChart = React.createClass({
   parseData(summary, keys, years) {
     return keys.map(metric => {
       return {
+        color: Color.getFacilityColor(metric),
         name: metric,
         data: years.map(year => this.getValue(summary[year], metric)),
       };

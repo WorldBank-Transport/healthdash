@@ -3,6 +3,7 @@ import { Result } from '../../utils/functional';
 import T from '../misc/t';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
+import { Color } from '../../utils/colours';
 
 require('stylesheets/charts/death-by-age-chart');
 
@@ -36,7 +37,7 @@ const IpdByDeaseaseChart = React.createClass({
         result.push({
           id: age,
           name: age,
-          color: (age === 'ABOVE 5 YEARS') ? '#434348' : '#7cb5ec',
+          color: Color.getFacilityColor(age),
         });
         summary[age].forEach(item => {
           result.push({
@@ -60,6 +61,9 @@ const IpdByDeaseaseChart = React.createClass({
         height: 500,
         renderTo: 'ipd-by-desease-chart',
       },
+      title: {
+        text: '',
+      },
       series: [{
         type: 'treemap',
         layoutAlgorithm: 'sliceAndDice',
@@ -78,9 +82,6 @@ const IpdByDeaseaseChart = React.createClass({
           },
         }],
         data: stats,
-        title: {
-          text: '',
-        },
       }],
     });
   },
