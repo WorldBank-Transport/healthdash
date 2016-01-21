@@ -196,7 +196,7 @@ const allTranslations = {
 
     'overview-bar': 'Overview stuff',
 
-    'footer.copy': 'The content of this website is published under a CC BY NC SA 3.0 license, and the source code is published under a GPL 3.0 license. Visitors are encouraged to examine and re-use the code as long as they publish it under a similar license.',
+    'footer.copy': ' The source code of this website is published under a GPL 3.0 license . Visitors are encouraged to examine and re-use the code as long as they publish it under a similar license.',
 
     'loading': 'Loading',
     'loading.data.death': 'Loading Death Stats',
