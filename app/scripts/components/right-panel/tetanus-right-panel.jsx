@@ -25,10 +25,15 @@ const TetanusRightPanel = React.createClass({
     return (
       <div className="container other-selections">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <ul className="tetanus-list">
 =======
         <h3><T k="data-type.tetanous"/></h3>
 >>>>>>> master
+=======
+        <h3><T k="data-type.tetanous"/></h3>
+        <ul className="tetanus-list">
+>>>>>>> origin/style-list
         {metrics.map(m => (
           <li>
             <MetricSummary icon="tetanus.png" metric={this.getTetanusValue(stats, m)} title={`chart.tetanus-${m}.title`}/>

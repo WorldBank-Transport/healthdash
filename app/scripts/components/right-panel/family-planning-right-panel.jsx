@@ -21,11 +21,8 @@ const FamilyPlanningRightPanel = React.createClass({
   render() {
     return (
       <div className="container other-selections">
-<<<<<<< HEAD
-      <ul className="family-planning">
-=======
       <h3><T k="data-type.family-planning"/></h3>
->>>>>>> master
+      <ul className="family-planning">
       {Object.keys(this.props.metrics)
         .map(metric => (
           <li>
@@ -34,7 +31,7 @@ const FamilyPlanningRightPanel = React.createClass({
         ))
       }
       </ul>
-      </div>);
+      </div>),
   },
 });
 

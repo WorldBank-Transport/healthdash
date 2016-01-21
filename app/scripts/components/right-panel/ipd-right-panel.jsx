@@ -37,12 +37,8 @@ const IpdRightPanel = React.createClass({
     const statsByAge = Result.sumByGroupBy(this.props.data, 'CHILD_TYPE', keys);
     const total = this.getTotalIpd(keys);
     return (
-<<<<<<< HEAD
-      <div className="container other-selections ipd">
-=======
       <div className="container other-selections">
       <h3><T k="data-type.ipd"/></h3>
->>>>>>> master
         <div className="row">
           <MetricSummary icon="ipd.png" metric={total} title="chart.ipd.title"/>
         </div>
