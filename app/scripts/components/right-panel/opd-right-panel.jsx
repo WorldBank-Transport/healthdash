@@ -46,11 +46,13 @@ const OpdRightPanel = React.createClass({
         <div className="row">
           <MetricSummary icon="opd.png" metric={Math.round(total / keys.length)} title="chart.opd-region.title"/>
         </div>
+        <ul className="opd-list">
         {Object.keys(statsByAge).map(age => (
-          <div className="row">
+          <li>
             <MetricSummary icon="opd.png" metric={this.getTotalOpdByAge(statsByAge[age], keys)} title={`chart.opd-${age}.title`}/>
-          </div>
+          </li>
         ))}
+        </ul>
       </div>);
   },
 });

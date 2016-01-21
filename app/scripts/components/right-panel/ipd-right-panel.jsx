@@ -45,11 +45,13 @@ const IpdRightPanel = React.createClass({
         <div className="row">
           <MetricSummary icon="ipd.png" metric={Math.round(total / keys.length)} title="chart.ipd-region.title"/>
         </div>
+        <ul className="ipd-list">
         {Object.keys(statsByAge).map(age => (
-          <div className="row">
+          <li>
             <MetricSummary icon="ipd.png" metric={this.getTotalIpdByAge(statsByAge[age], keys)} title={`chart.ipd-${age}.title`}/>
-          </div>
+          </li>
         ))}
+        </ul>
       </div>);
   },
 });
