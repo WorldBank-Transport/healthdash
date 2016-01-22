@@ -19,6 +19,11 @@ const HealthPieChart = React.createClass({
     this.getChart();
   },
 
+  componentWillUnmount() {
+    this.chart.destroy();
+    delete this.chart;
+  },
+
   getChart() {
     const keys = Object.keys(this.props.data);
     if (keys.length === 0) {
@@ -42,7 +47,7 @@ const HealthPieChart = React.createClass({
       data: data,
     }];
    // needs translations
-    return new HighCharts.Chart({
+    this.chart = new HighCharts.Chart({
       chart: {
         type: 'pie',
         options3d: {
@@ -65,12 +70,13 @@ const HealthPieChart = React.createClass({
 
       series: stats,
     });
+    return this.chart;
   },
 
 
   render() {
     if (Object.keys(this.props.data) === 0) {
-      return (<div>empty</div>);
+      return false;
     }
     return (
       <div className="health-facilities-piechart">
