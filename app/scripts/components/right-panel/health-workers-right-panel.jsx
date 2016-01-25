@@ -5,6 +5,7 @@ import ViewModes from '../../constants/view-modes';
 import MetricSummary from '../charts/metric-summary-chart';
 import { Result } from '../../utils/functional';
 import PopulationStore from '../../stores/population';
+import ChartsLink from '../boilerplate/charts-link';
 import T from '../misc/t';
 
 const HealthWorkersRightPanel = React.createClass({
@@ -52,6 +53,9 @@ const HealthWorkersRightPanel = React.createClass({
         </div>
         <div className="row">
           <MetricSummary icon="workers.png" metric={Math.round(this.getPopulation() / this.getTotalWorkers(summary))} title="chart.workers-people.title"/>
+        </div>
+        <div className="row">
+          <button className="charts-trigger" href=""><ChartsLink /></button>
         </div>
       </div>);
   },

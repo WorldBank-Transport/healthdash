@@ -5,6 +5,7 @@ import ViewModes from '../../constants/view-modes';
 import MetricSummary from '../charts/metric-summary-chart';
 import PopulationStore from '../../stores/population';
 import { Result } from '../../utils/functional';
+import ChartsLink from '../boilerplate/charts-link';
 import T from '../misc/t';
 
 const HivRightPanel = React.createClass({
@@ -39,6 +40,9 @@ const HivRightPanel = React.createClass({
         </div>
         <div className="row">
           <MetricSummary icon="workers.png" metric={Math.round(this.getPopulation() / this.props.data.length)} title="chart.hiv-people.title"/>
+        </div>
+        <div className="row">
+          <button className="charts-trigger" href=""><ChartsLink /></button>
         </div>
       </div>);
   },
