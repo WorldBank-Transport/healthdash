@@ -68,7 +68,7 @@ const FacilitiesRightPanel = React.createClass({
         <Icon type={`search`}/>
           <Autocomplete
               getItemValue={(item) => item.FACILITY_NAME}
-              initialValue="search"
+              initialValue="Search for Facility"
               items={this.props.data}
               onSelect={this.select}
               renderItem={(item, isHighlighted) => (
