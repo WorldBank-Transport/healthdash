@@ -3,7 +3,6 @@ import DataTypes from '../../constants/data-types';
 import ViewModes from '../../constants/view-modes';
 import MetricSummary from '../charts/metric-summary-chart';
 import { Result } from '../../utils/functional';
-import ChartsLink from '../boilerplate/charts-link';
 import T from '../misc/t';
 
 const OpdRightPanel = React.createClass({
@@ -54,9 +53,6 @@ const OpdRightPanel = React.createClass({
           </li>
         ))}
         </ul>
-        <div className="row">
-          <button className="charts-trigger" href=""><ChartsLink /></button>
-        </div>
       </div>);
   },
 });

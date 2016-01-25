@@ -8,7 +8,6 @@ import { Link } from 'react-router';
 import Autocomplete from 'react-autocomplete';
 import { Result } from '../../utils/functional';
 import TypeSelector from '../filters/type-selector';
-import ChartsLink from '../boilerplate/charts-link';
 import { Icon } from 'react-font-awesome';
 
 require('stylesheets/right-panel/right-panel');
@@ -98,9 +97,6 @@ const FacilitiesRightPanel = React.createClass({
 
         <div className="row health-type">
           {this.renderHealthType()}
-        </div>
-        <div className="row">
-          <button className="charts-trigger" href=""><ChartsLink /></button>
         </div>
       </div>);
   },

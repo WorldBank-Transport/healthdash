@@ -3,7 +3,6 @@ import DataTypes from '../../constants/data-types';
 import ViewModes from '../../constants/view-modes';
 import MetricSummary from '../charts/metric-summary-chart';
 import { Result } from '../../utils/functional';
-import ChartsLink from '../boilerplate/charts-link';
 import T from '../misc/t';
 
 const metrics = ['TOTAL', 'HEALTH FACILITY DELIVERIES', 'TRADITIONAL BIRTH ATTENDANTS (TBA)', 'ANTENATAL CARE PROJECTION', 'BORN BEFORE ARRIVAL (BBA)', 'HOME DELIVERY'];
@@ -35,9 +34,6 @@ const DeliveriesRightPanel = React.createClass({
           </li>
         ))}
         </ul>
-        <div className="row">
-          <button className="charts-trigger" href=""><ChartsLink /></button>
-        </div>
       </div>);
   },
 });

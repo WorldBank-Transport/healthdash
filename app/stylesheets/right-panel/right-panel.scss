@@ -136,21 +136,21 @@
       }
     }
   }
+}
 
+.charts-trigger {
+  background: none;
+  border: 0;
+  color: $theme-blue;
+  font-size: $medium-text;
+  padding: $panel-general-space * 2;
+  &:hover {
+    color: $hover-color;
+  }
 }
 
 .other-selections {
   .metric-summary {
     width: 100%;
-  }
-  .charts-trigger {
-    background: none;
-    border: 0;
-    color: $theme-blue;
-    font-size: $medium-text;
-    margin-left: - $panel-general-space / 2;
-    &:hover {
-      color: $hover-color;
-    }
   }
 }

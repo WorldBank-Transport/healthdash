@@ -4,7 +4,6 @@ import ViewModes from '../../constants/view-modes';
 import MetricSummary from '../charts/metric-summary-chart';
 import { Result } from '../../utils/functional';
 import MetricSummaryList from './metric-summary-list';
-import ChartsLink from '../boilerplate/charts-link';
 import T from '../misc/t';
 
 const DeathRightPanel = React.createClass({
@@ -64,7 +63,6 @@ const DeathRightPanel = React.createClass({
         <div className="row">
           <MetricSummaryList metric={desease} showPercentage={true} title="chart.death-deseases.title"/>
         </div>
-        <button className="charts-trigger" href=""><ChartsLink /></button>
       </div>);
   },
 });
