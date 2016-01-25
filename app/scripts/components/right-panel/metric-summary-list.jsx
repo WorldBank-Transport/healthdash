@@ -3,7 +3,6 @@ import T from '../misc/t';
 import { Icon } from 'react-font-awesome';
 import { getNumberOr0 } from '../../utils/number';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
-import ChartsLink from '../boilerplate/charts-link';
 
 require('stylesheets/right-panel/metric-summary-list');
 
