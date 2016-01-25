@@ -24,6 +24,11 @@ const FamilityBarChart = React.createClass({
     this.getChart();
   },
 
+  componentWillUnmount() {
+    this.chart.destroy();
+    delete this.chart;
+  },
+
   getValue(values, metric) {
     return values.reduce((ret, item) => {
       if (item.hasOwnProperty(metric)) {
@@ -44,11 +49,14 @@ const FamilityBarChart = React.createClass({
   },
 
   getChart() {
+    if (this.props.data.length === 0) {
+      return false;
+    }
     const keys = ['NEW CLIENTS', 'FAMILY PLANNING CONTINUIOUS'];
     const sum = Result.sumByGroupBy(this.props.data, 'REGION', keys);
     const regions = Object.keys(sum).filter(key => key !== 'total');
     const stats = this.parseData(sum, keys, regions);
-    return new HighCharts.Chart({
+    this.chart = new HighCharts.Chart({
       chart: {
         height: 400,
         type: 'column',
@@ -84,11 +92,12 @@ const FamilityBarChart = React.createClass({
 
       series: stats,
     });
+    return this.chart;
   },
 
   render() {
     if (this.props.data.length === 0) {
-      return (<div>empty</div>);
+      return false;
     }
     return (
       <div className="family-barchart">

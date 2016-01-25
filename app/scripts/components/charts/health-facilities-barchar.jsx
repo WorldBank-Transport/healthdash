@@ -18,6 +18,11 @@ const HealthFacilitiesChart = React.createClass({
     this.getChart();
   },
 
+  componentWillUnmount() {
+    this.chart.destroy();
+    delete this.chart;
+  },
+
   getDrillDownId(type, region) {
     return `${type}-${region}`.replace(/\s/g, '-');
   },
@@ -63,7 +68,7 @@ const HealthFacilitiesChart = React.createClass({
     const drillDown = this.calculateDrillDown(categories, this.props.data);
     const stats = this.parseData(facilitiesStats, categories);
    // needs translations
-    return new HighCharts.Chart({
+    this.chart = new HighCharts.Chart({
       chart: {
         height: 400,
         type: 'column',
@@ -104,12 +109,13 @@ const HealthFacilitiesChart = React.createClass({
         series: drillDown,
       },
     });
+    return this.chart;
   },
 
 
   render() {
     if (this.props.data.length === 0) {
-      return (<div>empty</div>);
+      return false;
     }
     return (
       <div className="health-facilities-barchar">

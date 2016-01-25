@@ -24,6 +24,11 @@ const TetanusBarChart = React.createClass({
     this.getChart();
   },
 
+  componentWillUnmount() {
+    this.chart.destroy();
+    delete this.chart;
+  },
+
   getValue(values, metric) {
     return values.reduce((ret, item) => {
       if (item.hasOwnProperty(metric)) {
@@ -50,7 +55,7 @@ const TetanusBarChart = React.createClass({
     const regions = Object.keys(Result.groupBy(this.props.data, 'REGIONS'));
     const sum = Result.groupBy(this.props.data, 'YEAR');
     const stats = this.parseData(sum);
-    return new HighCharts.Chart({
+    this.chart = new HighCharts.Chart({
       chart: {
         height: 400,
         type: 'column',
@@ -86,11 +91,12 @@ const TetanusBarChart = React.createClass({
 
       series: stats,
     });
+    return this.chart;
   },
 
   render() {
     if (this.props.data.length === 0) {
-      return (<div>empty</div>);
+      return false;
     }
     return (
       <div className="tetanus-barchart">

@@ -29,6 +29,11 @@ const FamilityPlanChart = React.createClass({
     this.getChart();
   },
 
+  componentWillUnmount() {
+    this.chart.destroy();
+    delete this.chart;
+  },
+
   getValue(values, metric) {
     return values.reduce((ret, item) => {
       if (item.hasOwnProperty(metric)) {
@@ -57,7 +62,7 @@ const FamilityPlanChart = React.createClass({
     const sum = Result.sumByGroupBy(data, 'YEAR', keys);
     const years = Object.keys(sum).filter(key => key !== 'total');
     const stats = this.parseData(sum, keys, years);
-    return new HighCharts.Chart({
+    this.chart = new HighCharts.Chart({
       chart: {
         height: 400,
         type: 'area',
@@ -93,6 +98,7 @@ const FamilityPlanChart = React.createClass({
 
       series: stats,
     });
+    return this.chart;
   },
 
   render() {

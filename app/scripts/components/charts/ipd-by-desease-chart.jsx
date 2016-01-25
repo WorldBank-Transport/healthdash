@@ -22,6 +22,11 @@ const IpdByDeaseaseChart = React.createClass({
     this.getChart();
   },
 
+  componentWillUnmount() {
+    this.chart.destroy();
+    delete this.chart;
+  },
+
   sumAll(data) {
     const regions = Object.keys(data).filter(key => key !== 'CHILD_TYPE' && key !== 'DISEASES' && key !== 'YEAR' && key !== '_id');
     return regions.reduce( (ret, item) => {
@@ -56,7 +61,7 @@ const IpdByDeaseaseChart = React.createClass({
     }
     const sum = Result.groupBy(this.props.data, 'CHILD_TYPE');
     const stats = this.parseData(sum);
-    return new HighCharts.Chart({
+    this.chart = new HighCharts.Chart({
       chart: {
         height: 500,
         renderTo: 'ipd-by-desease-chart',
@@ -84,11 +89,12 @@ const IpdByDeaseaseChart = React.createClass({
         data: stats,
       }],
     });
+    return this.chart;
   },
 
   render() {
     if (this.props.data.length === 0) {
-      return (<div>empty</div>);
+      return false;
     }
     return (
       <div className="death-by-age-chart">

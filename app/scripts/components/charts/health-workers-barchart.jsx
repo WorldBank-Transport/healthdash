@@ -24,6 +24,10 @@ const HealthWorkersBarChart = React.createClass({
     this.getChart();
   },
 
+  componentWillUnmount() {
+    this.chart.destroy();
+    delete this.chart;
+  },
 
   sumAll(regions) {
     return regions.reduce( (ret, item) => {
@@ -59,7 +63,7 @@ const HealthWorkersBarChart = React.createClass({
     const regions = Object.keys(this.props.data[0]).filter(key => key !== 'HEALTH WORKERS' && key !== 'YEAR' && key !== '_id');
     const sum = Result.sumByGroupBy(this.props.data, 'YEAR', regions);
     const stats = this.parseData(sum, regions);
-    return new HighCharts.Chart({
+    this.chart = new HighCharts.Chart({
       chart: {
         height: 400,
         type: 'column',
@@ -95,11 +99,12 @@ const HealthWorkersBarChart = React.createClass({
 
       series: stats,
     });
+    return this.chart;
   },
 
   render() {
     if (this.props.data.length === 0) {
-      return (<div>empty</div>);
+      return false;
     }
     return (
       <div className="health-workers-barchart">
