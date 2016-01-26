@@ -56,7 +56,7 @@
     ul {
       @include list-unstyled();
       margin-left: $share-icon-space;
-      margin-top: $share-icon-space;
+      margin-top: $share-icon-space + 3;
       padding-bottom: $panel-general-space*2;
       width: $full-width;
 

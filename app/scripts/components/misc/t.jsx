@@ -578,6 +578,10 @@ const allTranslations = {
     'flyout.tetanus.tt2-coverage': 'Idadi ya chanjo ya pepopunda',
     'flyout.tetanus.perc-tt2-coverage': 'Asilimia ya chanjo ya pepopunda',
 
+    'share.share': 'Shirikisha',
+    'share.feedback': 'Maoni',
+    'share.print': 'PDF',
+
     'error': 'We\'re sorry',
     'error.retry': 'Retry',
     'error.api.pre-request': 'An error occurred when the application was preparing to fetch data',
