@@ -222,6 +222,7 @@ const allTranslations = {
 
     'flyout.id': 'Facility ID',
     'flyout.facility-name': 'Facility Name',
+    'flyout.rating': 'Rating',
     'flyout.common-name': 'Common Name',
     'flyout.type': 'Type',
     'flyout.ownership': 'Ownership',
