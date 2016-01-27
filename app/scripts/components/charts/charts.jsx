@@ -12,6 +12,8 @@ import IpdCharts from './ipd-charts';
 import OpdCharts from './opd-charts';
 import Tt2Charts from './tetanus-charts';
 import HighCharts from 'highcharts';
+import { Icon } from 'react-font-awesome';
+import T from '../misc/t';
 
 require('highcharts/modules/exporting')(HighCharts);
 require('highcharts/modules/treemap')(HighCharts);
@@ -24,6 +26,7 @@ const Charts = React.createClass({
     data: PropTypes.array,  // injected
     dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
     metrics: PropTypes.object,  // injected
+    onToggle: PropTypes.func.isRequired,
     openClosed: PropTypes.instanceOf(OpenClosed.OptionClass),  // injected
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
@@ -43,6 +46,7 @@ const Charts = React.createClass({
             HivCenter: () => (<HivChart {...this.props}/>),
             Facilities: () => (<HealthFacilitiesCharts {...this.props}/>),
           })}
+          <button className="chart-close-btn" onClick={this.props.onToggle}><Icon type={`times`}/><T k="charts.toggle.opened"/></button>
         </div>
       ),
       Closed: () => <div style={{display: 'none'}}></div>,

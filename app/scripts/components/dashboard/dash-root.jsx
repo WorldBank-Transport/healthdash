@@ -144,8 +144,8 @@ const DashRoot = React.createClass({
               {...propsForChildren} />
           {this.renderLoadingOverlay()}
           </div>
-          <Charts openClosed={this.state.layout.charts} {...propsForChildren} />
-          <RightPanel {...propsForChildren} />
+          <Charts onToggle={toggleCharts} openClosed={this.state.layout.charts} {...propsForChildren} />
+          <RightPanel onToggle={toggleCharts} {...propsForChildren} />
           </div>
           <Footer />
       </div>

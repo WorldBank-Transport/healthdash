@@ -36,7 +36,7 @@
       outline: none;
       padding: 7px 0;
       text-transform: uppercase;
-      width: 80%;
+      width: $full-width + 30;
     }
   }
 
@@ -94,13 +94,13 @@
         li {
           float: left;
           margin-right: $panel-general-space;
-          width: 30%;
 
           &:last-child {
             margin-right: 0;
           }
           a {
             color: $text-color;
+            font-size: $category-filter-text;
             font-weight: $title-weight;
             text-transform: uppercase;
             &.active,
@@ -136,7 +136,17 @@
       }
     }
   }
+}
 
+.charts-trigger {
+  background: none;
+  border: 0;
+  color: $theme-blue;
+  font-size: $medium-text;
+  padding: $panel-general-space * 2;
+  &:hover {
+    color: $hover-color;
+  }
 }
 
 .other-selections {

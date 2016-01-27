@@ -11,6 +11,7 @@ import HealthWorkersRightPanel from './health-workers-right-panel';
 import IpdRightPanel from './ipd-right-panel';
 import OpdRightPanel from './opd-right-panel';
 import TetanusRightPanel from './tetanus-right-panel';
+import ChartsLink from '../boilerplate/charts-link';
 
 require('stylesheets/right-panel/right-panel');
 
@@ -20,6 +21,7 @@ const RightPanel = React.createClass({
     data: PropTypes.array,  // injected
     dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
     metrics: PropTypes.object,  // injected
+    onToggle: PropTypes.func,
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
 
@@ -37,6 +39,9 @@ const RightPanel = React.createClass({
             HivCenter: () => (<HivRightPanel {...this.props}/>),
             Facilities: () => (<FacilitiesRightPanel {...this.props}/>),
           })}
+          <div className="row">
+            <ChartsLink onToggle={this.props.onToggle}/>
+          </div>
         </div>
       );
   },

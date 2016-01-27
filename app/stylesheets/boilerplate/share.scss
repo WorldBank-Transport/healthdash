@@ -4,7 +4,7 @@
 @import '../config/type';
 
 .share-selector {
-  background: $grey-tab;
+  background: $theme-blue;
   display: table-cell;
   font-size: $category-filter-text;
   font-weight: bold;
@@ -16,6 +16,7 @@
     border-left: 1px solid $tab-expand-bg;
 
     a {
+      background: $theme-blue;
       color: $text-inverse;
       display: block;
       font-size: $tab-text;
@@ -39,34 +40,35 @@
   }
 
   .floating-div {
-    background: $grey-tab;
+    background: $theme-blue;
     padding-bottom: $panel-general-space / 2;
     padding-top: $panel-general-space /2;
     position: absolute;
     top: $map-nav-height;
+    right: 0;
     vertical-align: top;
     z-index: 1000;
   }
 
   .share-wrapper {
-    display: table-cell;
-    vertical-align: top;
-    width: 16%;
+    width: $share-wrapper-width;
 
     ul {
       @include list-unstyled();
-      margin: $share-icon-space auto $panel-general-space*4 auto;
+      margin-left: $share-icon-space;
+      margin-top: $share-icon-space + 3;
       padding-bottom: $panel-general-space*2;
-      width: $full-width / 1.5;
+      width: $full-width;
 
       li {
         @include transparency(1);
-        color: $text-color;
+        color: $text-inverse;
         display: block;
         float: left;
-        font-size: $small-text;
-        line-height: $small-text;
+        font-size: $small-text + 2;
+        line-height: $small-text * 2;
         margin-right: $icon-list-space;
+        opacity: 1;
         padding-left: $panel-general-space;
         text-align: center;
 
@@ -75,7 +77,7 @@
         }
 
         &:hover {
-          color: $text-inverse;
+          opacity: 0.8;
 
           .fa {
             color: $text-inverse;
@@ -83,11 +85,12 @@
         }
 
         .fa {
-          clear: both;
-          color: $share-icon-color;
+          color: $text-inverse;
           display: block;
+          float: left;
           font-size: $share-icon-size;
           margin-bottom: $share-icon-space;
+          margin-right: $share-icon-space / 1.5;
 
           &.fa-file-pdf-o {
             height: $share-icon-size / 2;

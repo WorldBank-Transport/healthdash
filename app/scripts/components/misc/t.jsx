@@ -90,8 +90,8 @@ const allTranslations = {
     'data-type.family-planning': 'Family Planning',
     'data-type.deliveries': 'Deliveries',
     'data-type.health-workers': 'Health Workers',
-    'data-type.ipd': 'IPD',
-    'data-type.opd': 'OPD',
+    'data-type.ipd': 'IPD (In Patient Department)',
+    'data-type.opd': 'OPD (Out Patient Department)',
     'data-type.tetanous': 'Tetanus',
     'data-type.hiv-center': 'HIV Centers',
     'data-type.facilities': 'Health Facilities',
@@ -163,7 +163,7 @@ const allTranslations = {
     'chart.health-worker.y-axis': '# workers',
     'chart.worker-by-type.title': 'Workers',
     'chart.worker-by-type.helptext': 'By Type',
-    'chart.ipd.title': 'Total Number of In Patient Department',
+    'chart.ipd.title': 'Total Number of Inpatient Department',
     'chart.ipd-region.title': 'Average IPD per Region',
     'chart.ipd-ABOVE 5 YEARS.title': 'IPD above 5 Years',
     'chart.ipd-UNDER 5 YEARS.title': 'IPD under 5 Years',
@@ -512,7 +512,7 @@ const allTranslations = {
 
     'overview-bar': 'Maelezo ya joomla',
 
-    'footer.copy': 'Tovuti hii imechapishwa kwa leseni ya CC BY NC SA 3.0. Programu imeandikwa na kuchapishwa kwa leseni ya GPL 3.0. Wageni wa tovuti wanahamasishwa kuangalia programu kwa makini na kuitumia kama watachapisha programu zao kwa leseni inayolingana.',
+    'footer.copy': 'Tovuti hii imechapishwa kwa leseni ya GPL 3.0. Wageni wa tovuti wanahamasishwa kuangalia programu kwa makini na kuitumia kama watachapisha programu zao kwa leseni inayolingana.',
 
     'loading': 'Loading',
     'loading.waterpoints': i => `${i[0]} waterpoints loaded...`,
@@ -577,6 +577,10 @@ const allTranslations = {
     'flyout.tetanus.total': 'Jumla ya walioshiriki',
     'flyout.tetanus.tt2-coverage': 'Idadi ya chanjo ya pepopunda',
     'flyout.tetanus.perc-tt2-coverage': 'Asilimia ya chanjo ya pepopunda',
+
+    'share.share': 'Shirikisha',
+    'share.feedback': 'Maoni',
+    'share.print': 'PDF',
 
     'error': 'We\'re sorry',
     'error.retry': 'Retry',

@@ -1,5 +1,6 @@
 @import '../config/colours';
 @import '../config/dimensions';
+@import '../config/type';
 
 .charts {
   background-color: $bg-color;
@@ -11,6 +12,22 @@
   top: $map-nav-height;
   width: 100%;
   z-index: 110;
+
+  .chart-close-btn {
+    background: 0;
+    border: 0;
+    color: $theme-blue;
+    font-size: $medium-text;
+    position: absolute;
+    right: $close-button-position + 40;
+    top: $close-button-position * 2;
+    &:hover {
+      color: $hover-color;
+    }
+    .fa {
+      margin-right: $close-button-position / 4;
+    }
+  }
 
   .secondaryCharts {
     background: $bg-color;
@@ -29,4 +46,3 @@
     }
   }
 }
-

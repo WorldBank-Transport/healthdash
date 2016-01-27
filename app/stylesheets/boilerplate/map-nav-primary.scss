@@ -18,6 +18,16 @@
     cursor: pointer;
   }
 
+  &.opened {
+    &.charts-toggle {
+      background: $theme-blue;
+      color: $text-inverse;
+      &:hover {
+        background: $text-inverse;
+        color: $theme-blue;
+      }
+    }
+  }
   // customized styles through extraClasses props
   &.charts-toggle {
     background: $bg-color;
