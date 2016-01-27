@@ -10,6 +10,7 @@ import FamilyPlanningFlyout from './family-planning-flyout';
 import DeliveriesFlyout from './deliveries-flyout';
 import TetanusFlyout from './tetanus-flyout';
 import { Result } from '../../utils/functional';
+import Rating from './rating';
 
 require('stylesheets/dashboard/flyout');
 
@@ -40,6 +41,7 @@ const Flyout = React.createClass({
       <div>
         <span className="flyout-section"><T k="flyout.facility-name"/><h3>{details.FACILITY_NAME}</h3></span>
         <span className="flyout-section"><T k="flyout.id"/>: <h3>{details.FACILITY_ID_NUMBER}</h3></span>
+        <span className="flyout-section"><T k="flyout.rating"/>: <Rating facility={details} /></span>
         <span className="flyout-section"><T k="flyout.common-name"/>: <h3>{details['COMMON FACILITY HEALTH NAME']}</h3></span>
         <span className="flyout-section"><T k="flyout.type"/>: <h3>{details['FACILITY TYPE']}</h3></span>
         <span className="flyout-section"><T k="flyout.ownership"/>: <h3>{details.OWNERSHIP}</h3></span>
