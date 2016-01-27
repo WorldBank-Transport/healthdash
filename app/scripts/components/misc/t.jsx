@@ -51,6 +51,7 @@ const allTranslations = {
     'filter.metric.TOTAL ATTENDANCE': 'Total Attendance',
     'filter.metric.TT2 VACCINATION COVERAGE': 'TT2 Vaccination Coverage',
     'filter.metric.% TT2 VACCINATION COVERAGE': '% TT2 Vaccination Coverage',
+    'search.help-field': 'SEARCH FACILITY BY NAME',
 
     'legend.title': 'legend',
     'legend.lessthan50': '< 50',

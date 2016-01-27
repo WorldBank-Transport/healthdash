@@ -28,6 +28,10 @@ const FacilitiesRightPanel = React.createClass({
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
 
+  getInitialState() {
+    return {help: 'block'};
+  },
+
   select(value, item) {
     this.props.setSelected(item.FACILITY_ID_NUMBER); // TODO fixme
   },
@@ -61,14 +65,23 @@ const FacilitiesRightPanel = React.createClass({
     );
   },
 
+  closeHelp(e) {
+    e.preventDefault();
+    this.replaceState({
+      ...this.state,
+      help: 'none',
+    });
+  },
+
   render() {
     return (
       <div className="container">
         <div className="row search-wrapper">
         <Icon type={`search`}/>
+          <div className="search-field-help" onClick={this.closeHelp} style={{display: this.state.help}}><T k="search.help-field" /></div>
           <Autocomplete
               getItemValue={(item) => item.FACILITY_NAME}
-              initialValue="Search for Facility"
+              initialValue=""
               items={this.props.data}
               onSelect={this.select}
               renderItem={(item, isHighlighted) => (
@@ -80,7 +93,6 @@ const FacilitiesRightPanel = React.createClass({
         </div>
         <div className="row view-modes">
           <h5><T k="view-mode.dashview"/></h5>
-
           {
             this.renderViewModes(['points', 'regions', 'districts'])
           }

@@ -29,7 +29,6 @@
     }
     input {
       border: 1px solid $bg-color;
-      color: $grey-light;
       font-size: $medium-text;
       font-weight: $title-weight;
       height: 20px;
@@ -37,6 +36,14 @@
       padding: 7px 0;
       text-transform: uppercase;
       width: $full-width + 30;
+    }
+    .search-field-help {
+      color: $grey-light;
+      font-size: $medium-text;
+      font-weight: $title-weight;
+      left: 45px;
+      position: absolute;
+      top: 28px;
     }
   }
 
