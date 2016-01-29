@@ -12,7 +12,7 @@ const allTranslations = {
     'site-name': 'Health Dashboard',
     'site.flag': 'Flag of Tanzania',
 
-    'home.health': 'Health Centers',
+    'home.health': 'Health Facilities',
     'home.title': 'Track performance, explore data and provide feedback using this Health Dashboard.',
     'home.text': 'This Health Dashboard visualizes key information from Tanzania\'s open data portal. Use it to view the latest national exam results and monitor the information that is important to you. You can also use the menu options above to see original data and speak out about missing or wrong data.',
 
