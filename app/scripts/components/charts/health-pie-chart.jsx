@@ -3,7 +3,6 @@ import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
 import { Color } from '../../utils/colours';
 
-require('highcharts/highcharts-3d')(HighCharts);
 require('stylesheets/charts/health-facilities-barchar');
 
 const HealthPieChart = React.createClass({
@@ -50,10 +49,6 @@ const HealthPieChart = React.createClass({
     this.chart = new HighCharts.Chart({
       chart: {
         type: 'pie',
-        options3d: {
-          enabled: true,
-          alpha: 45,
-        },
         renderTo: this.props.divId,
       },
 
