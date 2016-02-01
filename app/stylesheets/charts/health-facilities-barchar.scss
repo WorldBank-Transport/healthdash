@@ -12,7 +12,7 @@
       font-size: $chart-axis-text;
       font-weight: $chart-axis-text-weight;
       text-anchor: inherit;
-      transform: translate(-8px, 0px) rotate(-80deg);
+      transform: translate(-8px, 0) rotate(-80deg);
     }
     &.axis {
       &.label {
