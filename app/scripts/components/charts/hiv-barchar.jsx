@@ -28,7 +28,7 @@ const HivChart = React.createClass({
 
   parseData(facilitiesStats) {
     return [{
-      name: 'Facilities by Region',
+      name: 'Facilities By Region',
       data: Object.keys(facilitiesStats).filter(key => key !== 'total').map(key => facilitiesStats[key]),
     }];
   },

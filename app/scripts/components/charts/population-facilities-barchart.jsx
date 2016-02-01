@@ -81,9 +81,14 @@ const PopulationFacilitiesChart = React.createClass({
       title: {
         text: '',
       },
-
       xAxis: {
         categories: categories,
+        'labels': {
+          'enabled': true,
+          'style': {
+            'text-decoration': 'none',
+          },
+        },
       },
 
       tooltip: {

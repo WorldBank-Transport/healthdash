@@ -1,9 +1,8 @@
 @import '../config/colours';
 
 .drill-down-viewer {
-  border: 2px solid $grey-light-detail;
+  left: 70px;
   position: fixed;
-  right: 13px;
-  top: 145px;
+  top: 10px;
   z-index: 1000;
 }

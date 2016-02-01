@@ -3,7 +3,7 @@
 @import '../config/type';
 
 .health-facilities-barchar {
-  margin: 0px;
+  margin: 0;
   .x {
     .tick text {
       -webkit-transform: rotate(-75deg);
@@ -40,4 +40,13 @@
 
 .chart-title {
   color: $theme-blue;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.helptext {
+  display: block;
+  font-size: $panel-general-space;
+}
+.chart-container {
+  margin-top: $panel-general-space * 2;
 }
