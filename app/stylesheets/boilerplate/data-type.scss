@@ -16,6 +16,10 @@
     width: $full-width/4.8;
     z-index: 1000;
 
+    @include up-to($laptop) {
+      width: $full-width / 2.5;
+    }
+
     .selectable {
       @include border-radius($checkbox-dimensions);
       background: none;

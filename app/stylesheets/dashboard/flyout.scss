@@ -14,6 +14,11 @@
     width: $flyout-width;
     z-index: 10;
 
+
+    @include up-to($tablet-landscape) {
+      margin-right: $flyout-table-h-position;
+    }
+
     h3 {
       color: $theme-blue;
     }
@@ -28,7 +33,7 @@
         margin: $flyout-section-top-position/3 0 0 0;
       }
       div {
-        margin: $flyout-section-top-position/3 0 0 0; 
+        margin: $flyout-section-top-position/3 0 0 0;
       }
     }
   }

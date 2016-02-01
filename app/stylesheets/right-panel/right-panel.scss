@@ -4,7 +4,7 @@
 @import '../config/box';
 
 .right-panel {
-  background-color: whitespace;
+  background: $bg-color;
   bottom: $footer-height;
   overflow-y: auto;
   position: absolute;
@@ -12,6 +12,21 @@
   top: $map-nav-height;
   width: $main-chart-width;
   z-index: 11;
+
+  @include up-to($laptop) {
+    width: $full-width / 2.8;
+  }
+
+  @include up-to($tablet-alt) {
+    overflow-x: hidden;
+    width: 25%;
+    right: 10px;
+  }
+
+  @include up-to($phone) {
+    width: $full-width / 1.5;
+  }
+
 
   .container {
     padding: $panel-general-space * 2;
@@ -101,6 +116,11 @@
         li {
           float: left;
           margin-right: $panel-general-space;
+
+          @include up-to($phone) {
+            float: none;
+            width: $full-width;
+          }
 
           &:last-child {
             margin-right: 0;
