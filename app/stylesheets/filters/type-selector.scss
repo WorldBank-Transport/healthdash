@@ -40,6 +40,11 @@
         padding-left: 10px;
         width: 45%;
 
+        @include up-to($phone) {
+          float: none;
+          width: $full-width;
+        }
+
         &:first-child {
           .selectable {
             &:hover,

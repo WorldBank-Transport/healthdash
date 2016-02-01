@@ -83,6 +83,7 @@ const IpdByDeaseaseChart = React.createClass({
             style: {
               fontSize: '15px',
               fontWeight: 'bold',
+              textShadow: false,
             },
           },
         }],

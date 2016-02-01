@@ -3,7 +3,7 @@
 @import '../config/type';
 
 .tetanus-barchart {
-  margin: 0px;
+  margin: 0;
   .x {
     .tick text {
       direction: rtl;
@@ -23,5 +23,5 @@
   .label {
     fill: $text-color;
     font-size: $chart-axis-text;
-  }  
+  }
 }

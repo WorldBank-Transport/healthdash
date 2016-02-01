@@ -11,6 +11,10 @@
   padding-left: 10px;
   width: 40%;
 
+  @include up-to($phone) {
+    width: $full-width;
+  }
+
   &.floated {
     float: left;
     width: 45%;

@@ -3,6 +3,7 @@ import { Result } from '../../utils/functional';
 import T from '../misc/t';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
+import colours from '../../utils/colours';
 
 require('stylesheets/charts/hiv-barchar');
 
@@ -28,8 +29,9 @@ const HivChart = React.createClass({
 
   parseData(facilitiesStats) {
     return [{
-      name: 'Facilities by Region',
+      name: 'Facilities By Region',
       data: Object.keys(facilitiesStats).filter(key => key !== 'total').map(key => facilitiesStats[key]),
+      color: colours.theme,
     }];
   },
 

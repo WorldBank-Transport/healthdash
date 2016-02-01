@@ -16,6 +16,10 @@
     width: $full-width/4.8;
     z-index: 1000;
 
+    @include up-to($laptop) {
+      width: $full-width / 2.5;
+    }
+
     .selectable {
       @include border-radius($checkbox-dimensions);
       background: none;
@@ -54,7 +58,7 @@
           font-weight: bold;
           height: auto;
           line-height: 105%;
-          padding: $map-nav-link-margin $base-unit * 3 $map-nav-link-margin+1 $base-unit * 3;
+          padding: $map-nav-link-margin $base-unit * 1.5 $map-nav-link-margin+1 $base-unit * 1.9;
           text-align: left;
           text-transform: uppercase;
           vertical-align: middle;
