@@ -170,6 +170,7 @@
   border: 0;
   color: $theme-blue;
   font-size: $medium-text;
+  outline: none;
   padding: $panel-general-space * 2;
   &:hover {
     color: $hover-color;

@@ -119,7 +119,10 @@ const HealthFacilitiesChart = React.createClass({
     }
     return (
       <div className="health-facilities-barchar">
+      <div>
         <h3 className="chart-title"><T k="chart.health-facilities.title" /> - <span className="chart-helptext"><T k="chart.health-facilities.helptext" /></span></h3>
+        <span className="helptext"><T k="chart.health-facilities.helptextdesctiption" /></span>
+      </div>
         <div className="chart-container" id="health-facilities-barchar"></div>
       </div>
     );

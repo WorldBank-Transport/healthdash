@@ -368,7 +368,7 @@ const allTranslations = {
 
     'chart.health-facilities.title': 'Health Facilities',
     'chart.health-facilities.helptext': ' By Region',
-    'chart.health-facilities.helptextdesctiption': 'Click on a facility type within each bar to view more information.',
+    'chart.health-facilities.helptextdesctiption': 'Click on any facility type within each bar to view more information.',
     'chart.health-facilities.x-axis': 'Regions',
     'chart.health-facilities.y-axis': 'Facilities',
     'chart.facilities-ownership-piechart.title': 'Health Facilities Ownership',
