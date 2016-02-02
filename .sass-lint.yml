@@ -2,7 +2,7 @@
 ## Sample Sass Lint File
 #########################
 options:
-  merge-default-rules: true
+  merge-default-rules: false
   formatter: stylish
 files:
   include: 'app/**/*.scss'
@@ -18,7 +18,7 @@ rules:
   final-newline: 2
   hex-length: 0
   hex-notation: 2
-  indentation: 2
+  #indentation: 2
   leading-zero:
     - 2
     -
