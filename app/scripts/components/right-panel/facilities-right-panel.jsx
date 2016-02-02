@@ -26,6 +26,7 @@ const FacilitiesRightPanel = React.createClass({
     dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
     setSelected: PropTypes.func,
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
+    url: PropTypes.string.isRequired,
   },
 
   getInitialState() {
@@ -49,9 +50,9 @@ const FacilitiesRightPanel = React.createClass({
   },
 
   renderViewModes(viewModes) {
-    return (<ul>
-        {viewModes.map(viewMode => (<li><Link activeClassName="active" to={`/dash/${viewMode}/facilities/`}><span className="selectable"/><T k={`dash.${viewMode}`} /></Link></li>))}
-    </ul>);
+    return (<select id="viewmode" onChange={this.change} value={this.props.url} >
+              {viewModes.map(viewMode => <option value={`#/dash/${viewMode}/facilities/`}><T k={`dash.${viewMode}`} /></option>)}
+            </select>)
   },
 
   renderHealthType() {
@@ -63,6 +64,12 @@ const FacilitiesRightPanel = React.createClass({
       )}
       </div>
     );
+  },
+
+  change(event) {
+    event.preventDefault();
+    this.props.url = event.target.value;
+    window.location.href= event.target.value;
   },
 
   closeHelp(e) {
