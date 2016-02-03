@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'reflux';
 import { Maybe, _ } from 'results';
 import AsyncState from '../../constants/async';
 import DataTypes from '../../constants/data-types';
@@ -11,6 +12,7 @@ import { Result } from '../../utils/functional';
 import TypeSelector from '../filters/type-selector';
 import { Icon } from 'react-font-awesome';
 import Rating from '../dashboard/rating';
+import PopulationStore from '../../stores/population';
 
 require('stylesheets/right-panel/right-panel');
 
@@ -32,6 +34,10 @@ const FacilitiesRightPanel = React.createClass({
     url: PropTypes.string.isRequired,
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
+
+  mixins: [
+    connect(PopulationStore, 'population'),
+  ],
 
   getInitialState() {
     return {help: 'block'};
@@ -154,8 +160,52 @@ const FacilitiesRightPanel = React.createClass({
       </div>);
   },
 
+  renderSum(summary, title, total) {
+    return (
+      <div className="facilities">
+        <T k={title}/>
+        <ul className="summary">
+        {
+          Object.keys(summary).map(key =>
+            (<li><T k={`flyout.facilities.${key}`}/>: {(summary[key].length / total * 100).toFixed(2)} %</li>)
+          )
+        }
+        </ul>
+      </div>);
+  },
+
   renderPolygonSelected(details) {
-    return (<p>Not implemented: {JSON.stringify(details)}</p>);
+    return (
+      <div>
+        <div className="row">
+          <button onClick={this.props.ensureDeselect}><T k="right-panel.button.back"/></button>
+        </div>
+        <div className="row">
+          {
+            Maybe.match(details.properties.data, {
+              None: () => this.renderNotFound(details.id),
+              Some: data => {
+                const types = Result.groupBy(data, 'FACILITY TYPE');
+                const status = Result.groupBy(data, 'OPERATING_STATUS');
+                const ownership = Result.groupBy(data, 'OWNERSHIP');
+                const polyType = ViewModes.getDrillDown(this.props.viewMode);
+                const popAgg = Result.sumByGroupBy(this.state.population, polyType, ['TOTAL']);
+                const popPoly = popAgg[details.id] || [{TOTAL: 0}];
+                return (
+                  <ul className="point-selected">
+                    <li><T k="flyout.region"/>: {details.id}</li>
+                    <li><T k="flyout.facilities.length"/>: {data.length}</li>
+                    <li><T k="flyout.facilities.pupulation"/>: {Math.round(popPoly[0].TOTAL / data.length)}</li>
+                    <li>{this.renderSum(types, 'flyout.facilities.type', this.props.data.length)}</li>
+                    <li>{this.renderSum(status, 'flyout.facilities.status', this.props.data.length)}</li>
+                    <li>{this.renderSum(ownership, 'flyout.facilities.ownership', this.props.data.length)}</li>
+                  </ul>
+                );
+              },
+            })
+          }
+        </div>
+      </div>);
   },
 
   renderFacility(selected) {

@@ -21,11 +21,12 @@ const PolygonsMap = React.createClass({
     data: PropTypes.array,  // injected
     dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
     deselect: PropTypes.func,  // injected
+    ensureSelect: PropTypes.func,  // injected
+    hover: PropTypes.instanceOf(Maybe.OptionClass),  // injected
     map: PropTypes.instanceOf(Map),  // injected by BoundsMap
     mapDrillDown: PropTypes.func,  // injected
     polygonsData: PropTypes.array,  // injected
     select: PropTypes.func,  // injected
-    selected: PropTypes.instanceOf(Maybe.OptionClass),  // injected
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
 
@@ -34,7 +35,8 @@ const PolygonsMap = React.createClass({
   ],
 
   handleClickFor(feature) {
-    return () => this.props.mapDrillDown(feature.id);
+    //return () => this.props.mapDrillDown(feature.id); TODO drill down when we have data
+    return () => this.props.ensureSelect(feature.id);
   },
 
   handleMouseoutFor(feature) {
@@ -90,7 +92,7 @@ const PolygonsMap = React.createClass({
 
   render() {
     const propsForPopup = pick(this.props,
-      [ 'data', 'dataType', 'deselect', 'selected', 'viewMode']);
+      [ 'data', 'dataType', 'deselect', 'hover', 'viewMode']);
     return (
       <div>
         {this.props.polygonsData.map(this.renderFeature)}
