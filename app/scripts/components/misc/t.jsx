@@ -268,7 +268,7 @@ const allTranslations = {
     'flyout.tetanus.perc-tt2-coverage': '% TT2 Vaccination Coverage',
     'flyout.population': 'Population',
 
-    'right-panel.button.back': 'Back to Falicities',
+    'right-panel.button.back': 'Back to Facilities',
     'right-panel.loading': 'Loading Facility',
     'right-panel.not-found': 'Not Found',
     'right-panel.filter': 'Filter Facility Types',
