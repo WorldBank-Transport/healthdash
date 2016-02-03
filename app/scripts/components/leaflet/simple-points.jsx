@@ -14,6 +14,7 @@ const SimplePoints = React.createClass({
   propTypes: {
     data: PropTypes.array.isRequired,
     deselect: PropTypes.func,  // injected
+    ensureSelect: PropTypes.func,  // injected
     map: PropTypes.instanceOf(Map),  // injected by BoundsMap
     select: PropTypes.func.isRequired,
   },
@@ -58,7 +59,7 @@ const SimplePoints = React.createClass({
   },
 
   handleMarkerClickFor(id) {
-    return () => this.props.select(id);
+    return () => this.props.ensureSelect(id);
   },
 
   handleMouseoutFor(color) {

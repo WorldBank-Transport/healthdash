@@ -1,14 +1,16 @@
 import React, { PropTypes } from 'react';
+import { Maybe, _ } from 'results';
+import AsyncState from '../../constants/async';
 import DataTypes from '../../constants/data-types';
 import ViewModes from '../../constants/view-modes';
 import MetricSummary from '../charts/metric-summary-chart';
 import { styles } from '../../utils/searchUtil';
 import T from '../misc/t';
-import { Link } from 'react-router';
 import Autocomplete from 'react-autocomplete';
 import { Result } from '../../utils/functional';
 import TypeSelector from '../filters/type-selector';
 import { Icon } from 'react-font-awesome';
+import Rating from '../dashboard/rating';
 
 require('stylesheets/right-panel/right-panel');
 
@@ -24,9 +26,11 @@ const FacilitiesRightPanel = React.createClass({
     children: PropTypes.node, // injected
     data: PropTypes.array,  // injected
     dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
+    ensureDeselect: PropTypes.func,  // injected
+    selected: PropTypes.instanceOf(Maybe.OptionClass),  // injected
     setSelected: PropTypes.func,
-    viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
     url: PropTypes.string.isRequired,
+    viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
 
   getInitialState() {
@@ -34,7 +38,7 @@ const FacilitiesRightPanel = React.createClass({
   },
 
   select(value, item) {
-    this.props.setSelected(item.FACILITY_ID_NUMBER); // TODO fixme
+    this.props.setSelected(item.FACILITY_ID_NUMBER);
   },
 
   matchStateToTerm(state, value) {
@@ -52,7 +56,7 @@ const FacilitiesRightPanel = React.createClass({
   renderViewModes(viewModes) {
     return (<select id="viewmode" onChange={this.change} value={this.props.url} >
               {viewModes.map(viewMode => <option value={`#/dash/${viewMode}/facilities/`}><T k={`dash.${viewMode}`} /></option>)}
-            </select>)
+            </select>);
   },
 
   renderHealthType() {
@@ -69,7 +73,7 @@ const FacilitiesRightPanel = React.createClass({
   change(event) {
     event.preventDefault();
     this.props.url = event.target.value;
-    window.location.href= event.target.value;
+    window.location.href = event.target.value;
   },
 
   closeHelp(e) {
@@ -80,7 +84,7 @@ const FacilitiesRightPanel = React.createClass({
     });
   },
 
-  render() {
+  renderNational() {
     return (
       <div className="container">
         <div className="row search-wrapper">
@@ -106,7 +110,7 @@ const FacilitiesRightPanel = React.createClass({
         </div>
 
         <div className="type-selector-wrapper">
-          <h5>Filter Facility Types</h5>
+          <h5><T k="right-panel.filter"/></h5>
           <TypeSelector />
         </div>
 
@@ -118,6 +122,63 @@ const FacilitiesRightPanel = React.createClass({
           {this.renderHealthType()}
         </div>
       </div>);
+  },
+
+  renderLoading() {
+    return (<h3><T k="right-panel.loading"/></h3>);
+  },
+
+  renderNotFound(id) {
+    return (<h3>{id} <T k="right-panel.not-found"/></h3>);
+  },
+
+  renderPointSelected(details) {
+    return (
+      <div>
+        <div className="row">
+          <button onClick={this.props.ensureDeselect}><T k="right-panel.button.back"/></button>
+        </div>
+        <div className="row">
+          <ul className="point-selected">
+            <li><T k="flyout.facility-name"/>:{details.FACILITY_NAME}</li>
+            <li><T k="flyout.type"/>: {details['FACILITY TYPE']}</li>
+            <li><T k="flyout.id"/>: {details.FACILITY_ID_NUMBER}</li>
+            <li><T k="flyout.rating"/>: <Rating facility={details} /></li>
+            <li><T k="flyout.region"/>: {details.REGION}</li>
+            <li><T k="flyout.zone"/>: {details.ZONE}</li>
+            <li><T k="flyout.council"/>: {details.COUNCIL}</li>
+            <li><T k="flyout.ownership"/>: {details.OWNERSHIP}</li>
+            <li><T k="flyout.status"/>: {details.OPERATING_STATUS}</li>
+          </ul>
+        </div>
+      </div>);
+  },
+
+  renderPolygonSelected(details) {
+    return (<p>Not implemented: {JSON.stringify(details)}</p>);
+  },
+
+  renderFacility(selected) {
+    return (
+      <div className="container">
+        {AsyncState.match(selected.loadState, {
+          Finished: () => Maybe.match(selected.details, {
+            None: () => this.renderNotFound(selected.id),
+            Some: details => ViewModes.match(this.props.viewMode, {
+              Points: () => this.renderPointSelected(details),
+              [_]: () => this.renderPolygonSelected(details),
+            }),
+          }),
+          [_]: this.renderLoading,
+        })}
+      </div>);
+  },
+
+  render() {
+    return Maybe.match(this.props.selected, {
+      None: () => this.renderNational(),
+      Some: (selected) => this.renderFacility(selected),
+    });
   },
 });
 

@@ -268,6 +268,11 @@ const allTranslations = {
     'flyout.tetanus.perc-tt2-coverage': '% TT2 Vaccination Coverage',
     'flyout.population': 'Population',
 
+    'right-panel.button.back': 'Back to Falicities',
+    'right-panel.loading': 'Loading Facility',
+    'right-panel.not-found': 'Not Found',
+    'right-panel.filter': 'Filter Facility Types',
+
     'share.share': 'Share',
     'share.feedback': 'Feedback',
     'share.print': 'PDF',
@@ -535,6 +540,11 @@ const allTranslations = {
     'flyout.tetanus.tt2-coverage': 'Idadi ya chanjo ya pepopunda',
     'flyout.tetanus.perc-tt2-coverage': 'Asilimia ya chanjo ya pepopunda',
     'flyout.population': 'Population',
+
+    'right-panel.button.back': 'Back to Falicities',
+    'right-panel.loading': 'Loading Facility',
+    'right-panel.not-found': 'Not Found',
+    'right-panel.filter': 'Filter Facility Types',
 
     'share.share': 'Shirikisha',
     'share.feedback': 'Maoni',
