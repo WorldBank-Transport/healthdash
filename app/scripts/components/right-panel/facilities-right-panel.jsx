@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import DataTypes from '../../constants/data-types';
-import ViewModes from '../../constants/view-modes';
 import MetricSummary from '../charts/metric-summary-chart';
 import { styles } from '../../utils/searchUtil';
 import T from '../misc/t';
@@ -25,7 +24,6 @@ const FacilitiesRightPanel = React.createClass({
     data: PropTypes.array,  // injected
     dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
     setSelected: PropTypes.func,
-    viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
     url: PropTypes.string.isRequired,
   },
 
@@ -47,12 +45,6 @@ const FacilitiesRightPanel = React.createClass({
       a.FACILITY_NAME.toLowerCase().indexOf(value.toLowerCase()) >
       b.FACILITY_NAME.toLowerCase().indexOf(value.toLowerCase()) ? 1 : -1
     );
-  },
-
-  renderViewModes(viewModes) {
-    return (<select id="viewmode" onChange={this.change} value={this.props.url} >
-              {viewModes.map(viewMode => <option value={`#/dash/${viewMode}/facilities/`}><T k={`dash.${viewMode}`} /></option>)}
-            </select>)
   },
 
   renderHealthType() {
@@ -98,13 +90,7 @@ const FacilitiesRightPanel = React.createClass({
               shouldItemRender={this.matchStateToTerm}
               sortItems={this.sortStates} />
         </div>
-        <div className="row view-modes">
-          <h5><T k="view-mode.dashview"/></h5>
-          {
-            this.renderViewModes(['points', 'regions', 'districts'])
-          }
-        </div>
-
+       
         <div className="type-selector-wrapper">
           <h5>Filter Facility Types</h5>
           <TypeSelector />
