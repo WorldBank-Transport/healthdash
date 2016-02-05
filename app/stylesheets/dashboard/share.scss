@@ -1,0 +1,98 @@
+@import '../config/colours';
+@import '../config/dimensions';
+@import '../config/box';
+@import '../config/type';
+
+.share-selector {
+  background: $theme-blue;
+  display: table-cell;
+  font-size: $category-filter-text;
+  font-weight: bold;
+  margin: 0;
+  text-align: left;
+  width: $full-width / 5;
+  z-index: 10002;
+
+  .menu-item {
+    border-left: 1px solid $tab-expand-bg;
+
+    a {
+      color: $text-inverse;
+      display: block;
+      font-size: $tab-text;
+      font-weight: bold;
+      padding-bottom: $base-unit * 1.1;
+      padding-top: $base-unit - 0.1;
+      text-align: center;
+      width: $full-width;
+
+      .fa {
+        display: inline-block;
+        margin-left: $base-unit / 2;
+      }
+
+      &:hover,
+      &.active {
+        background: $theme-blue;
+        color: $bg-color;
+      }
+    }
+  }
+
+  .floating-div {
+    background: $theme-blue;
+    position: absolute;
+    right: 0;
+    top: $map-nav-height;
+    vertical-align: top;
+    width: $share-wrapper-width;
+    z-index: 10001;
+  }
+
+  .share-wrapper {
+    margin-left: $share-icon-space * 2;
+    margin-top: $base-unit * 2;
+
+    ul {
+      @include list-unstyled();
+      display: block;
+      overflow: hidden;
+      width: $full-width;
+
+      li {
+        @include transparency(1);
+        color: $text-inverse;
+        display: block;
+        float: left;
+        font-size: $small-text + 2;
+        line-height: $small-text + 5;
+        margin-right: $share-icon-space + 5;
+        padding-left: $share-icon-space;
+        text-align: center;
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        &:hover {
+          @include transparency(0.8);
+        }
+
+        .fa {
+          color: $bg-color;
+          display: block;
+          float: left;
+          font-size: $share-icon-size;
+          margin-bottom: $share-icon-space;
+          margin-right: 5px;
+
+          &.fa-file-pdf-o {
+            font-size: $pdf-icon-size;
+            height: $share-icon-size / 2;
+            margin-bottom: $share-icon-space * 2;
+          }
+        }
+      }
+    }
+  }
+}

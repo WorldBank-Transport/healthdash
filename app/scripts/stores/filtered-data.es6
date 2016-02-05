@@ -4,7 +4,7 @@ import FilterStore from './filters';
 import DataStore from './data';
 import ViewStore from './view';
 
-const items = obj => Object.keys(obj).map(k => [k, obj[k]]);
+const items = obj => Object.keys(obj).map(k => [k, obj[k].f]);
 
 const FilteredDataStore = createStore({
   initialData: [],

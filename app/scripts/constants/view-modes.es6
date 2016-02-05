@@ -15,11 +15,7 @@ const ViewModes = Union({
     }
   },
   toParam() {
-    return ViewModes.match(this, {
-      Regions: () => 'REGION',
-      Districts: () => 'COUNCIL', // TODO change the parameter
-      [_]: () => '',
-    });
+    return this.name.toLowerCase();
   },
   chartCorrection() {
     return ViewModes.match(this, {

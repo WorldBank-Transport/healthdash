@@ -7,6 +7,7 @@ import DataTypes from './constants/data-types';
 import ViewModes from './constants/view-modes';
 import { setView } from './actions/view';
 import { clear } from './actions/filters';
+import { restoreShare } from './actions/share';
 // Route components
 import Root from './components/root';
 // static page components:
@@ -36,6 +37,14 @@ function setPointsView(nextState) {
  * @param {object} nextState From react-router
  * @returns {void}
  */
+function setShare(nextState) {
+  restoreShare(nextState.params.shareId);
+}
+
+/**
+ * @param {object} nextState From react-router
+ * @returns {void}
+ */
 function setPolysView(nextState) {
   clear();
   setView({
@@ -52,6 +61,7 @@ React.render((
         <Route path="/" component={Homepage} />
         <Route path="data/" component={Data} />
         <Route path="speak-out/" component={SpeakOut} />
+        <Route path="share/:shareId/" component={Homepage} onEnter={setShare} />
       </Route>
 
       <Route path="/dash/" component={DashRoot}>
