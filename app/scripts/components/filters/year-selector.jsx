@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'reflux';
 import YearStore from '../../stores/year';
+import LayoutStore from '../../stores/layout';
 import { selectYear } from '../../actions/filters';
+import { toggleYear } from '../../actions/layout';
 import OpenClosed from '../../constants/open-closed';
 import { Icon } from 'react-font-awesome';
 import T from '../misc/t';
@@ -11,30 +13,20 @@ require('stylesheets/filters/year-selector');
 const YearSelector = React.createClass({
 
   mixins: [
+    connect(LayoutStore, 'layout'),
     connect(YearStore, 'years'),
   ],
-
-  getInitialState() {
-    return {openClosed: OpenClosed.Closed()};
-  },
 
   select(value) {
     return (e) => {
       e.preventDefault();
       selectYear(value);
+      toggleYear();
     };
   },
 
-  toggle(e) {
-    e.preventDefault();
-    this.replaceState({
-      ...this.state,
-      openClosed: this.state.openClosed.toggle(),
-    });
-  },
-
   render() {
-    const [disabled, action] = (Object.keys(this.state.years) <= 0) ? ['disabled', () => null] : ['', this.toggle];
+    const [disabled, action] = (Object.keys(this.state.years) <= 0) ? ['disabled', () => null] : ['', toggleYear];
     const listOfOptions = Object.keys(this.state.years).map(year => {
       return (
         <li key={`filter-${year}`}>
@@ -43,7 +35,7 @@ const YearSelector = React.createClass({
           </a>
         </li>);
     });
-    const direction = OpenClosed.match(this.state.openClosed, {
+    const direction = OpenClosed.match(this.state.layout.year, {
       Open: () => 'up',
       Closed: () => 'down',
     });
@@ -55,7 +47,7 @@ const YearSelector = React.createClass({
           </a>
         </div>
         {
-          OpenClosed.match(this.state.openClosed, {
+          OpenClosed.match(this.state.layout.year, {
             Open: () => (
               <div className="floating-div">
                 <ul className="years">
