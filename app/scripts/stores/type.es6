@@ -5,7 +5,7 @@ import { setExclude } from '../actions/filters';
 
 const TypeStore = createStore({
   initialData: {
-  	DISPENSARY: true,
+    DISPENSARY: true,
     'HEALTH CENTRE': true,
     CLINIC: true,
     HOSPITAL: true,
