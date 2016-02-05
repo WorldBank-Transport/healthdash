@@ -3,7 +3,6 @@ import DataTypes from '../../constants/data-types';
 import MetricSummary from '../charts/metric-summary-chart';
 import { styles } from '../../utils/searchUtil';
 import T from '../misc/t';
-import { Link } from 'react-router';
 import Autocomplete from 'react-autocomplete';
 import { Result } from '../../utils/functional';
 import TypeSelector from '../filters/type-selector';
@@ -61,7 +60,7 @@ const FacilitiesRightPanel = React.createClass({
   change(event) {
     event.preventDefault();
     this.props.url = event.target.value;
-    window.location.href= event.target.value;
+    window.location.href = event.target.value;
   },
 
   closeHelp(e) {
@@ -90,7 +89,6 @@ const FacilitiesRightPanel = React.createClass({
               shouldItemRender={this.matchStateToTerm}
               sortItems={this.sortStates} />
         </div>
-       
         <div className="type-selector-wrapper">
           <h5>Filter Facility Types</h5>
           <TypeSelector />

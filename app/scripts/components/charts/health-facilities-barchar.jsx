@@ -93,14 +93,14 @@ const HealthFacilitiesChart = React.createClass({
         useHTML: true,
       },
 
-        plotOptions: {
+      plotOptions: {
         column: {
           stacking: 'normal',
           dataLabels: {
             color: (HighCharts.theme && HighCharts.theme.dataLabelsColor) || 'white',
             style: {
               textShadow: '0 0 3px black',
-              textDecoration  : 'none',
+              textDecoration: 'none',
             },
           },
         },
@@ -111,8 +111,8 @@ const HealthFacilitiesChart = React.createClass({
         series: drillDown,
         activeAxisLabelStyle: {
           cursor: 'pointer',
-          textDecoration: 'none'     
-        }
+          textDecoration: 'none',
+        },
       },
     });
     return this.chart;

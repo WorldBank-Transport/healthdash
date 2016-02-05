@@ -17,24 +17,24 @@ const DataType = React.createClass({
   },
 
   getInitialState() {
-     return {
-     openCloseOthers: OpenClosed.Closed(),
-     openCloseViewMode: OpenClosed.Closed()
-   }
+    return {
+      openCloseOthers: OpenClosed.Closed(),
+      openCloseViewMode: OpenClosed.Closed(),
+    };
   },
 
   toggle() {
     this.replaceState({
       openCloseOthers: this.state.openCloseOthers.toggle(),
       openCloseViewMode: this.state.openCloseViewMode,
-    }); 
+    });
   },
 
   toggleViewMode() {
     this.replaceState({
       openCloseViewMode: this.state.openCloseViewMode.toggle(),
       openCloseOthers: this.state.openCloseOthers,
-    }); 
+    });
   },
 
   renderOthers() {
@@ -90,22 +90,22 @@ const DataType = React.createClass({
   },
 
   renderViewMode(viewModes) {
-        return OpenClosed.match(this.state.openCloseViewMode, {
+    return OpenClosed.match(this.state.openCloseViewMode, {
       Open: () => (
-          <div className="float-options">
-            <ul>
-              {viewModes.map(viewMode => 
-                <li>
-                  <Link activeClassName="active" onClick={this.toggleViewMode} to={`/dash/${viewMode}/facilities/`}>
-                    <span className="selectable"/><T k={`dash.${viewMode}`} />
-                  </Link>
-                </li>)}
-            </ul>
-            </div>),
+        <div className="float-options">
+          <ul>
+            {viewModes.map(viewMode =>
+              <li>
+                <Link activeClassName="active" onClick={this.toggleViewMode} to={`/dash/${viewMode}/facilities/`}>
+                  <span className="selectable"/><T k={`dash.${viewMode}`} />
+                </Link>
+              </li>)}
+          </ul>
+        </div>),
       Closed: () => <div style={{display: 'none'}}></div>,
     });
   },
-  
+
   render() {
     const direction = OpenClosed.match(this.state.openCloseOthers, {
       Open: () => 'up',
