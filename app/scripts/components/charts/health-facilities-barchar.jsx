@@ -67,6 +67,7 @@ const HealthFacilitiesChart = React.createClass({
     const categories = Object.keys(regions).filter(key => key !== 'total').sort((a, b) => regions[b] - regions[a]);
     const drillDown = this.calculateDrillDown(categories, this.props.data);
     const stats = this.parseData(facilitiesStats, categories);
+
    // needs translations
     this.chart = new HighCharts.Chart({
       chart: {
@@ -99,6 +100,7 @@ const HealthFacilitiesChart = React.createClass({
             color: (HighCharts.theme && HighCharts.theme.dataLabelsColor) || 'white',
             style: {
               textShadow: '0 0 3px black',
+              textDecoration: 'none',
             },
           },
         },
@@ -107,6 +109,10 @@ const HealthFacilitiesChart = React.createClass({
       series: stats,
       drilldown: {
         series: drillDown,
+        activeAxisLabelStyle: {
+          cursor: 'pointer',
+          textDecoration: 'none',
+        },
       },
     });
     return this.chart;

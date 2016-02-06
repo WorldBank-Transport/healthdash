@@ -1,10 +1,8 @@
 import React, { PropTypes } from 'react';
 import DataTypes from '../../constants/data-types';
-import ViewModes from '../../constants/view-modes';
 import MetricSummary from '../charts/metric-summary-chart';
 import { styles } from '../../utils/searchUtil';
 import T from '../misc/t';
-import { Link } from 'react-router';
 import Autocomplete from 'react-autocomplete';
 import { Result } from '../../utils/functional';
 import TypeSelector from '../filters/type-selector';
@@ -25,7 +23,7 @@ const FacilitiesRightPanel = React.createClass({
     data: PropTypes.array,  // injected
     dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
     setSelected: PropTypes.func,
-    viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
+    url: PropTypes.string.isRequired,
   },
 
   getInitialState() {
@@ -48,12 +46,6 @@ const FacilitiesRightPanel = React.createClass({
     );
   },
 
-  renderViewModes(viewModes) {
-    return (<ul>
-        {viewModes.map(viewMode => (<li><Link activeClassName="active" to={`/dash/${viewMode}/facilities/`}><span className="selectable"/><T k={`dash.${viewMode}`} /></Link></li>))}
-    </ul>);
-  },
-
   renderHealthType() {
     const healthFacilitiesType = Result.groupBy(this.props.data, 'FACILITY TYPE');
     return (
@@ -63,6 +55,12 @@ const FacilitiesRightPanel = React.createClass({
       )}
       </div>
     );
+  },
+
+  change(event) {
+    event.preventDefault();
+    this.props.url = event.target.value;
+    window.location.href = event.target.value;
   },
 
   closeHelp(e) {
@@ -91,13 +89,6 @@ const FacilitiesRightPanel = React.createClass({
               shouldItemRender={this.matchStateToTerm}
               sortItems={this.sortStates} />
         </div>
-        <div className="row view-modes">
-          <h5><T k="view-mode.dashview"/></h5>
-          {
-            this.renderViewModes(['points', 'regions', 'districts'])
-          }
-        </div>
-
         <div className="type-selector-wrapper">
           <h5>Filter Facility Types</h5>
           <TypeSelector />
