@@ -66,7 +66,7 @@ const allTranslations = {
     'dash.regions': 'Regions',
     'dash.districts': 'Districts',
     'dash.wards': 'Wards',
-    'dash.points': 'Taifa',
+    'dash.points': 'Facilities',
 
     'charts.toggle.closed': 'View Charts',
     'charts.toggle.opened': 'Hide Charts',
@@ -541,10 +541,10 @@ const allTranslations = {
     'flyout.tetanus.perc-tt2-coverage': 'Asilimia ya chanjo ya pepopunda',
     'flyout.population': 'Population',
 
-    'right-panel.button.back': 'Back to Falicities',
+    'right-panel.button.back': 'Back to Facilities',
     'right-panel.loading': 'Loading Facility',
-    'right-panel.not-found': 'Not Found',
-    'right-panel.filter': 'Filter Facility Types',
+    'right-panel.not-found': 'Takwimu kukosa',
+    'right-panel.filter': 'Kichujio kutumia aina ya kituo cha matibabu',
 
     'share.share': 'Shirikisha',
     'share.feedback': 'Maoni',

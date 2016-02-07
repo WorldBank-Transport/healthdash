@@ -113,6 +113,7 @@ const FacilitiesRightPanel = React.createClass({
           {
             this.renderViewModes(['points', 'regions', 'districts'])
           }
+          <Icon type={`chevron-down`}/>
         </div>
 
         <div className="type-selector-wrapper">
@@ -178,7 +179,7 @@ const FacilitiesRightPanel = React.createClass({
     return (
       <div>
         <div className="row">
-          <button onClick={this.props.ensureDeselect}><T k="right-panel.button.back"/></button>
+          <button className="back-national" onClick={this.props.ensureDeselect}><span className="back-symbol">&#171;</span><T k="right-panel.button.back"/></button>
         </div>
         <div className="row">
           {

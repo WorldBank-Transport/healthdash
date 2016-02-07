@@ -183,3 +183,42 @@
     width: 100%;
   }
 }
+
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid $bg-color;
+  box-shadow: none;
+  color: $text-color;
+  font-size: $small-text + 4;
+  font-weight: $title-weight;
+  height: 30px;
+  outline: none;
+  padding: 4px 0;
+  width: 20%;
+  &:focus {
+    outline: none;
+  }
+}
+.back-symbol {
+  font-size: 14px;
+  margin-right: 5px;
+}
+.back-national {
+  background: $theme-blue;
+  border: 1px solid $theme-blue;
+  color: $text-inverse;
+  padding: 5px 10px;
+}
+
+.fa {
+  &.fa-chevron-down {
+    color: $theme-blue;
+    font-size: 12px;
+    margin-top: 10px;
+    position: absolute;
+  }
+}
