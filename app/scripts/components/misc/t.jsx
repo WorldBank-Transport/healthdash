@@ -99,7 +99,7 @@ const allTranslations = {
     'data-type.others': 'Other Selections',
 
     'chart.health-facilities.title': 'Health Facilities',
-    'chart.health-facilities.helptext': ' Kwa Mkoa',
+    'chart.health-facilities.helptext': ' By Region',
     'chart.health-facilities.helptextdesctiption': 'Click on a facility type within each bar to view more information.',
     'chart.health-facilities.x-axis': 'Regions',
     'chart.health-facilities.y-axis': 'Facilities',
