@@ -9,7 +9,7 @@
   overflow-y: auto;
   position: absolute;
   right: 0;
-  top: $map-nav-height;
+  top: $map-nav-height + 2;
   width: $main-chart-width;
   z-index: 11;
 
@@ -235,4 +235,31 @@ select {
     margin-top: $panel-general-space;
     position: absolute;
   }
+}
+
+.point-selected {
+  @include list-unstyled();
+  li {
+    border-left: 3px solid $panel-section-border;
+    color: $theme-blue;
+    float: left;
+    font-weight: $title-weight;
+    height: 50px;
+    line-height: 100%;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    text-transform: uppercase;
+    width: 40%;
+    &:first-child {
+      width: $full-width;
+    }
+  }
+}
+.point-label {
+  clear: both;
+  color: $share-icon-color;
+  display: block;
+  font-weight: $title-weight;
+  margin-bottom: 5px;
+  text-transform: none;
 }

@@ -142,19 +142,19 @@ const FacilitiesRightPanel = React.createClass({
     return (
       <div>
         <div className="row">
-          <button onClick={this.props.ensureDeselect}><T k="right-panel.button.back"/></button>
+          <button className="back-national" onClick={this.props.ensureDeselect}><span className="back-symbol">&#171;</span><T k="right-panel.button.back"/></button>
         </div>
         <div className="row">
           <ul className="point-selected">
-            <li><T k="flyout.facility-name"/>:{details.FACILITY_NAME}</li>
-            <li><T k="flyout.type"/>: {details['FACILITY TYPE']}</li>
-            <li><T k="flyout.id"/>: {details.FACILITY_ID_NUMBER}</li>
-            <li><T k="flyout.rating"/>: <Rating facility={details} /></li>
-            <li><T k="flyout.region"/>: {details.REGION}</li>
-            <li><T k="flyout.zone"/>: {details.ZONE}</li>
-            <li><T k="flyout.council"/>: {details.COUNCIL}</li>
-            <li><T k="flyout.ownership"/>: {details.OWNERSHIP}</li>
-            <li><T k="flyout.status"/>: {details.OPERATING_STATUS}</li>
+            <li><span className="point-label"><T k="flyout.facility-name"/>:</span>{details.FACILITY_NAME}</li>
+            <li><span className="point-label"><T k="flyout.type"/>:</span> {details['FACILITY TYPE']}</li>
+            <li><span className="point-label"><T k="flyout.id"/>:</span> {details.FACILITY_ID_NUMBER}</li>
+            <li><span className="point-label"><T k="flyout.rating"/>:</span> <Rating facility={details} /></li>
+            <li><span className="point-label"><T k="flyout.region"/>:</span> {details.REGION}</li>
+            <li><span className="point-label"><T k="flyout.zone"/>:</span> {details.ZONE}</li>
+            <li><span className="point-label"><T k="flyout.council"/>:</span> {details.COUNCIL}</li>
+            <li><span className="point-label"><T k="flyout.ownership"/>:</span> {details.OWNERSHIP}</li>
+            <li><span className="point-label"><T k="flyout.status"/>:</span> {details.OPERATING_STATUS}</li>
           </ul>
         </div>
       </div>);
