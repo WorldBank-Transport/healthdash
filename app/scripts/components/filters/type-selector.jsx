@@ -1,37 +1,28 @@
 import React from 'react';
+import { connect } from 'reflux';
 import Checkbox from '../misc/checkbox';
-import { setExclude } from '../../actions/filters';
+import { toggleType } from '../../actions/type';
+import TypeStore from '../../stores/type';
 
 require('stylesheets/filters/type-selector');
 
 const TypeSelector = React.createClass({
 
-  getInitialState() {
-    return {
-      DISPENSARY: true,
-      'HEALTH CENTRE': true,
-      CLINIC: true,
-      HOSPITAL: true,
-    };
-  },
+  mixins: [
+    connect(TypeStore, 'types'),
+  ],
 
   select(value) {
     return () => {
-      const newState = {
-        ...this.state,
-        [value]: !this.state[value],
-      };
-      const excluded = Object.keys(newState).filter(key => !newState[key]);
-      setExclude('FACILITY TYPE', excluded);
-      this.replaceState(newState);
+      toggleType(value);
     };
   },
 
   render() {
-    const listOfOptions = Object.keys(this.state).map(type => {
+    const listOfOptions = Object.keys(this.state.types).map(type => {
       return (
         <li key={`filter-${type}`}>
-          <Checkbox action={this.select(type)} checked={this.state[type]} label={`chart.facilities.type.${type}`} />
+          <Checkbox action={this.select(type)} checked={this.state.types[type]} label={`chart.facilities.type.${type}`} />
         </li>);
     });
     return (

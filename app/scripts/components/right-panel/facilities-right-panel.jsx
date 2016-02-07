@@ -3,7 +3,6 @@ import { connect } from 'reflux';
 import { Maybe, _ } from 'results';
 import AsyncState from '../../constants/async';
 import DataTypes from '../../constants/data-types';
-import ViewModes from '../../constants/view-modes';
 import MetricSummary from '../charts/metric-summary-chart';
 import { styles } from '../../utils/searchUtil';
 import T from '../misc/t';
@@ -59,12 +58,15 @@ const FacilitiesRightPanel = React.createClass({
     );
   },
 
+<<<<<<< HEAD
   renderViewModes(viewModes) {
     return (<select id="viewmode" onChange={this.change} value={this.props.url} >
               {viewModes.map(viewMode => <option value={`#/dash/${viewMode}/facilities/`}><T k={`dash.${viewMode}`} /></option>)}
             </select>);
   },
 
+=======
+>>>>>>> master
   renderHealthType() {
     const healthFacilitiesType = Result.groupBy(this.props.data, 'FACILITY TYPE');
     return (
@@ -108,6 +110,7 @@ const FacilitiesRightPanel = React.createClass({
               shouldItemRender={this.matchStateToTerm}
               sortItems={this.sortStates} />
         </div>
+<<<<<<< HEAD
         <div className="row view-modes">
           <h5><T k="view-mode.dashview"/></h5>
           {
@@ -116,6 +119,8 @@ const FacilitiesRightPanel = React.createClass({
           <Icon type={`chevron-down`}/>
         </div>
 
+=======
+>>>>>>> master
         <div className="type-selector-wrapper">
           <h5><T k="right-panel.filter"/></h5>
           <TypeSelector />
