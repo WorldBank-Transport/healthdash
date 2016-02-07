@@ -244,10 +244,10 @@ select {
     color: $theme-blue;
     float: left;
     font-weight: $title-weight;
-    height: 50px;
+    height: $panel-general-space * 5;
     line-height: 100%;
-    margin-bottom: 10px;
-    padding-left: 10px;
+    margin-bottom: $panel-general-space;
+    padding-left: $panel-general-space;
     text-transform: uppercase;
     width: 40%;
     &:first-child {
@@ -260,6 +260,6 @@ select {
   color: $share-icon-color;
   display: block;
   font-weight: $title-weight;
-  margin-bottom: 5px;
+  margin-bottom: $panel-general-space / 2;
   text-transform: none;
 }
