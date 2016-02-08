@@ -1,12 +1,18 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'reflux';
+import { Maybe, _ } from 'results';
+import AsyncState from '../../constants/async';
 import DataTypes from '../../constants/data-types';
 import MetricSummary from '../charts/metric-summary-chart';
+import ViewModes from '../../constants/view-modes';
 import { styles } from '../../utils/searchUtil';
 import T from '../misc/t';
 import Autocomplete from 'react-autocomplete';
 import { Result } from '../../utils/functional';
 import TypeSelector from '../filters/type-selector';
 import { Icon } from 'react-font-awesome';
+import Rating from '../dashboard/rating';
+import PopulationStore from '../../stores/population';
 
 require('stylesheets/right-panel/right-panel');
 
@@ -22,16 +28,23 @@ const FacilitiesRightPanel = React.createClass({
     children: PropTypes.node, // injected
     data: PropTypes.array,  // injected
     dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
+    ensureDeselect: PropTypes.func,  // injected
+    selected: PropTypes.instanceOf(Maybe.OptionClass),  // injected
     setSelected: PropTypes.func,
     url: PropTypes.string.isRequired,
+    viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
+
+  mixins: [
+    connect(PopulationStore, 'population'),
+  ],
 
   getInitialState() {
     return {help: 'block'};
   },
 
   select(value, item) {
-    this.props.setSelected(item.FACILITY_ID_NUMBER); // TODO fixme
+    this.props.setSelected(item.FACILITY_ID_NUMBER);
   },
 
   matchStateToTerm(state, value) {
@@ -46,6 +59,11 @@ const FacilitiesRightPanel = React.createClass({
     );
   },
 
+  renderViewModes(viewModes) {
+    return (<select id="viewmode" onChange={this.change} value={this.props.url} >
+              {viewModes.map(viewMode => <option value={`#/dash/${viewMode}/facilities/`}><T k={`dash.${viewMode}`} /></option>)}
+            </select>);
+  },
   renderHealthType() {
     const healthFacilitiesType = Result.groupBy(this.props.data, 'FACILITY TYPE');
     return (
@@ -71,7 +89,7 @@ const FacilitiesRightPanel = React.createClass({
     });
   },
 
-  render() {
+  renderNational() {
     return (
       <div className="container">
         <div className="row search-wrapper">
@@ -89,8 +107,16 @@ const FacilitiesRightPanel = React.createClass({
               shouldItemRender={this.matchStateToTerm}
               sortItems={this.sortStates} />
         </div>
+        <div className="row view-modes">
+          <h5><T k="view-mode.dashview"/></h5>
+          {
+            this.renderViewModes(['points', 'regions', 'districts'])
+          }
+          <Icon type={`chevron-down`}/>
+        </div>
+
         <div className="type-selector-wrapper">
-          <h5>Filter Facility Types</h5>
+          <h5><T k="right-panel.filter"/></h5>
           <TypeSelector />
         </div>
 
@@ -102,6 +128,107 @@ const FacilitiesRightPanel = React.createClass({
           {this.renderHealthType()}
         </div>
       </div>);
+  },
+
+  renderLoading() {
+    return (<h3><T k="right-panel.loading"/></h3>);
+  },
+
+  renderNotFound(id) {
+    return (<h3>{id} <T k="right-panel.not-found"/></h3>);
+  },
+
+  renderPointSelected(details) {
+    return (
+      <div>
+        <div className="row">
+          <button className="back-national" onClick={this.props.ensureDeselect}><span className="back-symbol">&#171;</span><T k="right-panel.button.back"/></button>
+        </div>
+        <div className="row">
+          <ul className="point-selected">
+            <li><span className="point-label"><T k="flyout.facility-name"/>:</span>{details.FACILITY_NAME}</li>
+            <li><span className="point-label"><T k="flyout.type"/>:</span> {details['FACILITY TYPE']}</li>
+            <li><span className="point-label"><T k="flyout.id"/>:</span> {details.FACILITY_ID_NUMBER}</li>
+            <li><span className="point-label"><T k="flyout.rating"/>:</span> <Rating facility={details} /></li>
+            <li><span className="point-label"><T k="flyout.region"/>:</span> {details.REGION}</li>
+            <li><span className="point-label"><T k="flyout.zone"/>:</span> {details.ZONE}</li>
+            <li><span className="point-label"><T k="flyout.council"/>:</span> {details.COUNCIL}</li>
+            <li><span className="point-label"><T k="flyout.ownership"/>:</span> {details.OWNERSHIP}</li>
+            <li><span className="point-label"><T k="flyout.status"/>:</span> {details.OPERATING_STATUS}</li>
+          </ul>
+        </div>
+      </div>);
+  },
+
+  renderSum(summary, title, total) {
+    return (
+      <div className="facilities">
+        <T k={title}/>
+        <ul className="summary">
+        {
+          Object.keys(summary).map(key =>
+            (<li><T k={`flyout.facilities.${key}`}/>: {(summary[key].length / total * 100).toFixed(2)} %</li>)
+          )
+        }
+        </ul>
+      </div>);
+  },
+
+  renderPolygonSelected(details) {
+    return (
+      <div>
+        <div className="row">
+          <button className="back-national" onClick={this.props.ensureDeselect}><span className="back-symbol">&#171;</span><T k="right-panel.button.back"/></button>
+        </div>
+        <div className="row">
+          {
+            Maybe.match(details.properties.data, {
+              None: () => this.renderNotFound(details.id),
+              Some: data => {
+                const types = Result.groupBy(data, 'FACILITY TYPE');
+                const status = Result.groupBy(data, 'OPERATING_STATUS');
+                const ownership = Result.groupBy(data, 'OWNERSHIP');
+                const polyType = ViewModes.getDrillDown(this.props.viewMode);
+                const popAgg = Result.sumByGroupBy(this.state.population, polyType, ['TOTAL']);
+                const popPoly = popAgg[details.id] || [{TOTAL: 0}];
+                return (
+                  <ul className="point-selected">
+                    <li><T k="flyout.region"/>: {details.id}</li>
+                    <li><T k="flyout.facilities.length"/>: {data.length}</li>
+                    <li><T k="flyout.facilities.pupulation"/>: {Math.round(popPoly[0].TOTAL / data.length)}</li>
+                    <li>{this.renderSum(types, 'flyout.facilities.type', this.props.data.length)}</li>
+                    <li>{this.renderSum(status, 'flyout.facilities.status', this.props.data.length)}</li>
+                    <li>{this.renderSum(ownership, 'flyout.facilities.ownership', this.props.data.length)}</li>
+                  </ul>
+                );
+              },
+            })
+          }
+        </div>
+      </div>);
+  },
+
+  renderFacility(selected) {
+    return (
+      <div className="container">
+        {AsyncState.match(selected.loadState, {
+          Finished: () => Maybe.match(selected.details, {
+            None: () => this.renderNotFound(selected.id),
+            Some: details => ViewModes.match(this.props.viewMode, {
+              Points: () => this.renderPointSelected(details),
+              [_]: () => this.renderPolygonSelected(details),
+            }),
+          }),
+          [_]: this.renderLoading,
+        })}
+      </div>);
+  },
+
+  render() {
+    return Maybe.match(this.props.selected, {
+      None: () => this.renderNational(),
+      Some: (selected) => this.renderFacility(selected),
+    });
   },
 });
 

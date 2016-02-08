@@ -3,7 +3,7 @@
  *
  * There might be a better place for some of this, but it works here.
  */
-import { geoJson } from 'leaflet';
+
 import isUndefined from 'lodash/lang/isUndefined';
 import find from 'lodash/collection/find';
 
@@ -13,10 +13,8 @@ import SaneStore from '../utils/sane-store-mixin';
 
 import AsyncState from '../constants/async';
 import ViewModes from '../constants/view-modes';
-import tzBounds from '../constants/tz-bounds';
 
-import { setMapBounds, zoomToPoint } from '../actions/view';
-import { deselect, ensureSelect, ensureDeselect } from '../actions/select';
+import { select, deselect } from '../actions/select';
 
 import DataStore from './data';
 import LoadingDataStore from './loading-data';
@@ -28,16 +26,14 @@ import ViewStore from './view';
  * The data stored is **just** Maybe(selected ID).
  * Everything else is recomputed in the `.get` method
  */
-const SelectedStore = createStore({
+const HoverStore = createStore({
   initialData: None(),
   mixins: [SaneStore],
 
   init() {
-    // private internal state to track when we should trigger map zooms
-    this.__map_needs_zoom = false;  // eslint-disable-line
-
-    this.listenTo(ensureSelect, 'selectById');
-    this.listenTo(ensureDeselect, 'deselect');
+    // select and clear selection
+    this.listenTo(deselect, 'deselect');
+    this.listenTo(select, 'selectById');
 
     // update when any dependencies change
     // this._emit comes from SaneStoreMixin
@@ -49,9 +45,7 @@ const SelectedStore = createStore({
   },
 
   deselect() {
-    this.__map_needs_zoom = false;  // eslint-disable-line
     this.setData(None());
-    setMapBounds(tzBounds);
   },
 
   selectById(id) {
@@ -66,9 +60,7 @@ const SelectedStore = createStore({
       },
     });
     if (shouldUpdate) {
-      this.__map_needs_zoom = true;  // eslint-disable-line
       this.setData(Some(id));
-      deselect();
     }
   },
 
@@ -129,7 +121,6 @@ const SelectedStore = createStore({
     const q = {[idField]: id};
     const detail = find(pointsData, q);
     if (!isUndefined(detail)) {
-      this.maybeZoomToPoint(detail);
       return Some(detail);
     } else {
       return None();
@@ -140,30 +131,12 @@ const SelectedStore = createStore({
     const featuresWithData = PolygonsDataStore.get();
     const detail = find(featuresWithData, {id: id});
     if (!isUndefined(detail)) {
-      this.maybeZoomToPoly(detail);
       return Some(detail);
     } else {
       return None();
     }
   },
 
-  // side-effect methods
-  maybeZoomToPoint(detail) {
-    if (this.__map_needs_zoom) { // eslint-disable-line
-      this.__map_needs_zoom = false;  // eslint-disable-line
-      zoomToPoint(detail.position);
-    }
-  },
-
-  maybeZoomToPoly(detail) {
-    if (this.__map_needs_zoom) {
-      const geoLayer = geoJson(detail);  // L.GeoJson from leaflet
-      const bounds = geoLayer.getBounds();
-      this.__map_needs_zoom = false;  // eslint-disable-line
-      setMapBounds(bounds);
-    }
-  },
-
 });
 
-export default SelectedStore;
+export default HoverStore;

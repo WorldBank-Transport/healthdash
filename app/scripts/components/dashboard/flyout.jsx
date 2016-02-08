@@ -19,8 +19,8 @@ const Flyout = React.createClass({
   propTypes: {
     dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
     deselect: PropTypes.func,  // injected
+    hover: PropTypes.instanceOf(Maybe.OptionClass),  // injected
     population: PropTypes.array,
-    selected: PropTypes.instanceOf(Maybe.OptionClass),  // injected
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
 
@@ -84,7 +84,7 @@ const Flyout = React.createClass({
   },
 
   render() {
-    return Maybe.match(this.props.selected, {
+    return Maybe.match(this.props.hover, {
       None: () => (  // no popup selected, render nothing
         <div style={{display: 'none'}}></div>
       ),

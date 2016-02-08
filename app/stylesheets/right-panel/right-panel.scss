@@ -9,7 +9,7 @@
   overflow-y: auto;
   position: absolute;
   right: 0;
-  top: $map-nav-height;
+  top: $map-nav-height + 2;
   width: $main-chart-width;
   z-index: 11;
 
@@ -19,8 +19,8 @@
 
   @include up-to($tablet-alt) {
     overflow-x: hidden;
+    right: $panel-general-space;
     width: 25%;
-    right: 10px;
   }
 
   @include up-to($phone) {
@@ -182,4 +182,84 @@
   .metric-summary {
     width: 100%;
   }
+}
+
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid $bg-color;
+  box-shadow: none;
+  color: $text-color;
+  font-size: $small-text + 4;
+  font-weight: $title-weight;
+  height: 30px;
+  outline: none;
+  padding: 4px 0;
+  width: 20%;
+  &:focus {
+    outline: none;
+  }
+}
+.back-symbol {
+  font-size: 14px;
+  margin-right: 5px;
+}
+.back-national {
+  background: $bg-color;
+  border-bottom: 2px solid $grey-light;
+  border-left: 1px solid $bg-color;
+  border-right: 1px solid $bg-color;
+  border-top: 1px solid $bg-color;
+  color: $theme-blue;
+  display: block;
+  font-size: $medium-text;
+  font-weight: $title-weight;
+  margin-top: -$panel-general-space;
+  outline: none;
+  padding: 0 0 $panel-general-space 0;
+  width: $full-width;
+
+  &:hover {
+    color: $hover-color;
+  }
+
+}
+
+.fa {
+  &.fa-chevron-down {
+    color: $theme-blue;
+    font-size: $tab-text;
+    margin-top: $panel-general-space;
+    position: absolute;
+  }
+}
+
+.point-selected {
+  @include list-unstyled();
+  li {
+    border-left: 3px solid $panel-section-border;
+    color: $theme-blue;
+    float: left;
+    font-weight: $title-weight;
+    height: $panel-general-space * 5;
+    line-height: 100%;
+    margin-bottom: $panel-general-space;
+    padding-left: $panel-general-space;
+    text-transform: uppercase;
+    width: 40%;
+    &:first-child {
+      width: $full-width;
+    }
+  }
+}
+.point-label {
+  clear: both;
+  color: $share-icon-color;
+  display: block;
+  font-weight: $title-weight;
+  margin-bottom: $panel-general-space / 2;
+  text-transform: none;
 }

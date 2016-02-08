@@ -3,6 +3,7 @@ import { connect } from 'reflux';
 import { _ } from 'results';  // catch-all for match
 // store
 import FilteredDataStore from '../../stores/filtered-data';
+import HoverStore from '../../stores/hover';
 import LayoutStore from '../../stores/layout';
 import LoadingDataStore from '../../stores/loading-data';
 import MetricsStore from '../../stores/metrics';
@@ -16,7 +17,7 @@ import SelectedStore from '../../stores/selected';
 import { load } from '../../actions/data';
 import { load as loadPopulation} from '../../actions/population';
 import { clear, setRange, setInclude } from '../../actions/filters';
-import { select, deselect } from '../../actions/select';
+import { select, deselect, ensureSelect, ensureDeselect } from '../../actions/select';
 import { loadPolygons, clearPolygons } from '../../actions/polygons';
 import { toggleCharts } from '../../actions/layout';
 
@@ -52,6 +53,7 @@ const DashRoot = React.createClass({
 
   mixins: [
     connect(FilteredDataStore, 'data'),
+    connect(HoverStore, 'hover'),
     connect(LayoutStore, 'layout'),
     connect(LoadingDataStore, 'loadingData'),
     connect(MetricsStore, 'metrics'),
@@ -101,14 +103,17 @@ const DashRoot = React.createClass({
     const propsForChildren = {
       data: this.state.data,
       dataType: this.state.view.dataType,
+      ensureSelect,
+      ensureDeselect,
       viewMode: this.state.view.viewMode,
       metrics: this.state.metrics,
+      selected: this.state.selected,
     };
     const mapChild = React.cloneElement(this.props.children, {
       ...propsForChildren,
       polygonsData: this.state.polygonsData,
       population: this.state.population,
-      selected: this.state.selected,
+      hover: this.state.hover,
       select,
       deselect,
     });

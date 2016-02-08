@@ -12,6 +12,7 @@ import IpdRightPanel from './ipd-right-panel';
 import OpdRightPanel from './opd-right-panel';
 import TetanusRightPanel from './tetanus-right-panel';
 import ChartsLink from '../boilerplate/charts-link';
+import { Maybe } from 'results';
 
 require('stylesheets/right-panel/right-panel');
 
@@ -20,8 +21,10 @@ const RightPanel = React.createClass({
     children: PropTypes.node,
     data: PropTypes.array,  // injected
     dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
+    ensureDeselect: PropTypes.func,  // injected
     metrics: PropTypes.object,  // injected
     onToggle: PropTypes.func,
+    selected: PropTypes.instanceOf(Maybe.OptionClass),  // injected
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
 
