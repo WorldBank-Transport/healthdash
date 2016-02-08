@@ -23,6 +23,13 @@ const ViewModes = Union({
       [_]: () => this,
     });
   },
+  getColumn() {
+    return ViewModes.match(this, {
+      Regions: () => 'REGION',
+      Districts: () => 'COUNCIL',
+      [_]: () => '',
+    });
+  },
 }, {
   // ViewModes static methods
   fromParam(param) {

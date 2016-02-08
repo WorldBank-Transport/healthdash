@@ -67,7 +67,7 @@ export const groupByLoc = data => ({ dataType, viewMode }) => {
     IPD: () => ipdGroupBy(data),
     OPD: () => ipdGroupBy(data),
     Tetanus: () => Result.sumByGroupBy(data, 'REGIONS', ['PROJECTED CLIENTS', 'TOTAL ATTENDANCE', 'TT2 VACCINATION COVERAGE', '% TT2 VACCINATION COVERAGE']),
-    HivCenter: () => Result.groupBy(data, viewMode.toParam()),
-    Facilities: () => Result.groupBy(data, viewMode.toParam()),
+    HivCenter: () => Result.groupBy(data, viewMode.getColumn()),
+    Facilities: () => Result.groupBy(data, viewMode.getColumn()),
   });
 };
