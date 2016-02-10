@@ -32,6 +32,20 @@
       }
     }
 
+    &.enabled {
+      background-color: $theme-blue;
+      color: $text-inverse;
+
+      a {
+        color: $text-inverse;
+
+        &:hover,
+        &.active {
+          background: $theme-blue;
+        }
+      }
+    }
+
     a {
       color: $text-inverse;
       display: block;
@@ -52,10 +66,6 @@
       &.active {
         background: $theme-blue;
         color: $bg-color;
-
-        & > .selectable {
-          background: 'red';
-        }
       }
     }
   }
