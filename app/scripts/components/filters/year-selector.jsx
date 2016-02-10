@@ -26,7 +26,7 @@ const YearSelector = React.createClass({
   },
 
   render() {
-    const [disabled, action] = (Object.keys(this.state.years) <= 0) ? ['disabled', () => null] : ['', toggleYear];
+    const [disabled, action] = (Object.keys(this.state.years) <= 0) ? ['disabled', () => null] : ['enabled', toggleYear];
     const listOfOptions = Object.keys(this.state.years).map(year => {
       return (
         <li key={`filter-${year}`}>
