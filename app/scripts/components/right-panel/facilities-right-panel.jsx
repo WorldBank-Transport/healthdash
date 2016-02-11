@@ -29,8 +29,8 @@ const FacilitiesRightPanel = React.createClass({
     data: PropTypes.array,  // injected
     dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
     ensureDeselect: PropTypes.func,  // injected
+    ensureSelect: PropTypes.func,
     selected: PropTypes.instanceOf(Maybe.OptionClass),  // injected
-    setSelected: PropTypes.func,
     url: PropTypes.string.isRequired,
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
@@ -44,11 +44,11 @@ const FacilitiesRightPanel = React.createClass({
   },
 
   select(value, item) {
-    this.props.setSelected(item.FACILITY_ID_NUMBER);
+    this.props.ensureSelect(item.POINT_ID);
   },
 
   matchStateToTerm(state, value) {
-    return value.length > 2 && (
+    return value.length > 1 && (
       state.FACILITY_NAME.toLowerCase().indexOf(value.toLowerCase()) !== -1
     );
   },
@@ -59,11 +59,6 @@ const FacilitiesRightPanel = React.createClass({
     );
   },
 
-  renderViewModes(viewModes) {
-    return (<select id="viewmode" onChange={this.change} value={this.props.url} >
-              {viewModes.map(viewMode => <option value={`#/dash/${viewMode}/facilities/`}><T k={`dash.${viewMode}`} /></option>)}
-            </select>);
-  },
   renderHealthType() {
     const healthFacilitiesType = Result.groupBy(this.props.data, 'FACILITY TYPE');
     return (
@@ -106,13 +101,7 @@ const FacilitiesRightPanel = React.createClass({
               )}
               shouldItemRender={this.matchStateToTerm}
               sortItems={this.sortStates} />
-        </div>
-        <div className="row view-modes">
-          <h5><T k="view-mode.dashview"/></h5>
-          {
-            this.renderViewModes(['points', 'regions', 'districts'])
-          }
-          <Icon type={`chevron-down`}/>
+          <div className="search-help"><T k="search.help" /></div>
         </div>
 
         <div className="type-selector-wrapper">
