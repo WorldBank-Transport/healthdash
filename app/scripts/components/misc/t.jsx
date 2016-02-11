@@ -52,6 +52,7 @@ const allTranslations = {
     'filter.metric.TT2 VACCINATION COVERAGE': 'TT2 Vaccination Coverage',
     'filter.metric.% TT2 VACCINATION COVERAGE': '% TT2 Vaccination Coverage',
     'search.help-field': 'SEARCH FACILITY BY NAME',
+    'search.help': 'Type 2 letters to start search',
 
     'legend.title': 'legend',
     'legend.lessthan50': '< 50',
@@ -330,6 +331,7 @@ const allTranslations = {
     'filter.metric.TT2 VACCINATION COVERAGE': 'TT2 Vaccination Coverage',
     'filter.metric.% TT2 VACCINATION COVERAGE': '% TT2 Vaccination Coverage',
     'search.help-field': 'SEARCH FACILITY BY NAME',
+    'search.help': 'Weka tarakimu 2 za kwanza',
 
     'legend.title': 'Vialamishi vya data',
     'legend.lessthan50': '< 50',
