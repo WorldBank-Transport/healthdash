@@ -1,7 +1,7 @@
 /*eslint-disable */
 import React from 'react';
-//import 'babel-core/polyfill';
 import Router, { Route } from 'react-router';
+import 'babel-polyfill';
 import history from './history';
 import DataTypes from './constants/data-types';
 import ViewModes from './constants/view-modes';
