@@ -58,8 +58,15 @@ const HealthPieChart = React.createClass({
 
       plotOptions: {
         pie: {
-          innerSize: 100,
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: false,
+            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+          },
           depth: 45,
+          innerSize: 100,
+          showInLegend: true,
         },
       },
 
