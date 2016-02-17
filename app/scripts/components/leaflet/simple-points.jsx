@@ -8,7 +8,9 @@ import { Map, CircleMarker, LayerGroup } from 'leaflet';
 import React, { PropTypes } from 'react';
 import { point, Color } from '../../utils/colours';
 import isNaN from 'lodash/lang/isNaN';
-
+import { Marker } from 'react-leaflet';
+import { Maybe, _ } from 'results';
+import AsyncState from '../../constants/async';
 
 const SimplePoints = React.createClass({
   propTypes: {
@@ -17,6 +19,7 @@ const SimplePoints = React.createClass({
     ensureSelect: PropTypes.func,  // injected
     map: PropTypes.instanceOf(Map),  // injected by BoundsMap
     select: PropTypes.func.isRequired,
+    selected: PropTypes.instanceOf(Maybe.OptionClass),  // injected
   },
 
   componentWillMount() {
@@ -77,7 +80,20 @@ const SimplePoints = React.createClass({
   },
 
   render() {
-    return <div style={{display: 'none'}}></div>;
+    return Maybe.match(this.props.selected, {
+      None: () => (  // no popup selected, render nothing
+        <div style={{display: 'none'}}></div>
+      ),
+      Some: selected => {
+        return AsyncState.match(selected.loadState, {
+          Finished: () => Maybe.match(selected.details, {
+            Some: details => (<Marker map={this.props.map} position={details.position}/>),
+            [_]: () => (<div style={{display: 'none'}}></div>),
+          }),
+          [_]: () => (<div style={{display: 'none'}}></div>),
+        });
+      },
+    });
   },
 });
 

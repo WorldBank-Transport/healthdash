@@ -15,10 +15,11 @@ const PointsMap = React.createClass({
     hover: PropTypes.instanceOf(Maybe.OptionClass),  // injected
     map: PropTypes.instanceOf(Map),  // injected by BoundsMap
     select: PropTypes.func,  // injected
+    selected: PropTypes.instanceOf(Maybe.OptionClass),  // injected
   },
 
   render() {
-    const propsForPopup = pick(this.props, [ 'data', 'dataType', 'hover', 'viewMode' ]);
+    const propsForPopup = pick(this.props, [ 'data', 'dataType', 'hover', 'viewMode', 'selected' ]);
     return (
       <div>
         <SimplePoints {...this.props}/>
