@@ -2,7 +2,7 @@ import pick from 'lodash/object/pick';
 import { connect } from 'reflux';
 import { Maybe } from 'results';
 import React, { PropTypes } from 'react';
-import { Map } from 'leaflet';
+import { Map, LayerGroup, geoJson } from 'leaflet';
 
 import PopulationStore from '../../stores/population';
 
@@ -11,7 +11,6 @@ import DataTypes from '../../constants/data-types';
 import ViewModes from '../../constants/view-modes';
 import { getMapRanges, getMapValue } from '../../utils/mapUtil';
 
-import { GeoJson } from 'react-leaflet';
 import Legend from './legend';
 import Flyout from './flyout';
 
@@ -33,6 +32,29 @@ const PolygonsMap = React.createClass({
   mixins: [
     connect(PopulationStore, 'population'),
   ],
+
+  componentWillMount() {
+    this.layerGroup = new LayerGroup(); // create Layer
+  },
+
+  shouldComponentUpdate(nextProps) {
+    return this.props.polygonsData !== nextProps.polygonsData
+      || this.props.hover !== nextProps.hover;
+  },
+
+  componentDidUpdate(nextProps) {
+    if (this.props.polygonsData !== nextProps.polygonsData) {
+      this.updateMap();
+    }
+  },
+
+  componentWillUnmount() {
+    if (this.layerGroup) {
+      this.layerGroup.clearLayers();
+      delete this.layerGroup;
+    }
+  },
+
 
   handleClickFor(feature) {
     //return () => this.props.mapDrillDown(feature.id); TODO drill down when we have data
@@ -74,20 +96,21 @@ const PolygonsMap = React.createClass({
       .unwrapOr(colours.unknown);
   },
 
-  renderFeature(feature) {
-    // prefix the key with the viewMode, since regions districts might have the same name
-    const key = `${this.props.viewMode.toParam()}-${feature.id}`;
-    const pathStyle = polyColour.normal(this.getFeatureColor(feature));
-    return (
-      <GeoJson
-          data={feature}
-          key={key}
-          map={this.props.map}
-          onLeafletClick={this.handleClickFor(feature)}
-          onLeafletMouseout={this.handleMouseoutFor(feature)}
-          onLeafletMouseover={this.handleMouseover(feature)}
-          {...pathStyle} />
-    );
+  onEachFeature(feature, layer) {
+    layer.on('click', this.handleClickFor(feature));
+    layer.on('mouseout', this.handleMouseoutFor(feature));
+    layer.on('mouseover', this.handleMouseover(feature));
+  },
+
+
+  updateMap() {
+    this.layerGroup.clearLayers();
+    const polygons = new geoJson(this.props.polygonsData, {
+      style: (feature) => polyColour.normal(this.getFeatureColor(feature)),
+      onEachFeature: this.onEachFeature,
+    });
+    this.layerGroup.addLayer(polygons);
+    this.props.map.addLayer(this.layerGroup);
   },
 
   render() {
@@ -95,8 +118,6 @@ const PolygonsMap = React.createClass({
       [ 'data', 'dataType', 'deselect', 'hover', 'viewMode']);
     return (
       <div>
-        {this.props.polygonsData.map(this.renderFeature)}
-
         (<Flyout {...propsForPopup} population={this.state.population}/>)
         <Legend ranges={getMapRanges(this.props.dataType)}/>
       </div>
