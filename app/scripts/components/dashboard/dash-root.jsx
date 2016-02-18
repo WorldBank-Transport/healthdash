@@ -8,6 +8,7 @@ import LayoutStore from '../../stores/layout';
 import LoadingDataStore from '../../stores/loading-data';
 import MetricsStore from '../../stores/metrics';
 import PopulationStore from '../../stores/population';
+import HrwDensitiesStore from '../../stores/hrw-densities';
 //import LoadingPolygonsStore from '../../stores/loading-polygons';
 import PolygonsDataStore from '../../stores/polygons-with-data';
 import ViewStore from '../../stores/view';
@@ -16,6 +17,7 @@ import SelectedStore from '../../stores/selected';
 // Actions
 import { load } from '../../actions/data';
 import { load as loadPopulation} from '../../actions/population';
+import { load as loadHrwDensities} from '../../actions/hrw-densities';
 import { clear, setRange, setInclude } from '../../actions/filters';
 import { select, deselect, ensureSelect, ensureDeselect } from '../../actions/select';
 import { loadPolygons, clearPolygons } from '../../actions/polygons';
@@ -54,6 +56,7 @@ const DashRoot = React.createClass({
   mixins: [
     connect(FilteredDataStore, 'data'),
     connect(HoverStore, 'hover'),
+    connect(HrwDensitiesStore, 'hrwDensities'),
     connect(LayoutStore, 'layout'),
     connect(LoadingDataStore, 'loadingData'),
     connect(MetricsStore, 'metrics'),
@@ -68,6 +71,7 @@ const DashRoot = React.createClass({
     load(this.state.view.dataType);
     this.loadPolygons();
     loadPopulation();
+    loadHrwDensities();
   },
 
   // Reload data if necessary
@@ -114,6 +118,7 @@ const DashRoot = React.createClass({
       polygonsData: this.state.polygonsData,
       population: this.state.population,
       hover: this.state.hover,
+      hrwDensities: this.state.hrwDensities,
       select,
       deselect,
     });

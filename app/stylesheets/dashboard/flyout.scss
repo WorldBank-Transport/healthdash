@@ -1,7 +1,7 @@
 @import '../config/colours';
 @import '../config/dimensions';
 @import '../config/type';
-
+@import '../config/list';
 
 .flyout {
   .flyout-inner {
@@ -23,6 +23,11 @@
       color: $theme-blue;
     }
 
+    h5 {
+      color: $theme-blue;
+      margin: $flyout-section-top-position/3 0 0 0;
+    }
+
     .flyout-section {
       color: $popup-stat-number;
       display: block;
@@ -34,6 +39,21 @@
       }
       div {
         margin: $flyout-section-top-position/3 0 0 0;
+      }
+    }
+    ul {
+      @include list-unstyle();
+      display: table;
+
+      li {
+        .flyout-worker {
+          color: $popup-stat-number;
+          display: block;
+          font-size: $popup-label-text - 3;
+          line-height: $popup-label-text;
+          text-transform: capitalize;
+          margin-top: $flyout-section-top-position - 7;
+        }
       }
     }
   }
