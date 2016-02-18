@@ -22,6 +22,7 @@ const PolygonsMap = React.createClass({
     deselect: PropTypes.func,  // injected
     ensureSelect: PropTypes.func,  // injected
     hover: PropTypes.instanceOf(Maybe.OptionClass),  // injected
+    hrwDensities: PropTypes.array.isRequired,
     map: PropTypes.instanceOf(Map),  // injected by BoundsMap
     mapDrillDown: PropTypes.func,  // injected
     polygonsData: PropTypes.array,  // injected
@@ -115,7 +116,7 @@ const PolygonsMap = React.createClass({
 
   render() {
     const propsForPopup = pick(this.props,
-      [ 'data', 'dataType', 'deselect', 'hover', 'viewMode']);
+      [ 'data', 'dataType', 'deselect', 'hover', 'hrwDensities', 'viewMode']);
     return (
       <div>
         (<Flyout {...propsForPopup} population={this.state.population}/>)

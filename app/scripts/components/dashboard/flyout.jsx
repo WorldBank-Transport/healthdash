@@ -9,6 +9,7 @@ import FacilitiesFlyout from './facilities-flyout';
 import FamilyPlanningFlyout from './family-planning-flyout';
 import DeliveriesFlyout from './deliveries-flyout';
 import TetanusFlyout from './tetanus-flyout';
+import HealthWorkerFlyout from './health-worker-flyout';
 import { Result } from '../../utils/functional';
 import Rating from './rating';
 
@@ -20,6 +21,7 @@ const Flyout = React.createClass({
     dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
     deselect: PropTypes.func,  // injected
     hover: PropTypes.instanceOf(Maybe.OptionClass),  // injected
+    hrwDensities: PropTypes.array,
     population: PropTypes.array,
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
@@ -72,7 +74,7 @@ const Flyout = React.createClass({
         Death: () => this.defaultPolyRender(details.id, data.value, 'flyout.death.length', popPoly[0].TOTAL),
         FamilyPlanning: () => (<FamilyPlanningFlyout data={data} region={details.id}/>),
         Deliveries: () => (<DeliveriesFlyout data={data} region={details.id}/>),
-        HealthWorkers: () => this.defaultPolyRender(details.id, data.value, 'flyout.workers.length', popPoly[0].TOTAL),
+        HealthWorkers: () => (<HealthWorkerFlyout data={data} hrwDensities={this.props.hrwDensities} population={popPoly[0].TOTAL} region={details.id}/>),
         IPD: () => this.defaultPolyRender(details.id, data.value, 'flyout.ipd.length', popPoly[0].TOTAL),
         OPD: () => this.defaultPolyRender(details.id, data.value, 'flyout.opd.length', popPoly[0].TOTAL),
         Tetanus: () => (<TetanusFlyout data={data} region={details.id}/>),
