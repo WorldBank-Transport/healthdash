@@ -264,6 +264,8 @@ const allTranslations = {
     'flyout.deliveries.bba': 'Born Before Arrival (Bba)',
     'flyout.deliveries.home': 'Home Delivery',
     'flyout.workers.length': 'Number of workers',
+    'flyout.workers.densities': 'Workers Patients Densities',
+    'flyout.worker.population.ratio': 'People to Workers Ratio',
     'flyout.ipd.length': 'Number of IPD',
     'flyout.opd.length': 'Number of OPD',
     'flyout.tetanus.projected': 'Projected Clients',

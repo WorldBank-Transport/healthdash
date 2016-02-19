@@ -98,6 +98,9 @@ export const getTetanus = (onProgress) =>
 export const getHivFacilities = (onProgress) =>
   ckan.get(API_ROOT, '34433c1b-1a4c-43f3-af5e-31d87bede85a', {}, onProgress);
 
+export const getHrwDensities = (onProgress) =>
+  ckan.get(API_ROOT, 'dba9c72b-aa6d-4d60-b22b-f241269730c7', {}, onProgress);
+
 export const getRegions = () =>
   staticData.getPolygons('/layers/tz_regions.json', 'tz_Regions');
 
