@@ -101,8 +101,8 @@ const FacilitiesRightPanel = React.createClass({
               )}
               shouldItemRender={this.matchStateToTerm}
               sortItems={this.sortStates} />
-          <div className="search-help"><T k="search.help" /></div>
         </div>
+        <div className="search-help"><T k="search.help" /></div>
 
         <div className="type-selector-wrapper">
           <h5><T k="right-panel.filter"/></h5>
