@@ -16,6 +16,7 @@ const Legend = React.createClass({
     return (
       <div className="legend">
         <div className="title"><T k="legend.title" /></div>
+        <div className="subtitle"><T k={`legend.subtitle.${this.props.dataType.toParam()}`} /></div>
           <div className="row">
             <div className="legend-block" style={{'background': '#aaa'}}></div>
               <T k="legend.nodata" />
@@ -24,7 +25,7 @@ const Legend = React.createClass({
             ranges.map(r => (
               <div className="row">
                 <div className="legend-block" style={{'background': r.color}}></div>
-                <span className="t">{r.max === MAX_VALUE ? ` > ${r.min}` : `${r.min} - ${r.max}`}</span> <T k={`legend.${this.props.dataType.toParam()}`} />
+                <span className="t">{r.max === MAX_VALUE ? ` > ${r.min}` : `${r.min} - ${r.max}`}</span>
               </div>)
             )
           }

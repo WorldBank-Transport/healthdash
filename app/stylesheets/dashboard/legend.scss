@@ -9,7 +9,7 @@
   box-shadow: $shadow;
   display: inline-block;
   font-size: $medium-text;
-  height: $legend-dimensions * 1.2;
+  height: $legend-dimensions * 1.3;
   left: 2%;
   max-width: $legend-dimensions * 1.4;
   padding: $base-unit $base-unit $base-unit $base-unit;
@@ -53,5 +53,12 @@
     line-height: $normal-line-height;
     margin-bottom: $legend-margin;
     text-transform: uppercase;
+  }
+  .subtitle {
+    color: $theme-blue;
+    font-size: $legend-title - 4;
+    font-weight: $title-weight;
+    line-height: 105%;
+    margin-bottom: $legend-margin;
   }
 }
