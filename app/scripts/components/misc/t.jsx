@@ -19,6 +19,9 @@ const allTranslations = {
     'nav.home': 'Home',
     'nav.data': 'Data',
     'nav.speak-out': 'Speak Out',
+    'nav.edudash': 'Education Dashboard',
+    'nav.waterdash': 'Water Dashboard',
+    'data.external.govopendataportal': 'Government Open Data Portal',
 
     'static.data-title': 'Explore the data behind the dashboard.',
     'static.data-content': 'This Health Dashboard was built on open data release by the government of Tanzania. The raw data is published on the Government\'s open data portal in machine-readable format with a license that encourages re-use. The data behind this education dashboard comes from Ministry of Health and Social Welfare.',
@@ -301,6 +304,10 @@ const allTranslations = {
     'nav.home': 'Mwanzo',
     'nav.data': 'Data',
     'nav.speak-out': 'Maoni',
+    'nav.edudash': 'Dashibody ya Elimu',
+    'nav.waterdash': 'Dashibody ya Maji',
+    'data.external.govopendataportal': 'Government Open Data Portal',
+
 
     'static.data-title': 'Chunguza data ya dashibodi.',
     'static.data-content': 'Tovuti hii imechapishwa kwa leseni ya GPL 3.0. Wageni wa tovuti wanahamasishwa kuangalia programu kwa makini na kuitumia kama watachapisha programu zao kwa leseni inayolingana.',
@@ -443,7 +450,7 @@ const allTranslations = {
     'chart.worker-by-type.title': 'Wafanyakazi wa sekta ya afya',
     'chart.worker-by-type.helptext': 'Kwa Aina',
     'chart.ipd.title': 'Jumla ya wagonjwa wa Idara ya ndani',
-    'chart.ipd-region.title': 'Average IPD per Region',
+    'chart.ipd-region.title': 'Wastani wa wagonjwa wa idara ya ndani katika mkoa',
     'chart.ipd-ABOVE 5 YEARS.title': 'Idadi ya wagonjwa wenye umri zaidi ya miaka 5 wa Idara ya ndani',
     'chart.ipd-UNDER 5 YEARS.title': 'Idadi ya wagonjwa wenye umri chini ya miaka 5 wa Idara ya ndani',
     'chart.ipd-by-age-chart.title': 'IPD',

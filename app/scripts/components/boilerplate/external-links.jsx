@@ -1,4 +1,5 @@
 import React from 'react';
+import T from '../misc/t';
 
 require('stylesheets/boilerplate/static-content');
 
@@ -14,7 +15,9 @@ const DataSources = React.createClass({
         </li>
           <li>
             <a href="http://opendata.go.tz/organization/ministry-of-health-and-social"><img src="images/tz-odp.png"/>
+            <T k="data.external.govopendataportal" />
               Government Open Data Portal
+              Tovuti Kuu ya Takwimu Huria ya Serikali
             </a>
           </li>
         </ul>

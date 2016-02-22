@@ -60,13 +60,13 @@
       position: absolute;
       top: 28px;
     }
-    .search-help {
-      color: $grey-medium;
-      font-size: 9px;
-      text-align: left;
-    }
   }
-
+  .search-help {
+    color: $grey-light-alt;
+    font-size: $small-text;
+    margin-left: $base-unit * 2.5;
+    margin-top: $base-unit / 3;
+  }
   .panel-icon {
     float: left;
     height: $panel-icon;
@@ -97,7 +97,7 @@
 
         .medium-number {
           font-size: 40px;
-          line-height: 135%;
+          line-height: $normal-line-height + 25;
         }
 
       }

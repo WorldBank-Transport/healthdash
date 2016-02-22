@@ -90,15 +90,18 @@
   & > ul {
     @include list-unstyle();
     background: $bg-color;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: none;
     display: table;
     float: right;
     table-layout: fixed;
     width: $full-width;
+    padding-bottom: 30px;
 
     & > li {
       border-left: 1px solid $tab-expand-bg;
       display: table-cell;
-
       a {
         color: $theme-blue;
         display: block;
