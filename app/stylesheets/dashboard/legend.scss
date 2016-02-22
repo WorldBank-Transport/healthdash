@@ -11,8 +11,8 @@
   font-size: $medium-text;
   height: $legend-dimensions * 1.2;
   left: 2%;
-  max-width: $legend-dimensions * 1.2;
-  padding: $base-unit $base-unit * 1.2 $base-unit * 1.5 $base-unit * 1.2;
+  max-width: $legend-dimensions * 1.4;
+  padding: $base-unit $base-unit $base-unit $base-unit;
   position: absolute;
   width: auto;
   z-index: 1;  // needs to be specified >=1 to go above the map

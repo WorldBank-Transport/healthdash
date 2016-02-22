@@ -2,11 +2,13 @@ import React, { PropTypes } from 'react';
 import T from '../misc/t';
 import { MAX_VALUE } from '../../utils/mapUtil';
 import { Maybe, _ } from 'results';
+import DataTypes from '../../constants/data-types';
 
 require('../../../stylesheets/dashboard/legend.scss');
 
 const Legend = React.createClass({
   propTypes: {
+    dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
     ranges: PropTypes.array,
   },
 
@@ -22,7 +24,7 @@ const Legend = React.createClass({
             ranges.map(r => (
               <div className="row">
                 <div className="legend-block" style={{'background': r.color}}></div>
-                <span className="t">{r.max === MAX_VALUE ? ` > ${r.min}` : `${r.min} - ${r.max}`}</span>
+                <span className="t">{r.max === MAX_VALUE ? ` > ${r.min}` : `${r.min} - ${r.max}`}</span> <T k={`legend.${this.props.dataType.toParam()}`} />
               </div>)
             )
           }
