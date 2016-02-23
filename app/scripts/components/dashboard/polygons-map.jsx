@@ -120,7 +120,7 @@ const PolygonsMap = React.createClass({
     return (
       <div>
         (<Flyout {...propsForPopup} population={this.state.population}/>)
-        <Legend ranges={getMapRanges(this.props.dataType)}/>
+        <Legend dataType={this.props.dataType} ranges={getMapRanges(this.props.dataType)}/>
       </div>
     );
   },
