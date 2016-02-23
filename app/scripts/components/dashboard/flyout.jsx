@@ -41,17 +41,19 @@ const Flyout = React.createClass({
   renderPointsPopup(details) {
     return (
       <div>
-        <span className="flyout-section"><T k="flyout.facility-name"/><h3>{details.FACILITY_NAME}</h3></span>
-        <span className="flyout-section"><T k="flyout.id"/>: <h3>{details.FACILITY_ID_NUMBER}</h3></span>
-        <span className="flyout-section"><T k="flyout.rating"/>: <Rating facility={details} /></span>
-        <span className="flyout-section"><T k="flyout.common-name"/>: <h3>{details['COMMON FACILITY HEALTH NAME']}</h3></span>
-        <span className="flyout-section"><T k="flyout.type"/>: <h3>{details['FACILITY TYPE']}</h3></span>
-        <span className="flyout-section"><T k="flyout.ownership"/>: <h3>{details.OWNERSHIP}</h3></span>
-        <span className="flyout-section"><T k="flyout.status"/>: <h3>{details.OPERATING_STATUS}</h3></span>
-        <span className="flyout-section"><T k="flyout.location"/>: <h3>{JSON.stringify(details.position)}</h3></span>
-        <span className="flyout-section"><T k="flyout.council"/>: <h3>{details.COUNCIL}</h3></span>
-        <span className="flyout-section"><T k="flyout.zone"/>: <h3>{details.ZONE}</h3></span>
-        <span className="flyout-section"><T k="flyout.region"/>: <h3>{details.REGION}</h3></span>
+        <header>
+          <h2><T k="flyout.facility-name"/></h2><p className="word">{details.FACILITY_NAME}</p>
+        </header>
+        <div className="flyout-section"><h3><T k="flyout.id"/></h3><p className="word">{details.FACILITY_ID_NUMBER}</p></div>
+        <div className="flyout-section"><h3><T k="flyout.rating"/></h3><p className="word"><Rating facility={details} /></p></div>
+        <div className="flyout-section"><h3><T k="flyout.common-name"/></h3><p className="word">{details['COMMON FACILITY HEALTH NAME']}</p></div>
+        <div className="flyout-section"><h3><T k="flyout.type"/></h3><p className="word">{details['FACILITY TYPE']}</p></div>
+        <div className="flyout-section"><h3><T k="flyout.ownership"/></h3><p className="word">{details.OWNERSHIP}</p></div>
+        <div className="flyout-section"><h3><T k="flyout.status"/></h3><p className="word">{details.OPERATING_STATUS}</p></div>
+        <div className="flyout-section"><h3><T k="flyout.location"/></h3><p className="word">{JSON.stringify(details.position)}</p></div>
+        <div className="flyout-section"><h3><T k="flyout.council"/></h3><p className="word">{details.COUNCIL}</p></div>
+        <div className="flyout-section"><h3><T k="flyout.zone"/></h3><p className="word">{details.ZONE}</p></div>
+        <div className="flyout-section"><h3><T k="flyout.region"/></h3><p className="word">{details.REGION}</p></div>
       </div>);
   },
 
