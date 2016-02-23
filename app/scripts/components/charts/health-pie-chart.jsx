@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
 import { Color } from '../../utils/colours';
+import ChartDataLink from '../boilerplate/chart-data-link';
 
 require('stylesheets/charts/health-facilities-barchar');
 
@@ -85,6 +86,7 @@ const HealthPieChart = React.createClass({
     return (
       <div className="health-facilities-piechart">
         <h3 className="chart-title">{this.props.title}</h3>
+        <span className="helptext"><ChartDataLink /></span>
         <div className="chart-container" id={this.props.divId}></div>
       </div>
     );

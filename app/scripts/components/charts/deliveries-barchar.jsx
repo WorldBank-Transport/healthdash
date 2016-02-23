@@ -3,6 +3,7 @@ import * as func from '../../utils/functional';
 import T from '../misc/t';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
+import ChartDataLink from '../boilerplate/chart-data-link';
 
 require('stylesheets/charts/deliveries-barchart');
 
@@ -108,7 +109,8 @@ const DeliveriesBarChart = React.createClass({
           <div className="row">
             <div className="mainChart">
               <div className="deliveries-barchart">
-                <h3 className="chart-title"><T k="chart.deliveries-barchart.title" /> - <span className="chart-helptext"><T k="chart.deliveries-barchart.helptext" /></span></h3>
+                <h3 className="chart-title"><T k="chart.deliveries-barchart.title" /></h3>
+                <span className="helptext"><ChartDataLink /> <T k="chart.deliveries-barchart.helptext" /></span>
                 <div className="chart-container" id="deliveries-barchart"></div>
               </div>
             </div>
