@@ -4,18 +4,21 @@
 
 .logo {
   float: left;
-
-  img {
-    @include up-to($tablet-portrait) {
-      margin-right: $base-unit;
-      width: $logo-width-mobile;
-    }
-
+  .flag {
     float: left;
-    margin-right: $header-common-margin;
-    margin-top: $logo-top-position;
-    width: $logo-width;
-    }
+    height: $logo-height;
+    padding: 10px 15px 15px 0px;
+
+    img {
+      width: $logo-width;      
+      @include up-to($tablet-portrait) {
+        margin-right: $base-unit;
+        width: $logo-width-mobile;
+      }
+    }  
+  }
+
+  
 
   h1 {
     @include up-to($tablet-portrait) {
@@ -24,14 +27,16 @@
       margin-top: $header-mobile-space;
       width: $dash-title-width-mobile;
     }
+    color: $theme-blue;
     display: inline-block;
     float: left;
+    font-family: "Open Sans", sans-serif;
     font-size: $dash-title;
     font-weight: $title-weight;
-    line-height: $dash-title-line-height;
-    margin-top: $header-common-margin;
+    margin-top: $header-margin-top;
     text-transform: uppercase;
-    width: $tab-label-width;
+    width: $title-width;
+    line-height: 1.1;
 
     a {
       color: $theme-blue-alt;

@@ -15,6 +15,7 @@ ul.open-data-nav {
   @include up-to($phone) {
     right: $top-nav-right-mobile;
   }
+  margin-top: 25px; 
 
   li {
     @include up-to($tablet-portrait) {
@@ -22,11 +23,9 @@ ul.open-data-nav {
       padding-right: $nav-padding;
     }
 
-    border-right: 1px solid $grey-light;
+    border-right: 1px solid $grey-menu;
+    display: inline;
     height: $nav-item-height;
-    line-height: $filter-text;
-    padding-left: $header-common-margin;
-    padding-right: $header-common-margin;
 
     &:last-child {
       border-right: 0;
@@ -34,6 +33,7 @@ ul.open-data-nav {
 
     a {
       color: $text-color;
+      padding: 0px 15px 15px 15px;
 
       &:hover {
         color: $theme-blue;
