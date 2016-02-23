@@ -4,14 +4,17 @@
 @import '../config/list';
 
 .flyout {
+  overflow-y: auto;
+  opacity: 1;
+  position: absolute;
+  right: 0;
+  width: $flyout-width;
+
   .flyout-inner {
     background: $map-overlay;
-    float: right;
-    height: $flyout-height;
-    margin-top: $flyout-top-position;
+    box-shadow: $map-overlay-outline;
     padding: $flyout-base-padding*2 $flyout-base-padding*3;
     position: relative;
-    width: $flyout-width;
     z-index: 10;
 
 
@@ -19,27 +22,39 @@
       margin-right: $flyout-table-h-position;
     }
 
-    h3 {
+    header {
+      margin: 0.5em 0;
+    }
+    h2, h3 {
+      margin: 0;
+      font-size: 1em;
+      font-weight: normal;
+      color: $text-color;
+      text-transform: capitalize;
+    }
+    h3{
+      line-height: 120%;
+      margin-top:4px;
+      margin-bottom: 4px;
+      padding-bottom:0;
+    }
+    .word,
+    .number {
+      margin: 0;
+      font-weight: bold;
       color: $theme-blue;
     }
-
-    h5 {
-      color: $theme-blue;
-      margin: $flyout-section-top-position/3 0 0 0;
+    .word {
+      font-size: 1.1em;
+      line-height: 120%;
+    }
+    .number {
+      font-size: 2em;
+      margin-top: -8px;
     }
 
     .flyout-section {
-      color: $popup-stat-number;
-      display: block;
-      font-size: $popup-label-text;
-      line-height: $popup-label-text * 1.2;
-      margin-top: $flyout-section-top-position;
-      h3 {
-        margin: $flyout-section-top-position/3 0 0 0;
-      }
-      div {
-        margin: $flyout-section-top-position/3 0 0 0;
-      }
+      margin: 0.5em 0;
     }
     ul {
       @include list-unstyle();
