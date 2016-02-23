@@ -6,6 +6,7 @@ import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
 import PopulationStore from '../../stores/population';
 import colours from '../../utils/colours';
+import ChartDataLink from '../boilerplate/chart-data-link';
 
 require('stylesheets/charts/health-facilities-barchar');
 
@@ -113,7 +114,8 @@ const PopulationFacilitiesChart = React.createClass({
     }
     return (
       <div className="health-facilities-barchar">
-        <h3 className="chart-title"><T k="chart.population-facilities.title" /> - <span className="chart-helptext"><T k="chart.population-facilities.helptext" /></span></h3>
+        <h3 className="chart-title"><T k="chart.population-facilities.title" /></h3>
+        <span className="helptext"><ChartDataLink /></span>
         <div className="chart-container" id="population-facilities-barchar"></div>
       </div>
     );

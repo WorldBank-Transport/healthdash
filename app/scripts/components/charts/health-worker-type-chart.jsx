@@ -4,6 +4,7 @@ import T from '../misc/t';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
 import colours from '../../utils/colours';
+import ChartDataLink from '../boilerplate/chart-data-link';
 
 require('stylesheets/charts/death-by-age-chart');
 
@@ -84,7 +85,8 @@ const HealthWorkerTypeChart = React.createClass({
     }
     return (
       <div className="death-by-age-chart">
-        <h3 className="chart-title"><T k="chart.worker-by-type.title" /> - <span className="chart-helptext"><T k="chart.worker-by-type.helptext" /></span></h3>
+        <h3 className="chart-title"><T k="chart.worker-by-type.title" /></h3>
+        <span className="helptext"><ChartDataLink /> <T k="chart.worker-by-type.helptext" /></span>
         <div className="chart-container" id="worker-by-type"></div>
       </div>
     );

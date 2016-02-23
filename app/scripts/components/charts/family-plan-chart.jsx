@@ -7,6 +7,7 @@ import ShouldRenderMixin from '../../utils/should-render-mixin';
 import DataStore from '../../stores/data';
 import HighCharts from 'highcharts';
 import { Color } from '../../utils/colours';
+import ChartDataLink from '../boilerplate/chart-data-link';
 
 require('stylesheets/charts/family-barchart');
 
@@ -106,7 +107,8 @@ const FamilityPlanChart = React.createClass({
   render() {
     return (
       <div className="family-barchart">
-        <h3 className="chart-title"><T k="chart.family-barchart.title" /> - <span className="chart-helptext"><T k="chart.family-barchart.helptext" /></span></h3>
+        <h3 className="chart-title"><T k="chart.family-areachart.title" /></h3>
+        <span className="helptext"><ChartDataLink /> <T k="chart.family-areachart.helptext" /></span>
         <div className="chart-container" id="family-plan-chart"></div>
       </div>
     );

@@ -4,6 +4,7 @@ import T from '../misc/t';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
 import colours from '../../utils/colours';
+import ChartDataLink from '../boilerplate/chart-data-link';
 
 require('stylesheets/charts/health-workers-barchart');
 
@@ -110,7 +111,8 @@ const HealthWorkersBarChart = React.createClass({
     }
     return (
       <div className="health-workers-barchart">
-        <h3 className="chart-title"><T k="chart.health-worker.title" /> - <span className="chart-helptext"><T k="chart.health-worker.helptext" /></span></h3>
+        <h3 className="chart-title"><T k="chart.health-worker.title" /></h3>
+        <span className="helptext"><ChartDataLink /></span>
         <div className="chart-container" id="health-workers-barchart"></div>
       </div>
 

@@ -4,6 +4,7 @@ import T from '../misc/t';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
 import colours from '../../utils/colours';
+import ChartDataLink from '../boilerplate/chart-data-link';
 
 require('stylesheets/charts/hiv-barchar');
 
@@ -94,7 +95,8 @@ const HivChart = React.createClass({
           <div className="row">
             <div className="mainChart">
               <div className="hiv-facilities-barchar">
-                <h3 className="chart-title"><T k="chart.hiv-facilities.title" /> - <span className="chart-helptext"><T k="chart.hiv-facilities.helptext" /></span></h3>
+                <h3 className="chart-title"><T k="chart.hiv-facilities.title" /></h3>
+                <span className="helptext"><ChartDataLink /></span>
                 <div className="chart-container" id="hiv-facilities"></div>
               </div>
             </div>
