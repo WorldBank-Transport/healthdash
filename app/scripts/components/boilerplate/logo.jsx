@@ -12,7 +12,7 @@ const Logo = React.createClass({
         <div className="flag">
           <Link to="/">
             <TChildProps>
-              <img alt={{k: 'site.flag'}} src="images/tz-flag.png"/>
+              <img alt={{k: 'site.flag'}} src="images/tzflag.png"/>
             </TChildProps>
           </Link>
         </div>
