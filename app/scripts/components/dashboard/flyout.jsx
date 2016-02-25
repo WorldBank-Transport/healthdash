@@ -12,6 +12,7 @@ import TetanusFlyout from './tetanus-flyout';
 import HealthWorkerFlyout from './health-worker-flyout';
 import { Result } from '../../utils/functional';
 import Rating from './rating';
+import {FormattedNumber, IntlMixin} from 'react-intl';
 
 require('stylesheets/dashboard/flyout');
 
@@ -25,6 +26,8 @@ const Flyout = React.createClass({
     population: PropTypes.array,
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
+
+  mixins: [IntlMixin],
 
   renderLoading() {
     return (
@@ -60,8 +63,8 @@ const Flyout = React.createClass({
   defaultPolyRender(region, number, title, population) {
     return (<div>
         <span className="flyout-section"><T k="flyout.region"/>: <h3>{region}</h3></span>
-        <span className="flyout-section"><T k={title}/>: <h3>{number}</h3></span>
-        <span className="flyout-section"><T k="flyout.population"/>: <h3>{population}</h3></span>
+        <span className="flyout-section"><T k={title}/>: <h3><FormattedNumber value={number} /></h3></span>
+        <span className="flyout-section"><T k="flyout.population"/>: <h3><FormattedNumber value={population} /></h3></span>
       </div>);
   },
 

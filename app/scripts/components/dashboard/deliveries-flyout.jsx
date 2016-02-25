@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import T from '../misc/t';
+import {FormattedNumber, IntlMixin} from 'react-intl';
 
 const DeliveriesFlyout = React.createClass({
 
@@ -8,16 +9,18 @@ const DeliveriesFlyout = React.createClass({
     region: PropTypes.string.isRequired,
   },
 
+  mixins: [IntlMixin],
+
   render() {
     return (
       <div>
         <span className="flyout-section"><T k="flyout.region"/>: <h3>{this.props.region}</h3></span>
-        <span className="flyout-section"><T k="flyout.deliveries.total"/>: <h3>{this.props.data[0].TOTAL}</h3></span>
-        <span className="flyout-section"><T k="flyout.deliveries.health-facilities-deliveries"/>: <h3>{this.props.data[1]['HEALTH FACILITY DELIVERIES']}</h3></span>
+        <span className="flyout-section"><T k="flyout.deliveries.total"/>: <h3><FormattedNumber value={this.props.data[0].TOTAL}/></h3></span>
+        <span className="flyout-section"><T k="flyout.deliveries.health-facilities-deliveries"/>: <h3><FormattedNumber value={this.props.data[1]['HEALTH FACILITY DELIVERIES']}/></h3></span>
         <span className="flyout-section"><T k="flyout.deliveries.traditional"/>: <h3>{this.props.data[2]['TRADITIONAL BIRTH ATTENDANT']}</h3></span>
-        <span className="flyout-section"><T k="flyout.deliveries.antenatal-care"/>: <h3>{this.props.data[3]['ANTENATAL CARE PROJECTION']}</h3></span>
-        <span className="flyout-section"><T k="flyout.deliveries.bba"/>: <h3>{this.props.data[4]['BORN BEFORE ARRIVAL (BBA)']}</h3></span>
-        <span className="flyout-section"><T k="flyout.deliveries.home"/>: <h3>{this.props.data[5]['HOME DELIVERY']}</h3></span>
+        <span className="flyout-section"><T k="flyout.deliveries.antenatal-care"/>: <h3><FormattedNumber value={this.props.data[3]['ANTENATAL CARE PROJECTION']}/></h3></span>
+        <span className="flyout-section"><T k="flyout.deliveries.bba"/>: <h3><FormattedNumber value={this.props.data[4]['BORN BEFORE ARRIVAL (BBA)']}/></h3></span>
+        <span className="flyout-section"><T k="flyout.deliveries.home"/>: <h3><FormattedNumber value={this.props.data[5]['HOME DELIVERY']}/></h3></span>
       </div>
     );
   },

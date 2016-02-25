@@ -32,6 +32,11 @@ const Charts = React.createClass({
   },
 
   render() {
+    HighCharts.setOptions({
+      lang: {
+        thousandsSep: ',',
+      },
+    });
     return OpenClosed.match(this.props.openClosed, {
       Open: () => (
         <div className="charts">

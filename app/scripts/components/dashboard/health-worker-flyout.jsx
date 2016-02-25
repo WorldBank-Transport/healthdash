@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import T from '../misc/t';
+import {FormattedNumber, IntlMixin} from 'react-intl';
 
 const HealthWorkerFlyout = React.createClass({
 
@@ -9,6 +10,8 @@ const HealthWorkerFlyout = React.createClass({
     population: PropTypes.number.isRequired,
     region: PropTypes.string.isRequired,
   },
+
+  mixins: [IntlMixin],
 
   renderDensities() {
     return (
@@ -29,9 +32,9 @@ const HealthWorkerFlyout = React.createClass({
     return (
       <div>
         <span className="flyout-section"><T k="flyout.region"/>: <h3>{this.props.region}</h3></span>
-        <span className="flyout-section"><T k="flyout.workers.length"/>: <h3>{this.props.data.value}</h3></span>
-        <span className="flyout-section"><T k="flyout.worker.population.ratio"/>: <h3>{ratio}</h3></span>
-        <span className="flyout-section"><T k="flyout.population"/>: <h3>{this.props.population}</h3></span>
+        <span className="flyout-section"><T k="flyout.workers.length"/>: <h3><FormattedNumber value={this.props.data.value}/></h3></span>
+        <span className="flyout-section"><T k="flyout.worker.population.ratio"/>: <h3><FormattedNumber value={ratio}/></h3></span>
+        <span className="flyout-section"><T k="flyout.population"/>: <h3><FormattedNumber value={this.props.population}/></h3></span>
         <span className="flyout-section">{this.renderDensities()}</span>
       </div>
     );
