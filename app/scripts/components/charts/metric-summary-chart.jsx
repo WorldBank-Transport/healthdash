@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import T from '../misc/t';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
+import {FormattedNumber, IntlMixin} from 'react-intl';
 
 require('stylesheets/charts/metric-summary-chart');
 
@@ -13,7 +14,7 @@ const MetricSummary = React.createClass({
     title: PropTypes.string.isRequired,
   },
 
-  mixins: [ShouldRenderMixin],
+  mixins: [ShouldRenderMixin, IntlMixin],
 
   render() {
     const formattedValue = this.props.format ? this.props.format(this.props.metric) : this.props.metric;
@@ -25,7 +26,7 @@ const MetricSummary = React.createClass({
           <div className="group-content">
             {icon}
             <div className="medium-number padding">
-              <span className="number">{formattedValue}</span>
+              <span className="number"><FormattedNumber value={formattedValue} /></span>
               {this.props.sufix}
             </div>
           </div>

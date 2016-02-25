@@ -3,6 +3,7 @@ import T from '../misc/t';
 import { Icon } from 'react-font-awesome';
 import { getNumberOr0 } from '../../utils/number';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
+import {FormattedNumber, IntlMixin} from 'react-intl';
 
 require('stylesheets/right-panel/metric-summary-list');
 
@@ -15,7 +16,7 @@ const MetricSummaryList = React.createClass({
     title: PropTypes.string.isRequired,
   },
 
-  mixins: [ShouldRenderMixin],
+  mixins: [ShouldRenderMixin, IntlMixin],
 
   render() {
     const metric = this.props.metric;
@@ -23,7 +24,7 @@ const MetricSummaryList = React.createClass({
     const summaryDiv = metric.values.map(item => {
       const value = this.props.format ? this.props.format(getNumberOr0(item.value)) : getNumberOr0(item.value);
       const icon = icons[item.name] ? (<Icon type={icons[item.name]}/>) : (<div />);
-      const perc = this.props.showPercentage ? (<div><span className="number">{(value / metric.total * 100).toFixed(2)}</span>%</div>) : (<div />);
+      const perc = this.props.showPercentage ? (<div><span className="number"><FormattedNumber minimumFractionDigits="2" style="percent" value={(value / metric.total)}/></span></div>) : (<div />);
       return (
           <div className="group-content">
             {icon}
@@ -35,7 +36,7 @@ const MetricSummaryList = React.createClass({
                 {perc}
               </div>
               <div className="small-number">
-                {value}
+                <FormattedNumber value={value}/>
               </div>
             </div>
           </div>
