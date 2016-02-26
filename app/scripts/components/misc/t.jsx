@@ -71,8 +71,8 @@ const allTranslations = {
     'legend.subtitle.family-planning': 'Number of Family Planning',
     'legend.subtitle.deliveries': 'Number of Deliveries',
     'legend.subtitle.health-workers': 'Number of Health Workers',
-    'legend.subtitle.ipd': 'Number of IPD',
-    'legend.subtitle.opd': 'Number of OPD',
+    'legend.subtitle.ipd': 'Number of patients in IPD',
+    'legend.subtitle.opd': 'Number of patients in OPD',
     'legend.subtitle.tetanous': 'Number of Tetanus',
     'legend.subtitle.hiv-center': 'Number of IV Centers',
 
@@ -367,8 +367,8 @@ const allTranslations = {
     'legend.subtitle.family-planning': 'Idadi ya Kupanga uzazi',
     'legend.subtitle.deliveries': 'Idadi ya Wanaojifungua',
     'legend.subtitle.health-workers': 'Idadi ya Health Workers',
-    'legend.subtitle.ipd': 'Idadi ya IPD',
-    'legend.subtitle.opd': 'Idadi ya OPD',
+    'legend.subtitle.ipd': 'Idadi ya wagonjwa wa idara ya ndani',
+    'legend.subtitle.opd': 'Idadi ya wagonjwa wa idara ya nje',
     'legend.subtitle.tetanous': 'Idadi ya Chanjo ya pepopunda',
     'legend.subtitle.hiv-center': 'Idadi ya HIV Centers',
 
