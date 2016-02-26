@@ -6,6 +6,7 @@
 .footer {
   background: $theme-blue;
   color: $bg-color;
+  overflow: hidden;
   padding-left: $header-common-margin;
   padding-right: $header-common-margin;
 
@@ -16,10 +17,11 @@
   .copy {
     display: inline-block;
     float: right;
-    font-size: $footer-text;
-    margin-top: $footer-text-top-position;
+    font-size: $footer-copy;
+    line-height: 110%;
+    margin-top: $footer-text-top-position - 3;
     text-align: right;
-    width: 40%;
+    width: 35%;
 
     @include up-to($tablet-landscape) {
       width: $copy-width-med;
@@ -38,4 +40,10 @@
   &.footer-static {
     position: relative;
   }
+}
+
+.footer-logo {
+  float: left;
+  height: $footer-logo-height;
+  margin: 10px 30px auto 10px;
 }

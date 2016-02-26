@@ -1,16 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,800,300,600);
 
 // font sizes
-$dash-title: 24px;
+$dash-title: 18px;
 $dash-title-mobile: 13px;
+$dash-title-width: 120px;
 $nav-text-mobile: 12px;
 $filter-text: 18px;
 $big-number: 35px;
 $medium-number: 20px;
+$nav-text-size: 14px;
 $tab-text: 12px;
 $medium-text: 15px;
 $small-text: 10px;
 $footer-text: 12px;
+$footer-copy: 10.5px;
 $dashboard-intro: 32px;
 $dashboard-intro-mobile: 25px;
 $dashboard-description: 17px;
@@ -50,11 +53,12 @@ $medium-font-weight: 400;
 
 // line heights
 $normal-line-height: 110%;
+$main-nav-line-height: 15px;
 
 // legend
 $legend-title: 18px;
 
-$dash-title-line-height: 26px;
+$dash-title-line-height: 19px;
 $dash-title-line-height-mobile: 15px;
 
 // health panel-icon

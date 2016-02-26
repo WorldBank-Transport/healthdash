@@ -22,11 +22,11 @@ ul.open-data-nav {
       padding-right: $nav-padding;
     }
 
-    border-right: 1px solid $grey-light;
+    border-right: 1px solid $text-color;
     height: $nav-item-height;
-    line-height: $filter-text;
-    padding-left: $header-common-margin;
-    padding-right: $header-common-margin;
+    line-height: $main-nav-line-height;
+    padding-left: $header-common-margin - 5;
+    padding-right: $header-common-margin - 5;
 
     &:last-child {
       border-right: 0;
@@ -34,6 +34,7 @@ ul.open-data-nav {
 
     a {
       color: $text-color;
+      font-size: $nav-text-size;
 
       &:hover {
         color: $theme-blue;
@@ -60,15 +61,17 @@ ul.open-data-nav {
 
     li {
       @include up-to($tablet-alt) {
-        padding-left: $nav-padding;
-        padding-right: $nav-padding;
+        padding-left: $nav-padding - 4;
+        padding-right: $nav-padding - 4;
       }
 
-      border-right: 1px solid $bg-color;
+      border-right: none;
+      padding-left: 10px;
+      padding-right: 10px;
 
       a {
         color: $text-inverse;
-        font-size: $footer-text;
+        font-size: $footer-text + 2;
 
         &:hover {
           color: $text-color;
