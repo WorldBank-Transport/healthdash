@@ -18,9 +18,11 @@ ul.language-selector {
   @include border-radius(3px);
   @include list-inline();
   @include list-unstyle();
-  background: $tab-expand-bg;
-  padding-bottom: $nav-padding;
+  background: $language-selector-bg;
+  margin-left: $general-content-padding;
+  padding-bottom: $nav-padding + 3;
   padding-top: $nav-padding;
+
 
   & > li {
     @include up-to($tablet-portrait) {
@@ -28,18 +30,20 @@ ul.language-selector {
       padding-left: $lang-item-mobile-padding;
       padding-right: $lang-item-mobile-padding;
     }
-    background: $tab-expand-bg;
+    background: $language-selector-bg;
     border-right: 1px solid $theme-blue;
     height: $nav-item-height;
-    padding-left: $header-common-margin;
-    padding-right: $header-common-margin;
+    line-height: 16px;
+    padding-left: $header-common-margin - 4;
+    padding-right: $header-common-margin - 4;
 
     &:last-child {
       border: 0;
     }
 
     a {
-      color: inherit;
+      color: $lang-inactive;
+      font-size: $nav-text-size;
     }
     &.active a,
     a:hover {

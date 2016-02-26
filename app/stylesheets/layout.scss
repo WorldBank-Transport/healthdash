@@ -20,7 +20,7 @@ body {
   left: 0;
   position: absolute;
   right: 0;
-  top: $header-height+5;
+  top: $header-height+6;
 
   @include up-to($tablet-portrait) {
     height: 100%;
@@ -42,7 +42,7 @@ body {
   bottom: 0;
   height: $footer-height;
   left: 0;
-  overflow-y: auto;
+  overflow-y: hidden;
   position: absolute;
   right: 0;
 }
