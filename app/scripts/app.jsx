@@ -54,6 +54,18 @@ function setPolysView(nextState) {
   });
 }
 
+/**
+ * @returns {void}
+ */
+function intlPoly() {
+  require.ensure([
+    'intl',
+    'intl/locale-data/jsonp/en.js'], function(require) {
+      require('intl');
+      require('intl/locale-data/jsonp/en');
+    });
+}
+
 React.render((
   <Router history={history}>
     <Route component={Root}>
@@ -65,7 +77,7 @@ React.render((
         <Route path="share/:shareId/" component={Homepage} onEnter={setShare} />
       </Route>
 
-      <Route path="/dash/" component={DashRoot}>
+      <Route path="/dash/" component={DashRoot} onEnter={intlPoly} >
         <Route path="points/:dataType/" component={PointsMap} onEnter={setPointsView} />
         <Route path=":polyType/:dataType/" component={PolygonsMap} onEnter={setPolysView} />
       </Route>
