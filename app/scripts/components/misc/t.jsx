@@ -73,7 +73,7 @@ const allTranslations = {
     'legend.subtitle.health-workers': 'Number of Health Workers',
     'legend.subtitle.ipd': 'Number of patients in IPD',
     'legend.subtitle.opd': 'Number of patients in OPD',
-    'legend.subtitle.tetanous': 'Number of Tetanus',
+    'legend.subtitle.tetanous': '% Tetanus Vaccination Coverage',
     'legend.subtitle.hiv-center': 'Number of HIV Centers',
 
     'dash.regions': 'Regions',
@@ -369,7 +369,7 @@ const allTranslations = {
     'legend.subtitle.health-workers': 'Idadi ya wafanya kazi wa sekta ya afya',
     'legend.subtitle.ipd': 'Idadi ya wagonjwa wa idara ya ndani',
     'legend.subtitle.opd': 'Idadi ya wagonjwa wa idara ya nje',
-    'legend.subtitle.tetanous': 'Idadi ya waliochanjwa dhidi ya pepopunda',
+    'legend.subtitle.tetanous': '% Asilimia ya chanjo ya pepopunda',
     'legend.subtitle.hiv-center': 'Vituo vya matibabu ya virusi vya UKIMWI',
 
     'dash.regions': 'Mikoa',
