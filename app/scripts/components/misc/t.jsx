@@ -74,7 +74,7 @@ const allTranslations = {
     'legend.subtitle.ipd': 'Number of patients in IPD',
     'legend.subtitle.opd': 'Number of patients in OPD',
     'legend.subtitle.tetanous': 'Number of Tetanus',
-    'legend.subtitle.hiv-center': 'Number of IV Centers',
+    'legend.subtitle.hiv-center': 'Number of HIV Centers',
 
     'dash.regions': 'Regions',
     'dash.districts': 'Districts',
