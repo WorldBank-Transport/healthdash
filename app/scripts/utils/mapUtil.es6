@@ -13,7 +13,7 @@ export const getMapRanges = (dataType) =>
     HealthWorkers: () => Some([{min: 0, max: 2500, color: colours.few}, {min: 2501, max: 5000, color: colours.middleFew}, {min: 5001, max: 7500, color: colours.middleMany}, {min: 7501, max: MAX_VALUE, color: colours.many}]),
     IPD: () => Some([{min: 0, max: 50000, color: colours.few}, {min: 50001, max: 75000, color: colours.middleFew}, {min: 75001, max: 100000, color: colours.middleMany}, {min: 100001, max: MAX_VALUE, color: colours.many}]),
     OPD: () => Some([{min: 0, max: 500000, color: colours.few}, {min: 500001, max: 750000, color: colours.middleFew}, {min: 750001, max: 1000000, color: colours.middleMany}, {min: 1000001, max: MAX_VALUE, color: colours.many}]),
-    Tetanus: () => Some([{min: 0, max: 50000, color: colours.few}, {min: 50001, max: 75000, color: colours.middleFew}, {min: 75001, max: 100000, color: colours.middleMany}, {min: 100001, max: MAX_VALUE, color: colours.many}]),
+    Tetanus: () => Some([{min: 0, max: 70, color: colours.few}, {min: 70.01, max: 80, color: colours.middleFew}, {min: 80.01, max: 90, color: colours.middleMany}, {min: 90.01, max: 100, color: colours.many}]),
     HivCenter: () => Some([{min: 0, max: 50, color: colours.few}, {min: 51, max: 100, color: colours.middleFew}, {min: 101, max: 150, color: colours.middleMany}, {min: 151, max: MAX_VALUE, color: colours.many}]),
     Facilities: () => Some([{min: 0, max: 100, color: colours.few}, {min: 101, max: 200, color: colours.middleFew}, {min: 201, max: 300, color: colours.middleMany}, {min: 301, max: MAX_VALUE, color: colours.many}]),
   });
@@ -26,7 +26,7 @@ export const getMapValue = (item, dataType) =>
     HealthWorkers: () => item.value,
     IPD: () => item.value,
     OPD: () => item.value,
-    Tetanus: () => item[2]['TT2 VACCINATION COVERAGE'],
+    Tetanus: () => item[3]['% TT2 VACCINATION COVERAGE'],
     HivCenter: () => item.length,
     Facilities: () => item.length,
   });
