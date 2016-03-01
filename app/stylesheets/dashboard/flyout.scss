@@ -85,8 +85,9 @@
   clear: both;
   color: $text-color;
   font-weight: normal;
+  line-height: $normal-line-height - 10;
   margin-top: -$panel-general-space/4.5;
-  text-transform: none;
+  text-transform: capitalize;
 }
 .flyout-data {
   display: block;
@@ -108,3 +109,4 @@
     text-transform: uppercase;
   }
 }
+
