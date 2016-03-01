@@ -8,6 +8,7 @@
   opacity: 1;
   position: absolute;
   right: 0;
+  top:0;
   width: $flyout-width;
 
   .flyout-inner {
@@ -16,7 +17,6 @@
     padding: $flyout-base-padding*2 $flyout-base-padding*3;
     position: relative;
     z-index: 10;
-
 
     @include up-to($tablet-landscape) {
       margin-right: $flyout-table-h-position;
@@ -71,5 +71,40 @@
         }
       }
     }
+  }
+}
+
+.facility-name {
+  color: $theme-blue;
+  font-size: $medium-text;
+  font-weight: $title-weight;
+  margin-bottom: $panel-general-space;
+}
+.flyout-label {
+  display: block;
+  clear: both;
+  color: $text-color;
+  font-weight: normal;
+  margin-top: -$panel-general-space/4.5;
+  text-transform: none;
+}
+.flyout-data {
+  display: block;
+  clear: both;
+  color: $theme-blue;
+  font-size: $medium-number;
+  font-weight: $title-weight;
+  margin-top: -9px;
+  text-transform: uppercase;
+}
+
+.facilities {
+  margin-left: $panel-general-space / 4;
+  margin-top: -$panel-general-space*2;
+
+  h4 {
+    color: $theme-blue;
+    margin-bottom: 0;
+    text-transform: uppercase;
   }
 }
