@@ -41,3 +41,5 @@ const FacilitiesFlyout = React.createClass({
     );
   },
 });
+
+export default FacilitiesFlyout;
