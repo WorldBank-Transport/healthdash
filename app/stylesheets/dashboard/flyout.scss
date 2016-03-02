@@ -54,7 +54,7 @@
     }
 
     .flyout-section {
-      margin: 0.5em 0;
+      margin: 1em 0;
     }
     ul {
       @include list-unstyle();
@@ -86,7 +86,7 @@
   color: $text-color;
   font-weight: normal;
   line-height: $normal-line-height - 10;
-  margin-top: -$panel-general-space/4.5;
+  margin-top: $panel-general-space / 4;
   text-transform: capitalize;
 }
 .flyout-data {
@@ -95,7 +95,7 @@
   color: $theme-blue;
   font-size: $medium-number;
   font-weight: $title-weight;
-  margin-top: -9px;
+  margin-top: -6px;
   text-transform: uppercase;
 }
 

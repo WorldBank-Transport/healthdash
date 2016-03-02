@@ -260,6 +260,7 @@ select {
     text-transform: uppercase;
     vertical-align: middle;
     width: 40%;
+
     &.last {
       margin-top: -$panel-general-space;
     }
@@ -267,11 +268,15 @@ select {
       border-left: 0;
       color: $theme-blue;
       height: auto;
-      margin-left: -$panel-general-space;
+      margin-left: $panel-general-space - 7;
       margin-bottom: $panel-general-space + 5;
     }
     &:first-child {
       width: $full-width;
+    }
+    &:nth-child(2) {
+      margin-left: $panel-general-space + 2;
+      width: 40%;
     }
     &:nth-child(4) {
       border-left: 0px;
@@ -298,6 +303,7 @@ select {
     color: $theme-blue;
     display: block;
     margin-bottom: $panel-general-space;
+    margin-top: $panel-general-space;
   }
   .summary {
     @include list-unstyled();
@@ -314,6 +320,10 @@ select {
       text-transform: uppercase;
       vertical-align: middle;
       width: 40%;
+      &:nth-child(2) {
+      margin-left: $panel-general-space - 10;
+      width: 40%;
+    }
     } 
   }
 }
