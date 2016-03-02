@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Result } from '../../utils/functional';
 import T from '../misc/t';
+import {FormattedNumber, IntlMixin} from 'react-intl';
 
 require('stylesheets/dashboard/flyout');
 
@@ -12,13 +13,15 @@ const FacilitiesFlyout = React.createClass({
     region: PropTypes.string.isRequired,
   },
 
+  mixins: [IntlMixin],
+
   renderSum(summary, title, total) {
     return (
       <div className="facilities">
         <h4><T k={title}/></h4>
         {
           Object.keys(summary).map(key =>
-            (<h5><T k={`flyout.facilities.${key}`}/>: {(summary[key].length / total * 100).toFixed(2)} %</h5>)
+            (<h5><T k={`flyout.facilities.${key}`}/>: <FormattedNumber minimumFractionDigits="2" style="percent" value={(summary[key].length / total)} /></h5>)
           )
         }
       </div>);
