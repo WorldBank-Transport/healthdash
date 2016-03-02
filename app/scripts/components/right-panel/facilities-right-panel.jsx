@@ -156,7 +156,7 @@ const FacilitiesRightPanel = React.createClass({
         <ul className="summary">
         {
           Object.keys(summary).map(key =>
-            (<li><T k={`flyout.facilities.${key}`}/>: {(summary[key].length / total * 100).toFixed(2)} %</li>)
+            (<li><span className="region-facility-label"><T k={`flyout.facilities.${key}`}/>:</span> <span className="region-facility-stat">{(summary[key].length / total * 100).toFixed(2)} %</span></li>)
           )
         }
         </ul>
@@ -182,12 +182,12 @@ const FacilitiesRightPanel = React.createClass({
                 const popPoly = popAgg[details.id] || [{TOTAL: 0}];
                 return (
                   <ul className="point-selected">
-                    <li><T k="flyout.region"/>: {details.id}</li>
-                    <li><T k="flyout.facilities.length"/>: {data.length}</li>
-                    <li><T k="flyout.facilities.pupulation"/>: {Math.round(popPoly[0].TOTAL / data.length)}</li>
+                    <li className="region-section-label"><span className="region-label"><T k="flyout.region"/></span>: {details.id}</li>
+                    <li><span className="region-facility-label"><T k="flyout.facilities.length"/>:</span> <span className="region-facility-stat">{data.length}</span></li>
+                    <li><span className="region-facility-label"><T k="flyout.facilities.pupulation"/>:</span> <span className="region-facility-stat">{Math.round(popPoly[0].TOTAL / data.length)}</span></li>
                     <li>{this.renderSum(types, 'flyout.facilities.type', this.props.data.length)}</li>
-                    <li>{this.renderSum(status, 'flyout.facilities.status', this.props.data.length)}</li>
-                    <li>{this.renderSum(ownership, 'flyout.facilities.ownership', this.props.data.length)}</li>
+                    <li className="last">{this.renderSum(status, 'flyout.facilities.status', this.props.data.length)}</li>
+                    <li className="last">{this.renderSum(ownership, 'flyout.facilities.ownership', this.props.data.length)}</li>
                   </ul>
                 );
               },
