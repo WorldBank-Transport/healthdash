@@ -18,7 +18,7 @@ const FacilitiesFlyout = React.createClass({
         <h4><T k={title}/></h4>
         {
           Object.keys(summary).map(key =>
-            (<h5><T k={`flyout.facilities.${key}`}/>: {(summary[key].length / total * 100).toFixed(2)} %</h5>)
+            (<div><span className="flyout-label"><T k={`flyout.facilities.${key}`}/>:</span> <span className="flyout-data">{(summary[key].length / total * 100).toFixed(2)} %</span></div>)
           )
         }
       </div>);
@@ -31,9 +31,9 @@ const FacilitiesFlyout = React.createClass({
 
     return (
       <div className="facilities-stats">
-        <h3>{this.props.region}</h3>
-        <h5><T k="flyout.facilities.length"/>: {this.props.data.length}</h5>
-        <h5><T k="flyout.facilities.pupulation"/>: {Math.round(this.props.population / this.props.data.length)}</h5>
+        <span className="facility-name">{this.props.region}</span>
+        <div><span className="flyout-label"><T k="flyout.facilities.length"/>:</span> <span className="flyout-data">{this.props.data.length}</span></div>
+        <div><span className="flyout-label"><T k="flyout.facilities.pupulation"/>:</span> <span className="flyout-data">{Math.round(this.props.population / this.props.data.length)}</span></div>
         {this.renderSum(types, 'flyout.facilities.type', this.props.data.length)}
         {this.renderSum(status, 'flyout.facilities.status', this.props.data.length)}
         {this.renderSum(ownership, 'flyout.facilities.ownership', this.props.data.length)}

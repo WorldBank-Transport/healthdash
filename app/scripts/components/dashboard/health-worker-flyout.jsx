@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import T from '../misc/t';
 import {FormattedNumber, IntlMixin} from 'react-intl';
+require('stylesheets/dashboard/flyout');
 
 const HealthWorkerFlyout = React.createClass({
 
@@ -16,11 +17,11 @@ const HealthWorkerFlyout = React.createClass({
   renderDensities() {
     return (
       <div>
-        <h3><T k="flyout.workers.densities"/></h3>
+        <span className="flyout-label"><T k="flyout.workers.densities"/></span>
         <ul>
           {this.props.hrwDensities
             .filter(item => item['HEALTH WORKERS'] !== 'TOTAL POPULATION')
-            .map(item => (<li><span className="flyout-worker">{item['HEALTH WORKERS']}</span><h5>{item[this.props.region]}</h5></li>))
+            .map(item => (<li><span className="flyout-label">{item['HEALTH WORKERS']}</span><span className="flyout-data">{item[this.props.region]}</span></li>))
           }
         </ul>
       </div>
@@ -30,11 +31,11 @@ const HealthWorkerFlyout = React.createClass({
   render() {
     const ratio = this.props.data.value ? Math.round(this.props.population / this.props.data.value) : 0;
     return (
-      <div>
-        <span className="flyout-section"><T k="flyout.region"/>: <h3>{this.props.region}</h3></span>
-        <span className="flyout-section"><T k="flyout.workers.length"/>: <h3><FormattedNumber value={this.props.data.value}/></h3></span>
-        <span className="flyout-section"><T k="flyout.worker.population.ratio"/>: <h3><FormattedNumber value={ratio}/></h3></span>
-        <span className="flyout-section"><T k="flyout.population"/>: <h3><FormattedNumber value={this.props.population}/></h3></span>
+      <div className="worker-flyout-stats">
+        <span className="flyout-section"><span className="flyout-label"><T k="flyout.region"/>:</span> <span className="flyout-data">{this.props.region}</span></span>
+        <span className="flyout-section"><span className="flyout-label"><T k="flyout.workers.length"/>:</span> <span className="flyout-data"><FormattedNumber value={this.props.data.value}/></span></span>
+        <span className="flyout-section"><span className="flyout-label"><T k="flyout.worker.population.ratio"/>:</span> <span className="flyout-data"><FormattedNumber value={ratio}/></span></span>
+        <span className="flyout-section"><span className="flyout-label"><T k="flyout.population"/>:</span> <span className="flyout-data"><FormattedNumber value={this.props.population}/></span></span>
         <span className="flyout-section">{this.renderDensities()}</span>
       </div>
     );

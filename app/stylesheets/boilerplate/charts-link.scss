@@ -1,7 +1,8 @@
 @import '../config/dimensions';
 
 .charts-link {
-  margin: $panel-general-space * 2 0 $panel-general-space * 2 2px;
+  display: block;
+  margin: 0 0 $panel-general-space * 2 $panel-general-space * 2;
   .fa {
     margin-right: $panel-general-space / 2;
   }
