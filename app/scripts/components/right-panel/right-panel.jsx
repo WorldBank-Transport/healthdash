@@ -32,7 +32,7 @@ const RightPanel = React.createClass({
 
   render() {
     return (
-        <div className="right-panel">
+        <div className="right-panel" id="leftPanel">
           {DataTypes.match(this.props.dataType, {
             Death: () => (<DeathRightPanel {...this.props}/>),
             FamilyPlanning: () => (<FamilyPlanningRightPanel {...this.props}/>),
