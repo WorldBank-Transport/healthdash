@@ -14,6 +14,11 @@
     right: $main-chart-width;
     top: $map-nav-height + 2;
 
+    @include up-to($tablet-portrait) {
+    right: 0;
+    top: 52px;
+    }
+
 
     // WARNING: These rules reach into child components, which is not nice
     // but since they affect each other, ... oh well

@@ -16,20 +16,20 @@
   text-align: center;
   text-transform: uppercase;
 
-  @include up-to($tablet-landscape) {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: $dashboard-btn-width-mobile;
-  }
   @include up-to($laptop) {
     margin-right: $button-mobile-margin-right;
     padding-left: $button-link-vert;
     padding-right: $button-link-vert;
     width: $dashboard-btn-width-laptop;
   }
-
+  @include up-to($tablet-alt) {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: $dashboard-btn-width-mobile;
+  }
   @include up-to($tablet-landscape) {
+    display: block;
     margin-left: auto;
     margin-right: auto;
     width: $dashboard-btn-width-mobile;

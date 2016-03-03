@@ -40,7 +40,8 @@
         padding-left: 10px;
         width: 45%;
 
-        @include up-to($phone) {
+        @include up-to($tablet-landscape) {
+          clear:both;
           float: none;
           width: $full-width;
         }
