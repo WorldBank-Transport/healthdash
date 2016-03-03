@@ -14,20 +14,6 @@ const HealthWorkerFlyout = React.createClass({
 
   mixins: [IntlMixin],
 
-  renderDensities() {
-    return (
-      <div>
-        <span className="flyout-label"><T k="flyout.workers.densities"/></span>
-        <ul>
-          {this.props.hrwDensities
-            .filter(item => item['HEALTH WORKERS'] !== 'TOTAL POPULATION')
-            .map(item => (<li><span className="flyout-label">{item['HEALTH WORKERS']}</span><span className="flyout-data">{item[this.props.region]}</span></li>))
-          }
-        </ul>
-      </div>
-    );
-  },
-
   render() {
     const ratio = this.props.data.value ? Math.round(this.props.population / this.props.data.value) : 0;
     return (
@@ -36,7 +22,6 @@ const HealthWorkerFlyout = React.createClass({
         <span className="flyout-section"><span className="flyout-label"><T k="flyout.workers.length"/>:</span> <span className="flyout-data"><FormattedNumber value={this.props.data.value}/></span></span>
         <span className="flyout-section"><span className="flyout-label"><T k="flyout.worker.population.ratio"/>:</span> <span className="flyout-data"><FormattedNumber value={ratio}/></span></span>
         <span className="flyout-section"><span className="flyout-label"><T k="flyout.population"/>:</span> <span className="flyout-data"><FormattedNumber value={this.props.population}/></span></span>
-        <span className="flyout-section">{this.renderDensities()}</span>
       </div>
     );
   },

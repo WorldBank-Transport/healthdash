@@ -23,6 +23,7 @@ const RightPanel = React.createClass({
     dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
     ensureDeselect: PropTypes.func,  // injected
     ensureSelect: PropTypes.func,  // injected
+    hrwDensities: PropTypes.array,
     metrics: PropTypes.object,  // injected
     onToggle: PropTypes.func,
     selected: PropTypes.instanceOf(Maybe.OptionClass),  // injected
