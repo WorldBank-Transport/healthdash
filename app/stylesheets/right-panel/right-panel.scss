@@ -20,11 +20,10 @@
   @include up-to($tablet-alt) {
     overflow-x: hidden;
     right: $panel-general-space;
-    width: 25%;
   }
 
-  @include up-to($phone) {
-    width: $full-width / 1.5;
+  @include up-to($tablet-portrait) {
+    display: none;
   }
 
 

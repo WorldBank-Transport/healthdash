@@ -38,6 +38,7 @@
     @include up-to($tablet-portrait) {
       height: 100%;
       min-height: 100%;
+      margin-top: $mobile-top-content-position - 3;
     }
   }
 }
@@ -61,6 +62,8 @@
 
   @include up-to($tablet-portrait) {
     padding: 0 $homecontent-padding;
+    top: $mobile-top-content-position - 3;
+
   }
 
   h2 {
