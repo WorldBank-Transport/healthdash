@@ -30,12 +30,13 @@ const Share = React.createClass({
 
   print() {
     const map = document.getElementById('map1').outerHTML;
-    const finalMap = map.replace(/\/\/a.tile.openstreetmap.org\//g, 'http://a.tile.openstreetmap.org/');
+    const finalMap = map.replace(/\/\/a.tile.openstreetmap.org\//g, 'http://a.tile.openstreetmap.org/').replace(/\/\/b.tile.openstreetmap.org\//g, 'http://b.tile.openstreetmap.org/').replace(/\/\/c.tile.openstreetmap.org\//g, 'http://c.tile.openstreetmap.org/');
     const leftPanel = document.getElementById('leftPanel');
     //<script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
     const links = '<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">';
-    const styles = '';//'<link rel="stylesheet" href="http://afya.takwimu.org/style.css">';
-    const htmlContent = `<html><header></header><body id="pdf-body">${finalMap}${leftPanel.outerHTML}${links}</body></html>`;
+    const styles = '<style>#map1 {bottom: 0px;left: 0px;position: absolute;right: 0px;top: 0px;width: 100%;height:100%;}</style><link rel="stylesheet" href="http://afya.takwimu.org/style.css">';
+    const htmlContent = `<html><header>${styles}</header><body id="pdf-body">${finalMap}${leftPanel.outerHTML}${links}</body></html>`;
+    //console.log(htmlContent);
     pdf(htmlContent);
   },
 
