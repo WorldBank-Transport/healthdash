@@ -10,13 +10,13 @@ export const pdf = createAction();
 
 pdf.listen( (body) => {
   postMap2Pdf({content: body}).then(file => {
-    const a = document.createElement("a");
+    const a = document.createElement('a');
     document.body.appendChild(a);
-    a.style = "display: none";
+    a.style = 'display: none';
     const url = window.URL.createObjectURL(file);
     a.href = url;
     a.download = 'dashboard.pdf';
     a.click();
     window.URL.revokeObjectURL(url);
-  })
+  });
 });
