@@ -5,12 +5,15 @@ import MetricSummary from '../charts/metric-summary-chart';
 import { Result } from '../../utils/functional';
 import MetricSummaryList from './metric-summary-list';
 import T from '../misc/t';
+import { Maybe, _ } from 'results';
+import AsyncState from '../../constants/async';
 
 const DeathRightPanel = React.createClass({
   propTypes: {
     children: PropTypes.node, // injected
     data: PropTypes.array,  // injected
     dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
+    selected: PropTypes.instanceOf(Maybe.OptionClass),  // injected
     setSelected: PropTypes.func,
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
@@ -38,7 +41,49 @@ const DeathRightPanel = React.createClass({
     return deseases.slice(0, 5);
   },
 
-  render() {
+  renderLoading() {
+    return (<h3><T k="right-panel.loading"/></h3>);
+  },
+
+  renderNotFound(id) {
+    return (<h3>{id} <T k="right-panel.not-found"/></h3>);
+  },
+
+  renderRegion(selected) {
+    const body = AsyncState.match(selected.loadState, {
+      Finished: () => Maybe.match(selected.details, {
+        None: () => this.renderNotFound(selected.id),
+        Some: details => {
+          return Maybe.match(details.properties.data, {
+            None: () => this.renderNotFound(details.id),
+            Some: data => {
+              const death = data.value;
+              const desease = {
+                values: this.getDeathCauses([selected.id]),
+                total: death,
+              };
+              return (<div>
+                <div className="row">
+                  <MetricSummary icon="deaths.png" metric={death} title="chart.deaths.title"/>
+                </div>
+                <div className="row">
+                  <MetricSummaryList metric={desease} showPercentage={true} title="chart.death-deseases.title"/>
+                </div>
+              </div>);
+            },
+          });
+        },
+      }),
+      [_]: this.renderLoading,
+    });
+    return (
+      <div className="container other-selections">
+        <h3><T k="data-type.death" /> {selected.id}</h3>
+        {body}
+      </div>);
+  },
+
+  renderNational() {
     if (this.props.data.length === 0) {
       return false;
     }
@@ -65,6 +110,14 @@ const DeathRightPanel = React.createClass({
         </div>
       </div>);
   },
+
+  render() {
+    return Maybe.match(this.props.selected, {
+      None: () => this.renderNational(),
+      Some: (selected) => this.renderRegion(selected),
+    });
+  },
+
 });
 
 export default DeathRightPanel;

@@ -88,17 +88,20 @@ const HealthWorkersRightPanel = React.createClass({
     const header = AsyncState.match(selected.loadState, {
       Finished: () => Maybe.match(selected.details, {
         None: () => this.renderNotFound(selected.id),
-        Some: details => {
-          const workers = details.properties.data.data.value;
-          const population = Result.sumBy(this.state.population.filter(r => r.REGION === selected.id), 'TOTAL').TOTAL;
-          return (<div>
-            <div className="row">
-              <MetricSummary icon="workers.png" metric={workers} title="chart.workers.title"/>
-            </div>
-            <div className="row">
-              <MetricSummary icon="workers.png" metric={Math.round(population / workers)} title="chart.workers-people.title"/>
-            </div></div>);
-        },
+        Some: details => Maybe.match(details.properties.data, {
+          None: () => this.renderNotFound(details.id),
+          Some: data => {
+            const workers = data.value;
+            const population = Result.sumBy(this.state.population.filter(r => r.REGION === selected.id), 'TOTAL').TOTAL;
+            return (<div>
+              <div className="row">
+                <MetricSummary icon="workers.png" metric={workers} title="chart.workers.title"/>
+              </div>
+              <div className="row">
+                <MetricSummary icon="workers.png" metric={Math.round(population / workers)} title="chart.workers-people.title"/>
+              </div></div>);
+          },
+        }),
       }),
       [_]: this.renderLoading,
     });

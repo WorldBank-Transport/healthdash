@@ -13,6 +13,7 @@ import OpdRightPanel from './opd-right-panel';
 import TetanusRightPanel from './tetanus-right-panel';
 import ChartsLink from '../boilerplate/charts-link';
 import { Maybe } from 'results';
+import T from '../misc/t';
 
 require('stylesheets/right-panel/right-panel');
 
@@ -33,6 +34,10 @@ const RightPanel = React.createClass({
   render() {
     return (
         <div className="right-panel" id="leftPanel">
+          {Maybe.match(this.props.selected, {
+            None: () => '',
+            Some: () => (<div className="row"><button className="back-link" onClick={this.props.ensureDeselect}><div className="charts-link"><T k="drilldown.back"/></div></button></div>),
+          })}
           {DataTypes.match(this.props.dataType, {
             Death: () => (<DeathRightPanel {...this.props}/>),
             FamilyPlanning: () => (<FamilyPlanningRightPanel {...this.props}/>),
