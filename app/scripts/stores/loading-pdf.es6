@@ -18,5 +18,4 @@ const PdfLoadingStore = createStore({
   },
 });
 
-
 export default PdfLoadingStore;
