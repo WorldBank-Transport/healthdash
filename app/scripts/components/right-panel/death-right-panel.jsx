@@ -42,11 +42,11 @@ const DeathRightPanel = React.createClass({
   },
 
   renderLoading() {
-    return (<h3><T k="right-panel.loading"/></h3>);
+    return (<h5 className="missing-data"><T k="right-panel.loading"/></h5>);
   },
 
   renderNotFound(id) {
-    return (<h3>{id} <T k="right-panel.not-found"/></h3>);
+    return (<h5 className="missing-data">{id} <T k="right-panel.not-found"/></h5>);
   },
 
   renderRegion(selected) {

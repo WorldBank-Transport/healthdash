@@ -370,3 +370,8 @@ select {
   font-size: $medium-text;
   text-transform: none;
 }
+
+.missing-data {
+  display: block;
+  margin: $missing-data-spacing*2 $missing-data-spacing $missing-data-spacing $missing-data-spacing;
+}

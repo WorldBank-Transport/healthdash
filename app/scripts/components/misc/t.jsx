@@ -150,6 +150,8 @@ const allTranslations = {
     'metric.summary-list.OTHERS': 'Others',
     'metric.summary-list.HIV/AIDS': 'HIV/AIDS',
     'metric.summary-list.ANAEMIA': 'Anemia',
+    'metric.summary-list.cardiac-failure': 'Cardiac Failure',
+
 
     'chart.deliveries-barchart.title': 'Deliveries by Type',
     'chart.deliveries-barchart.helptext': 'Click on a delivery type to toggle its visibility.',
@@ -443,6 +445,8 @@ const allTranslations = {
     'metric.summary-list.OTHERS': 'Nyinginezo',
     'metric.summary-list.HIV/AIDS': 'HIV/AIDS',
     'metric.summary-list.ANAEMIA': 'Upungufu wa data',
+    'metric.summary-list.cardiac-failure': 'Cardian Failure',
+
 
     'chart.deliveries-barchart.title': 'Waliojifungua (aina mbalimbali)',
     'chart.deliveries-barchart.helptext': 'Bonyeza kialamishi ili kuonyesha au kuficha data kwenye chati.',

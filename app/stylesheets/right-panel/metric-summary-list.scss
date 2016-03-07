@@ -13,7 +13,7 @@
     @include bordered();
     float: left;
     height: 65px;
-    margin-bottom: 5px;
+    margin-bottom: $panel-general-space / 2;
     width: 40%;
 
     .context {
@@ -33,7 +33,7 @@
 
     .col-half {
       float: left;
-      margin-right: 20px;
+      margin-right: $panel-general-space * 2;
       width: $full-width / 2.4;
     }
   }
@@ -56,7 +56,8 @@
   @include list-unstyled();
   li {
     float: left;
-    margin-right: 10px;
+    margin-right: $panel-general-space;
+    padding-right: $panel-general-space * 1.5;
     width: 42%;
 
     .group-content {
