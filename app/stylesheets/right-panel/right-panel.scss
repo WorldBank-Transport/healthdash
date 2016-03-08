@@ -45,9 +45,9 @@
       border: 1px solid $bg-color;
       font-size: $medium-text;
       font-weight: $title-weight;
-      height: 20px;
+      height: $panel-general-space * 2;
       outline: none;
-      padding: 7px 0;
+      padding: $panel-general-space - 3 0;
       text-transform: uppercase;
       width: $full-width + 30;
     }
@@ -80,18 +80,18 @@
       margin-bottom: 0;
 
       .metric-summary {
-        margin-bottom: 10px;
+        margin-bottom: $panel-general-space;
         padding-left: $panel-general-space;
-        width: 100%;
+        width: $full-width;
 
         .chart-title {
           font-size: 20px;
         }
 
         .panel-icon {
-          height: 60px;
-          margin-right: 10px;
-          width: 60px;
+          height: $panel-general-space * 6;
+          margin-right: $panel-general-space;
+          width: $panel-general-space * 6;
         }
 
         .medium-number {
@@ -116,7 +116,7 @@
 
       ul {
         @include list-unstyled();
-        margin-top: 3px;
+        margin-top: $panel-general-space - 7;
 
         li {
           float: left;
@@ -183,25 +183,30 @@
   }
 }
 
-.back-link {
-  background: none;
-  border: 0;
-  color: $theme-blue;
-  display: block;
-  font-size: $medium-text;
-  outline: none;
-  padding: 0 $panel-general-space * 2 0 0;
-  margin-top: $panel-general-space * 2;
-  margin-bottom: -40px;
-  &:hover {
-    color: $hover-color;
+.back-link-wrapper {
+  border-bottom: 2px solid $grey-light;
+  button.back-link {
+   background: none;
+   border: 0;
+   color: $theme-blue;
+   display: block;
+   font-size: $medium-text;
+   outline: none;
+   padding: 0 $panel-general-space * 2 0 0;
+   margin-top: $panel-general-space * 2;
+   margin-bottom: -40px;
+   width: $full-width;
+    &:hover {
+     color: $hover-color;
   }
+}
+
 }
 
 .other-selections {
   overflow: hidden;
   .metric-summary {
-    width: 100%;
+    width: $full-width;
   }
 }
 
@@ -219,7 +224,7 @@ select {
   height: $panel-general-space * 3;
   outline: none;
   padding: 4px 0;
-  width: 20%;
+  width: $full-width / 5;
   &:focus {
     outline: none;
   }
@@ -273,7 +278,7 @@ select {
     padding-left: $panel-general-space;
     text-transform: uppercase;
     vertical-align: middle;
-    width: 40%;
+    width: $full-width - 60;
 
     &.last {
       margin-top: -$panel-general-space;
@@ -290,21 +295,21 @@ select {
     }
     &:nth-child(2) {
       margin-left: $panel-general-space + 2;
-      width: 40%;
+      width: $full-width - 60;
     }
     &:nth-child(4) {
       border-left: 0px;
-      height: 100%;
+      height: $full-width;
       width: $full-width;
     }
     &:nth-child(5) {
       border-left: 0px;
-      height: 100%;
+      height: $full-width;
       width: $full-width;
     }
     &:nth-child(6) {
       border-left: 0px;
-      height: 100%;
+      height: $full-width;
       width: $full-width;
     }
   }
@@ -333,10 +338,10 @@ select {
       padding-left: $panel-general-space;
       text-transform: uppercase;
       vertical-align: middle;
-      width: 40%;
+      width: $full-width - 60;
       &:nth-child(2) {
       margin-left: $panel-general-space - 10;
-      width: 40%;
+      width: $full-width - 60;
     }
     } 
   }
@@ -374,4 +379,32 @@ select {
 .panel-system-message {
   display:block;
   margin: $panel-general-space*2 0 $panel-general-space*2 $panel-general-space*2
+}
+
+.density {
+  ul {
+    @include list-unstyled();
+
+    .density-list {
+      color: $dark-text;
+      float: left;
+      font-size: $medium-number + 5;
+      font-weight: bold;
+      height: $panel-general-space * 6;
+      padding-right: $panel-general-space - 2;
+      position: relative;
+      text-transform: uppercase;
+      width: 42%;
+
+      .density-label {
+        color: $theme-blue;
+        display: block;
+        font-size: $panel-general-space - 2;
+        font-weight: $title-weight;
+        line-height: 9px;
+        margin-bottom: $panel-general-space - 7;
+        text-transform: uppercase;
+      }
+    }
+  }
 }

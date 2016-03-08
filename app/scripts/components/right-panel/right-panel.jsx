@@ -36,7 +36,7 @@ const RightPanel = React.createClass({
         <div className="right-panel" id="leftPanel">
           {Maybe.match(this.props.selected, {
             None: () => '',
-            Some: () => (<div className="row"><button className="back-link" onClick={this.props.ensureDeselect}><div className="charts-link">&#171; <T k="drilldown.back"/></div></button></div>),
+            Some: () => (<div className="row back-link-wrapper"><button className="back-link" onClick={this.props.ensureDeselect}><div className="charts-link">&#171; <T k="drilldown.back"/></div></button></div>),
           })}
           {DataTypes.match(this.props.dataType, {
             Death: () => (<DeathRightPanel {...this.props}/>),
