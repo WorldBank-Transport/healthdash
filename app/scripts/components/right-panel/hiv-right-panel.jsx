@@ -28,11 +28,11 @@ const HivRightPanel = React.createClass({
   },
 
   renderLoading() {
-    return (<h3><T k="right-panel.loading"/></h3>);
+    return (<h3 className="panel-system-message"><T k="right-panel.loading"/></h3>);
   },
 
   renderNotFound(id) {
-    return (<h3>{id} <T k="right-panel.not-found"/></h3>);
+    return (<h3 className="panel-system-message">{id} <T k="right-panel.not-found"/></h3>);
   },
 
   renderRegion(selected) {

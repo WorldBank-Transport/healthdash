@@ -191,7 +191,7 @@
   font-size: $medium-text;
   outline: none;
   padding: 0 $panel-general-space * 2 0 0;
-  margin-top: 20px;
+  margin-top: $panel-general-space * 2;
   margin-bottom: -40px;
   &:hover {
     color: $hover-color;
@@ -216,7 +216,7 @@ select {
   color: $text-color;
   font-size: $small-text + 4;
   font-weight: $title-weight;
-  height: 30px;
+  height: $panel-general-space * 3;
   outline: none;
   padding: 4px 0;
   width: 20%;
@@ -226,7 +226,7 @@ select {
 }
 .back-symbol {
   font-size: 14px;
-  margin-right: 5px;
+  margin-right: $panel-general-space / 2;
 }
 .back-national {
   background: $bg-color;
@@ -345,7 +345,7 @@ select {
   clear: both;
   color: $theme-blue;
   display: block;
-  font-size: 13px;
+  font-size: $metric-title-big;
   font-weight: $title-weight;
   margin-bottom: $panel-general-space / 2;
   text-transform: uppercase;
@@ -369,4 +369,9 @@ select {
 .region-label {
   font-size: $medium-text;
   text-transform: none;
+}
+
+.panel-system-message {
+  display:block;
+  margin: $panel-general-space*2 0 $panel-general-space*2 $panel-general-space*2
 }
