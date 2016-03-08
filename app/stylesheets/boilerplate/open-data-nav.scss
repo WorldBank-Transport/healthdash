@@ -12,14 +12,19 @@ ul.open-data-nav {
     right: $top-nav-right-mobile;
     top: $top-nav-vert-pos-mobile;
   }
-  @include up-to($phone) {
-    right: $top-nav-right-mobile;
+  @include up-to($tablet-portrait) {
+    display: none;
   }
 
   li {
     @include up-to($tablet-portrait) {
       padding-left: $nav-padding;
       padding-right: $nav-padding;
+    }
+    @include up-to($phone) {
+      padding-left: $nav-padding;
+      padding-right: $nav-padding;
+      width: $full-width;
     }
 
     border-right: 1px solid $text-color;
@@ -45,7 +50,7 @@ ul.open-data-nav {
 
 // the same nav in footer
 .footer-nav {
-  @include up-to($phone) {
+  @include up-to($tablet-alt) {
     display: none;
   }
 

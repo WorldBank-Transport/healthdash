@@ -14,11 +14,11 @@ const TetanusFlyout = React.createClass({
   render() {
     return (
       <div>
-        <span className="flyout-section"><h3><T k="flyout.region"/>: {this.props.region}</h3></span>
-        <span className="flyout-section"><T k="flyout.tetanus.projected"/>: <h3><FormattedNumber value={this.props.data[0]['PROJECTED CLIENTS']}/></h3></span>
-        <span className="flyout-section"><T k="flyout.tetanus.total"/>: <h3><FormattedNumber value={this.props.data[1]['TOTAL ATTENDANCE']}/></h3></span>
-        <span className="flyout-section"><T k="flyout.tetanus.tt2-coverage"/>: <h3><FormattedNumber value={this.props.data[2]['TT2 VACCINATION COVERAGE']}/></h3></span>
-        <span className="flyout-section"><T k="flyout.tetanus.perc-tt2-coverage"/>: <h3><FormattedNumber value={this.props.data[3]['% TT2 VACCINATION COVERAGE']}/></h3></span>
+        <span className="flyout-section"><span className="flyout-label"><T k="flyout.region"/>:</span> <span className="flyout-data">{this.props.region}</span></span>
+        <span className="flyout-section"><span className="flyout-label"><T k="flyout.tetanus.projected"/>:</span><span className="flyout-data"><FormattedNumber value={this.props.data[0]['PROJECTED CLIENTS']}/></span></span>
+        <span className="flyout-section"><span className="flyout-label"><T k="flyout.tetanus.total"/>:</span><span className="flyout-data"><FormattedNumber value={this.props.data[1]['TOTAL ATTENDANCE']}/></span></span>
+        <span className="flyout-section"><span className="flyout-label"><T k="flyout.tetanus.tt2-coverage"/>:</span><span className="flyout-data"><FormattedNumber value={this.props.data[2]['TT2 VACCINATION COVERAGE']}/></span></span>
+        <span className="flyout-section"><span className="flyout-label"><T k="flyout.tetanus.perc-tt2-coverage"/>:</span><span className="flyout-data"><FormattedNumber value={this.props.data[3]['% TT2 VACCINATION COVERAGE']}/></span></span>
       </div>
     );
   },

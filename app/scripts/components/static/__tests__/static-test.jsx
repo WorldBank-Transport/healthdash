@@ -35,7 +35,7 @@ describe('Static Components', () => {
     //expect(React.findDOMNode(speakOut).className).toEqual('main');
 
     const notFound = React.addons.TestUtils.renderIntoDocument(<NotFound />);
-    expect(React.findDOMNode(notFound).className).toEqual('main');
+    expect(React.findDOMNode(notFound).className).toEqual('main secondary');
   });
 
 });

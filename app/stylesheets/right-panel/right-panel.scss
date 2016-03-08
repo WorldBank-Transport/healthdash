@@ -20,16 +20,15 @@
   @include up-to($tablet-alt) {
     overflow-x: hidden;
     right: $panel-general-space;
-    width: 25%;
   }
 
-  @include up-to($phone) {
-    width: $full-width / 1.5;
+  @include up-to($tablet-portrait) {
+    display: none;
   }
 
 
   .container {
-    padding: $panel-general-space * 2;
+    padding: $panel-general-space * 2 $panel-general-space * 2 0 $panel-general-space * 2;
   }
 
   .search-wrapper {
@@ -96,6 +95,7 @@
         }
 
         .medium-number {
+          color: $dark-text;
           font-size: 40px;
           line-height: $normal-line-height + 25;
         }
@@ -174,9 +174,25 @@
   background: none;
   border: 0;
   color: $theme-blue;
+  display: block;
   font-size: $medium-text;
   outline: none;
-  padding: $panel-general-space * 2;
+  padding: 0 $panel-general-space * 2 0 0;
+  &:hover {
+    color: $hover-color;
+  }
+}
+
+.back-link {
+  background: none;
+  border: 0;
+  color: $theme-blue;
+  display: block;
+  font-size: $medium-text;
+  outline: none;
+  padding: 0 $panel-general-space * 2 0 0;
+  margin-top: 20px;
+  margin-bottom: -40px;
   &:hover {
     color: $hover-color;
   }
@@ -244,20 +260,37 @@ select {
 
 .point-selected {
   @include list-unstyled();
+  overflow: hidden;
+
   li {
     border-left: 3px solid $panel-section-border;
-    color: $theme-blue;
+    color: $dark-text;
     float: left;
     font-weight: $title-weight;
     height: $panel-general-space * 5;
-    line-height: 100%;
+    line-height: $normal-line-height - 10;
     margin-bottom: $panel-general-space;
     padding-left: $panel-general-space;
     text-transform: uppercase;
     vertical-align: middle;
     width: 40%;
+
+    &.last {
+      margin-top: -$panel-general-space;
+    }
+    &.region-section-label {
+      border-left: 0;
+      color: $theme-blue;
+      height: auto;
+      margin-left: $panel-general-space - 7;
+      margin-bottom: $panel-general-space + 5;
+    }
     &:first-child {
       width: $full-width;
+    }
+    &:nth-child(2) {
+      margin-left: $panel-general-space + 2;
+      width: 40%;
     }
     &:nth-child(4) {
       border-left: 0px;
@@ -276,32 +309,64 @@ select {
     }
   }
 }
-.facilities { 
+.facilities {
+  margin-left: -$panel-general-space;
+  padding-top: $panel-general-space;
+
   > span.t {
-    padding-bottom: 3px;
+    color: $theme-blue;
+    display: block;
+    margin-bottom: $panel-general-space;
+    margin-top: $panel-general-space;
   }
   .summary {
     @include list-unstyled();
+    overlow: hidden;
     li {
       border-left: 3px solid $panel-section-border;
       color: $theme-blue;
       float: left;
       font-weight: $title-weight;
-      height: $panel-general-space * 5;
-      line-height: 100%;
+      height: $panel-general-space * 4.5;
+      line-height: $normal-line-height - 10;
       margin-bottom: $panel-general-space;
       padding-left: $panel-general-space;
       text-transform: uppercase;
       vertical-align: middle;
       width: 40%;
+      &:nth-child(2) {
+      margin-left: $panel-general-space - 10;
+      width: 40%;
+    }
     } 
   }
 }
 .point-label {
   clear: both;
-  color: $share-icon-color;
+  color: $theme-blue;
   display: block;
+  font-size: 13px;
   font-weight: $title-weight;
   margin-bottom: $panel-general-space / 2;
+  text-transform: uppercase;
+}
+
+.region-facility-label {
+  color: $theme-blue;
+  display: block;
+  font-size: $popup-label-text - 1;
+  line-height: $normal-line-height - 10;
+}
+
+.region-facility-stat {
+  color: $dark-text;
+  display: block;
+  font-size: $medium-number + 5;
+  font-weight: $title-weight;
+  margin-top: $panel-general-space / 2;
+}
+
+.region-label {
+  font-size: $medium-text;
   text-transform: none;
 }

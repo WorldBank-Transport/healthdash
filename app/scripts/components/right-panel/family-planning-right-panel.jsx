@@ -4,6 +4,8 @@ import ViewModes from '../../constants/view-modes';
 import MetricSummary from '../charts/metric-summary-chart';
 import { Result } from '../../utils/functional';
 import T from '../misc/t';
+import { Maybe, _ } from 'results';
+import AsyncState from '../../constants/async';
 
 const FamilyPlanningRightPanel = React.createClass({
   propTypes: {
@@ -11,14 +13,53 @@ const FamilyPlanningRightPanel = React.createClass({
     data: PropTypes.array,  // injected
     dataType: PropTypes.instanceOf(DataTypes.OptionClass),  // injected
     metrics: PropTypes.object, // injected
+    selected: PropTypes.instanceOf(Maybe.OptionClass),  // injected
     setSelected: PropTypes.func,
     viewMode: PropTypes.instanceOf(ViewModes.OptionClass),  // injected
   },
+
   getFamilyPlanningTotal(key) {
     return Result.sumBy(this.props.data, key)[key] || 0;
   },
 
-  render() {
+  renderLoading() {
+    return (<h3><T k="right-panel.loading"/></h3>);
+  },
+
+  renderNotFound(id) {
+    return (<h3>{id} <T k="right-panel.not-found"/></h3>);
+  },
+
+  renderRegion(selected) {
+    const metrics = this.props.metrics;
+    return AsyncState.match(selected.loadState, {
+      Finished: () => Maybe.match(selected.details, {
+        None: () => this.renderNotFound(selected.id),
+        Some: details => Maybe.match(details.properties.data, {
+          None: () => this.renderNotFound(details.id),
+          Some: data => {
+            return (
+              <div className="container other-selections">
+                <h3><T k="data-type.family-planning"/> {selected.id}</h3>
+                <ul className="family-planning">
+                {Object.keys(metrics)
+                  .filter((m, i) => data[i].hasOwnProperty(m))
+                  .map((metric, index) => (
+                    <li>
+                      <MetricSummary icon="family.png" metric={data[index][metric]} title={`chart.family-planning-${metric}.title`}/>
+                    </li>
+                  ))
+                }
+                </ul>
+              </div>);
+          },
+        }),
+      }),
+      [_]: this.renderLoading,
+    });
+  },
+
+  renderNational() {
     const data = this.props.data;
     return (
       <div className="container other-selections">
@@ -34,6 +75,13 @@ const FamilyPlanningRightPanel = React.createClass({
       }
       </ul>
       </div>);
+  },
+
+  render() {
+    return Maybe.match(this.props.selected, {
+      None: () => this.renderNational(),
+      Some: (selected) => this.renderRegion(selected),
+    });
   },
 });
 

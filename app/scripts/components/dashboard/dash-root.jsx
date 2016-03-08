@@ -112,13 +112,13 @@ const DashRoot = React.createClass({
       viewMode: this.state.view.viewMode,
       metrics: this.state.metrics,
       selected: this.state.selected,
+      hrwDensities: this.state.hrwDensities,
     };
     const mapChild = React.cloneElement(this.props.children, {
       ...propsForChildren,
       polygonsData: this.state.polygonsData,
       population: this.state.population,
       hover: this.state.hover,
-      hrwDensities: this.state.hrwDensities,
       select,
       deselect,
     });
