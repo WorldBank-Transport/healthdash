@@ -4,12 +4,18 @@
 @import '../config/list';
 
 .flyout {
+
   overflow-y: auto;
   opacity: 1;
   position: absolute;
   right: 0;
   top:0;
   width: $flyout-width;
+
+    @include up-to($tablet-alt) {
+      overflow: hidden;
+      width: $flyout-width;
+    }
 
   .flyout-inner {
     background: $map-overlay;
@@ -18,13 +24,18 @@
     position: relative;
     z-index: 10;
 
+    @include up-to($tablet-alt) {
+      overflow: hidden;
+      width: $flyout-width;
+    }
+
     @include up-to($tablet-landscape) {
       margin-right: $flyout-table-h-position;
     }
 
     @include up-to($tablet-portrait) {
       right: 0;
-      width: $flyout-width + 30;
+      width: $flyout-width;
       z-index: 11;
     }
 
@@ -91,7 +102,7 @@
   clear: both;
   color: $text-color;
   font-weight: normal;
-  line-height: $normal-line-height - 10;
+  line-height: $normal-line-height - 8;
   margin-top: $panel-general-space / 4;
   text-transform: capitalize;
 }
@@ -101,7 +112,7 @@
   color: $theme-blue;
   font-size: $medium-number;
   font-weight: $title-weight;
-  margin-top: -6px;
+  margin-top: -4px;
   text-transform: uppercase;
 }
 
