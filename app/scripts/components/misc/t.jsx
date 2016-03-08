@@ -237,7 +237,7 @@ const allTranslations = {
     'drilldown.districts': 'District',
     'drilldown.wards': 'Ward',
     'drilldown.points': 'Point',
-    'drilldown.back': 'Back To National',
+    'drilldown.back': 'Back To Facilities',
 
     'flyout.id': 'Facility ID',
     'flyout.facility-name': 'Facility Name',

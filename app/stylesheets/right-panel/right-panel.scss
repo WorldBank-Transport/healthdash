@@ -216,6 +216,12 @@
   }
   h3 {
     color: $theme-blue;
+    &.panel-system-message {
+      color: $text-color;
+      display:block;
+      font-size: $medium-text;
+      margin: $panel-general-space 0 0 0;
+    }
   }
 }
 
@@ -352,11 +358,6 @@ select {
 .region-label {
   font-size: $medium-text;
   text-transform: none;
-}
-
-.panel-system-message {
-  display:block;
-  margin: $panel-general-space*2 0 $panel-general-space*2 $panel-general-space*2
 }
 
 .density {
