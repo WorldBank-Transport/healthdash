@@ -18,9 +18,20 @@
     margin-bottom: 5px;
     width: 40%;
 
+    @include up-to($tablet-alt) {
+      width: $full-width;
+    }
+
+
+    .medium-number {
+      color: $dark-text;
+    }
+
     .context {
+      color: $theme-blue;
       font-size: 14px;
       font-weight: $title-weight;
+      text-transform: uppercase;
     }
   }
 
@@ -60,6 +71,10 @@
     float: left;
     margin-right: 10px;
     width: 42%;
+
+     @include up-to($tablet-alt) {
+      width: $full-width;
+    }
 
     .group-content {
       margin-top: -4px;

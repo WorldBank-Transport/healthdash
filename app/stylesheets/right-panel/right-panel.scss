@@ -219,10 +219,17 @@
     &.panel-system-message {
       color: $text-color;
       display:block;
-      font-size: $medium-text;
-      margin: $panel-general-space 0 0 0;
+      font-size: $medium-text - 5;
+      margin: $panel-general-space 0 $panel-general-space $panel-general-space * 2;
     }
   }
+}
+
+.panel-system-message {
+  color: $text-color;
+  display:block;
+  font-size: $medium-text - 2;
+  margin: $panel-general-space 0 $panel-general-space $panel-general-space * 2;
 }
 
 select {
@@ -297,7 +304,9 @@ select {
     width: $full-width - 58;
 
     &.region-section-label {
+      border-left: 0;
       color: $theme-blue;
+      height: $panel-general-space * 2;
       width: $full-width;
     }
 
@@ -374,6 +383,10 @@ select {
       position: relative;
       text-transform: uppercase;
       width: 42%;
+
+        @include up-to($tablet-alt) {
+          width: $full-width;
+        }
 
       .density-label {
         color: $theme-blue;
