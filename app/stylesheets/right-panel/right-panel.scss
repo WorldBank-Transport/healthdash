@@ -28,13 +28,14 @@
 
 
   .container {
-    padding: $panel-general-space * 2 $panel-general-space * 2 0 $panel-general-space * 2;
+    padding: $panel-general-space / 5 $panel-general-space * 2 0 $panel-general-space * 2;
   }
 
   .search-wrapper {
     border-bottom: 1px solid $grey-light;
     border-top: 1px solid $grey-light;
-    margin: 0;
+    margin-top: $panel-general-space + 5;
+    position: relative;
 
     .fa {
       color: $grey-light-alt;
@@ -45,25 +46,25 @@
       border: 1px solid $bg-color;
       font-size: $medium-text;
       font-weight: $title-weight;
-      height: 20px;
+      height: $panel-general-space * 2;
       outline: none;
-      padding: 7px 0;
+      padding: $panel-general-space - 3 0;
       text-transform: uppercase;
-      width: $full-width + 30;
+      width: $full-width + 50;
     }
     .search-field-help {
       color: $grey-light;
       font-size: $medium-text;
       font-weight: $title-weight;
-      left: 45px;
+      left: $panel-general-space + 20;
       position: absolute;
-      top: 28px;
+      top: $panel-general-space - 2;
     }
   }
   .search-help {
     color: $grey-light-alt;
     font-size: $small-text;
-    margin-left: $base-unit * 2.5;
+    margin-left: $base-unit * 3;
     margin-top: $base-unit / 3;
   }
   .panel-icon {
@@ -75,23 +76,25 @@
 
   .row {
 
+    overflow: hidden;
+
     &.facilities-overview {
       clear: both;
       margin-bottom: 0;
 
       .metric-summary {
-        margin-bottom: 10px;
+        margin-bottom: $panel-general-space;
         padding-left: $panel-general-space;
-        width: 100%;
+        width: $full-width;
 
         .chart-title {
           font-size: 20px;
         }
 
         .panel-icon {
-          height: 60px;
-          margin-right: 10px;
-          width: 60px;
+          height: $panel-general-space * 6;
+          margin-right: $panel-general-space;
+          width: $panel-general-space * 6;
         }
 
         .medium-number {
@@ -116,7 +119,7 @@
 
       ul {
         @include list-unstyled();
-        margin-top: 3px;
+        margin-top: $panel-general-space - 7;
 
         li {
           float: left;
@@ -183,26 +186,50 @@
   }
 }
 
-.back-link {
-  background: none;
-  border: 0;
-  color: $theme-blue;
-  display: block;
-  font-size: $medium-text;
-  outline: none;
-  padding: 0 $panel-general-space * 2 0 0;
-  margin-top: 20px;
-  margin-bottom: -40px;
-  &:hover {
-    color: $hover-color;
+.back-link-wrapper {
+  border-bottom: 2px solid $grey-light;
+  overflow: hidden;
+  height: 42px;
+
+  button.back-link {
+   background: none;
+   border: 0;
+   color: $theme-blue;
+   display: block;
+   font-size: $medium-text;
+   outline: none;
+   padding: 0 $panel-general-space * 2 0 0;
+   margin-top: $panel-general-space;
+   //margin-bottom: -40px;
+   width: $full-width;
+    &:hover {
+     color: $hover-color;
   }
+}
+
 }
 
 .other-selections {
   overflow: hidden;
   .metric-summary {
-    width: 100%;
+    width: $full-width;
   }
+  h3 {
+    color: $theme-blue;
+    &.panel-system-message {
+      color: $text-color;
+      display:block;
+      font-size: $medium-text - 5;
+      margin: $panel-general-space 0 $panel-general-space $panel-general-space * 2;
+    }
+  }
+}
+
+.panel-system-message {
+  color: $text-color;
+  display:block;
+  font-size: $medium-text - 2;
+  margin: $panel-general-space 0 $panel-general-space $panel-general-space * 2;
 }
 
 select {
@@ -216,17 +243,17 @@ select {
   color: $text-color;
   font-size: $small-text + 4;
   font-weight: $title-weight;
-  height: 30px;
+  height: $panel-general-space * 3;
   outline: none;
   padding: 4px 0;
-  width: 20%;
+  width: $full-width / 5;
   &:focus {
     outline: none;
   }
 }
 .back-symbol {
   font-size: 14px;
-  margin-right: 5px;
+  margin-right: $panel-general-space / 2;
 }
 .back-national {
   background: $bg-color;
@@ -271,42 +298,28 @@ select {
     line-height: $normal-line-height - 10;
     margin-bottom: $panel-general-space;
     padding-left: $panel-general-space;
+    padding-right: $panel-general-space * 1.3;
     text-transform: uppercase;
     vertical-align: middle;
-    width: 40%;
+    width: $full-width - 58;
 
-    &.last {
-      margin-top: -$panel-general-space;
-    }
     &.region-section-label {
       border-left: 0;
       color: $theme-blue;
-      height: auto;
-      margin-left: $panel-general-space - 7;
-      margin-bottom: $panel-general-space + 5;
-    }
-    &:first-child {
+      height: $panel-general-space * 2;
       width: $full-width;
     }
-    &:nth-child(2) {
-      margin-left: $panel-general-space + 2;
-      width: 40%;
+
+    &.facility-group {
+    border-left: 0;
+    height: auto;
+    width: $full-width;
     }
-    &:nth-child(4) {
-      border-left: 0px;
-      height: 100%;
-      width: $full-width;
+
+    &.last {
+      //margin-top: -$panel-general-space;
     }
-    &:nth-child(5) {
-      border-left: 0px;
-      height: 100%;
-      width: $full-width;
-    }
-    &:nth-child(6) {
-      border-left: 0px;
-      height: 100%;
-      width: $full-width;
-    }
+    
   }
 }
 .facilities {
@@ -321,31 +334,16 @@ select {
   }
   .summary {
     @include list-unstyled();
-    overlow: hidden;
-    li {
-      border-left: 3px solid $panel-section-border;
-      color: $theme-blue;
-      float: left;
-      font-weight: $title-weight;
-      height: $panel-general-space * 4.5;
-      line-height: $normal-line-height - 10;
-      margin-bottom: $panel-general-space;
-      padding-left: $panel-general-space;
-      text-transform: uppercase;
-      vertical-align: middle;
-      width: 40%;
-      &:nth-child(2) {
-      margin-left: $panel-general-space - 10;
-      width: 40%;
-    }
-    } 
+    display:block;
+    margin-left: -12px;
+    overflow: hidden;
   }
 }
 .point-label {
   clear: both;
   color: $theme-blue;
   display: block;
-  font-size: 13px;
+  font-size: $metric-title-big;
   font-weight: $title-weight;
   margin-bottom: $panel-general-space / 2;
   text-transform: uppercase;
@@ -363,10 +361,42 @@ select {
   display: block;
   font-size: $medium-number + 5;
   font-weight: $title-weight;
-  margin-top: $panel-general-space / 2;
+  margin-top: $panel-general-space / 1.5;
 }
 
 .region-label {
   font-size: $medium-text;
   text-transform: none;
+}
+
+.density {
+  ul {
+    @include list-unstyled();
+
+    .density-list {
+      color: $dark-text;
+      float: left;
+      font-size: $medium-number + 5;
+      font-weight: bold;
+      height: $panel-general-space * 7.5;
+      padding-right: $panel-general-space - 2;
+      position: relative;
+      text-transform: uppercase;
+      width: 42%;
+
+        @include up-to($tablet-alt) {
+          width: $full-width;
+        }
+
+      .density-label {
+        color: $theme-blue;
+        display: block;
+        font-size: $panel-general-space - 2;
+        font-weight: $title-weight;
+        line-height: 9px;
+        margin-bottom: $panel-general-space - 7;
+        text-transform: uppercase;
+      }
+    }
+  }
 }

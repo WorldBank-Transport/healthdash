@@ -133,9 +133,6 @@ const FacilitiesRightPanel = React.createClass({
     return (
       <div>
         <div className="row">
-          <button className="back-national" onClick={this.props.ensureDeselect}><span className="back-symbol">&#171;</span><T k="right-panel.button.back"/></button>
-        </div>
-        <div className="row">
           <ul className="point-selected">
             <li><span className="point-label"><T k="flyout.facility-name"/>:</span>{details.FACILITY_NAME}</li>
             <li><span className="point-label"><T k="flyout.type"/>:</span> {details['FACILITY TYPE']}</li>
@@ -168,9 +165,7 @@ const FacilitiesRightPanel = React.createClass({
   renderPolygonSelected(details) {
     return (
       <div>
-        <div className="row">
-          <button className="back-national" onClick={this.props.ensureDeselect}><span className="back-symbol">&#171;</span><T k="right-panel.button.back"/></button>
-        </div>
+        
         <div className="row">
           {
             Maybe.match(details.properties.data, {
@@ -187,9 +182,9 @@ const FacilitiesRightPanel = React.createClass({
                     <li className="region-section-label"><span className="region-label"><T k="flyout.region"/></span>: {details.id}</li>
                     <li><span className="region-facility-label"><T k="flyout.facilities.length"/>:</span> <span className="region-facility-stat"><FormattedNumber value={data.length} /></span></li>
                     <li><span className="region-facility-label"><T k="flyout.facilities.pupulation"/>:</span> <span className="region-facility-stat"><FormattedNumber maximumFractionDigits="0" value={popPoly[0].TOTAL / data.length} /></span></li>
-                    <li>{this.renderSum(types, 'flyout.facilities.type', data.length)}</li>
-                    <li className="last">{this.renderSum(status, 'flyout.facilities.status', data.length)}</li>
-                    <li className="last">{this.renderSum(ownership, 'flyout.facilities.ownership', data.length)}</li>
+                    <li className="facility-group">{this.renderSum(types, 'flyout.facilities.type', data.length)}</li>
+                    <li className="facility-group">{this.renderSum(status, 'flyout.facilities.status', data.length)}</li>
+                    <li className="last facility-group">{this.renderSum(ownership, 'flyout.facilities.ownership', data.length)}</li>
                   </ul>
                 );
               },
