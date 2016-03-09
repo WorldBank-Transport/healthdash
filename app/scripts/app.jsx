@@ -77,7 +77,7 @@ React.render((
         <Route path="share/:shareId/" component={Homepage} onEnter={setShare} />
       </Route>
 
-      <Route path="/dash/" component={DashRoot} >
+      <Route path="/dash/" component={DashRoot} onEnter={intlPoly}>
         <Route path="points/:dataType/" component={PointsMap} onEnter={setPointsView} />
         <Route path=":polyType/:dataType/" component={PolygonsMap} onEnter={setPolysView} />
       </Route>
