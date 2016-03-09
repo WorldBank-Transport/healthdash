@@ -68,7 +68,7 @@ function intlPoly() {
 
 React.render((
   <Router history={history}>
-    <Route component={Root}>
+    <Route component={Root} onEnter={intlPoly}>
 
       <Route component={StaticLayout}>
         <Route path="/" component={Homepage} />
@@ -77,7 +77,7 @@ React.render((
         <Route path="share/:shareId/" component={Homepage} onEnter={setShare} />
       </Route>
 
-      <Route path="/dash/" component={DashRoot} onEnter={intlPoly} >
+      <Route path="/dash/" component={DashRoot} >
         <Route path="points/:dataType/" component={PointsMap} onEnter={setPointsView} />
         <Route path=":polyType/:dataType/" component={PolygonsMap} onEnter={setPolysView} />
       </Route>
