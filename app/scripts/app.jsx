@@ -67,7 +67,7 @@ function intlPoly() {
 }
 
 React.render((
-  <Router history={history}>
+  <Router history={history} onEnter={intlPoly}>
     <Route component={Root} onEnter={intlPoly}>
 
       <Route component={StaticLayout}>
