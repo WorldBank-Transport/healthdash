@@ -43,12 +43,12 @@ const HealthWorkersRightPanel = React.createClass({
 
   renderDensities(selectedRegion) {
     return (
-      <div>
-        <span className="flyout-label"><T k="flyout.workers.densities"/></span>
+      <div className="density">
+        <h3><T k="flyout.workers.densities"/></h3>
         <ul>
           {this.props.hrwDensities
             .filter(item => item['HEALTH WORKERS'] !== 'TOTAL POPULATION')
-            .map(item => (<li><span className="flyout-label">{item['HEALTH WORKERS']}</span><span className="flyout-data"><FormattedNumber value={item[selectedRegion]}/></span></li>))
+            .map(item => (<li className="metric-summary density-list"><span className="density-label">{item['HEALTH WORKERS']}</span><span className="density-value"><FormattedNumber value={item[selectedRegion]}/></span></li>))
           }
         </ul>
       </div>
@@ -56,11 +56,11 @@ const HealthWorkersRightPanel = React.createClass({
   },
 
   renderLoading() {
-    return (<h3><T k="right-panel.loading"/></h3>);
+    return (<h3 className="panel-system-message"><T k="right-panel.loading"/></h3>);
   },
 
   renderNotFound(id) {
-    return (<h3>{id} <T k="right-panel.not-found"/></h3>);
+    return (<h3 className="panel-system-message">{id} <T k="right-panel.not-found"/></h3>);
   },
 
   renderNational() {

@@ -237,7 +237,7 @@ const allTranslations = {
     'drilldown.districts': 'District',
     'drilldown.wards': 'Ward',
     'drilldown.points': 'Point',
-    'drilldown.back': 'Back To National',
+    'drilldown.back': 'Back To Facilities',
 
     'flyout.id': 'Facility ID',
     'flyout.facility-name': 'Facility Name',
@@ -317,8 +317,8 @@ const allTranslations = {
     'nav.home': 'Mwanzo',
     'nav.data': 'Data',
     'nav.speak-out': 'Maoni',
-    'nav.edudash': 'Dashibody ya Elimu',
-    'nav.waterdash': 'Dashibody ya Maji',
+    'nav.edudash': 'Dashibodi ya Elimu',
+    'nav.waterdash': 'Dashibodi ya Maji',
     'data.external.govopendataportal': 'Government Open Data Portal',
 
 
@@ -377,6 +377,8 @@ const allTranslations = {
     'dash.regions': 'Mikoa',
     'dash.districts': 'Wilaya',
     'dash.wards': 'Kata',
+    'dash.points': 'Vituo',
+
 
     'charts.toggle.closed': 'Tazama Chati',
     'charts.toggle.opened': 'Ficha Chati',
@@ -401,7 +403,7 @@ const allTranslations = {
     'data-type.opd': 'OPD: Idara ya wagonjwa wa nje',
     'data-type.tetanous': 'Chanjo ya pepopunda',
     'data-type.hiv-center': 'HIV Centers',
-    'data-type.facilities': 'Vituo vya matibabu ya virusi vya UKIMWI',
+    'data-type.facilities': 'Vituo vya matibabu',
     'data-type.others': 'Chagua Zinginezo',
 
     'chart.click': 'Bonyeza',

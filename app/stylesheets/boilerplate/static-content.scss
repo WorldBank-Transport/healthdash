@@ -7,37 +7,42 @@
 // homepage
 .homebanner {
   @include up-to($tablet-landscape) {
-    min-width: 100%;
+    min-width: $full-width;
     position: absolute;
   }
 
   bottom: 0;
   display: flex;
   float: left;
-  height: 100%;
+  height: $full-width;
   left: 0;
   max-width: 45%;
-  min-height: 100%;
+  min-height: $full-width;
   overflow: hidden;
   position: absolute;
   top: 0;
 }
 
 .homebanner {
+  width: 55%;
   img {
     flex-shrink: 0;
-    min-height: 100%;
-    min-width: 100%;
+    min-height: $full-width;
+    min-width: $full-width;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    let:0;
 
     @include up-to($tablet-landscape) {
       height: auto;
-      min-height: 100%;
+      min-height: $full-width;
       width: auto;
     }
 
     @include up-to($tablet-portrait) {
-      height: 100%;
-      min-height: 100%;
+      height: $full-width;
+      min-height: $full-width;
       margin-top: $mobile-top-content-position - 3;
     }
   }
@@ -127,7 +132,7 @@
 
   iframe {
     border: 0;
-    height: 100%;
+    height: $full-width;
     left: 0;
     position: absolute;
     top: 0;
