@@ -150,6 +150,13 @@ const allTranslations = {
     'metric.summary-list.OTHERS': 'Others',
     'metric.summary-list.HIV/AIDS': 'HIV/AIDS',
     'metric.summary-list.ANAEMIA': 'Anemia',
+    'metric.summary-list.TUBERCULOSIS': 'Tuberculosis',
+    'metric.summary-list.CARDIAC FAILURE': 'Cardiac Failure',
+    'metric-summary-list.DIABETES MELLITUS': 'Diabetes Mellitus',
+    'metric.summary-list.INTESTINAL WORMS': 'Intestinal Worms',
+    'metric.summary-list.POISONING': 'Poisoning',
+    'metric.summary-list.ACUTE RESPIRATORY INFECTIONS': 'Acute respiratory infections',
+
 
     'chart.deliveries-barchart.title': 'Deliveries by Type',
     'chart.deliveries-barchart.helptext': 'Click on a delivery type to toggle its visibility.',
@@ -317,8 +324,8 @@ const allTranslations = {
     'nav.home': 'Mwanzo',
     'nav.data': 'Data',
     'nav.speak-out': 'Maoni',
-    'nav.edudash': 'Dashibodi ya Elimu',
-    'nav.waterdash': 'Dashibodi ya Maji',
+    'nav.edudash': 'Dashibodi ya elimu',
+    'nav.waterdash': 'Dashibodi ya afya',
     'data.external.govopendataportal': 'Government Open Data Portal',
 
 
@@ -445,6 +452,13 @@ const allTranslations = {
     'metric.summary-list.OTHERS': 'Nyinginezo',
     'metric.summary-list.HIV/AIDS': 'HIV/AIDS',
     'metric.summary-list.ANAEMIA': 'Upungufu wa data',
+    'metric.summary-list.TUBERCULOSIS': 'Kifua kikuu',
+    'metric.summary-list.CARDIAC FAILURE': 'Moyo kushindwa',
+    'metric.summary-list.DIABETES MELLITUS': 'Diabetes Mellitus',
+    'metric.summary-list.INTESTINAL WORMS': 'Minyoo',
+    'metric.summary-list.POISONING': 'Kupewa sumu',
+    'metric.summary-list.ACUTE RESPIRATORY INFECTIONS': 'Maambukizi makali ya kupumua',
+
 
     'chart.deliveries-barchart.title': 'Waliojifungua (aina mbalimbali)',
     'chart.deliveries-barchart.helptext': 'Bonyeza kialamishi ili kuonyesha au kuficha data kwenye chati.',
