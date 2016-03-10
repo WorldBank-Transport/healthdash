@@ -14,7 +14,7 @@
   .group-content {
     @include bordered();
     float: left;
-    height: 65px;
+    height: 70px;
     margin-bottom: 5px;
     width: 40%;
 
@@ -29,8 +29,9 @@
 
     .context {
       color: $theme-blue;
-      font-size: 14px;
+      font-size: $popup-default-text;
       font-weight: $title-weight;
+      line-height: $normal-line-height;
       text-transform: uppercase;
     }
   }
