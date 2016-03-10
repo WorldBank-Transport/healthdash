@@ -165,7 +165,6 @@ const FacilitiesRightPanel = React.createClass({
   renderPolygonSelected(details) {
     return (
       <div>
-        
         <div className="row">
           {
             Maybe.match(details.properties.data, {
