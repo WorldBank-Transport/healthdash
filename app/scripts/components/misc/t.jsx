@@ -156,7 +156,9 @@ const allTranslations = {
     'metric.summary-list.INTESTINAL WORMS': 'Intestinal Worms',
     'metric.summary-list.POISONING': 'Poisoning',
     'metric.summary-list.ACUTE RESPIRATORY INFECTIONS': 'Acute respiratory infections',
-
+    'metric.summary-list.DIARRHOEAL DISEASES': 'Diarrheal disease',
+    'metric.summary-list.PERI-NATAL AND NEONATA CONDITIONS': 'Peri-Natar and Neonata Conditions',
+    'metric.summary-list.SKIN INFECTIONS': 'Skin infections',
 
     'chart.deliveries-barchart.title': 'Deliveries by Type',
     'chart.deliveries-barchart.helptext': 'Click on a delivery type to toggle its visibility.',
@@ -447,17 +449,20 @@ const allTranslations = {
     'chart.death-deseases.title': 'Sababu 5 kuu za vifo',
     'metric.summary-list.MALARIA- SEVERE, COMPLICATED': 'Malaria',
     'metric.summary-list.MALARIA- SEVERE COMPLICATED': 'Malaria',
-    'metric.summary-list.MALARIA- UNCOMPLICATED': 'Malaria Uncomplicated',
+    'metric.summary-list.MALARIA- UNCOMPLICATED': 'Malaria',
     'metric.summary-list.PNEUMONIA': 'Nimonia',
     'metric.summary-list.OTHERS': 'Nyinginezo',
     'metric.summary-list.HIV/AIDS': 'HIV/AIDS',
     'metric.summary-list.ANAEMIA': 'Upungufu wa data',
     'metric.summary-list.TUBERCULOSIS': 'Kifua kikuu',
     'metric.summary-list.CARDIAC FAILURE': 'Moyo kushindwa',
-    'metric.summary-list.DIABETES MELLITUS': 'Diabetes Mellitus',
+    'metric.summary-list.DIABETES MELLITUS': 'Ugonjwa wa kisukari',
     'metric.summary-list.INTESTINAL WORMS': 'Minyoo',
     'metric.summary-list.POISONING': 'Kupewa sumu',
     'metric.summary-list.ACUTE RESPIRATORY INFECTIONS': 'Maambukizi makali ya kupumua',
+    'metric.summary-list.DIARRHOEAL DISEASES': 'Magonjwa ya kuharisha',
+    'metric.summary-list.PERI-NATAL AND NEONATA CONDITIONS': 'maambukizi kabla na baada ya kujifungua; pamoja na ya mtoto aliyezaliwa',
+    'metric.summary-list.SKIN INFECTIONS': 'Maambukizi ya ngozi',
 
 
     'chart.deliveries-barchart.title': 'Waliojifungua (aina mbalimbali)',
