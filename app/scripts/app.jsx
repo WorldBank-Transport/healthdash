@@ -72,7 +72,7 @@ React.render((
 
       <Route component={StaticLayout}>
         <Route path="/" component={Homepage} />
-        <Route path="data/" handler={Data} />
+        <Route path="data/" component={Data} />
         <Route path="speak-out/" component={SpeakOut} />
         <Route path="share/:shareId/" component={Homepage} onEnter={setShare} />
       </Route>
