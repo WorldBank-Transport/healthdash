@@ -106,9 +106,9 @@
 
   p {
     color: $text-color;
-    font-size: $static-content-text;
+    font-size: $static-content-text - 3;
     font-weight: $static-content-weight;
-    line-height: 21px;
+    line-height: $normal-line-height + 10;
     text-align: left;
   }
   .faq-list {
@@ -129,7 +129,7 @@
 
       .panel-title {
         color: $theme-blue;
-        font-size: $static-content-text - 2;
+        font-size: $static-content-text - 4;
         font-weight: $title-weight;
         &:hover {
           color: $hover-color;
@@ -137,6 +137,7 @@
         }
         .fa {
           margin-right: $general-content-padding / 2;
+          position: relative;
         }
       }
     }
@@ -205,4 +206,26 @@
     }
   }
 
+}
+
+.content-section {
+  h3 {
+    font-weight: $medium-font-weight + 100;
+  }
+}
+
+.dataset-links {
+  @include list-unstyled();
+  li {
+    .fa {
+      color: $theme-blue;
+      margin-right: $general-content-padding / 2;
+    }
+    a {
+      color: $theme-blue;
+      &:hover {
+        color: $hover-color;
+      }
+    }
+  }
 }

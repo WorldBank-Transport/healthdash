@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from 'react-font-awesome';
-import Footer from '../boilerplate/footer';
+import FooterStatic from '../boilerplate/footer-static';
 import T from '../misc/t';
 
 require('stylesheets/boilerplate/static-content');
@@ -58,6 +58,10 @@ const Data = React.createClass({
                 <T k="static.faq" />
               </a>
             </div>
+
+            <p><T k="static.data-content" /></p>
+
+
             <div className="content-section" id="FAQ">
               <h3><T k="static.faq.title" /></h3>
               <div className="faq-list" role="tablist">
@@ -80,13 +84,13 @@ const Data = React.createClass({
             </div>
             <div className="content-section" id="DataSources">
               <h3><T k="static.data-souces.title" /></h3>
-              <ul>
+              <ul className="dataset-links">
                 <li><Icon type="link"/><T k="static.dataset.links" /><a href="http://www.opendata.go.tz/organization/ministry-of-health-and-social">http://www.opendata.go.tz/organization/ministry-of-health-and-social</a></li>
               </ul>
             </div>
           </div>
         </div>
-        <Footer/>
+        <FooterStatic/>
       </div>
     );
   },
