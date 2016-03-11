@@ -43,8 +43,13 @@ const Data = React.createClass({
             <h2><T k="static.data-title" /></h2>
             <p><T k="static.data-content" /></p>
             <p><T k="static.data-content-second" /></p>
+
+            <div className="button-wrapper-outer">
+              <div className="button-wrapper-inner">
+
+
             <div className="button">
-              <a href="http://www.opendata.go.tz/organization/ministry-of-health-and-social">
+              <a href="http://wsww.opendata.go.tz/organization/ministry-of-health-and-social">
                 <T k="static.open-data-portal" />
               </a>
             </div>
@@ -59,7 +64,10 @@ const Data = React.createClass({
               </a>
             </div>
 
-            <p><T k="static.data-content" /></p>
+              </div>
+            </div>
+
+            <p><T k="static.data-content"/></p>
 
 
             <div className="content-section" id="FAQ">
