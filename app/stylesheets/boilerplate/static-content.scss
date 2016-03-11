@@ -109,7 +109,11 @@
     font-size: $static-content-text - 3;
     font-weight: $static-content-weight;
     line-height: $normal-line-height + 10;
-    text-align: center;
+    text-align: left;
+
+    &.text-center {
+      text-align: center;
+    }
   }
   .faq-list {
     .panel {
