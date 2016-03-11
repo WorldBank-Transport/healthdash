@@ -21,7 +21,7 @@ const TetanusRightPanel = React.createClass({
   },
 
   getTetanusValue(stats, m) {
-    return Math.round(stats[m].value || 0);
+    return m === '% TT2 VACCINATION COVERAGE' ? Math.round((stats[m].value || 0) / (stats[m].total || 1)) : Math.round(stats[m].value || 0);
   },
 
   renderLoading() {
