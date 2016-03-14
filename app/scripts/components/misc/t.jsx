@@ -131,7 +131,7 @@ const allTranslations = {
     'chart.click': 'Click',
     'chart.click.here': 'here',
     'chart.data-helptext': ' to learn more about the data. ',
-    'chart.health-facilities.title': 'Number and types of facilities',
+    'chart.health-facilities.title': 'Number and Types of Facilities',
     'chart.health-facilities.helptextdesctiption': 'Click on a facility type to toggle its visibility on the chart. Click on the name below a bar to drill down. Click on a color in a bar to drill down and see only facilities of that type.',
     'chart.health-facilities.x-axis': 'Regions',
     'chart.health-facilities.y-axis': 'Facilities',

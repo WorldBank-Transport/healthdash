@@ -13,7 +13,7 @@
       font-weight: $chart-axis-text-weight;
       text-anchor: inherit;
       transform: translate(-8px, 0) rotate(-80deg);
-    }
+    }f
     &.axis {
       &.label {
         transform: translate(15px, -30px);
@@ -46,7 +46,23 @@
 .helptext {
   display: block;
   font-size: $chart-helptext;
+  a {
+    color: $theme-blue;
+    &:hover {
+      color: $hover-color;
+    }
+  }
 }
 .chart-container {
   margin-top: $panel-general-space * 2;
 }
+
+.highcharts-button {
+  border:3px solid #f00;
+  position: absolute;
+  text {
+    color: #f00;
+  }
+}
+
+
