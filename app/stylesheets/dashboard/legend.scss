@@ -16,13 +16,17 @@
   width: auto;
   z-index: 1;  // needs to be specified >=1 to go above the map
 
+  @include up-to($tablet-landscape) {
+    bottom: 15%;
+  }
+
   .row {
     box-sizing: border-box;
     display: table;
-    font-size: 13px;
+    font-size: $medium-text - 2;
     line-height: 24px;
     table-layout: fixed;
-    width: 100%;
+    width: $full-width;
   }
 
   .legend-block {
