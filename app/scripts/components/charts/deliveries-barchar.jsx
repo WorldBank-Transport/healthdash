@@ -63,7 +63,7 @@ const DeliveriesBarChart = React.createClass({
         type: 'column',
         renderTo: 'deliveries-barchart',
       },
-
+ 
       title: {
         text: '',
       },

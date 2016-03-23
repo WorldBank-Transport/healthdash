@@ -18,6 +18,14 @@ const Data = React.createClass({
     };
   },
 
+  componentDidMount() {
+    const id = this.props.params.datasetId;
+    if (id) {
+      const element = document.getElementById(id);
+      element.scrollIntoView(true);
+    }
+  },
+
   toogle(index, _this) {
     return () => {
       _this.replaceState({
@@ -43,27 +51,23 @@ const Data = React.createClass({
             <h2><T k="static.data-title" /></h2>
             <p><T k="static.data-content" /></p>
             <p><T k="static.data-content-second" /></p>
-
             <div className="button-wrapper-outer">
               <div className="button-wrapper-inner">
-
-
-            <div className="button">
-              <a href="http://wsww.opendata.go.tz/organization/ministry-of-health-and-social">
-                <T k="static.open-data-portal" />
-              </a>
-            </div>
-            <div className="button">
-              <a onClick={this.scrollTo('DataSources')}>
-                <T k="static.data-souces" />
-              </a>
-            </div>
-            <div className="button">
-              <a onClick={this.scrollTo('FAQ')}>
-                <T k="static.faq" />
-              </a>
-            </div>
-
+                <div className="button">
+                  <a href="http://wsww.opendata.go.tz/organization/ministry-of-health-and-social" target="_blank">
+                    <T k="static.open-data-portal" />
+                  </a>
+                </div>
+                <div className="button">
+                  <a onClick={this.scrollTo('FAQ')}>
+                    <T k="static.faq" />
+                  </a>
+                </div>
+                <div className="button">
+                  <a onClick={this.scrollTo('DataSources')}>
+                    <T k="static.data-souces" />
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -93,7 +97,7 @@ const Data = React.createClass({
             <div className="content-section" id="DataSources">
               <h3><T k="static.data-souces.title" /></h3>
               <ul className="dataset-links">
-                <li><Icon type="link"/><T k="static.dataset.links" /><a href="http://www.opendata.go.tz/organization/ministry-of-health-and-social">http://www.opendata.go.tz/organization/ministry-of-health-and-social</a></li>
+                <li><Icon type="link"/><T k="static.dataset.links" /><a href="http://www.opendata.go.tz/organization/ministry-of-health-and-social" target="_blank">http://www.opendata.go.tz/organization/ministry-of-health-and-social</a></li>
               </ul>
             </div>
           </div>
