@@ -9,7 +9,7 @@ const ChartDataLink = React.createClass({
   render() {
     return (
       <span>
-        <T k="chart.click" /> <Link activeClassName="active" to="/data/"><T k="chart.click.here" /></Link> <T k="chart.data-helptext" />
+        <T k="chart.click" /> <Link activeClassName="active" to="/data/DataSources"><T k="chart.click.here" /></Link> <T k="chart.data-helptext" />
       </span>
     );
   },
