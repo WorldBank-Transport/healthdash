@@ -13,6 +13,8 @@ body {
 
 .header {
   height: $header-height;
+  padding-left: $header-mobile-space - 5;
+  padding-right: $header-mobile-space - 5;
 }
 
 .main {

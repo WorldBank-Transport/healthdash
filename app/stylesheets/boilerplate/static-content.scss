@@ -149,6 +149,7 @@
       line-height: $default-line-height - 10;
       padding-bottom: 0;
       text-align: left;
+      margin-top: -$content-padding-vert/2;
 
       .panel-title {
         color: $theme-blue;
