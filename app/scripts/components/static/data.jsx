@@ -106,6 +106,7 @@ const Data = React.createClass({
                 <li id="opd"><Icon type="link"/><a href="http://www.opendata.go.tz/dataset/idadi-ya-magonjwa-kutoka-idara-ya-wagonjwa-wa-nje-kwa-mikoa" target="_blank"><T k="static.link.opd" /></a></li>
                 <li id="tetanus"><Icon type="link"/><a href="http://www.opendata.go.tz/dataset/number-and-percentage-of-pregnant-women-received-two-or-more-tetanus-toxoid-vaccine-tt2-by-region" target="_blank"><T k="static.link.tetanous" /></a></li>
                 <li id="hiv"><Icon type="link"/><a href="http://www.opendata.go.tz/dataset/list-of-hiv-care-and-treatment-centre-ctc-by-district" target="_blank"><T k="static.link.hiv" /></a></li>
+                <li id="tz-population"><Icon type="link"/><a href="https://data.hdx.rwlabs.org/dataset/2012-census-tanzania-wards-shapefiles" target="_blank"><T k="static.dataset.tz-population" /></a></li>
               </ul>
             </div>
           </div>

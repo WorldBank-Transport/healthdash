@@ -53,6 +53,7 @@ const allTranslations = {
     'static.link.opd': 'Number Of Outpatient Department Diagnoses By Region',
     'static.link.tetanous': 'Number and percentage of pregnant women received two or more Tetanus Toxoid',
     'static.link.hiv': 'List Of HIV Care And Treatment Centre(CTC)',
+    'static.dataset.tz-population': '2012 Census Tanzania Ward Shape files',
 
     'lang.en': 'English',
     'lang.sw-tz': 'Kiswahili',
@@ -387,6 +388,7 @@ const allTranslations = {
     'static.link.opd': 'Idadi Ya Magonjwa Kutoka Idara Ya Wagonjwa Wa Nje Kwa Mikoa',
     'static.link.tetanous': 'Idadi Na Asilimia Ya Wajawazito Waliopata Chanjo Ya Pepopunda Dozi Mbili Au',
     'static.link.hiv': 'Orodha Ya Vituo Vya Matunzo Na Matibabu Kwa Watu Wanaoishi Na Virusi Vya UKIMWI',
+    'static.dataset.tz-population': 'Data ya sensa ya 2012 (Ward shapefiles)',
 
     'lang.en': 'English',
     'lang.sw-tz': 'Kiswahili',
