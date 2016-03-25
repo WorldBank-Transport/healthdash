@@ -4,6 +4,7 @@ import T from '../misc/t';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
 import ChartDataLink from '../boilerplate/chart-data-link';
+import { Color } from '../../utils/colours';
 
 require('stylesheets/charts/deliveries-barchart');
 
@@ -43,6 +44,7 @@ const DeliveriesBarChart = React.createClass({
   parseData(summary, keys, regions) {
     return keys.map(metric => {
       return {
+        color: Color.getFacilityColor(metric),
         name: metric,
         data: regions.map(region => this.getValue(summary[region], metric)),
       };
@@ -110,7 +112,7 @@ const DeliveriesBarChart = React.createClass({
             <div className="mainChart">
               <div className="deliveries-barchart">
                 <h3 className="chart-title"><T k="chart.deliveries-barchart.title" /></h3>
-                <span className="helptext"><ChartDataLink /> <T k="chart.deliveries-barchart.helptext" /></span>
+                <span className="helptext"><ChartDataLink dataId="deliveries"/> <T k="chart.deliveries-barchart.helptext" /></span>
                 <div className="chart-container" id="deliveries-barchart"></div>
               </div>
             </div>

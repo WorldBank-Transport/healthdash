@@ -94,7 +94,7 @@ const DeathByAgeChart = React.createClass({
     return (
       <div className="death-by-age-chart">
         <h3 className="chart-title"><T k="chart.death.title" /></h3>
-        <span className="helptext"><ChartDataLink /><T k="chart.death.helptext"/></span>
+        <span className="helptext"><ChartDataLink dataId="death"/><T k="chart.death.helptext"/></span>
         <div className="chart-container" id="death-by-age-chart"></div>
       </div>
     );

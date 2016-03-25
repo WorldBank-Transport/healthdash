@@ -115,7 +115,7 @@ const PopulationFacilitiesChart = React.createClass({
     return (
       <div className="health-facilities-barchar">
         <h3 className="chart-title"><T k="chart.population-facilities.title" /></h3>
-        <span className="helptext"><ChartDataLink /></span>
+        <span className="helptext"><ChartDataLink dataId="population"/></span>
         <div className="chart-container" id="population-facilities-barchar"></div>
       </div>
     );

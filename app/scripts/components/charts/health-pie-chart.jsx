@@ -86,7 +86,7 @@ const HealthPieChart = React.createClass({
     return (
       <div className="health-facilities-piechart">
         <h3 className="chart-title">{this.props.title}</h3>
-        <span className="helptext"><ChartDataLink /></span>
+        <span className="helptext"><ChartDataLink dataId="health"/></span>
         <div className="chart-container" id={this.props.divId}></div>
       </div>
     );

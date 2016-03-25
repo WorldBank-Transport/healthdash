@@ -160,7 +160,7 @@ const HealthFacilitiesChart = React.createClass({
       <div className="health-facilities-barchar">
       <div>
         <h3 className="chart-title"><T k="chart.health-facilities.title" /></h3>
-        <span className="helptext"><ChartDataLink /><T k="chart.health-facilities.helptextdesctiption" /></span>
+        <span className="helptext"><ChartDataLink dataId="health"/><T k="chart.health-facilities.helptextdesctiption" /></span>
       </div>
         <div className="chart-container" id="health-facilities-barchar"></div>
       </div>
