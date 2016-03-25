@@ -86,7 +86,7 @@ const HealthWorkerTypeChart = React.createClass({
     return (
       <div className="death-by-age-chart">
         <h3 className="chart-title"><T k="chart.worker-by-type.title" /></h3>
-        <span className="helptext"><ChartDataLink /> <T k="chart.worker-by-type.helptext" /></span>
+        <span className="helptext"><ChartDataLink dataId="workers"/> <T k="chart.worker-by-type.helptext" /></span>
         <div className="chart-container" id="worker-by-type"></div>
       </div>
     );

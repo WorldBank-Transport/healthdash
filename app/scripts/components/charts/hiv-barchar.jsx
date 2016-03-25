@@ -96,7 +96,7 @@ const HivChart = React.createClass({
             <div className="mainChart">
               <div className="hiv-facilities-barchar">
                 <h3 className="chart-title"><T k="chart.hiv-facilities.title" /></h3>
-                <span className="helptext"><ChartDataLink /></span>
+                <span className="helptext"><ChartDataLink dataId="hiv"/></span>
                 <div className="chart-container" id="hiv-facilities"></div>
               </div>
             </div>

@@ -94,7 +94,7 @@ const OpdByAgeChart = React.createClass({
     return (
       <div className="death-by-age-chart">
         <h3 className="chart-title"><T k="chart.opd-by-age-chart.title" /></h3>
-        <span className="helptext"><ChartDataLink /> <T k="chart.opd-by-age-chart.helptext" /></span>
+        <span className="helptext"><ChartDataLink dataId="opd"/> <T k="chart.opd-by-age-chart.helptext" /></span>
         <div className="chart-container" id="opd-by-age-chart"></div>
       </div>
     );

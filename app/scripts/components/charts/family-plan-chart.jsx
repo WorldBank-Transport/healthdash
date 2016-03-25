@@ -108,7 +108,7 @@ const FamilityPlanChart = React.createClass({
     return (
       <div className="family-barchart">
         <h3 className="chart-title"><T k="chart.family-areachart.title" /></h3>
-        <span className="helptext"><ChartDataLink /> <T k="chart.family-areachart.helptext" /></span>
+        <span className="helptext"><ChartDataLink dataId="family-planing" /> <T k="chart.family-areachart.helptext" /></span>
         <div className="chart-container" id="family-plan-chart"></div>
       </div>
     );

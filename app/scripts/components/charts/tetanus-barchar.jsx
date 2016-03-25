@@ -4,6 +4,7 @@ import T from '../misc/t';
 import ShouldRenderMixin from '../../utils/should-render-mixin';
 import HighCharts from 'highcharts';
 import colours from '../../utils/colours';
+import ChartDataLink from '../boilerplate/chart-data-link';
 
 require('stylesheets/charts/tetanus-barchart');
 
@@ -102,7 +103,8 @@ const TetanusBarChart = React.createClass({
     }
     return (
       <div className="tetanus-barchart">
-        <h3 className="chart-title"><T k="chart.tetanus-barchart.title" /> - <span className="chart-helptext"><T k="chart.tetanus-barchart.helptext" /></span></h3>
+        <h3 className="chart-title"><T k="chart.tetanus-barchart.title" /></h3>
+        <span className="helptext"><ChartDataLink dataId="tetanus"/></span>
         <div className="chart-container" id="tt2-chart"></div>
       </div>
 
