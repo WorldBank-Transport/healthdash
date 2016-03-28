@@ -33,14 +33,21 @@ const Share = React.createClass({
   },
 
   print() {
-    const map = document.getElementById('map1').outerHTML;
-    const finalMap = map.replace(/\/\//g, 'http://');
+    const originalMap = document.getElementById('map1').cloneNode(true);
+    const marks = originalMap.getElementsByClassName("leaflet-zoom-animated");
+    const originalMarks = document.getElementsByClassName("leaflet-zoom-animated");
+    for(let i = 0; i < marks.length; i++) {
+      if (marks[i].localName == "svg" && originalMarks[i]._leaflet_pos) {
+        marks[i].style = `position: absolute;left: ${originalMarks[i]._leaflet_pos.x}px;top:${originalMarks[i]._leaflet_pos.y};z-index:1000;`;
+      }
+    }
+    const finalMap = originalMap.outerHTML.replace(/\/\//g, 'http://');
     const leftPanel = document.getElementById('leftPanel');
     const leftPanelClean = leftPanel.outerHTML.replace(/src="images\//g, 'src="http://afya.takwimu.org/images/');
     const links = '<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">';
     const styles = '<style>#map1 {bottom: 0px;left: 0px;position: absolute;right: 0px;top: 0px;width: 100%;height:100%;}</style><link rel="stylesheet" href="http://afya.takwimu.org/style.css">';
     const htmlContent = `<html><header>${styles}</header><body id="pdf-body">${finalMap}${leftPanelClean}${links}</body></html>`;
-    //console.log(htmlContent);
+    // console.log(htmlContent);
     pdf(htmlContent);
   },
 
