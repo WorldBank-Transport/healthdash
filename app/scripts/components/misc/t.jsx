@@ -404,7 +404,7 @@ const allTranslations = {
     'static.dataset.shape-ward': 'Data ya sensa ya 2012 (Ward shapefiles)',
     'static.dataset.tz-population': 'Idadi ya watu katika Taifa la Tanzania',
     'static.dataset.tz-population.explain': 'Uwiano wa idadi ya watu kwa vituo vya afya na matibabu na uwiano wa idadi ya watu kwa wafanyakazi katika sekta ya afya, inapatikana kutoka kwa vituo vya afya na matibabu katika Mkoa (kutoka kwa takwimu ya vituo vya afya na matibabu) na data ya sensa ya 2012 (inayopatikana kwa Ofisi ya Taifa ya Takwimu)',
-     'static.data-type.death': 'Sababu za vifo',
+    'static.data-type.death': 'Sababu za vifo',
     'static.data-type.family-planning': 'Wateja wa upangaji wa uzazi',
     'static.data-type.deliveries': 'Waliojifungua',
     'static.data-type.health-workers': 'Wafanyakazi katika sekta ya afya',

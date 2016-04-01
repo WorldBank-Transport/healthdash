@@ -7,6 +7,9 @@ require('stylesheets/boilerplate/static-content');
 require('stylesheets/boilerplate/button');
 
 const Data = React.createClass({
+  propTypes: {
+    params: React.PropTypes.object,
+  },
 
   getInitialState() {
     return {
@@ -106,7 +109,7 @@ const Data = React.createClass({
               </ul>
               <h5 id="family-planing"><T k="static.data-type.family-planning" /></h5>
               <ul className="dataset-links">
-                <li><Icon type="link"/><a href="http://www.opendata.go.tz/dataset/idadi-na-asilimia-ya-wateja-wa-huduma-ya-uzazi-wa-mpango-kwa-mikoa" target="_blank"><T k="static.link.family-planning" /></a></li>                
+                <li><Icon type="link"/><a href="http://www.opendata.go.tz/dataset/idadi-na-asilimia-ya-wateja-wa-huduma-ya-uzazi-wa-mpango-kwa-mikoa" target="_blank"><T k="static.link.family-planning" /></a></li>
               </ul>
               <h5 id="deliveries"><T k="static.data-type.deliveries" /></h5>
               <ul className="dataset-links">
@@ -126,7 +129,7 @@ const Data = React.createClass({
               </ul>
               <h5 id="tetanus"><T k="static.data-type.tetanous" /></h5>
               <ul className="dataset-links">
-                <li><Icon type="link"/><a href="http://www.opendata.go.tz/dataset/number-and-percentage-of-pregnant-women-received-two-or-more-tetanus-toxoid-vaccine-tt2-by-region" target="_blank"><T k="static.link.tetanous" /></a></li>                
+                <li><Icon type="link"/><a href="http://www.opendata.go.tz/dataset/number-and-percentage-of-pregnant-women-received-two-or-more-tetanus-toxoid-vaccine-tt2-by-region" target="_blank"><T k="static.link.tetanous" /></a></li>
               </ul>
               <h5 id="hiv"><T k="static.data-type.hiv-center" /></h5>
               <ul className="dataset-links">

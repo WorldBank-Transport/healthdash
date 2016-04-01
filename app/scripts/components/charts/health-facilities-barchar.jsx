@@ -134,10 +134,9 @@ const HealthFacilitiesChart = React.createClass({
               hover: {
                 fill: '#82c675',
                 stroke: '#82c675',
-              }
-            }
-          }
-
+              },
+            },
+          },
         },
 
         series: drillDown,

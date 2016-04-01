@@ -34,10 +34,10 @@ const Share = React.createClass({
 
   print() {
     const originalMap = document.getElementById('map1').cloneNode(true);
-    const marks = originalMap.getElementsByClassName("leaflet-zoom-animated");
-    const originalMarks = document.getElementsByClassName("leaflet-zoom-animated");
-    for(let i = 0; i < marks.length; i++) {
-      if (marks[i].localName == "svg" && originalMarks[i]._leaflet_pos) {
+    const marks = originalMap.getElementsByClassName('leaflet-zoom-animated');
+    const originalMarks = document.getElementsByClassName('leaflet-zoom-animated');
+    for (let i = 0; i < marks.length; i++) {
+      if (marks[i].localName === 'svg' && originalMarks[i]._leaflet_pos) {
         marks[i].style = `position: absolute;left: ${originalMarks[i]._leaflet_pos.x}px;top:${originalMarks[i]._leaflet_pos.y};z-index:1000;`;
       }
     }
