@@ -49,12 +49,14 @@ const Share = React.createClass({
       }
     }
     const finalMap = originalMap.outerHTML.replace(/\/\//g, 'http://');
+    const header = document.getElementsByClassName('logo');
+    const headerHtml = header[0].outerHTML.replace(/src="images\//g, 'src="http://afya.takwimu.org/images/');
     const leftPanel = document.getElementById('leftPanel');
     const leftPanelClean = leftPanel.outerHTML.replace(/src="images\//g, 'src="http://afya.takwimu.org/images/');
     const links = '<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">';
-    const styles = '<style>#map1 {bottom: 0px;left: 0px;position: absolute;right: 0px;top: 0px;width: 100%;height:100%;}</style><link rel="stylesheet" href="http://afya.takwimu.org/style.css">';
-    const htmlContent = `<html><header>${styles}</header><body id="pdf-body">${finalMap}${leftPanelClean}${links}</body></html>`;
-    // console.log(htmlContent);
+    const styles = '<link rel="stylesheet" href="http://afya.takwimu.org/style.css"><style>#map1 {bottom: 0px;left: 0px;position: absolute;right: 0px;top: 0px;width: 100%;height:100%;} .logo {z-index:10;left: 50px;position: absolute;top: 10px;} .legend {z-index:10;left: 10px;position: absolute;bottom: 100px;} .right-panel {top: 0px;bottom: 0px;right: 0px}</style>';
+    const htmlContent = `<html><head>${styles}</head><body id="pdf-body">${headerHtml}${finalMap}${leftPanelClean}${links}</body></html>`;
+    //console.log(htmlContent);
     pdf(htmlContent);
   },
 
