@@ -266,7 +266,7 @@ const allTranslations = {
     'footer.copy': ' The source code of this website is published under a GPL 3.0 license . Visitors are encouraged to examine and re-use the code as long as they publish it under a similar license.',
 
     'loading': 'Loading',
-    'loading.pdf': 'Loading PDF',
+    'loading.pdf': 'Generating Map',
     'loading.data.death': 'Loading Death Stats',
     'loading.data.family-planning': 'Loading Family Planning Stats',
     'loading.data.deliveries': 'Loading Deliveries Stats',
@@ -611,7 +611,7 @@ const allTranslations = {
     'footer.copy': 'Tovuti hii imechapishwa kwa leseni ya GPL 3.0. Wageni wa tovuti wanahamasishwa kuangalia programu kwa makini na kuitumia kama watachapisha programu zao kwa leseni inayolingana.',
 
     'loading': 'Loading',
-    'loading.pdf': 'Loading PDF',
+    'loading.pdf': 'Unda Ramani',
     'loading.data.death': 'Loading Death Stats',
     'loading.data.family-planning': 'Loading Family Planning Stats',
     'loading.data.deliveries': 'Loading Deliveries Stats',
