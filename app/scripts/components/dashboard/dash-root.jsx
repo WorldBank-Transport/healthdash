@@ -136,7 +136,7 @@ const DashRoot = React.createClass({
         )}>
           <DataType dataType={this.state.view.dataType} viewMode={this.state.view.viewMode}/>
           <YearSelector />
-          <Share />
+          <Share {...propsForChildren}/>
         </MapNav>
 
         <div className="map-container">
