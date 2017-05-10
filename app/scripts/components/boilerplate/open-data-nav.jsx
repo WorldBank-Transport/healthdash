@@ -9,9 +9,19 @@ const OpenDataNav = React.createClass({
     return (
       <ul className="open-data-nav">
         <li>
-          <Link activeClassName="active" to="/">
-            <T k="nav.home" />
-          </Link>
+          <a href="http://opendata.go.tz">
+            <T k="data.external.govopendataportal" />
+          </a>
+        </li>
+        <li>
+          <a href="http://education.opendata.go.tz" target="_blank">
+            <T k="nav.edudash" />
+          </a>
+        </li>
+        <li>
+        <a href="http://water.opendata.go.tz" target="_blank">
+          <T k="nav.waterdash" />
+        </a>
         </li>
         <li>
           <Link activeClassName="active" to="/data/">
@@ -23,16 +33,6 @@ const OpenDataNav = React.createClass({
             <T k="nav.speak-out" />
           </Link>
         </li>
-        <li>
-          <a href="http://elimu.takwimu.org/#/" target="_blank">
-            <T k="nav.edudash" />
-          </a>
-        </li>
-        <li>
-        <a href="http://maji.takwimu.org" target="_blank">
-          <T k="nav.waterdash" />
-        </a>
-      </li>
       </ul>
     );
   },
