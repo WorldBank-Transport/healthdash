@@ -23,16 +23,6 @@ const OpenDataNav = React.createClass({
           <T k="nav.waterdash" />
         </a>
         </li>
-        <li>
-          <Link activeClassName="active" to="/data/">
-            <T k="nav.data" />
-          </Link>
-        </li>
-        <li>
-          <Link activeClassName="active" to="/speak-out/">
-            <T k="nav.speak-out" />
-          </Link>
-        </li>
       </ul>
     );
   },
