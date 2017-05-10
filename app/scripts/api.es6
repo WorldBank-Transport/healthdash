@@ -4,11 +4,21 @@ import ckan from './utils/api/ckan';
 import * as staticData from './utils/api/static-data';
 import securityApi from './utils/api/security-api';
 
-const API_ROOT = '//data.takwimu.org/api';
-const SECURITY_API_ROOT = '//api.takwimu.org/';
-//const SECURITY_API_ROOT = '//localhost:9080/';
+const API_ROOT = '//opendata.go.tz/api';
+const SECURITY_API_ROOT = '//opendata.go.tz/';
 const GOOGLE_API = 'https://www.googleapis.com/';
 const URL_SHORTENER = 'urlshortener/v1/url';
+
+const HEALTH_FACILITIES_DATA_URL = 'http://opendata.go.tz/api/action/datastore_search?resource_id=f9192849-9b32-4827-90fa-522ec1e84c1e&limit=2147483647'
+const DEATH_STATS_RESOURCE_ID = '61f0768b-59e1-4f24-81dc-0a4f02b15c75'
+const FAMILY_PLANNING_RESOURCE_ID = '4e75aa54-a8d4-431c-8eb2-e21e472aa02d'
+const DELIVERIES_RESOURCE_ID = '448deff0-11cf-445c-97ce-39ad81876fe2'
+const HEALTH_WORKERS_RESOURCE_ID = 'e73c7f34-ca45-4702-adf2-7a30b02d8e76'
+const IPD_RESOURCE_ID = '9b3f43f2-57f8-48c6-9584-e81c86633266'
+const OPD_RESOURCE_ID = '4db8e931-a140-4619-8fb5-52d434d2b84d'
+const TETANUS_RESOURCE_ID = 'd4c39974-cc81-4a84-aa71-1c2dd325dbe1'
+const HIV_FACILITIES_RESOURCE_ID = '67ce1d38-c23a-4eb5-b580-2be4c28e25c5'
+const HRW_DENSITIES_RESOURCE_ID = '494e2c86-c98a-4a0a-a5e9-1d593bb592d0'
 
 /**
  * @param {object} record The waterpoint database record
@@ -73,34 +83,34 @@ const eachRecord = fn => data => data.map(fn);
 
 
 export const getHealthFacilities = () =>
-  staticData.getWithPostProcess('/data/ckan-health-facilities.json', eachRecord(healthFacProcess));
+  staticData.getWithPostProcess(HEALTH_FACILITIES_DATA_URL, eachRecord(healthFacProcess));
 
 export const getDeathStats = (onProgress) =>
-  ckan.get(API_ROOT, 'bf3f39ed-9789-4b47-862a-de31695d19ef', {}, onProgress);
+  ckan.get(API_ROOT, DEATH_STATS_RESOURCE_ID, {}, onProgress);
 
 export const getFamilyPlanning = (onProgress) =>
-  ckan.get(API_ROOT, '68bc9db6-f5a9-497b-848b-32fe6e059b5f', {}, onProgress, eachRecord(familyProcess));
+  ckan.get(API_ROOT, FAMILY_PLANNING_RESOURCE_ID, {}, onProgress, eachRecord(familyProcess));
 
 export const getDeliveries = (onProgress) =>
-  ckan.get(API_ROOT, '00b5cb71-7a6a-463a-8334-bcd4de11350e', {}, onProgress);
+  ckan.get(API_ROOT, DELIVERIES_RESOURCE_ID, {}, onProgress);
 
 export const getHealthWorkers = (onProgress) =>
-  ckan.get(API_ROOT, 'aaa2561f-f316-4a26-9fda-6d3151517901', {}, onProgress);
+  ckan.get(API_ROOT, HEALTH_WORKERS_RESOURCE_ID, {}, onProgress);
 
 export const getIPD = (onProgress) =>
-  ckan.get(API_ROOT, 'a2682ef5-a169-4393-aedb-e5ef31d019fc', {}, onProgress);
+  ckan.get(API_ROOT, IPD_RESOURCE_ID, {}, onProgress);
 
 export const getOPD = (onProgress) =>
-  ckan.get(API_ROOT, '6fd0aa26-4f53-40d1-a6ab-58b659eaa5c5', {}, onProgress);
+  ckan.get(API_ROOT, OPD_RESOURCE_ID, {}, onProgress);
 
 export const getTetanus = (onProgress) =>
-  ckan.get(API_ROOT, 'bbb6017a-a15c-445c-9e75-ca1e4e5fb49c', {}, onProgress); // TODO check this TT2 in ckan
+  ckan.get(API_ROOT, TETANUS_RESOURCE_ID, {}, onProgress); // TODO check this TT2 in ckan
 
 export const getHivFacilities = (onProgress) =>
-  ckan.get(API_ROOT, '34433c1b-1a4c-43f3-af5e-31d87bede85a', {}, onProgress);
+  ckan.get(API_ROOT, HIV_FACILITIES_RESOURCE_ID, {}, onProgress);
 
 export const getHrwDensities = (onProgress) =>
-  ckan.get(API_ROOT, 'dba9c72b-aa6d-4d60-b22b-f241269730c7', {}, onProgress);
+  ckan.get(API_ROOT, HRW_DENSITIES_RESOURCE_ID, {}, onProgress);
 
 export const getRegions = () =>
   staticData.getPolygons('/layers/tz_regions.json', 'tz_Regions');
