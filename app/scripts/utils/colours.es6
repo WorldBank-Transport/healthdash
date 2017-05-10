@@ -77,7 +77,7 @@ export const Color = {};
 
 Color.getFacilityColor = (type) => {
   let c = undefined;
-  switch (type) {
+  switch (type.toUpperCase()) {
   case 'HEALTH CENTRE':
     c = colours.healthCentre;
     break;

@@ -66,7 +66,7 @@ const FacilitiesRightPanel = React.createClass({
     return (
       <div className="row">
       {Object.keys(healthFacilitiesType).map(key =>
-        (<MetricSummary icon={imageTypeMapping[key]} metric={healthFacilitiesType[key].length} title={`chart.facilities.type.${key}`}/>)
+        (<MetricSummary icon={imageTypeMapping[key.toUpperCase()]} metric={healthFacilitiesType[key].length} title={`chart.facilities.type.${key}`}/>)
       )}
       </div>
     );
