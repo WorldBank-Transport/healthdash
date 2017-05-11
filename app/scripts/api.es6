@@ -9,7 +9,8 @@ const SECURITY_API_ROOT = '//opendata.go.tz/';
 const GOOGLE_API = 'https://www.googleapis.com/';
 const URL_SHORTENER = 'urlshortener/v1/url';
 
-const HEALTH_FACILITIES_DATA_URL = 'http://opendata.go.tz/api/action/datastore_search?resource_id=f9192849-9b32-4827-90fa-522ec1e84c1e&limit=2147483647'
+const HEALTH_FACILITIES_DATA_URL = 'http://opendata.go.tz/api/action/datastore_search?resource_id=83b7cd61-0a03-4b9a-8572-7eb4eb2f3af7&limit=2147483647'
+const TANZANIA_POPULATION_DATA_URL = 'http://opendata.go.tz/api/action/datastore_search?resource_id=36dcdc60-dca8-4bf8-a352-90895f0f0a3d&limit=2147483647'
 const DEATH_STATS_RESOURCE_ID = '61f0768b-59e1-4f24-81dc-0a4f02b15c75'
 const FAMILY_PLANNING_RESOURCE_ID = '4e75aa54-a8d4-431c-8eb2-e21e472aa02d'
 const DELIVERIES_RESOURCE_ID = '448deff0-11cf-445c-97ce-39ad81876fe2'
@@ -51,6 +52,9 @@ function pullLatLng(record) {
 function healthFacProcess(record) {
   const pulled = pullLatLng(record);
   pulled.POINT_ID = pulled.FACILITY_ID_NUMBER;
+  pulled.REGION = pulled.REGION.toUpperCase()
+  pulled.COUNCIL = pulled.COUNCIL.toUpperCase()
+  pulled['FACILITY TYPE'] = pulled['FACILITY TYPE'].toUpperCase()
   return pulled;
 }
 
@@ -122,7 +126,7 @@ export const getWards = () =>
   staticData.getPolygons('/layers/tz_wards.json', 'TzWards');
 
 export const getPopulationStatic = () =>
-  staticData.getWithPostProcess('/data/ckan-population.json', eachRecord(toUppercase));
+  staticData.getWithPostProcess(TANZANIA_POPULATION_DATA_URL, eachRecord(toUppercase));
 
 export const postShare = (shareData) =>
   securityApi.post(SECURITY_API_ROOT, 'share', shareData);
